@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pal.dao.UserDao">
+    <sql id="table">user</sql>
+    <sql id="selectFields">
+    	id, username, password, salt, headLink, sex, createDate, onLineStatus, updateDate, status, headStatus, pushStatus, lineID, address
+    </sql>
+    
+    <!-- 根据推送状态获取用户 -->
+    <select id="getPushUsers" resultType="com.pal.entity.User">
+        SELECT
+        <include refid="selectFields"/>
+        FROM
+        <include refid="table"/>
+        WHERE
+        pushStatus=#{pushStatus}
+        AND
+        sex=#{sex}
+        AND
+        status = #{status}
+    </select>
+    
+    <!-- 获取首页展示的用户 -->
+    <select id="getLaterUser" resultType="com.pal.entity.User">
+        SELECT
+        <include refid="selectFields"/>
+        FROM
+        <include refid="table"/>
+        WHERE
+        sex=#{sex}
+        AND
+        status = #{status}
+        ORDER BY id DESC
+    </select>
+    
+    
+    
+</mapper>

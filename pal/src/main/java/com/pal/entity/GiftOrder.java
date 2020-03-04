@@ -1,0 +1,77 @@
+package com.pal.entity;
+
+import java.util.Date;
+
+//礼物记录
+public class GiftOrder {
+
+	private Integer id;
+	//礼物ID
+	private Integer giftID;
+	//发送者
+	private String username;
+	//接受者
+	private String toUsername;
+	
+	private Date createDate;
+	
+	private String content;
+	
+	public GiftOrder() {
+		this.id = 0;
+		this.giftID = 0;
+		this.username = "";
+		this.toUsername = "";
+		this.createDate = new Date();
+		this.content = "";
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public Integer getGiftID() {
+		return giftID;
+	}
+
+	public void setGiftID(Integer giftID) {
+		this.giftID = giftID;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String getToUsername() {
+		return toUsername;
+	}
+
+	public void setToUsername(String toUsername) {
+		this.toUsername = toUsername;
+	}
+
+	public Date getCreateDate() {
+		return createDate;
+	}
+
+	public void setCreateDate(Date createDate) {
+		this.createDate = createDate;
+	}
+
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
+	}
+	
+}
