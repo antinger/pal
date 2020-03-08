@@ -22,7 +22,7 @@ public class LoginController {
 	
 	@Autowired
 	UserService userService;
-
+	
 	@RequestMapping(path="/register/", method=RequestMethod.POST)
 	@ResponseBody
 	public String register(@RequestParam("username") String username, @RequestParam("password") String password, @RequestParam("email") String email, @RequestParam("birthday") Date birthday, @RequestParam("sex") Integer sex, HttpServletResponse response, HttpServletRequest request) {
