@@ -48,7 +48,7 @@ public class UserService {
 	public Map<String, Object> register(String username, String password, String email, Date birthday, Integer sex, String ip) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		if(username == null || "".equals(username)) {
-			map.put("tel", "用户名不能为空");
+			map.put("username", "用户名不能为空");
 			return map;
 		}
 		if(email == null || "".equals(email)) {
@@ -244,7 +244,7 @@ public class UserService {
 		map.put("message", "更新成功");
 		return map;
 	}
-
+	
 	//更新头像
 	public Map<String, Object> updateHeadLink(MultipartFile image) throws IOException {
 		Map<String, Object> map = qiniuService.saveImage(image);

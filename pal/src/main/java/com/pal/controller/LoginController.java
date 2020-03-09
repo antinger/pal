@@ -25,10 +25,11 @@ public class LoginController {
 	
 	@RequestMapping(path="/register/", method=RequestMethod.POST)
 	@ResponseBody
-	public String register(@RequestParam("username") String username, @RequestParam("password") String password, @RequestParam("email") String email, @RequestParam("birthday") Date birthday, @RequestParam("sex") Integer sex, HttpServletResponse response, HttpServletRequest request) {
+	public String register(@RequestParam("username") String username, @RequestParam("password") String password, @RequestParam("email") String email, @RequestParam("birthday") String birthday, @RequestParam("sex") Integer sex, HttpServletResponse response, HttpServletRequest request) {
 		try {
 			String ip = PalUtils.getIpAddress(request);
-			Map<String, Object> map = userService.register(username, password, email, birthday, sex, ip);
+			Date date = PalUtils.parseDate(birthday);
+			Map<String, Object> map = userService.register(username, password, email, date, sex, ip);
 			if(map.containsKey("ticket")) {
 				Cookie cookie = new Cookie("ticket", map.get("ticket").toString());
 				cookie.setMaxAge(60 * 60 * 24 * 30);

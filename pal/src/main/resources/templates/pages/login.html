@@ -1,0 +1,356 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>登录</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<link rel="stylesheet" type="text/css" href="css/animate.css">
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="css/line-awesome.css">
+		<link rel="stylesheet" type="text/css" href="css/line-awesome-font-awesome.min.css">
+		<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+		<link rel="stylesheet" type="text/css" href="lib/slick/slick.css">
+		<link rel="stylesheet" type="text/css" href="lib/slick/slick-theme.css">
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<link rel="stylesheet" type="text/css" href="css/responsive.css">
+		<link rel="stylesheet" type="text/css" href="css/login.css">
+		
+		<link href="time/css/bootstrap-datetimepicker.css" rel="stylesheet">
+		<!--时间css end-->
+		<link href="time/css/animate.min.css" rel="stylesheet">
+		<link href="time/css/prettify-1.0.css" rel="stylesheet">
+		<link href="time/css/base.css" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="time/css/default.css">
+	</head>
+	
+
+	<body class="sign-in">
+
+		<div id="app" class="wrapper">
+			
+			<div class="sign-in-page">
+				<div class="signin-popup">
+					<div class="signin-pop">
+						<div class="row international">
+							<div class="col-lg-6">
+								<select class="form-control form-control-lg language" v-model="languageID" @click="change">
+									<option selected="true" value="1">中文简体</option>
+									<option value="2">中文-繁體</option>
+									<option value="3">English</option>
+									<option value="4">한국어</option>
+									<option value="5">にほんご</option>
+									<option value="6">ภาษาไทย</option>
+								</select>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-lg-6">
+								<div class="cmp-info">
+									<div class="cm-logo">
+										<img src="images/cm-logo.png" alt="">
+										<p>Join A secret date for A local party and date to start your perfect date</p>
+									</div><!--cm-logo end-->	
+									<img src="images/cm-main-img.png" alt="">			
+								</div><!--cmp-info end-->
+							</div>
+							<div class="col-lg-6">
+								<div class="login-sec">
+									<ul class="sign-control">
+										<li data-tab="tab-1" class="current"><a href="#" title="">{{label[0]}}</a></li>				
+										<li data-tab="tab-2"><a href="#" title="">{{label[1]}}</a></li>
+										<li data-tab="tab-3"><a href="#" title="">{{label[2]}}</a></li>
+									</ul>
+									<div class="sign_in_sec current" id="tab-1">
+										<form>
+											<div class="row">
+												<div class="col-lg-12 no-pdd">
+													<div class="sn-field">
+														<input type="text" v-model="username" :placeholder="loginPlaceholder[0]">
+														<i class="la la-user"></i>
+													</div><!--sn-field end-->
+												</div>
+												<div class="col-lg-12 no-pdd">
+													<div class="sn-field">
+														<input type="password" v-model="password" :placeholder="loginPlaceholder[1]">
+														<i class="la la-lock"></i>
+													</div>
+												</div>
+												<div class="col-lg-12 no-pdd">
+													<div class="checky-sec">
+														<div class="fgt-sec">
+															<a class="btn btn-danger" @click.stop="register">{{label[0]}}</a>
+														</div><!--fgt-sec end-->
+													</div>
+												</div>
+											</div>
+										</form>
+										
+									</div><!--sign_in_sec end-->
+									<div class="sign_in_sec" id="tab-2">
+										
+										<div class="dff-tab current" id="">
+											<form>
+												<div class="row">
+													<div class="col-lg-12 no-pdd">
+														<div class="sn-field">
+															<input type="text" v-model="username" :placeholder="registerPlaceholder[0]">
+															<i class="la la-user"></i>
+														</div>
+													</div>
+													<div class="col-lg-12 no-pdd">
+														<div class="sn-field">
+															<input type="text" v-model="email" :placeholder="registerPlaceholder[1]">
+															<i class="la la-globe"></i>
+														</div>
+													</div>
+													<div class="col-lg-12 no-pdd">
+														<div class="sn-field">
+															<input type="password" v-model="password" :placeholder="registerPlaceholder[2]">
+															<i class="la la-lock"></i>
+														</div>
+													</div>
+													<div class="col-lg-12 no-pdd row">
+														<div class="sn-field col-6">
+															<input type="radio" name="sex" v-model="sex" class="sex-radio" value="0">
+															<i class="la">{{sexLabel[0]}}</i>
+														</div>
+														<div class="sn-field col-6">
+															<input type="radio" name="sex" v-model="sex" class="sex-radio" value="1">
+															<i class="la">{{sexLabel[1]}}</i>
+														</div>
+													</div>
+													<div class="col-lg-12 no-pdd">
+														<div class="sn-field">
+															<input type="date" v-model="birthday" :placeholder="registerPlaceholder[3]"/>
+														</div>
+													</div>
+													
+													<div class="col-lg-12 no-pdd">
+														<a class="btn btn-danger" @click.stop="register">{{label[1]}}</a>
+													</div>
+												</div>
+											</form>
+										</div><!--dff-tab end-->
+										
+									</div>	
+									<div class="sign_in_sec" id="tab-3">
+										<form>
+											<div class="row">
+												<div class="col-lg-12 no-pdd">
+													<div class="sn-field">
+														{{label[4]}}:000000
+													</div>
+												</div>
+												<div class="col-lg-12 no-pdd">
+													<div class="sn-field">
+														<input type="text" name="username" :placeholder="loginPlaceholder[0]">
+														<i class="la la-user"></i>
+													</div><!--sn-field end-->
+												</div>
+												<div class="col-lg-12 no-pdd">
+													<div class="sn-field">
+														<input type="password" name="password" :placeholder="forgetPlaceholder[0]">
+														<i class="la la-lock"></i>
+													</div>
+												</div>
+												<div class="col-lg-12 no-pdd">
+													<div class="sn-field">
+														<input type="password" name="password" :placeholder="forgetPlaceholder[1]">
+														<i class="la la-lock"></i>
+													</div>
+												</div>
+												<div class="col-lg-12 no-pdd">
+													<div class="sn-field">
+														<input type="password" name="password" :placeholder="forgetPlaceholder[2]">
+														<i class="la la-lock"></i>
+													</div>
+												</div>
+												<div class="col-lg-12 no-pdd">
+													<div class="checky-sec">
+														<div class="fgt-sec">
+															<a class="btn btn-danger" @click.stop="register">{{label[3]}}</a>
+														</div><!--fgt-sec end-->
+													</div>
+												</div>
+											</div>
+										</form>
+										
+									</div><!--sign_in_sec end-->
+								</div><!--login-sec end-->
+							</div>
+						</div>		
+					</div><!--signin-pop end-->
+				</div><!--signin-popup end-->
+			</div>
+
+
+		</div><!--theme-layout end-->
+		
+	</body>
+	
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/popper.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="lib/slick/slick.min.js"></script>
+	<script type="text/javascript" src="js/script.js"></script>
+	<script src="js/vue-2.4.0.js"></script>
+	<script src="js/vue-resource-1.3.4.js"></script>
+	<script src="time/js/base.js"></script>
+	 <!--时间js start-->
+	<script src="time/js/moment-with-locales.js"></script>
+	<script src="time/js/bootstrap-datetimepicker.js"></script>
+	<script type="text/javascript">
+	    $(function () {
+	        $('#datetimepicker3').datetimepicker({
+	            locale: 'zh-cn',viewMode: 'days',format: 'YYYY/MM/DD'
+	        });
+	    });
+	</script>
+	<script type="text/javascript">
+		var vm = new Vue({
+			el : '#app',
+			data:{
+				/* 登录---------------start */
+				username:"",
+				password:"",
+				/* 登录---------------end */
+				
+				/* 注册----------------start */
+				email:"",
+				birthday:"",
+				sex:2,
+				/* 注册----------------end */
+				
+				/* 注册异常------------start */
+				
+				/* 注册异常------------end */
+				
+				/* 登录异常-----------------start */
+				
+				/* 登录异常-----------------end */
+				
+				/* 密保----------------start */
+				name:"",
+				like:"",
+				/* 密保----------------end */
+				
+				/* 语言转换定义 -----------start*/
+				languageID : 1,
+				label:["登录", "注册", "忘记密码", "重置密码", "重置后，新的密码是"],
+				loginPlaceholder:["请输入用户名", "请输入密码"],
+				registerPlaceholder:["请输入用户名", "请输入邮箱", "请输入密码", "请选择生日"],
+				sexLabel:["男", "女"],
+				forgetPlaceholder:["你的真实姓名？", "你的邮箱地址？", "你最喜欢的人？"]
+				/* 语言转换定义 -----------end*/
+			},
+			methods:{
+				//分页获取所有的汉服
+				selectEssayByCloth(page) {
+					this.$http.get('/admin/getEssaysPageByUserId/',
+					{params : {userId:this.tel,page:page,limit:20,time:new Date().getTime()}})
+					.then(function(res){
+							this.essays = res.body.data;
+							this.pageCount = res.body.pageCount;
+							this.commentConut = res.body.commentConut;
+							this.pv = res.body.pv;
+							this.likeCount = res.body.likeCount;
+					},function() {
+						console.log('请求失败处理');
+					});
+				},
+				register(){
+					if(this.username == "" || this.password == "" || this.email == "" || this.birthday == "" || this.sex == 2) {
+						return ;
+					}
+					var formData = new FormData();
+					formData.append('username', this.username);
+					formData.append('password', this.password);
+					formData.append('email', this.email);
+					formData.append('birthday', this.birthday);
+					formData.append('sex', this.sex);
+					this.$http.post('http://127.0.0.1:8080/register/', formData)
+					.then(function (res) {
+						alert(res.body.eor);
+					}, function (res) {
+					    console.log(res.body);
+					});
+				},
+				login(){
+					if(this.username == "" || this.password == "") {
+						return ;
+					}
+					var formData = new FormData();
+					formData.append('username', this.username);
+					formData.append('password', this.password);
+					this.$http.post('http://127.0.0.1:8080/login/', formData)
+					.then(function (res) {
+						alert(res.body.eor);
+					}, function (res) {
+					    console.log(res.body);
+					});
+				},
+				reset(){
+					if(this.username == "" || this.name == "" || this.email == "" || this.like == "") {
+						return ;
+					}
+					var formData = new FormData();
+					formData.append('username', this.username);
+					formData.append('name', this.name);
+					formData.append('email', this.email);
+					formData.append('like', this.like);
+					this.$http.post('http://127.0.0.1:8080/reset/', formData)
+					.then(function (res) {
+						alert(res.body.eor);
+					}, function (res) {
+					    console.log(res.body);
+					});
+				},
+				change(){
+					if(this.languageID == 1) {
+						this.label = ["登录", "注册", "忘记密码", "重置密码", "重置后，新的密码是"]
+						this.loginPlaceholder = ["请输入用户名", "请输入密码"]
+						this.registerPlaceholder = ["请输入用户名", "请输入邮箱", "请输入密码", "请选择生日"]
+						this.sexLabel = ["男", "女"]
+						this.forgetPlaceholder = ["你的真实姓名？", "你的邮箱地址？", "你最喜欢的人？"]
+					} else if(this.languageID == 2) {
+						this.label = ["登錄", "註冊", "忘記密碼", "重置密碼", "重置後，新的密碼是"]
+						this.loginPlaceholder = ["請輸入用戶名", "請輸入密碼"]
+						this.registerPlaceholder = ["請輸入用戶名", "請輸入郵箱", "請輸入密碼", "請選擇生日"]
+						this.sexLabel = ["男", "女"]
+						this.forgetPlaceholder = ["妳的真實姓名？", "妳的郵箱地址？", "妳最喜歡的人？"]
+					} else if(this.languageID == 3) {
+						this.label = ["login", "register", "forget password", "reset passwords ", "After the reset, the new password is"]
+						this.loginPlaceholder = ["username", "password"]
+						this.registerPlaceholder = ["usrname", "email", "password", "birthday"]
+						this.sexLabel = ["man", "woman"]
+						this.forgetPlaceholder = ["Your real name？", "Your email address？", "Your favorite person？"]
+					} else if(this.languageID == 4) {
+						this.label = ["로그인", "등기", "비밀번호를 잊어버리다", "비밀번호 초기화", "다시 시작하면 새로운 비밀번호는"]
+						this.loginPlaceholder = ["사용자 이름.", " 비밀 번호"]
+						this.registerPlaceholder = ["사용자 이름.", "우편함", " 비밀 번호", "출생일"]
+						this.sexLabel = ["남성.", "여자."]
+						this.forgetPlaceholder = ["여러분의 진짜 이름은？", "여러분의 이메일 주소가？", "여러분이 가장 좋아하는 사람은？"]
+					} else if(this.languageID == 5) {
+						this.label = ["登録する", "登録", "パスワードを忘れる", "パスワードをリセットする", "リセット後、新しいパスワードは"]
+						this.loginPlaceholder = ["ユーザー名「めい」", "あんごうふごう"]
+						this.registerPlaceholder = ["ユーザー名「めい」", "ポスト", "あんごうふごう", "たんじょうび"]
+						this.sexLabel = ["おとこ", "おんな"]
+						this.forgetPlaceholder = ["あなたの本当の名前？", "あなたのメールアドレス？", "あなたの大好きな人？"]
+					} else if(this.languageID == 6) {
+						this.label = ["เข้า สู่ ระบบ", "ลง ทะเบียน", "ลืมรหัสผ่าน", "รีเซ็ตรหัสผ่านของคุณ", "หลังจากรีเซ็ตรหัสผ่านใหม่จะ"]
+						this.loginPlaceholder = ["ชื่อผู้ใช้", "รหัส ผ่าน"]
+						this.registerPlaceholder = ["ชื่อผู้ใช้", "กล่อง จดหมาย", "รหัส ผ่าน", "วัน"]
+						this.sexLabel = ["คน", "ผู้หญิง"]
+						this.forgetPlaceholder = ["ชื่อคนแรกและนามสกุล？", "ที่อยู่อีเมลของคุณ？", "คนโปรดของคุณ？"]
+					}
+				}
+			},
+			beforeMount() {
+				
+			}
+		})
+	</script>
+</html>

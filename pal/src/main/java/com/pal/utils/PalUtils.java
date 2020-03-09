@@ -2,6 +2,7 @@ package com.pal.utils;
 
 import java.security.MessageDigest;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Map;
@@ -24,6 +25,11 @@ public class PalUtils {
 	public static String formatDate(Date date) {
 		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		return dateFormat.format(date);
+	}
+	
+	public static Date parseDate(String time) throws ParseException {
+		DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+		return format.parse(time);
 	}
 	
 	public static String getRandomUUID() {

@@ -15,13 +15,16 @@ public interface EncryptedDao {
     String INSERT_FIELDS = " username, name, email, like ";
     String SELECT_FIELDS = " id, " + INSERT_FIELDS;
     
+    //添加密保
     @Insert({"insert into ", TABLE_NAME, "(", INSERT_FIELDS,
             ") values (#{username},#{name},#{email},#{like})"})
     int addEncrypted(Encrypted encrypted);
     
+    //查询密保
     @Select({"select ", SELECT_FIELDS, " from ", TABLE_NAME, " where username=#{username}"})
     Encrypted selectByUsername(String username);
     
+    //更新密保
     @Update({"update ", TABLE_NAME, " set name=#{name}, email=#{email}, like=#{like} where username=#{username}"})
     void updateEncrypted(@Param("username") String username, @Param("name") String name, @Param("email") String email, @Param("like") String like);
 	
