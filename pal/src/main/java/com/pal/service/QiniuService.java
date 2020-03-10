@@ -20,10 +20,10 @@ import org.springframework.web.multipart.MultipartFile;
 public class QiniuService {
 
 	 //设置好账号的ACCESS_KEY和SECRET_KEY
-	private String ACCESS_KEY = "3jst1NgIks-WdFLMPigMbNQ9hpq0KXfF-vZ8vAjb";
-	private String SECRET_KEY = "1K-jeNFR5wUzMKJ471s-838RJ5D71nKysc3aHVjk";
+	private String ACCESS_KEY = "3vPx1VqiTQTE4_hU5jKPB0dDWObkvR6yFazsDM54";
+	private String SECRET_KEY = "h9z06iU3ho0MU_ELvnR_AoZtSI_P-NweB6L4sJ4f";
     //要上传的空间
-    private String bucketname = "wangruizhi1";
+    private String bucketname = "pal";
     
     //密钥配置
     private Auth auth = Auth.create(ACCESS_KEY, SECRET_KEY);
