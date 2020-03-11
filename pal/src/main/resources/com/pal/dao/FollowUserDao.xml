@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pal.dao.FollowUserDao">
+    <sql id="table">followUser</sql>
+    <sql id="selectFields">
+    	id, userID, followUserID 
+    </sql>
+    <!-- 根据状态分页获取所有的商品 -->
+    <select id="getFollowUser" resultType="com.pal.entity.FollowUser">
+        SELECT
+        <include refid="selectFields"/>
+        FROM
+        <include refid="table"/>
+        WHERE
+        userID=#{userID}
+        ORDER BY id DESC
+        limit #{start},#{limit}
+    </select>
+    
+    <select id="getFans" resultType="com.pal.entity.FollowUser">
+        SELECT
+        <include refid="selectFields"/>
+        FROM
+        <include refid="table"/>
+        WHERE
+        followUserID=#{followUserID}
+        ORDER BY id DESC
+        limit #{start},#{limit}
+    </select>
+    
+</mapper>
