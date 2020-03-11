@@ -9,50 +9,37 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.pal.service.FollowUserService;
+import com.pal.service.VisitorService;
 import com.pal.utils.PalUtils;
 
 @Controller
 public class VisitorController {
 	
 	@Autowired
-	FollowUserService followUserService;
+	VisitorService visitorService;
 	
 	//添加关注
-	@RequestMapping(path="/user/follow/", method=RequestMethod.POST)
+	@RequestMapping(path="/user/addVisitor/", method=RequestMethod.POST)
 	@ResponseBody
-	public String follow(@RequestParam("followUserID") Integer followUserID) {
+	public String addVisitor(@RequestParam("visitorID") Integer visitorID) {
 		try {
-			Map<String, Object> map = followUserService.follow(followUserID);
+			Map<String, Object> map = visitorService.addVisitor(visitorID);
 			return PalUtils.toJSONString(200, map);
 		} catch (Exception e) {
-			return PalUtils.toJSONString(500, "添加动态失败");
+			return PalUtils.toJSONString(500, "访问失败");
 		}
 	}
 	
-	//获取关注的人
-	@RequestMapping(path="/user/getFollowUser/", method=RequestMethod.GET)
+	//获取访问
+	@RequestMapping(path="/user/getVistor/", method=RequestMethod.GET)
 	@ResponseBody
-	public String getFollowUser() {
+	public String getVistor() {
 		try {
-			Map<String, Object> map = followUserService.getFollowUser();
-			return PalUtils.toJSONString(200, map);
-		} catch (Exception e) {
-			return PalUtils.toJSONString(500, "获取失败");
-		}
-	}
-	
-	//获取粉丝
-	@RequestMapping(path="/user/getFans/", method=RequestMethod.GET)
-	@ResponseBody
-	public String getFans() {
-		try {
-			Map<String, Object> map = followUserService.getFans();
+			Map<String, Object> map = visitorService.getVistor();
 			return PalUtils.toJSONString(200, map);
 		} catch (Exception e) {
 			return PalUtils.toJSONString(500, "获取失败");
 		}
 	}
-	
 	
 }

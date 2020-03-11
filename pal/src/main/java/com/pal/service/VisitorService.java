@@ -31,7 +31,7 @@ public class VisitorService {
 	QiniuService qiniuService;
 
 	//关注
-	public Map<String, Object> follow(Integer visitorID) {
+	public Map<String, Object> addVisitor(Integer visitorID) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		User user = getThreadUser();
 		Visitor vistor = new Visitor();
