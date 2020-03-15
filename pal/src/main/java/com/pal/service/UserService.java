@@ -79,7 +79,7 @@ public class UserService {
 		user.setPassword(PalUtils.MD5(password + salt));
 		user.setEmail(email);
 		user.setSex(sex);
-		int status = sex == 1 ? 1 : 0;
+		int status = (sex == 1) ? 1 : 0;
 		user.setStatus(status);
 		user.setAddress(ip);
 		userDao.addUser(user);
