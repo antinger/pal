@@ -63,7 +63,7 @@ public class UserController {
 			Map<String, Object> map = userService.updateHeadLink(image);
 			return PalUtils.toJSONString(200, map);
 		} catch (Exception e) {
-			return PalUtils.toJSONString(500, "获取最新用户失败");
+			return PalUtils.toJSONString(500, "更新头像失败");
 		}
 	}
 }

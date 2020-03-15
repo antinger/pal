@@ -23,7 +23,7 @@ public interface UserInfoDao {
     @Select({"select ", SELECT_FIELDS, " from ", TABLE_NAME, " where username=#{username}"})
     UserInfo selectByUsername(String username);
     
-    @Update({"update ", TABLE_NAME, " set birthday=#{birthday},education=#{education},height=#{height},weight=#{weight},job=#{job},country=#{country},town=#{town} where username=#{username}"})
+    @Update({"update ", TABLE_NAME, " set education=#{education},height=#{height},weight=#{weight},job=#{job},country=#{country},town=#{town} where username=#{username}"})
     void updateUserInfo(UserInfo userInfo);
 	
 }

@@ -100,7 +100,12 @@
 									<div class="main-left-sidebar">
 										<div class="user_profile">
 											<div class="user-pro-img">
-												<img src="images/resources/user-pro-img.png" alt="">
+												<template v-if="user.headStatus==1">
+													<img :src="headLink" alt="" width="170px" height="170px">
+												</template>
+												<template v-else>
+													<img :src="user.headLink" alt="" width="170px" height="170px">
+												</template>
 												
 											</div><!--user-pro-img end-->
 											<div class="user_pro_status">
@@ -131,13 +136,13 @@
 											</div>
 											<!-- 信息栏---------------------start -->
 											<ul class="social_links">
-												<li><a href="#" title="">{{leftLabel[3]}}：</a></li>
-												<li><a href="#" title="">{{leftLabel[4]}}：</a></li>
-												<li><a href="#" title="">{{leftLabel[5]}}：</a></li>
-												<li><a href="#" title="">{{leftLabel[6]}}：</a></li>
-												<li><a href="#" title="">{{leftLabel[7]}}：</a></li>
-												<li><a href="#" title="">{{leftLabel[8]}}：</a></li>
-												<li><a href="#" title="">{{leftLabel[9]}}：</a></li>
+												<li><a href="#" title="">{{leftLabel[3]}} ：{{userInfo.view.birthday}}</a></li>
+												<li><a href="#" title="">{{leftLabel[4]}} ：{{userInfo.view.info.education}}</a></li>
+												<li><a href="#" title="">{{leftLabel[5]}} ：{{userInfo.view.info.height}}</a></li>
+												<li><a href="#" title="">{{leftLabel[6]}} ：{{userInfo.view.info.weight}}</a></li>
+												<li><a href="#" title="">{{leftLabel[7]}} ：{{userInfo.view.info.job}}</a></li>
+												<li><a href="#" title="">{{leftLabel[8]}} ：{{userInfo.view.info.country}}</a></li>
+												<li><a href="#" title="">{{leftLabel[9]}} ：{{userInfo.view.info.town}}</a></li>
 											</ul>
 											<!-- 信息栏---------------------end -->
 										</div><!--user_profile end-->
@@ -151,9 +156,8 @@
 									<div class="main-ws-sec">
 										
 										<div class="user-tab-sec">
-											<h3>John Doe</h3>
+											<h3>{{user.username}}</h3>
 											<div class="star-descp">
-												<span>Graphic Designer at Self Employed</span>
 												<ul>
 													<li><i class="fa fa-star"></i></li>
 													<li><i class="fa fa-star"></i></li>
@@ -1054,6 +1058,20 @@
 		var vm = new Vue({
 			el : '#app',
 			data:{
+				
+				/* 令牌-------------start  */
+				ticket:"",
+				/* 令牌-------------end  */
+				/* 个人信息----------------start */
+				user:"",
+				userInfo:"",
+				headLink:"images/user/default.png",
+				/* 个人信息----------------end */
+				
+				/* 照片墙-----------------start */
+				pushUser:[],
+				/* 照片墙-----------------end */
+				
 				/* 动态-----------------start */
 				image:"",
 				content:"",
@@ -1068,20 +1086,6 @@
 				/* 标签---------------------end */
 			},
 			methods:{
-				//分页获取所有的汉服
-				selectEssayByCloth(page) {
-					this.$http.get('/admin/getEssaysPageByUserId/',
-					{params : {userId:this.tel,page:page,limit:20,time:new Date().getTime()}})
-					.then(function(res) {
-							this.essays = res.body.data;
-							this.pageCount = res.body.pageCount;
-							this.commentConut = res.body.commentConut;
-							this.pv = res.body.pv;
-							this.likeCount = res.body.likeCount;
-					},function() {
-						console.log('请求失败处理');
-					});
-				},
 				//获取用户信息
 				getUserInfoByUserName(username) {
 					this.$http.get('/user/getUserInfoByUserName/',
@@ -1094,26 +1098,27 @@
 				},
 				//获取当前用户信息
 				getUserInfo() {
-					this.$http.get('/user/getUserInfo/',
+					this.$http.get('/user/getUserInfo/',{header : {cookie:this.ticket}},
 					{params : {time:new Date().getTime()}})
 					.then(function(res) {
-						console.log(JSON.stringify(res))
+						this.userInfo = res.body.userInfo
+						this.user = res.body.user
 					},function() {
 						console.log('请求失败处理');
 					});
 				},
 				//获取推送的用户
-				getUserInfo() {
+				getPushUser() {
 					this.$http.get('/user/getPushUser/',
 					{params : {time:new Date().getTime()}})
 					.then(function(res) {
-						console.log(JSON.stringify(res))
+						this.pushUser = res.body.data
 					},function() {
 						console.log('请求失败处理');
 					});
 				},
 				//获取首页推荐的用户
-				getUserInfo() {
+				getLaterUser() {
 					this.$http.get('/user/getLaterUser/',
 					{params : {time:new Date().getTime()}})
 					.then(function(res) {
@@ -1186,6 +1191,15 @@
 						console.log('请求失败处理');
 					});
 				},
+				//跳转到登录页面
+				toLoginView(code) {
+					if(code == "302") {
+						window.location.href = "login.html"
+					}
+				},
+				checkTicket() {
+					this.ticket = localStorage.getItem("ticket");
+				},
 				change() {
 					if(this.languageID == 1) {
 						this.topLabel = ["个人资料", "消息", "退出"]
@@ -1225,7 +1239,9 @@
 				}
 			},
 			beforeMount() {
-				
+				this.checkTicket()
+				this.getUserInfo()
+				this.getPushUser()
 			}
 		})
 	</script>

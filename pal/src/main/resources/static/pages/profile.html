@@ -37,39 +37,42 @@
 						</div><!--search-bar end-->
 						<nav>
 							<ul>
-								
 								<li>
-									<a href="#" title="">
+									<a href="profile.html" title="">
 										<span><img src="images/icon4.png" alt=""></span>
-										Profiles
+										{{topLabel[0]}}
 									</a>
 								</li>
 								
 								<li>
 									<a href="message.html" title="" class="not-box-open">
 										<span><img src="images/icon6.png" alt=""></span>
-										Messages
+										{{topLabel[1]}}
 									</a>
 								</li>
-								
+								<li>
+									<a href="message.html" title="" class="not-box-open">
+										<span><img src="images/icon7.png" alt=""></span>
+										{{topLabel[2]}}
+									</a>
+								</li>
 							</ul>
 						</nav><!--nav end-->
 						<div class="menu-btn">
 							<a href="#" title=""><i class="fa fa-bars"></i></a>
 						</div><!--menu-btn end-->
 						<div class="user-account">
-							<div class="user-info">
-								<a href="#" title="">ENGLISH</a>
-								<i class="la la-sort-down"></i>
+							<div class="user-info" style="width: 150px;">
+								<select style="background: #E44D3A;border: none;color: white;" 
+								class="form-control form-control-lg language" v-model="languageID" @click="change">
+									<option selected="true" value="1">中文简体</option>
+									<option value="2">中文-繁體</option>
+									<option value="3">English</option>
+									<option value="4">한국어</option>
+									<option value="5">にほんご</option>
+									<option value="6">ภาษาไทย</option>
+								</select>
 							</div>
-							<div class="user-account-settingss">
-								<ul class="us-links">
-									<li><a href="profile-account-setting.html" title="">Account Setting</a></li>
-									<li><a href="#" title="">Privacy</a></li>
-									<li><a href="#" title="">Faqs</a></li>
-									<li><a href="#" title="">Terms & Conditions</a></li>
-								</ul>
-							</div><!--user-account-settingss end-->
 						</div>
 					</div><!--header-data end-->
 				</div>
@@ -83,10 +86,10 @@
 							<div class="col-lg-3">
 								<div class="acc-leftbar">
 									<div class="nav nav-tabs" id="nav-tab" role="tablist">
-										<a class="nav-item nav-link active" id="nav-acc-tab" data-toggle="tab" href="#nav-acc" role="tab" aria-controls="nav-acc" aria-selected="true"><i class="la la-cogs"></i>个人信息</a>
-										<a class="nav-item nav-link" id="nav-status-tab" data-toggle="tab" href="#nav-status" role="tab" aria-controls="nav-status" aria-selected="false"><i class="fa fa-line-chart"></i>更新账号</a>
-										<a class="nav-item nav-link" id="nav-password-tab" data-toggle="tab" href="#nav-password" role="tab" aria-controls="nav-password" aria-selected="false"><i class="fa fa-lock"></i>更新头像</a>
-										<a class="nav-item nav-link" id="nav-notification-tab" data-toggle="tab" href="#nav-notification" role="tab" aria-controls="nav-notification" aria-selected="false"><i class="fa fa-flash"></i>密保</a>
+										<a class="nav-item nav-link active" id="nav-acc-tab" data-toggle="tab" href="#nav-acc" role="tab" aria-controls="nav-acc" aria-selected="true"><i class="la la-cogs"></i>{{btnLabel[0]}}</a>
+										<a class="nav-item nav-link" id="nav-status-tab" data-toggle="tab" href="#nav-status" role="tab" aria-controls="nav-status" aria-selected="false"><i class="fa fa-line-chart"></i>{{btnLabel[1]}}</a>
+										<a class="nav-item nav-link" id="nav-password-tab" data-toggle="tab" href="#nav-password" role="tab" aria-controls="nav-password" aria-selected="false"><i class="fa fa-lock"></i>{{btnLabel[2]}}</a>
+										<a class="nav-item nav-link" id="nav-notification-tab" data-toggle="tab" href="#nav-notification" role="tab" aria-controls="nav-notification" aria-selected="false"><i class="fa fa-flash"></i>{{btnLabel[3]}}</a>
 										
 									  </div>
 								</div><!--acc-leftbar end-->
@@ -95,32 +98,53 @@
 								<div class="tab-content" id="nav-tabContent">
 									<div class="tab-pane fade show active" id="nav-acc" role="tabpanel" aria-labelledby="nav-acc-tab">
 										<div class="acc-setting">
-											<h3>Account Setting</h3>
+											<h3>{{infoLabel[0]}}</h3>
 											<form>
 												<div class="cp-field">
-													<h5>Old Password</h5>
+													<h5>{{infoLabel[1]}}</h5>
 													<div class="cpp-fiel">
-														<input type="text" name="old-password" placeholder="Old Password">
+														<input type="text" name="" v-model="education" :placeholder="infoLabel[1]">
 														<i class="fa fa-lock"></i>
 													</div>
 												</div>
 												<div class="cp-field">
-													<h5>New Password</h5>
+													<h5>{{infoLabel[2]}}</h5>
 													<div class="cpp-fiel">
-														<input type="text" name="new-password" placeholder="New Password">
+														<input type="text" name="" v-model="height" :placeholder="infoLabel[2]">
 														<i class="fa fa-lock"></i>
 													</div>
 												</div>
 												<div class="cp-field">
-													<h5>Repeat Password</h5>
+													<h5>{{infoLabel[3]}}</h5>
 													<div class="cpp-fiel">
-														<input type="text" name="repeat-password" placeholder="Repeat Password">
+														<input type="text" name="" v-model="weight" :placeholder="infoLabel[3]">
+														<i class="fa fa-lock"></i>
+													</div>
+												</div>
+												<div class="cp-field">
+													<h5>{{infoLabel[4]}}</h5>
+													<div class="cpp-fiel">
+														<input type="text" name="" v-model="job" :placeholder="infoLabel[4]">
+														<i class="fa fa-lock"></i>
+													</div>
+												</div>
+												<div class="cp-field">
+													<h5>{{infoLabel[5]}}</h5>
+													<div class="cpp-fiel">
+														<input type="text" name="" v-model="country" :placeholder="infoLabel[5]">
+														<i class="fa fa-lock"></i>
+													</div>
+												</div>
+												<div class="cp-field">
+													<h5>{{infoLabel[6]}}</h5>
+													<div class="cpp-fiel">
+														<input type="text" name="" v-model="town" :placeholder="infoLabel[6]">
 														<i class="fa fa-lock"></i>
 													</div>
 												</div>
 												<div class="save-stngs pd2">
 													<ul>
-														<li><button type="submit">Save Setting</button></li>
+														<li><a class="btn btn-success" @click="updateUserInfo">{{btnLabel[4]}}</a></li>
 													</ul>
 												</div><!--save-stngs end-->
 											</form>
@@ -128,32 +152,32 @@
 									</div>
 									<div class="tab-pane fade" id="nav-status" role="tabpanel" aria-labelledby="nav-status-tab">
 										<div class="acc-setting">
-											<h3>Account Setting</h3>
+											<h3>{{acountLabel[0]}}</h3>
 											<form>
 												<div class="cp-field">
-													<h5>Old Password</h5>
+													<h5>{{acountLabel[1]}}</h5>
 													<div class="cpp-fiel">
-														<input type="text" name="old-password" placeholder="Old Password">
+														<input type="text" name="old-password" v-model="oldPassword" :placeholder="acountLabel[1]">
 														<i class="fa fa-lock"></i>
 													</div>
 												</div>
 												<div class="cp-field">
-													<h5>New Password</h5>
+													<h5>{{acountLabel[2]}}</h5>
 													<div class="cpp-fiel">
-														<input type="text" name="new-password" placeholder="New Password">
+														<input type="text" name="new-password" v-model="password" :placeholder="acountLabel[2]">
 														<i class="fa fa-lock"></i>
 													</div>
 												</div>
 												<div class="cp-field">
-													<h5>Repeat Password</h5>
+													<h5>{{acountLabel[3]}}</h5>
 													<div class="cpp-fiel">
-														<input type="text" name="repeat-password" placeholder="Repeat Password">
+														<input type="text" name="repeat-password" v-model="repeat" :placeholder="acountLabel[3]">
 														<i class="fa fa-lock"></i>
 													</div>
 												</div>
 												<div class="save-stngs pd2">
 													<ul>
-														<li><button type="submit">Save Setting</button></li>
+														<li><a class="btn btn-success" @click="updatePassword">{{btnLabel[4]}}</a></li>
 													</ul>
 												</div><!--save-stngs end-->
 											</form>
@@ -161,44 +185,44 @@
 									</div>
 									<div class="tab-pane fade" id="nav-password" role="tabpanel" aria-labelledby="nav-password-tab">
 										<div class="acc-setting">
-											<h3>Account Setting</h3>
+											<h3>{{headLabel[0]}}</h3>
 											<div class="con4">
 												<canvas id="cvs" width="200" height="200"></canvas>
-												<span class="btn upload">选择头像<input type="file" class="upload_pic" id="upload" /></span>
+												<span class="btn upload">{{headLabel[1]}}<input type="file" class="upload_pic" id="upload" v-on:change="onChange($event)" /></span>
 												<br>
-												<span class="btn upload">完成</span>
+												<span class="btn upload" style="margin-top: 5px;" @click="updateHeadLink">{{headLabel[2]}}</span>
 											</div>
 											
 										</div><!--acc-setting end-->
 									</div>
 									<div class="tab-pane fade" id="nav-notification" role="tabpanel" aria-labelledby="nav-notification-tab">
 										<div class="acc-setting">
-											<h3>密保问题--防止忘记密码</h3>
+											<h3>{{securityLabel[0]}}</h3>
 											<form>
 												<div class="cp-field">
-													<h5>你的真实姓名？</h5>
+													<h5>{{securityLabel[1]}}？</h5>
 													<div class="cpp-fiel">
-														<input type="text" name="old-password" placeholder="Old Password">
+														<input type="text" v-model="name" :placeholder="securityLabel[1]">
 														<i class="fa fa-lock"></i>
 													</div>
 												</div>
 												<div class="cp-field">
-													<h5>你的邮箱地址？</h5>
+													<h5>{{securityLabel[2]}}？</h5>
 													<div class="cpp-fiel">
-														<input type="text" name="new-password" placeholder="New Password">
+														<input type="text" v-model="email" :placeholder="securityLabel[2]">
 														<i class="fa fa-lock"></i>
 													</div>
 												</div>
 												<div class="cp-field">
-													<h5>你最喜欢的人？</h5>
+													<h5>{{securityLabel[3]}}？</h5>
 													<div class="cpp-fiel">
-														<input type="text" name="repeat-password" placeholder="Repeat Password">
+														<input type="text" v-model="like" :placeholder="securityLabel[3]">
 														<i class="fa fa-lock"></i>
 													</div>
 												</div>
 												<div class="save-stngs pd2">
 													<ul>
-														<li><button type="submit">Save Setting</button></li>
+														<li><a class="btn btn-success">{{btnLabel[4]}}</a></li>
 													</ul>
 												</div><!--save-stngs end-->
 											</form>
@@ -244,9 +268,172 @@
 	<script type="text/javascript" src="js/jquery.mCustomScrollbar.js"></script>
 	<script type="text/javascript" src="lib/slick/slick.min.js"></script>
 	<script type="text/javascript" src="js/script.js"></script>
-	<!-- 图片上传-----------------------start -->
+	
+	<script src="js/vue-2.4.0.js"></script>
+	<script src="js/vue-resource-1.3.4.js"></script>
 	<script>
+		var vm = new Vue({
+			el : '#app',
+			data:{
+				/* 更新个人信息-----start */
+				education:"",
+				height:"",
+				weight:"",
+				job:"",
+				country:"",
+				town:"",
+				/* 更新个人信息------end */
+				
+				/* 更新账号------------start */
+				oldPassword:"",
+				password:"",
+				repeat:"",
+				/* 更新账号------------end */
+				
+				/* 更新头像--------------start */
+				headLink:"",
+				/* 更新头像--------------end */
+				
+				/* 更新密保----------------start */
+				name:"",
+				email:"",
+				like:"",
+				/* 更新密保----------------end */
+				
+				/* 标签------------------start */
+				languageID:1,
+				topLabel:["个人资料", "消息", "退出"],
+				btnLabel:["个人信息", "更新账号", "更新头像", "密保", "保存"],
+				infoLabel:["个人信息", "教育", "身高", "体重", "工作", "国家", "地区"],
+				acountLabel:["更新账号", "旧密码", "新密码", "确认密码"], 
+				headLabel:["头像设置", "选择图片", "完成"],
+				securityLabel:["密保问题--防止忘记密码", "你的真实姓名", "你的邮箱地址", "你最喜欢的人"],
+				/* 标签------------------end */
+				
+				/* 令牌-------------start  */
+				ticket:""
+				/* 令牌-------------end  */
+			},
+			methods:{
+				//更新用户信息
+				updateUserInfo(){
+					var formData = new FormData();
+					formData.append('education', this.education);
+					formData.append('height', this.height);
+					formData.append('weight', this.weight);
+					formData.append('country', this.country);
+					formData.append('town', this.town);
+					this.$http.post('/user/updateUserInfo/', formData, {header:{"cookie":this.ticket}})
+					.then(function (res) {
+						console.log(res.body)
+					}, function (res) {
+					    console.log(res.body);
+					});
+				},
+				//更新账号
+				updatePassword(){
+					if(this.password != this.repeat) {
+						return ;
+					}
+					var formData = new FormData();
+					formData.append('oldPassword', this.oldPassword);
+					formData.append('password', this.password);
+					this.$http.post('/user/updatePassword/', formData, {header:{"cookie":this.ticket}})
+					.then(function (res) {
+						console.log(res.body)
+					}, function (res) {
+					    console.log(res.body);
+					});
+				},
+				//更新头像
+				onChange(event) {
+				      this.headLink = event.target.files[0]
+				},
+				updateHeadLink(){
+					var formData = new FormData();
+					formData.append('image', this.headLink);
+					this.$http.post('/user/updateHeadLink/', formData, 
+					{header:{"cookie":this.ticket, 'Content-Type':'multipart/form-data'}})
+					.then(function (res) {
+						console.log(res.body)
+					}, function (res) {
+					    console.log(res.body);
+					});
+				},
+				//更新密保
+				updateEncrypted(){
+					if(this.name == "" || this.email == "" || this.like == "") {
+						return ;
+					}
+					var formData = new FormData();
+					formData.append('name', this.name);
+					formData.append('email', this.email);
+					formData.append('like', this.like);
+					this.$http.post('/user/updateEncrypted/', formData, {header:{"cookie":this.ticket}})
+					.then(function (res) {
+						console.log(res.body)
+					}, function (res) {
+					    console.log(res.body);
+					});
+				},
+				checkTicket() {
+					this.ticket = localStorage.getItem("ticket");
+				},
+				change() {
+					if(this.languageID == 1) {
+						this.topLabel = ["个人资料", "消息", "退出"],
+						this.btnLabel = ["个人信息", "更新账号", "更新头像", "密保", "保存"],
+						this.infoLabel = ["个人信息", "教育", "身高", "体重", "工作", "国家", "地区"],
+						this.acountLabel = ["更新账号", "旧密码", "新密码", "确认密码"], 
+						this.headLabel = ["头像设置", "选择图片", "完成"],
+						this.securityLabel = ["密保问题--防止忘记密码", "你的真实姓名", "你的邮箱地址", "你最喜欢的人"]
+					} else if(this.languageID == 2) {
+						this.topLabel = ["個人資料", "消息", "退出"],
+						this.btnLabel = ["個人信息", "更新賬號", "更新頭像", "密保", "保存"],
+						this.infoLabel = ["個人信息", "教育", "身高", "体重", "工作", "国家", "地区"],
+						this.acountLabel = ["更新賬號", "舊密碼", "新密碼", "確認密碼"], 
+						this.headLabel = ["更新頭像", "選擇圖片", "完成"],
+						this.securityLabel = ["密保問題--防止忘記密碼", "妳的真實姓名", "妳的郵箱地址", "妳最喜歡的人"]
+					} else if(this.languageID == 3) {
+						this.topLabel = ["personal data", "message", "log out"]
+						this.btnLabel = ["personal information ", "Update account", "Update the avatar", "security question", "save"],
+						this.infoLabel = ["personal information ", "education", "height", "weight", "job", "country", "city"],
+						this.acountLabel = ["Update account", "old password", "new password", "confirm password "], 
+						this.headLabel = ["Update the avatar", "select image", "finish"],
+						this.securityLabel = ["security question--Don't forget your password", "Your real name", "Your email address", "Your favorite person"]
+					} else if(this.languageID == 4) {
+						this.topLabel = ["인적 사항", "소식.정보.", "퇴출"]
+						this.btnLabel = ["개인 정보 ", "계좌 번호 업데이트", "아바타 업데이트", "은밀히 하는 추천.", "ほぞん"],
+						this.infoLabel = ["개인 정보 ", "교육", "신장", "체중", "직업", "국가", "지역"],
+						this.acountLabel = ["계좌 번호 업데이트", "이전 비밀번호", "새 비밀번호", "비밀번호 확인"], 
+						this.headLabel = ["아바타 업데이트", "그림 선택", "완성하다"],
+						this.securityLabel = ["은밀히 하는 추천--암호 잊지 않기", "여러분의 진짜 이름은", "여러분의 이메일 주소가", "여러분이 가장 좋아하는 사람은"]
+					} else if(this.languageID == 5) {
+						this.topLabel = ["个人资料", "しょうそく", "たいしゅつ"]
+						this.btnLabel = ["个人信息", "アカウントを更新する", "アイコンを更新する", "密保", "ほぞん"],
+						this.infoLabel = ["个人信息", "きょういく", "身長", "たいじゅう", "こうさく", "こっか", "ちく"],
+						this.acountLabel = ["アカウントを更新する", "古い暗号", "新しい暗号", "パスワードを確認する"], 
+						this.headLabel = ["アイコンを更新する", "画像を選択する", "かんせい"],
+						this.securityLabel = ["密保--パスワード忘れを防ぐ", "あなたの本当の名前", "あなたのメールアドレス", "あなたの大好きな人"]
+					} else if(this.languageID == 6) {
+						this.topLabel = ["ข้อมูลส่วนบุคคล", "ข่าว", "ออก"]
+						this.btnLabel = ["ข้อมูลส่วนบุคคล", "อัพเดตบัญชีของคุณ", "อัพเด avatar ของคุณ", "Mi-เบ้า", "บันทึก"],
+						this.infoLabel = ["ข้อมูลส่วนบุคคล", "ศึกษา", "สูง", "น้ำหนัก", "งาน", "ประเทศ", "ตั้ง"],
+						this.acountLabel = ["อัพเดตบัญชีของคุณ", "รหัสผ่านเก่า", "รหัสผ่านใหม่", "ยืนยันรหัสผ่านของคุณ"], 
+						this.headLabel = ["อัพเด avatar ของคุณ", "เลือกรูปภาพ", "เสร็จ สมบูรณ์"],
+						this.securityLabel = ["Mi-เบ้า--การป้องกันการลืมรหัสผ่าน", "ชื่อคนแรกและนามสกุล", "ที่อยู่อีเมลของคุณ", "คนโปรดของคุณ"]
+					}
+				}
+			},
+			beforeMount() {
+				this.checkTicket()
+			}
+		})
+	</script>
+	<script>
+		//获取上传按钮
 		var input1 = document.getElementById("upload"); 
+		 
 		if(typeof FileReader==='undefined'){ 
 			 input1.setAttribute('disabled','disabled'); 
 		}else{ 
@@ -255,52 +442,31 @@
 		function readFile(){ 
 			var file = this.files[0];//获取上传文件列表中第一个文件
 			if(!/image\/\w+/.test(file.type)){
+			//图片文件的type值为image/png或image/jpg
 				alert("文件必须为图片！");
 				return false; 
 			} 
+			// console.log(file);
 			var reader = new FileReader();//实例一个文件对象
 			reader.readAsDataURL(file);//把上传的文件转换成url
+			//当文件读取成功便可以调取上传的接口
 			reader.onload = function(e){ 
 				var image = new Image();
+				// 设置src属性 
 				image.src = e.target.result;
 				var max=200;
+				
 				image.onload = function(){ 
+					
 					var canvas = document.getElementById("cvs"); 
+					
 					var ctx = canvas.getContext("2d"); 
+					
 					ctx.clearRect(0, 0, canvas.width, canvas.height); 
 					ctx.drawImage(image, 0, 0, 200, 200);
+				
 				};  
 			}
 		};
-	</script>
-	<!-- 图片上传-----------------------end -->
-	<script src="js/vue-2.4.0.js"></script>
-	<script src="js/vue-resource-1.3.4.js"></script>
-	<script>
-		var vm = new Vue({
-			el : '#app',
-			data:{
-				
-			},
-			methods:{
-				//分页获取所有的汉服
-				selectEssayByCloth(page) {
-					this.$http.get('/admin/getEssaysPageByUserId/',
-					{params : {userId:this.tel,page:page,limit:20,time:new Date().getTime()}})
-					.then(function(res){
-							this.essays = res.body.data;
-							this.pageCount = res.body.pageCount;
-							this.commentConut = res.body.commentConut;
-							this.pv = res.body.pv;
-							this.likeCount = res.body.likeCount;
-					},function() {
-						console.log('请求失败处理');
-					});
-				},
-			},
-			beforeMount() {
-				
-			}
-		})
 	</script>
 </html>

@@ -27,11 +27,11 @@ public class QiniuService {
     
     //密钥配置
     private Auth auth = Auth.create(ACCESS_KEY, SECRET_KEY);
-    private Configuration configuration = new Configuration(Zone.zone1());
+    private Configuration configuration = new Configuration(Zone.zone2());
     //创建上传对象
     private UploadManager uploadManager = new UploadManager(configuration);
     
-    private static String QINIU_IMAGE_DOMAIN = "q414xse4q.bkt.clouddn.com";
+    private static String QINIU_IMAGE_DOMAIN = "q77vnynsr.bkt.clouddn.com";
     
     //简单上传,使用默认策略,只需要设置上传的空间名就可以了
     private String getUpToken() {

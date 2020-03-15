@@ -55,14 +55,15 @@ public class UserInfoService {
 		UserInfo userInfo = userInfoDao.selectByUsername(user.getUsername());
 		ViewObject view = new ViewObject();
 		view.setView("info", userInfo);
-		view.setView("birthday", PalUtils.formatDate(userInfo.getBirthday()));
+		view.setView("birthday", PalUtils.formatBirth(userInfo.getBirthday()));
 		map.put("userInfo", view);
 	}
 	
-	public Map<String, Object> updateUserInfo(Date birthday,String education,String height,String weight,String job,String country,String town) {
+	//更新用户信息
+	public Map<String, Object> updateUserInfo(String education,String height,String weight,String job,String country,String town) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		UserInfo userInfo = new UserInfo();
-		userInfo.setBirthday(birthday);
+		userInfo.setUsername(hostHolder.getUser().getUsername());
 		userInfo.setEducation(education);
 		userInfo.setHeight(height);
 		userInfo.setWeight(weight);

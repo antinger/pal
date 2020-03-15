@@ -81,7 +81,7 @@
 												<div class="col-lg-12 no-pdd">
 													<div class="checky-sec">
 														<div class="fgt-sec">
-															<a class="btn btn-danger" @click.stop="register">{{label[0]}}</a>
+															<a class="btn btn-danger" @click="login">{{label[0]}}</a>
 														</div><!--fgt-sec end-->
 													</div>
 												</div>
@@ -129,7 +129,7 @@
 													</div>
 													
 													<div class="col-lg-12 no-pdd">
-														<a class="btn btn-danger" @click.stop="register">{{label[1]}}</a>
+														<a class="btn btn-danger" @click="register">{{label[1]}}</a>
 													</div>
 												</div>
 											</form>
@@ -171,7 +171,7 @@
 												<div class="col-lg-12 no-pdd">
 													<div class="checky-sec">
 														<div class="fgt-sec">
-															<a class="btn btn-danger" @click.stop="register">{{label[3]}}</a>
+															<a class="btn btn-danger" @click="reset">{{label[3]}}</a>
 														</div><!--fgt-sec end-->
 													</div>
 												</div>
@@ -247,20 +247,6 @@
 				/* 语言转换定义 -----------end*/
 			},
 			methods:{
-				//分页获取所有的汉服
-				selectEssayByCloth(page) {
-					this.$http.get('/admin/getEssaysPageByUserId/',
-					{params : {userId:this.tel,page:page,limit:20,time:new Date().getTime()}})
-					.then(function(res){
-							this.essays = res.body.data;
-							this.pageCount = res.body.pageCount;
-							this.commentConut = res.body.commentConut;
-							this.pv = res.body.pv;
-							this.likeCount = res.body.likeCount;
-					},function() {
-						console.log('请求失败处理');
-					});
-				},
 				register(){
 					if(this.username == "" || this.password == "" || this.email == "" || this.birthday == "" || this.sex == 2) {
 						return ;
@@ -271,9 +257,9 @@
 					formData.append('email', this.email);
 					formData.append('birthday', this.birthday);
 					formData.append('sex', this.sex);
-					this.$http.post('http://127.0.0.1:8080/register/', formData)
+					this.$http.post('/register/', formData)
 					.then(function (res) {
-						alert(res.body.eor);
+						
 					}, function (res) {
 					    console.log(res.body);
 					});
@@ -285,9 +271,13 @@
 					var formData = new FormData();
 					formData.append('username', this.username);
 					formData.append('password', this.password);
-					this.$http.post('http://127.0.0.1:8080/login/', formData)
+					this.$http.post('/login/', formData)
 					.then(function (res) {
-						alert(res.body.eor);
+						console.log(res.body);
+						if(res.body.ticket != "") {
+							localStorage.setItem('ticket',res.body.ticket)
+							window.location.href="index.html"
+						}
 					}, function (res) {
 					    console.log(res.body);
 					});
@@ -301,9 +291,9 @@
 					formData.append('name', this.name);
 					formData.append('email', this.email);
 					formData.append('like', this.like);
-					this.$http.post('http://127.0.0.1:8080/reset/', formData)
+					this.$http.post('/reset/', formData)
 					.then(function (res) {
-						alert(res.body.eor);
+						
 					}, function (res) {
 					    console.log(res.body);
 					});

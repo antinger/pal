@@ -46,9 +46,9 @@ public class UserInfoController {
 	//更新用户信息
 	@RequestMapping(path="/user/updateUserInfo/", method=RequestMethod.POST)
 	@ResponseBody
-	public String updateUserInfo(@RequestParam("birthday") Date birthday,@RequestParam("education") String education,@RequestParam("height") String height,@RequestParam("weight") String weight,@RequestParam("job") String job,@RequestParam("country") String country,@RequestParam("town") String town) {
+	public String updateUserInfo(@RequestParam("education") String education,@RequestParam("height") String height,@RequestParam("weight") String weight,@RequestParam("job") String job,@RequestParam("country") String country,@RequestParam("town") String town) {
 		try {
-			Map<String, Object> map = userInfoService.updateUserInfo(birthday, education, height, weight, job, country, town);
+			Map<String, Object> map = userInfoService.updateUserInfo(education, height, weight, job, country, town);
 			return PalUtils.toJSONString(200, map);
 		} catch (Exception e) {
 			return PalUtils.toJSONString(500, "获取用户信息失败");

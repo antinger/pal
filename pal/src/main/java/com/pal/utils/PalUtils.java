@@ -27,6 +27,11 @@ public class PalUtils {
 		return dateFormat.format(date);
 	}
 	
+	public static String formatBirth(Date date) {
+		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		return dateFormat.format(date);
+	}
+	
 	public static Date parseDate(String time) throws ParseException {
 		DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 		return format.parse(time);
