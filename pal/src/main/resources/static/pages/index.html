@@ -288,22 +288,27 @@
 												<div class="post-bar" v-for="(item, index) in dynamics.data">
 													<div class="post_topbar">
 														<div class="usy-dt">
-															<img src="images/resources/us-pic.png" alt="">
+															<template v-if="item.view.user.headStatus == 1">
+																<img :src="headLink" alt="" >
+															</template>
+															<template v-else>
+																<img :src="item.view.user.headLink" alt="">
+															</template>
 															<div class="usy-name">
-																<h3>John Doe</h3>
-																<span><img src="images/clock.png" alt="">3 min ago</span>
+																<h3>{{item.view.user.username}}</h3>
+																<span><img src="images/clock.png" alt="">{{item.view.createDate}}</span>
 															</div>
 														</div>
 													</div>
 													
 													<div class="job_descp">
 														<p>
-															Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam luctus hendrerit metus, ut ullamcorper quam finibus at. Etiam id magna sit amet... 
+															{{item.view.dynamic.content}} 
 															<a href="#" title="">view more</a>
 														</p>
 													</div>
 													<div>
-														<img src="images/cm-main-img.png" height="300px"/>
+														<img :src="item.view.dynamic.image" height="300px"/>
 													</div>
 												</div><!--post-bar end-->
 												<div class="process-comm">
@@ -1111,7 +1116,8 @@
 				    this.$http.post('/user/addDynamic/', formData, 
 				    {headers: { 'Content-Type': 'multipart/form-data', cookie:this.ticket}}).
 				    then(function (res) {
-				    	console.log(JSON.stringify(res))
+				    	this.dynamics.data = res.body.data
+				    	this.dynamics.pageCount = res.body.pageCount
 				    }, function (res) {
 				      console.log(res.body);
 				    });
