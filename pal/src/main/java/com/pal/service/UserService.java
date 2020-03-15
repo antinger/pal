@@ -187,32 +187,41 @@ public class UserService {
 		map.put("data", data);
 		return map;
 	}
-
+	
 	//获取首页推荐用户
-	public Map<String, Object> getLaterUser() {
+	public Map<String, Object> getLaterUser(int page, int limit) {
+		int start = (page - 1) * limit;
 		Map<String, Object> map = new HashMap<String, Object>();
 		User threadUser = getThreadUser();
 		Integer sex = threadUser.getSex();
 		Integer target = sex == 0 ? 1 : 0;
-		List<User> users = userDao.getLaterUser(0, target);
+		List<User> users = userDao.getLaterUser(0, target, start, limit);
 		List<ViewObject> data = new ArrayList<ViewObject>();
+		Integer count = userDao.getLaterUserCount(0, sex);
+		int pageCount = (count - 1) / limit + 1;
 		for (User user : users) {
+			if(user.getUsername().equals(threadUser.getUsername())) {
+				continue ;
+			}
 			dealUserHeadLink(user);
 			ViewObject view = new ViewObject();
 			view.setView("user", user);
 			UserInfo userInfo = userInfoDao.selectByUsername(user.getUsername());
 			view.setView("info", userInfo);
 			view.setView("sex", user.getSex() == 0 ? "男" : "女");
-			view.setView("birthday", PalUtils.formatDate(userInfo.getBirthday()));
+			view.setView("birthday", PalUtils.formatBirth(userInfo.getBirthday()));
 			data.add(view);
 		}
 		map.put("data", data);
+		map.put("pageCount", pageCount);
 		return map;
 	}
 	
 	//处理用户头像
 	private void dealUserHeadLink(User user) {
-		user.setHeadLink(qiniuService.dealOnlyImage(user.getHeadLink()));
+		if(user.getHeadStatus() == 0) {
+			user.setHeadLink(qiniuService.dealOnlyImage(user.getHeadLink()));
+		}
 	}
 	
 	//获取当前线程对象

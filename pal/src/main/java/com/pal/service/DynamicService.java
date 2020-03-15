@@ -41,7 +41,7 @@ public class DynamicService {
 		User threadUser = getThreadUser();
 		int sex = threadUser.getSex() == 0 ? 1 : 0;
 		//获取数据
-		List<Dynamic> dynamics = dynamicDao.getLaterDynamic(page, start, sex, status);
+		List<Dynamic> dynamics = dynamicDao.getLaterDynamic(start, limit, sex, status);
 		//获取一共有多少条数据
 		int count = dynamicDao.getLaterDynamicCount(status);
 		//获取总页数

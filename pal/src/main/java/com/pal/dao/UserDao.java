@@ -56,7 +56,11 @@ public interface UserDao {
     List<User> getPushUsers(int pushStatus, int sex, int status);
     
     //获取首页展示的用户
-    List<User> getLaterUser(int status, int sex);
+    List<User> getLaterUser(int status, int sex, int start, int limit);
+    
+    //获取首页用户数量
+    @Select({"select count(*) from ", TABLE_NAME, " where sex=#{sex} and status=#{status}"})
+    int getLaterUserCount(int status, int sex);
 
     //更新用户密码
     @Update({"update ", TABLE_NAME, " set password=#{password} where id=#{id}"})

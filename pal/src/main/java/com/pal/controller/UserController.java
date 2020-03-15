@@ -34,9 +34,9 @@ public class UserController {
 	//获取首页推荐用户
 	@RequestMapping(path="/user/getLaterUser/", method=RequestMethod.GET)
 	@ResponseBody
-	public String getLaterUser() {
+	public String getLaterUser(@RequestParam("page") int page, @RequestParam("limit") int limit) {
 		try {
-			Map<String, Object> map = userService.getLaterUser();
+			Map<String, Object> map = userService.getLaterUser(page, limit);
 			return PalUtils.toJSONString(200, map);
 		} catch (Exception e) {
 			return PalUtils.toJSONString(500, "获取最新用户失败");

@@ -26,7 +26,7 @@ public interface DynamicDao {
     void updateDynamic(@Param("id") Integer id, @Param("status") Integer status);
     
     //获取最新的动态
-	List<Dynamic> getLaterDynamic(Integer page, Integer start, int sex, int status);
+	List<Dynamic> getLaterDynamic(Integer start, Integer limit, int sex, int status);
 	
 	//获取所有数据量
 	@Select({"select count(*) from ", TABLE_NAME, " where status=#{status}"})
