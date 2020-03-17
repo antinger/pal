@@ -191,42 +191,54 @@
 											
 											<div class="tab-feed st2">
 												<ul>
+													<!-- 推荐----------start -->
 													<li data-tab="info-dd" class="active">
 														<a href="#" title="">
 															<img src="images/ic2.png" alt="">
 															<span>{{rightLabel[0]}}</span>
 														</a>
 													</li>
+													<!-- 推荐----------end -->
+													<!-- 动态----------start -->
 													<li data-tab="feed-dd">
 														<a href="#" title="">
 															<img src="images/ic1.png" alt="">
 															<span>{{rightLabel[1]}}</span>
 														</a>
 													</li>
+													<!-- 动态----------end -->
+													<!-- 关注----------start -->
 													<li data-tab="saved-jobs">
 														<a href="#" title="">
 															<img src="images/ic4.png" alt="">
 															<span>{{rightLabel[2]}}</span>
 														</a>
 													</li>
+													<!-- 关注----------end -->
+													<!-- 粉丝----------start -->
 													<li data-tab="my-bids">
 														<a href="#" title="">
 															<img src="images/ic5.png" alt="">
 															<span>{{rightLabel[3]}}</span>
 														</a>
 													</li>
-													<li data-tab="saved-jobs">
+													<!-- 粉丝----------end -->
+													<!-- 游客----------start -->
+													<li data-tab="visitor-dd">
 														<a href="#" title="">
 															<img src="images/ic4.png" alt="">
 															<span>{{rightLabel[4]}}</span>
 														</a>
 													</li>
-													<li data-tab="my-bids">
+													<!-- 游客----------end -->
+													<!-- 礼物----------start -->
+													<li data-tab="gift-dd">
 														<a href="#" title="">
-															<img src="images/ic5.png" alt="">
+															<img src="images/ic6.png" alt="">
 															<span>{{rightLabel[5]}}</span>
 														</a>
 													</li>
+													<!-- 礼物---------end -->
 												</ul>
 											</div><!-- tab-feed end-->
 										</div><!--user-tab-sec end-->
@@ -248,8 +260,10 @@
 															<h4>{{item.view.sex}}</h4>
 															<h4>{{item.view.birthday}}</h4>
 															<ul>
-																<li><a href="#" title="" class="follow">Follow</a></li>
-																<li><a href="#" title="" class="message-us"><i class="fa fa-envelope"></i></a></li>
+																<template v-if="item.view.follow == false">
+																	<li><a title="" class="follow" @click="follow(item.view.user.id, index, 1)">Follow</a></li>
+																</template>	
+																<li><a title="" class="message-us"><i class="fa fa-envelope"></i></a></li>
 															</ul>
 														</div>
 													</div>
@@ -316,654 +330,89 @@
 											</div><!--posts-section end-->
 										</div><!--product-feed-tab end-->
 										<!-- 动态---------------------end -->
-										
+										<!-- 关注-------------start -->
 										<div class="product-feed-tab" id="saved-jobs">
-											<div class="posts-section">
-												<div class="post-bar">
-													<div class="post_topbar">
-														<div class="usy-dt">
-															<img src="images/resources/us-pic.png" alt="">
-															<div class="usy-name">
-																<h3>John Doe</h3>
-																<span><img src="images/clock.png" alt="">3 min ago</span>
-															</div>
-														</div>
-														<div class="ed-opts">
-															<a href="#" title="" class="ed-opts-open"><i class="la la-ellipsis-v"></i></a>
-															<ul class="ed-options">
-																<li><a href="#" title="">Edit Post</a></li>
-																<li><a href="#" title="">Unsaved</a></li>
-																<li><a href="#" title="">Unbid</a></li>
-																<li><a href="#" title="">Close</a></li>
-																<li><a href="#" title="">Hide</a></li>
+											<div class="row">
+												<div class="col-lg-4 col-md-4 col-sm-6 col-12" v-for="(item, index) in followUser">
+													<div class="company_profile_info">
+														<div class="company-up-info">
+															<template v-if="item.view.user.headStatus == 1">
+																<img :src="headLink" alt="" >
+															</template>
+															<template v-else>
+																<img :src="item.view.user.headLink" alt="">
+															</template>
+															<h3>{{item.view.user.username}}</h3>
+															<h4>{{item.view.sex}}</h4>
+															<h4>{{item.view.birthday}}</h4>
+															<ul>
+																<li><a title="" class="message-us"><i class="fa fa-envelope"></i></a></li>
 															</ul>
 														</div>
 													</div>
-													<div class="epi-sec">
-														<ul class="descp">
-															<li><img src="images/icon8.png" alt=""><span>Epic Coder</span></li>
-															<li><img src="images/icon9.png" alt=""><span>India</span></li>
-														</ul>
-														<ul class="bk-links">
-															<li><a href="#" title=""><i class="la la-bookmark"></i></a></li>
-															<li><a href="#" title=""><i class="la la-envelope"></i></a></li>
-														</ul>
-													</div>
-													<div class="job_descp">
-														<h3>Senior Wordpress Developer</h3>
-														<ul class="job-dt">
-															<li><a href="#" title="">Full Time</a></li>
-															<li><span>$30 / hr</span></li>
-														</ul>
-														<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam luctus hendrerit metus, ut ullamcorper quam finibus at. Etiam id magna sit amet... <a href="#" title="">view more</a></p>
-														<ul class="skill-tags">
-															<li><a href="#" title="">HTML</a></li>
-															<li><a href="#" title="">PHP</a></li>
-															<li><a href="#" title="">CSS</a></li>
-															<li><a href="#" title="">Javascript</a></li>
-															<li><a href="#" title="">Wordpress</a></li> 	
-														</ul>
-													</div>
-													<div class="job-status-bar">
-														<ul class="like-com">
-															<li>
-																<a href="#"><i class="la la-heart"></i> Like</a>
-																<img src="images/liked-img.png" alt="">
-																<span>25</span>
-															</li> 
-															<li><a href="#" title="" class="com"><img src="images/com.png" alt=""> Comment 15</a></li>
-														</ul>
-														<a><i class="la la-eye"></i>Views 50</a>
-													</div>
-												</div><!--post-bar end-->
-												<div class="post-bar">
-													<div class="post_topbar">
-														<div class="usy-dt">
-															<img src="images/resources/us-pic.png" alt="">
-															<div class="usy-name">
-																<h3>John Doe</h3>
-																<span><img src="images/clock.png" alt="">3 min ago</span>
-															</div>
-														</div>
-														<div class="ed-opts">
-															<a href="#" title="" class="ed-opts-open"><i class="la la-ellipsis-v"></i></a>
-															<ul class="ed-options">
-																<li><a href="#" title="">Edit Post</a></li>
-																<li><a href="#" title="">Unsaved</a></li>
-																<li><a href="#" title="">Unbid</a></li>
-																<li><a href="#" title="">Close</a></li>
-																<li><a href="#" title="">Hide</a></li>
-															</ul>
-														</div>
-													</div>
-													<div class="epi-sec">
-														<ul class="descp">
-															<li><img src="images/icon8.png" alt=""><span>Epic Coder</span></li>
-															<li><img src="images/icon9.png" alt=""><span>India</span></li>
-														</ul>
-														<ul class="bk-links">
-															<li><a href="#" title=""><i class="la la-bookmark"></i></a></li>
-															<li><a href="#" title=""><i class="la la-envelope"></i></a></li>
-														</ul>
-													</div>
-													<div class="job_descp">
-														<h3>Senior Wordpress Developer</h3>
-														<ul class="job-dt">
-															<li><a href="#" title="">Full Time</a></li>
-															<li><span>$30 / hr</span></li>
-														</ul>
-														<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam luctus hendrerit metus, ut ullamcorper quam finibus at. Etiam id magna sit amet... <a href="#" title="">view more</a></p>
-														<ul class="skill-tags">
-															<li><a href="#" title="">HTML</a></li>
-															<li><a href="#" title="">PHP</a></li>
-															<li><a href="#" title="">CSS</a></li>
-															<li><a href="#" title="">Javascript</a></li>
-															<li><a href="#" title="">Wordpress</a></li> 	
-														</ul>
-													</div>
-													<div class="job-status-bar">
-														<ul class="like-com">
-															<li>
-																<a href="#"><i class="la la-heart"></i> Like</a>
-																<img src="images/liked-img.png" alt="">
-																<span>25</span>
-															</li> 
-															<li><a href="#" title="" class="com"><img src="images/com.png" alt=""> Comment 15</a></li>
-														</ul>
-														<a><i class="la la-eye"></i>Views 50</a>
-													</div>
-												</div><!--post-bar end-->
-												<div class="post-bar">
-													<div class="post_topbar">
-														<div class="usy-dt">
-															<img src="images/resources/us-pc2.png" alt="">
-															<div class="usy-name">
-																<h3>John Doe</h3>
-																<span><img src="images/clock.png" alt="">3 min ago</span>
-															</div>
-														</div>
-														<div class="ed-opts">
-															<a href="#" title="" class="ed-opts-open"><i class="la la-ellipsis-v"></i></a>
-															<ul class="ed-options">
-																<li><a href="#" title="">Edit Post</a></li>
-																<li><a href="#" title="">Unsaved</a></li>
-																<li><a href="#" title="">Unbid</a></li>
-																<li><a href="#" title="">Close</a></li>
-																<li><a href="#" title="">Hide</a></li>
-															</ul>
-														</div>
-													</div>
-													<div class="epi-sec">
-														<ul class="descp">
-															<li><img src="images/icon8.png" alt=""><span>Epic Coder</span></li>
-															<li><img src="images/icon9.png" alt=""><span>India</span></li>
-														</ul>
-														<ul class="bk-links">
-															<li><a href="#" title=""><i class="la la-bookmark"></i></a></li>
-															<li><a href="#" title=""><i class="la la-envelope"></i></a></li>
-														</ul>
-													</div>
-													<div class="job_descp">
-														<h3>Senior Wordpress Developer</h3>
-														<ul class="job-dt">
-															<li><a href="#" title="">Full Time</a></li>
-															<li><span>$30 / hr</span></li>
-														</ul>
-														<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam luctus hendrerit metus, ut ullamcorper quam finibus at. Etiam id magna sit amet... <a href="#" title="">view more</a></p>
-														<ul class="skill-tags">
-															<li><a href="#" title="">HTML</a></li>
-															<li><a href="#" title="">PHP</a></li>
-															<li><a href="#" title="">CSS</a></li>
-															<li><a href="#" title="">Javascript</a></li>
-															<li><a href="#" title="">Wordpress</a></li> 	
-														</ul>
-													</div>
-													<div class="job-status-bar">
-														<ul class="like-com">
-															<li>
-																<a href="#"><i class="la la-heart"></i> Like</a>
-																<img src="images/liked-img.png" alt="">
-																<span>25</span>
-															</li> 
-															<li><a href="#" title="" class="com"><img src="images/com.png" alt=""> Comment 15</a></li>
-														</ul>
-														<a><i class="la la-eye"></i>Views 50</a>
-													</div>
-												</div><!--post-bar end-->
-												<div class="post-bar">
-													<div class="post_topbar">
-														<div class="usy-dt">
-															<img src="images/resources/us-pic.png" alt="">
-															<div class="usy-name">
-																<h3>John Doe</h3>
-																<span><img src="images/clock.png" alt="">3 min ago</span>
-															</div>
-														</div>
-														<div class="ed-opts">
-															<a href="#" title="" class="ed-opts-open"><i class="la la-ellipsis-v"></i></a>
-															<ul class="ed-options">
-																<li><a href="#" title="">Edit Post</a></li>
-																<li><a href="#" title="">Unsaved</a></li>
-																<li><a href="#" title="">Unbid</a></li>
-																<li><a href="#" title="">Close</a></li>
-																<li><a href="#" title="">Hide</a></li>
-															</ul>
-														</div>
-													</div>
-													<div class="epi-sec">
-														<ul class="descp">
-															<li><img src="images/icon8.png" alt=""><span>Epic Coder</span></li>
-															<li><img src="images/icon9.png" alt=""><span>India</span></li>
-														</ul>
-														<ul class="bk-links">
-															<li><a href="#" title=""><i class="la la-bookmark"></i></a></li>
-															<li><a href="#" title=""><i class="la la-envelope"></i></a></li>
-														</ul>
-													</div>
-													<div class="job_descp">
-														<h3>Senior Wordpress Developer</h3>
-														<ul class="job-dt">
-															<li><a href="#" title="">Full Time</a></li>
-															<li><span>$30 / hr</span></li>
-														</ul>
-														<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam luctus hendrerit metus, ut ullamcorper quam finibus at. Etiam id magna sit amet... <a href="#" title="">view more</a></p>
-														<ul class="skill-tags">
-															<li><a href="#" title="">HTML</a></li>
-															<li><a href="#" title="">PHP</a></li>
-															<li><a href="#" title="">CSS</a></li>
-															<li><a href="#" title="">Javascript</a></li>
-															<li><a href="#" title="">Wordpress</a></li> 	
-														</ul>
-													</div>
-													<div class="job-status-bar">
-														<ul class="like-com">
-															<li>
-																<a href="#"><i class="la la-heart"></i> Like</a>
-																<img src="images/liked-img.png" alt="">
-																<span>25</span>
-															</li> 
-															<li><a href="#" title="" class="com"><img src="images/com.png" alt=""> Comment 15</a></li>
-														</ul>
-														<a><i class="la la-eye"></i>Views 50</a>
-													</div>
-												</div><!--post-bar end-->
-												<div class="process-comm">
-													<a href="#" title=""><img src="images/process-icon.png" alt=""></a>
-												</div><!--process-comm end-->
-											</div><!--posts-section end-->
+												</div>
+											</div>
 										</div><!--product-feed-tab end-->
+										<!-- 关注-------------end -->
+										<!-- 粉丝----------start -->
 										<div class="product-feed-tab" id="my-bids">
-											<div class="posts-section">
-												<div class="post-bar">
-													<div class="post_topbar">
-														<div class="usy-dt">
-															<img src="images/resources/us-pic.png" alt="">
-															<div class="usy-name">
-																<h3>John Doe</h3>
-																<span><img src="images/clock.png" alt="">3 min ago</span>
-															</div>
-														</div>
-														<div class="ed-opts">
-															<a href="#" title="" class="ed-opts-open"><i class="la la-ellipsis-v"></i></a>
-															<ul class="ed-options">
-																<li><a href="#" title="">Edit Post</a></li>
-																<li><a href="#" title="">Unsaved</a></li>
-																<li><a href="#" title="">Unbid</a></li>
-																<li><a href="#" title="">Close</a></li>
-																<li><a href="#" title="">Hide</a></li>
+											<div class="row">
+												<div class="col-lg-4 col-md-4 col-sm-6 col-12" v-for="(item, index) in fansUser">
+													<div class="company_profile_info">
+														<div class="company-up-info">
+															<template v-if="item.view.user.headStatus == 1">
+																<img :src="headLink" alt="" >
+															</template>
+															<template v-else>
+																<img :src="item.view.user.headLink" alt="">
+															</template>
+															<h3>{{item.view.user.username}}</h3>
+															<h4>{{item.view.sex}}</h4>
+															<h4>{{item.view.birthday}}</h4>
+															<ul>
+																<template v-if="item.view.follow == false">
+																	<li><a title="" class="follow" @click="follow(item.view.user.id, index, 2)">Follow</a></li>
+																</template>	
+																<li><a title="" class="message-us"><i class="fa fa-envelope"></i></a></li>
 															</ul>
 														</div>
 													</div>
-													<div class="epi-sec">
-														<ul class="descp">
-															<li><img src="images/icon8.png" alt=""><span>Frontend Developer</span></li>
-															<li><img src="images/icon9.png" alt=""><span>India</span></li>
-														</ul>
-														<ul class="bk-links">
-															<li><a href="#" title=""><i class="la la-bookmark"></i></a></li>
-															<li><a href="#" title=""><i class="la la-envelope"></i></a></li>
-															<li><a href="#" title="" class="bid_now">Bid Now</a></li>
-														</ul>
-													</div>
-													<div class="job_descp">
-														<h3>Simple Classified Site</h3>
-														<ul class="job-dt">
-															<li><span>$300 - $350</span></li>
-														</ul>
-														<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam luctus hendrerit metus, ut ullamcorper quam finibus at. Etiam id magna sit amet... <a href="#" title="">view more</a></p>
-														<ul class="skill-tags">
-															<li><a href="#" title="">HTML</a></li>
-															<li><a href="#" title="">PHP</a></li>
-															<li><a href="#" title="">CSS</a></li>
-															<li><a href="#" title="">Javascript</a></li>
-															<li><a href="#" title="">Wordpress</a></li> 	
-															<li><a href="#" title="">Photoshop</a></li> 	
-															<li><a href="#" title="">Illustrator</a></li> 	
-															<li><a href="#" title="">Corel Draw</a></li> 	
-														</ul>
-													</div>
-													<div class="job-status-bar">
-														<ul class="like-com">
-															<li>
-																<a href="#"><i class="la la-heart"></i> Like</a>
-																<img src="images/liked-img.png" alt="">
-																<span>25</span>
-															</li> 
-															<li><a href="#" title="" class="com"><img src="images/com.png" alt=""> Comment 15</a></li>
-														</ul>
-														<a><i class="la la-eye"></i>Views 50</a>
-													</div>
-												</div><!--post-bar end-->
-												<div class="post-bar">
-													<div class="post_topbar">
-														<div class="usy-dt">
-															<img src="images/resources/us-pic.png" alt="">
-															<div class="usy-name">
-																<h3>John Doe</h3>
-																<span><img src="images/clock.png" alt="">3 min ago</span>
-															</div>
-														</div>
-														<div class="ed-opts">
-															<a href="#" title="" class="ed-opts-open"><i class="la la-ellipsis-v"></i></a>
-															<ul class="ed-options">
-																<li><a href="#" title="">Edit Post</a></li>
-																<li><a href="#" title="">Unsaved</a></li>
-																<li><a href="#" title="">Unbid</a></li>
-																<li><a href="#" title="">Close</a></li>
-																<li><a href="#" title="">Hide</a></li>
-															</ul>
-														</div>
-													</div>
-													<div class="epi-sec">
-														<ul class="descp">
-															<li><img src="images/icon8.png" alt=""><span>Frontend Developer</span></li>
-															<li><img src="images/icon9.png" alt=""><span>India</span></li>
-														</ul>
-														<ul class="bk-links">
-															<li><a href="#" title=""><i class="la la-bookmark"></i></a></li>
-															<li><a href="#" title=""><i class="la la-envelope"></i></a></li>
-															<li><a href="#" title="" class="bid_now">Bid Now</a></li>
-														</ul>
-													</div>
-													<div class="job_descp">
-														<h3>Ios Shopping mobile app</h3>
-														<ul class="job-dt">
-															<li><span>$300 - $350</span></li>
-														</ul>
-														<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam luctus hendrerit metus, ut ullamcorper quam finibus at. Etiam id magna sit amet... <a href="#" title="">view more</a></p>
-														<ul class="skill-tags">
-															<li><a href="#" title="">HTML</a></li>
-															<li><a href="#" title="">PHP</a></li>
-															<li><a href="#" title="">CSS</a></li>
-															<li><a href="#" title="">Javascript</a></li>
-															<li><a href="#" title="">Wordpress</a></li> 	
-															<li><a href="#" title="">Photoshop</a></li> 	
-															<li><a href="#" title="">Illustrator</a></li> 	
-															<li><a href="#" title="">Corel Draw</a></li> 	
-														</ul>
-													</div>
-													<div class="job-status-bar">
-														<ul class="like-com">
-															<li>
-																<a href="#"><i class="la la-heart"></i> Like</a>
-																<img src="images/liked-img.png" alt="">
-																<span>25</span>
-															</li> 
-															<li><a href="#" title="" class="com"><img src="images/com.png" alt=""> Comment 15</a></li>
-														</ul>
-														<a><i class="la la-eye"></i>Views 50</a>
-													</div>
-												</div><!--post-bar end-->
-												<div class="post-bar">
-													<div class="post_topbar">
-														<div class="usy-dt">
-															<img src="images/resources/us-pic.png" alt="">
-															<div class="usy-name">
-																<h3>John Doe</h3>
-																<span><img src="images/clock.png" alt="">3 min ago</span>
-															</div>
-														</div>
-														<div class="ed-opts">
-															<a href="#" title="" class="ed-opts-open"><i class="la la-ellipsis-v"></i></a>
-															<ul class="ed-options">
-																<li><a href="#" title="">Edit Post</a></li>
-																<li><a href="#" title="">Unsaved</a></li>
-																<li><a href="#" title="">Unbid</a></li>
-																<li><a href="#" title="">Close</a></li>
-																<li><a href="#" title="">Hide</a></li>
-															</ul>
-														</div>
-													</div>
-													<div class="epi-sec">
-														<ul class="descp">
-															<li><img src="images/icon8.png" alt=""><span>Frontend Developer</span></li>
-															<li><img src="images/icon9.png" alt=""><span>India</span></li>
-														</ul>
-														<ul class="bk-links">
-															<li><a href="#" title=""><i class="la la-bookmark"></i></a></li>
-															<li><a href="#" title=""><i class="la la-envelope"></i></a></li>
-															<li><a href="#" title="" class="bid_now">Bid Now</a></li>
-														</ul>
-													</div>
-													<div class="job_descp">
-														<h3>Simple Classified Site</h3>
-														<ul class="job-dt">
-															<li><span>$300 - $350</span></li>
-														</ul>
-														<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam luctus hendrerit metus, ut ullamcorper quam finibus at. Etiam id magna sit amet... <a href="#" title="">view more</a></p>
-														<ul class="skill-tags">
-															<li><a href="#" title="">HTML</a></li>
-															<li><a href="#" title="">PHP</a></li>
-															<li><a href="#" title="">CSS</a></li>
-															<li><a href="#" title="">Javascript</a></li>
-															<li><a href="#" title="">Wordpress</a></li> 	
-															<li><a href="#" title="">Photoshop</a></li> 	
-															<li><a href="#" title="">Illustrator</a></li> 	
-															<li><a href="#" title="">Corel Draw</a></li> 	
-														</ul>
-													</div>
-													<div class="job-status-bar">
-														<ul class="like-com">
-															<li>
-																<a href="#"><i class="la la-heart"></i> Like</a>
-																<img src="images/liked-img.png" alt="">
-																<span>25</span>
-															</li> 
-															<li><a href="#" title="" class="com"><img src="images/com.png" alt=""> Comment 15</a></li>
-														</ul>
-														<a><i class="la la-eye"></i>Views 50</a>
-													</div>
-												</div><!--post-bar end-->
-												<div class="post-bar">
-													<div class="post_topbar">
-														<div class="usy-dt">
-															<img src="images/resources/us-pic.png" alt="">
-															<div class="usy-name">
-																<h3>John Doe</h3>
-																<span><img src="images/clock.png" alt="">3 min ago</span>
-															</div>
-														</div>
-														<div class="ed-opts">
-															<a href="#" title="" class="ed-opts-open"><i class="la la-ellipsis-v"></i></a>
-															<ul class="ed-options">
-																<li><a href="#" title="">Edit Post</a></li>
-																<li><a href="#" title="">Unsaved</a></li>
-																<li><a href="#" title="">Unbid</a></li>
-																<li><a href="#" title="">Close</a></li>
-																<li><a href="#" title="">Hide</a></li>
-															</ul>
-														</div>
-													</div>
-													<div class="epi-sec">
-														<ul class="descp">
-															<li><img src="images/icon8.png" alt=""><span>Frontend Developer</span></li>
-															<li><img src="images/icon9.png" alt=""><span>India</span></li>
-														</ul>
-														<ul class="bk-links">
-															<li><a href="#" title=""><i class="la la-bookmark"></i></a></li>
-															<li><a href="#" title=""><i class="la la-envelope"></i></a></li>
-															<li><a href="#" title="" class="bid_now">Bid Now</a></li>
-														</ul>
-													</div>
-													<div class="job_descp">
-														<h3>Ios Shopping mobile app</h3>
-														<ul class="job-dt">
-															<li><span>$300 - $350</span></li>
-														</ul>
-														<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam luctus hendrerit metus, ut ullamcorper quam finibus at. Etiam id magna sit amet... <a href="#" title="">view more</a></p>
-														<ul class="skill-tags">
-															<li><a href="#" title="">HTML</a></li>
-															<li><a href="#" title="">PHP</a></li>
-															<li><a href="#" title="">CSS</a></li>
-															<li><a href="#" title="">Javascript</a></li>
-															<li><a href="#" title="">Wordpress</a></li> 	
-															<li><a href="#" title="">Photoshop</a></li> 	
-															<li><a href="#" title="">Illustrator</a></li> 	
-															<li><a href="#" title="">Corel Draw</a></li> 	
-														</ul>
-													</div>
-													<div class="job-status-bar">
-														<ul class="like-com">
-															<li>
-																<a href="#"><i class="la la-heart"></i> Like</a>
-																<img src="images/liked-img.png" alt="">
-																<span>25</span>
-															</li> 
-															<li><a href="#" title="" class="com"><img src="images/com.png" alt=""> Comment 15</a></li>
-														</ul>
-														<a><i class="la la-eye"></i>Views 50</a>
-													</div>
-												</div><!--post-bar end-->
-												<div class="process-comm">
-													<a href="#" title=""><img src="images/process-icon.png" alt=""></a>
-												</div><!--process-comm end-->
-											</div><!--posts-section end-->
-										</div><!--product-feed-tab end-->
-										<div class="product-feed-tab" id="portfolio-dd">
-											<div class="portfolio-gallery-sec">
-												<h3>Portfolio</h3>
-												<div class="gallery_pf">
-													<div class="row">
-														<div class="col-lg-4 col-md-4 col-sm-6 col-6">
-															<div class="gallery_pt">
-																<img src="images/resources/pf-img1.jpg" alt="">
-																<a href="#" title=""><img src="images/all-out.png" alt=""></a>
-															</div><!--gallery_pt end-->
-														</div>
-														<div class="col-lg-4 col-md-4 col-sm-6 col-6">
-															<div class="gallery_pt">
-																<img src="images/resources/pf-img2.jpg" alt="">
-																<a href="#" title=""><img src="images/all-out.png" alt=""></a>
-															</div><!--gallery_pt end-->
-														</div>
-														<div class="col-lg-4 col-md-4 col-sm-6 col-6">
-															<div class="gallery_pt">
-																<img src="images/resources/pf-img3.jpg" alt="">
-																<a href="#" title=""><img src="images/all-out.png" alt=""></a>
-															</div><!--gallery_pt end-->
-														</div>
-														<div class="col-lg-4 col-md-4 col-sm-6 col-6">
-															<div class="gallery_pt">
-																<img src="images/resources/pf-img4.jpg" alt="">
-																<a href="#" title=""><img src="images/all-out.png" alt=""></a>
-															</div><!--gallery_pt end-->
-														</div>
-														<div class="col-lg-4 col-md-4 col-sm-6 col-6">
-															<div class="gallery_pt">
-																<img src="images/resources/pf-img5.jpg" alt="">
-																<a href="#" title=""><img src="images/all-out.png" alt=""></a>
-															</div><!--gallery_pt end-->
-														</div>
-														<div class="col-lg-4 col-md-4 col-sm-6 col-6">
-															<div class="gallery_pt">
-																<img src="images/resources/pf-img6.jpg" alt="">
-																<a href="#" title=""><img src="images/all-out.png" alt=""></a>
-															</div><!--gallery_pt end-->
-														</div>
-														<div class="col-lg-4 col-md-4 col-sm-6 col-6">
-															<div class="gallery_pt">
-																<img src="images/resources/pf-img7.jpg" alt="">
-																<a href="#" title=""><img src="images/all-out.png" alt=""></a>
-															</div><!--gallery_pt end-->
-														</div>
-														<div class="col-lg-4 col-md-4 col-sm-6 col-6">
-															<div class="gallery_pt">
-																<img src="images/resources/pf-img8.jpg" alt="">
-																<a href="#" title=""><img src="images/all-out.png" alt=""></a>
-															</div><!--gallery_pt end-->
-														</div>
-														<div class="col-lg-4 col-md-4 col-sm-6 col-6">
-															<div class="gallery_pt">
-																<img src="images/resources/pf-img9.jpg" alt="">
-																<a href="#" title=""><img src="images/all-out.png" alt=""></a>
-															</div><!--gallery_pt end-->
-														</div>
-														<div class="col-lg-4 col-md-4 col-sm-6 col-6">
-															<div class="gallery_pt">
-																<img src="images/resources/pf-img10.jpg" alt="">
-																<a href="#" title=""><img src="images/all-out.png" alt=""></a>
-															</div><!--gallery_pt end-->
-														</div>
-													</div>
-												</div><!--gallery_pf end-->
-											</div><!--portfolio-gallery-sec end-->
-										</div><!--product-feed-tab end-->
-										<div class="product-feed-tab" id="payment-dd">
-											<div class="billing-method">
-												<ul>
-													<li>
-														<h3>Add Billing Method</h3>
-														<a href="#" title=""><i class="fa fa-plus-circle"></i></a>
-													</li>
-													<li>
-														<h3>See Activity</h3>
-														<a href="#" title="">View All</a>
-													</li>
-													<li>
-														<h3>Total Money</h3>
-														<span>$0.00</span>
-													</li>
-												</ul>
-												<div class="lt-sec">
-													<img src="images/lt-icon.png" alt="">
-													<h4>All your transactions are saved here</h4>
-													<a href="#" title="">Click Here</a>
 												</div>
-											</div><!--billing-method end-->
-											<div class="add-billing-method">
-												<h3>Add Billing Method</h3>
-												<h4><img src="images/dlr-icon.png" alt=""><span>With workwise payment protection , only pay for work delivered.</span></h4>
-												<div class="payment_methods">
-													<h4>Credit or Debit Cards</h4>
-													<form>
-														<div class="row">
-															<div class="col-lg-12">
-																<div class="cc-head">
-																	<h5>Card Number</h5>
-																	<ul>
-																		<li><img src="images/cc-icon1.png" alt=""></li>
-																		<li><img src="images/cc-icon2.png" alt=""></li>
-																		<li><img src="images/cc-icon3.png" alt=""></li>
-																		<li><img src="images/cc-icon4.png" alt=""></li>
-																	</ul>
-																</div>
-																<div class="inpt-field pd-moree">
-																	<input type="text" name="cc-number" placeholder="">
-																	<i class="fa fa-credit-card"></i>
-																</div><!--inpt-field end-->
-															</div>
-															<div class="col-lg-6">
-																<div class="cc-head">
-																	<h5>First Name</h5>
-																</div>
-																<div class="inpt-field">
-																	<input type="text" name="f-name" placeholder="">
-																</div><!--inpt-field end-->
-															</div>
-															<div class="col-lg-6">
-																<div class="cc-head">
-																	<h5>Last Name</h5>
-																</div>
-																<div class="inpt-field">
-																	<input type="text" name="l-name" placeholder="">
-																</div><!--inpt-field end-->
-															</div>
-															<div class="col-lg-6">
-																<div class="cc-head">
-																	<h5>Expiresons</h5>
-																</div>
-																<div class="rowwy">
-																	<div class="row">
-																		<div class="col-lg-6 pd-left-none no-pd">
-																			<div class="inpt-field">
-																				<input type="text" name="f-name" placeholder="">
-																			</div><!--inpt-field end-->
-																		</div>
-																		<div class="col-lg-6 pd-right-none no-pd">
-																			<div class="inpt-field">
-																				<input type="text" name="f-name" placeholder="">
-																			</div><!--inpt-field end-->
-																		</div>
-																	</div>
-																</div>
-															</div>
-															<div class="col-lg-6">
-																<div class="cc-head">
-																	<h5>Cvv (Security Code) <i class="fa fa-question-circle"></i></h5>
-																</div>
-																<div class="inpt-field">
-																	<input type="text" name="l-name" placeholder="">
-																</div><!--inpt-field end-->
-															</div>
-															<div class="col-lg-12">
-																<button type="submit">Continue</button>
-															</div>
-														</div>
-													</form>
-													<h4>Add Paypal Account</h4>
-												</div>
-											</div><!--add-billing-method end-->
+											</div>
 										</div><!--product-feed-tab end-->
+										<!-- 粉丝----------end -->
+										<!-- 游客-------------start -->
+										<div class="product-feed-tab" id="visitor-dd">
+											<div class="row">
+												<div class="col-lg-4 col-md-4 col-sm-6 col-12" v-for="(item, index) in visitor">
+													<div class="company_profile_info">
+														<div class="company-up-info">
+															<template v-if="item.view.user.headStatus == 1">
+																<img :src="headLink" alt="" >
+															</template>
+															<template v-else>
+																<img :src="item.view.user.headLink" alt="">
+															</template>
+															<h3>{{item.view.user.username}}</h3>
+															<h4>{{item.view.sex}}</h4>
+															<h4>{{item.view.birthday}}</h4>
+															<ul>
+																<template v-if="item.view.follow == false">
+																	<li><a title="" class="follow" @click="follow(item.view.user.id, index, 2)">Follow</a></li>
+																</template>	
+																<li><a title="" class="message-us"><i class="fa fa-envelope"></i></a></li>
+															</ul>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div><!--product-feed-tab end-->
+										<!-- 游客-------------end -->
+										<!-- 礼物-------------start -->
+										<div class="product-feed-tab" id="gift-dd">
+											礼物
+										</div><!--product-feed-tab end-->
+										<!-- 礼物-------------end -->
 									</div><!--main-ws-sec end-->
 								</div>
 								<!-- 右侧栏------------------end -->
@@ -1056,6 +505,18 @@
 				},
 				/* 展示动态--------------end */
 				
+				/* 展示关注-------------start */
+				followUser:[],
+				/* 展示关注-------------end */
+				
+				/* 展示粉丝-------------start */
+				fansUser:[],
+				/* 展示粉丝-------------end */
+				
+				/* 游客------------start */
+				visitor:[],
+				/* 游客------------end */
+				
 				/* 标签---------------------start */
 				languageID:1,
 				topLabel:["个人资料", "消息", "退出"],
@@ -1107,6 +568,22 @@
 						console.log('请求失败处理');
 					});
 				},
+				//添加关注
+				follow(followUserID, index, type){
+				    var formData = new FormData();
+					formData.append('followUserID', followUserID);
+				    this.$http.post('/user/follow/', formData, 
+				    {headers: {cookie:this.ticket}}).
+				    then(function (res) {
+				    	if(type == 1) {
+				    		this.laterUser.data[index].view.follow = true
+				    	} else if(type == 2) {
+				    		this.fansUser[index].view.follow = true
+				    	}
+				    }, function (res) {
+				      console.log(res.body);
+				    });
+				},
 				//发布动态
 				addDynamic(){
 				    var formData = new FormData();
@@ -1137,7 +614,7 @@
 					this.$http.get('/user/getFollowUser/',
 					{params : {time:new Date().getTime()}},{header : {cookie:this.ticket}})
 					.then(function(res) {
-						console.log(JSON.stringify(res))
+						this.followUser = res.body.data
 					},function() {
 						console.log('请求失败处理');
 					});
@@ -1147,17 +624,17 @@
 					this.$http.get('/user/getFans/',
 					{params : {time:new Date().getTime()}},{header : {cookie:this.ticket}})
 					.then(function(res) {
-						console.log(JSON.stringify(res))
+						this.fansUser = res.body.data
 					},function() {
 						console.log('请求失败处理');
 					});
 				},
 				//获取游客
 				getVistor() {
-					this.$http.get('/user/getVistor/',
+					this.$http.get('/user/getVisitor/',
 					{params : {time:new Date().getTime()}},{header : {cookie:this.ticket}})
 					.then(function(res) {
-						console.log(JSON.stringify(res))
+						this.visitor = res.body.data
 					},function() {
 						console.log('请求失败处理');
 					});
@@ -1225,6 +702,8 @@
 				this.getPushUser()
 				this.getLaterUser()
 				this.getLaterDynamic()
+				this.getFollowUser()
+				this.getFans()
 			}
 		})
 	</script>

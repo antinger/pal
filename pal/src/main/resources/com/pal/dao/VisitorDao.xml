@@ -13,9 +13,8 @@
         FROM
         <include refid="table"/>
         WHERE
-        visitorID=#{visitorID}
+        userID=#{userID}
         ORDER BY id DESC
-        limit #{start},#{limit}
     </select>
     
     <select id="getFans" resultType="com.pal.entity.FollowUser">

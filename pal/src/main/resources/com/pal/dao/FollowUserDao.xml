@@ -15,7 +15,6 @@
         WHERE
         userID=#{userID}
         ORDER BY id DESC
-        limit #{start},#{limit}
     </select>
     
     <select id="getFans" resultType="com.pal.entity.FollowUser">
@@ -26,7 +25,6 @@
         WHERE
         followUserID=#{followUserID}
         ORDER BY id DESC
-        limit #{start},#{limit}
     </select>
     
 </mapper>

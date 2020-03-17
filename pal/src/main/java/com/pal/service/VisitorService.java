@@ -8,12 +8,16 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.pal.dao.FollowUserDao;
 import com.pal.dao.UserDao;
+import com.pal.dao.UserInfoDao;
 import com.pal.dao.VisitorDao;
 import com.pal.entity.HostHolder;
 import com.pal.entity.User;
+import com.pal.entity.UserInfo;
 import com.pal.entity.ViewObject;
 import com.pal.entity.Visitor;
+import com.pal.utils.PalUtils;
 
 @Service
 public class VisitorService {
@@ -28,9 +32,15 @@ public class VisitorService {
 	UserDao userDao;
 	
 	@Autowired
+	UserInfoDao userInfoDao;
+	
+	@Autowired
 	QiniuService qiniuService;
+	
+	@Autowired
+	FollowUserDao followUserDao;
 
-	//关注
+	//添加游客
 	public Map<String, Object> addVisitor(Integer visitorID) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		User user = getThreadUser();
@@ -42,19 +52,21 @@ public class VisitorService {
 		return map;
 	}
 	
-	//获取我关注的人
+	//获取我的游客
 	public Map<String, Object> getVistor() {
 		Map<String, Object> map = new HashMap<String, Object>();
-		User user = getThreadUser();
-		List<Visitor> visitors = visitorDao.getVistor(user.getId());
+		User threadUser = getThreadUser();
+		List<Visitor> visitors = visitorDao.getVistor(threadUser.getId());
 		List<ViewObject> data = new ArrayList<ViewObject>();
 		for (Visitor visitor : visitors) {
 			ViewObject view = new ViewObject();
 			User temp = userDao.selectUserByID(visitor.getUserID());
-			if(temp.getHeadStatus() == 0) {
-				temp.setHeadLink(qiniuService.dealOnlyImage(temp.getHeadLink()));
-			}
+			setUserInfo(view, temp);
 			view.setView("user", temp);
+			view.setView("follow", false);
+			if(followUserDao.getFollowUserByUserID(temp.getId(), threadUser.getId()) != null) {
+				view.setView("follow", true);
+			}
 			data.add(view);
 		}
 		map.put("data", data);
@@ -63,6 +75,15 @@ public class VisitorService {
 	
 	private User getThreadUser() {
 		return hostHolder.getUser();
+	}
+	
+	private void setUserInfo(ViewObject view, User user) {
+		UserInfo userInfo = userInfoDao.selectByUsername(user.getUsername());
+		view.setView("birthday", PalUtils.formatBirth(userInfo.getBirthday()));
+		view.setView("sex", user.getSex() == 0 ? "男" : "女");
+		if(user.getHeadStatus() == 0) {
+			user.setHeadLink(qiniuService.dealOnlyImage(user.getHeadLink()));
+		}
 	}
 
 }

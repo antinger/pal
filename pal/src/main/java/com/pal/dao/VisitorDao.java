@@ -8,7 +8,7 @@ import com.pal.entity.Visitor;
 @Mapper
 public interface VisitorDao {
 	
-	String TABLE_NAME = "vistor";
+	String TABLE_NAME = "visitor";
     String INSERT_FIELDS = " userID, visitorID ";
     String SELECT_FIELDS = " id, " + INSERT_FIELDS;
     
@@ -17,6 +17,6 @@ public interface VisitorDao {
     int addVistor(Visitor visitor);
     
     //获取游客
-	List<Visitor> getVistor(Integer visitorID);
+	List<Visitor> getVistor(Integer userID);
 	
 }

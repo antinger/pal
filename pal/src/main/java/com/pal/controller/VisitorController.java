@@ -18,7 +18,7 @@ public class VisitorController {
 	@Autowired
 	VisitorService visitorService;
 	
-	//添加关注
+	//添加游客
 	@RequestMapping(path="/user/addVisitor/", method=RequestMethod.POST)
 	@ResponseBody
 	public String addVisitor(@RequestParam("visitorID") Integer visitorID) {
@@ -31,7 +31,7 @@ public class VisitorController {
 	}
 	
 	//获取访问
-	@RequestMapping(path="/user/getVistor/", method=RequestMethod.GET)
+	@RequestMapping(path="/user/getVisitor/", method=RequestMethod.GET)
 	@ResponseBody
 	public String getVistor() {
 		try {

@@ -28,4 +28,8 @@ public interface FollowUserDao {
 	//获取我的粉丝
 	List<FollowUser> getFans(Integer followUserID);
 	
+	//获取是否存在当前记录
+	@Select({"select ", SELECT_FIELDS, " from ", TABLE_NAME, " where userID=#{userID} and followUserID=#{followUserID}"})
+	FollowUser getFollowUserByUserID(int userID, int followUserID);
+	
 }

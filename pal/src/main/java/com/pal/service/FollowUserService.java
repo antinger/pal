@@ -10,10 +10,13 @@ import org.springframework.stereotype.Service;
 
 import com.pal.dao.FollowUserDao;
 import com.pal.dao.UserDao;
+import com.pal.dao.UserInfoDao;
 import com.pal.entity.FollowUser;
 import com.pal.entity.HostHolder;
 import com.pal.entity.User;
+import com.pal.entity.UserInfo;
 import com.pal.entity.ViewObject;
+import com.pal.utils.PalUtils;
 
 @Service
 public class FollowUserService {
@@ -29,6 +32,9 @@ public class FollowUserService {
 	
 	@Autowired
 	QiniuService qiniuService;
+	
+	@Autowired
+	UserInfoDao userInfoDao;
 
 	//关注
 	public Map<String, Object> follow(Integer followUserID) {
@@ -51,9 +57,7 @@ public class FollowUserService {
 		for (FollowUser followUser : followUsers) {
 			ViewObject view = new ViewObject();
 			User temp = userDao.selectUserByID(followUser.getFollowUserID());
-			if(temp.getHeadStatus() == 0) {
-				temp.setHeadLink(qiniuService.dealOnlyImage(temp.getHeadLink()));
-			}
+			setUserInfo(view, temp);
 			view.setView("user", temp);
 			data.add(view);
 		}
@@ -64,14 +68,16 @@ public class FollowUserService {
 	//获取粉丝
 	public Map<String, Object> getFans() {
 		Map<String, Object> map = new HashMap<String, Object>();
-		User user = getThreadUser();
-		List<FollowUser> followUsers = followUserDao.getFans(user.getId());
+		User threadUser = getThreadUser();
+		List<FollowUser> followUsers = followUserDao.getFans(threadUser.getId());
 		List<ViewObject> data = new ArrayList<ViewObject>();
 		for (FollowUser followUser : followUsers) {
 			ViewObject view = new ViewObject();
 			User temp = userDao.selectUserByID(followUser.getUserID());
-			if(temp.getHeadStatus() == 0) {
-				temp.setHeadLink(qiniuService.dealOnlyImage(temp.getHeadLink()));
+			setUserInfo(view, temp);
+			view.setView("follow", false);
+			if(followUserDao.getFollowUserByUserID(temp.getId(), threadUser.getId()) != null) {
+				view.setView("follow", true);
 			}
 			view.setView("user", temp);
 			data.add(view);
@@ -82,6 +88,15 @@ public class FollowUserService {
 	
 	private User getThreadUser() {
 		return hostHolder.getUser();
+	}
+	
+	private void setUserInfo(ViewObject view, User user) {
+		UserInfo userInfo = userInfoDao.selectByUsername(user.getUsername());
+		view.setView("birthday", PalUtils.formatBirth(userInfo.getBirthday()));
+		view.setView("sex", user.getSex() == 0 ? "男" : "女");
+		if(user.getHeadStatus() == 0) {
+			user.setHeadLink(qiniuService.dealOnlyImage(user.getHeadLink()));
+		}
 	}
 
 }
