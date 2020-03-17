@@ -289,10 +289,10 @@
 													<div class="post_topbar">
 														<div class="usy-dt">
 															<template v-if="item.view.user.headStatus == 1">
-																<img :src="headLink" alt="" >
+																<img :src="headLink" alt="" width="50px" height="50px" >
 															</template>
 															<template v-else>
-																<img :src="item.view.user.headLink" alt="">
+																<img :src="item.view.user.headLink" alt="" width="50px" height="50px">
 															</template>
 															<div class="usy-name">
 																<h3>{{item.view.user.username}}</h3>
@@ -304,12 +304,11 @@
 													<div class="job_descp">
 														<p>
 															{{item.view.dynamic.content}} 
-															<a href="#" title="">view more</a>
 														</p>
 													</div>
-													<div>
-														<img :src="item.view.dynamic.image" height="300px"/>
-													</div>
+													<template v-if="item.view.dynamic.image != ''">
+														<img :src="item.view.dynamic.image" height="300px" style="margin:10px 0 10px 10px"/>
+													</template>
 												</div><!--post-bar end-->
 												<div class="process-comm">
 													<a href="#" title=""><img src="images/process-icon.png" alt=""></a>
@@ -1116,8 +1115,7 @@
 				    this.$http.post('/user/addDynamic/', formData, 
 				    {headers: { 'Content-Type': 'multipart/form-data', cookie:this.ticket}}).
 				    then(function (res) {
-				    	this.dynamics.data = res.body.data
-				    	this.dynamics.pageCount = res.body.pageCount
+				    	
 				    }, function (res) {
 				      console.log(res.body);
 				    });
@@ -1128,7 +1126,8 @@
 					{params:{time:new Date().getTime(),page:this.dynamics.page,limit:5}},
 					{header:{cookie:this.ticket}})
 					.then(function(res) {
-						console.log(JSON.stringify(res))
+						this.dynamics.data = res.body.data
+				    	this.dynamics.pageCount = res.body.pageCount
 					},function() {
 						console.log('请求失败处理');
 					});

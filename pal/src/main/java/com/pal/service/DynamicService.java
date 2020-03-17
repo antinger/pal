@@ -50,7 +50,9 @@ public class DynamicService {
 		List<ViewObject> data = new ArrayList<ViewObject>();
 		for (Dynamic dynamic : dynamics) {
 			ViewObject view = new ViewObject();
-			dynamic.setImage(qiniuService.dealOnlyImage(dynamic.getImage()));
+			if(!"".equals(dynamic.getImage())) {
+				dynamic.setImage(qiniuService.dealOnlyImage(dynamic.getImage()));
+			}
 			User user = userDao.selectUserByID(dynamic.getUserID());
 			if(!"".equals(user.getHeadLink())) {
 				user.setHeadLink(qiniuService.dealOnlyImage(user.getHeadLink()));
