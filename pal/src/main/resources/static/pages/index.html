@@ -18,6 +18,7 @@
 		<link rel="stylesheet" type="text/css" href="css/style.css">
 		<link rel="stylesheet" type="text/css" href="css/responsive.css">
 		<link rel="stylesheet" type="text/css" href="css/index.css">
+		<link rel="stylesheet" type="text/css" href="css/radio.css" />
 		<style>
 			#gallery { overflow: hidden; }
 			#gallery a { display: block; float: left; }
@@ -410,7 +411,18 @@
 										<!-- 游客-------------end -->
 										<!-- 礼物-------------start -->
 										<div class="product-feed-tab" id="gift-dd">
-											礼物
+											<div class="row">
+												<div class="RadioStyle">
+												    <div class="Block PaddingL" v-for="(item, index) in gifts">
+												        <input type="radio" name="gift" :id="index" />
+												        <label :for="index" style="text-align:center;">
+															<img :src="item.path" height="170px" width="150px"/>
+															<br>
+															<span>{{item.price}}</span>
+														</label>
+												    </div>
+												</div>
+											</div>
 										</div><!--product-feed-tab end-->
 										<!-- 礼物-------------end -->
 									</div><!--main-ws-sec end-->
@@ -516,6 +528,10 @@
 				/* 游客------------start */
 				visitor:[],
 				/* 游客------------end */
+				
+				/* 礼物-----------start */
+				gifts:[],
+				/* 礼物---------------end */
 				
 				/* 标签---------------------start */
 				languageID:1,
@@ -644,7 +660,7 @@
 					this.$http.get('/user/getLaterGift/',
 					{params : {time:new Date().getTime()}},{header : {cookie:this.ticket}})
 					.then(function(res) {
-						console.log(JSON.stringify(res))
+						this.gifts = res.body.data
 					},function() {
 						console.log('请求失败处理');
 					});

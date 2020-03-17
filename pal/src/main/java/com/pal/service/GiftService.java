@@ -21,7 +21,7 @@ public class GiftService {
 	
 	@Autowired
 	QiniuService qiniuService;
-
+	
 	//获取最新的礼物
 	public Map<String, Object> getLaterGift() {
 		List<Gift> gifts = giftDao.getLaterGift(0);
