@@ -47,6 +47,13 @@ public class DynamicService {
 		//获取总页数
 		int pageCount = (count - 1) / limit + 1;
 		//包装数据
+		dealBynamic(dynamics, map);
+		map.put("pageCount", pageCount);
+		return map;
+	}
+	
+	//数据保装
+	private void dealBynamic(List<Dynamic> dynamics, Map<String, Object> map) {
 		List<ViewObject> data = new ArrayList<ViewObject>();
 		for (Dynamic dynamic : dynamics) {
 			ViewObject view = new ViewObject();
@@ -63,8 +70,6 @@ public class DynamicService {
 			data.add(view);
 		}
 		map.put("data", data);
-		map.put("pageCount", pageCount);
-		return map;
 	}
 
 	//添加动态
@@ -92,6 +97,13 @@ public class DynamicService {
 		Map<String, Object> map = new HashMap<String, Object>();
 		dynamicDao.updateDynamic(id, 0);
 		map.put("message", "审核成功");
+		return map;
+	}
+	
+	public Map<String, Object> getDynamicByUserID(Integer userID) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		List<Dynamic> dynamics = dynamicDao.getDynamicByUserID(userID, 0);
+		dealBynamic(dynamics, map);
 		return map;
 	}
 

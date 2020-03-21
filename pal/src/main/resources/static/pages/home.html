@@ -1,0 +1,445 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>home page</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<link rel="stylesheet" type="text/css" href="css/animate.css">
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="css/flatpickr.min.css">
+		<link rel="stylesheet" type="text/css" href="css/line-awesome.css">
+		<link rel="stylesheet" type="text/css" href="css/line-awesome-font-awesome.min.css">
+		<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+		<link rel="stylesheet" type="text/css" href="lib/slick/slick.css">
+		<link rel="stylesheet" type="text/css" href="lib/slick/slick-theme.css">
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<link rel="stylesheet" type="text/css" href="css/responsive.css">
+		<link rel="stylesheet" type="text/css" href="css/index.css">
+		<link rel="stylesheet" type="text/css" href="css/radio.css" />
+		<style>
+			#gallery { overflow: hidden; }
+			#gallery a { display: block; float: left; }
+			#gallery-recharge { overflow: hidden; }
+			#gallery-recharge a { display: block; float: left; }
+		</style>
+	</head>
+	
+	<body>
+
+		<div class="wrapper" id="app">
+			<!-- 头部--------------------start -->
+			<header>
+				<div class="container">
+					<div class="header-data">
+						<div class="logo">
+							<a href="index.html" title=""><img src="images/logo.png" alt=""></a>
+						</div><!--logo end-->
+						<div class="search-bar">
+						
+						</div><!--search-bar end-->
+						<nav>
+							<ul>
+								<li>
+									<a href="message.html" title="" class="not-box-open">
+										<span><img src="images/icon7.png" alt=""></span>
+										{{topLabel[2]}}
+									</a>
+								</li>
+							</ul>
+						</nav><!--nav end-->
+						<div class="menu-btn">
+							<a href="#" title=""><i class="fa fa-bars"></i></a>
+						</div><!--menu-btn end-->
+						<div class="user-account">
+							<div class="user-info" style="width: 150px;">
+								<select style="background: #E44D3A;border: none;color: white;" 
+								class="form-control form-control-lg language" v-model="languageID" @click="change">
+									<option selected="true" value="1">中文简体</option>
+									<option value="2">中文-繁體</option>
+									<option value="3">English</option>
+									<option value="4">한국어</option>
+									<option value="5">にほんご</option>
+									<option value="6">ภาษาไทย</option>
+								</select>
+							</div>
+						</div>
+					</div><!--header-data end-->
+				</div>
+			</header><!--header end-->	
+			<!-- 头部--------------------end -->
+			
+			<!-- 背景图-------------------start -->
+			<section class="cover-sec">
+				<img src="images/resources/cover-img.jpg" alt="">
+			</section>
+			<!-- 背景图-------------------end -->
+
+			
+			<main>
+				<div class="main-section">
+					<div class="container">
+						<div class="main-section-data">
+							<div class="row">
+								<!-- 左侧栏------------------------start -->
+								<div class="col-lg-3">
+									<div class="main-left-sidebar">
+										<div class="user_profile">
+											<div class="user-pro-img">
+												<template v-if="user.headStatus==1">
+													<img :src="headLink" alt="" width="170px" height="170px">
+												</template>
+												<template v-else>
+													<img :src="user.headLink" alt="" width="170px" height="170px">
+												</template>
+												
+											</div><!--user-pro-img end-->
+											<div class="user_pro_status">
+												
+												<ul class="flw-status">
+													<li>
+														<span>{{leftLabel[2]}} :</span>
+													</li>
+													<li>
+														<span>34</span>
+													</li>
+												</ul>
+											</div>
+											<!-- 信息栏---------------------start -->
+											<ul class="social_links">
+												<li><a href="#" title="">{{leftLabel[3]}} ：{{userInfo.view.birthday}}</a></li>
+												<li><a href="#" title="">{{leftLabel[4]}} ：{{userInfo.view.info.education}}</a></li>
+												<li><a href="#" title="">{{leftLabel[5]}} ：{{userInfo.view.info.height}}</a></li>
+												<li><a href="#" title="">{{leftLabel[6]}} ：{{userInfo.view.info.weight}}</a></li>
+												<li><a href="#" title="">{{leftLabel[7]}} ：{{userInfo.view.info.job}}</a></li>
+												<li><a href="#" title="">{{leftLabel[8]}} ：{{userInfo.view.info.country}}</a></li>
+												<li><a href="#" title="">{{leftLabel[9]}} ：{{userInfo.view.info.town}}</a></li>
+											</ul>
+											<!-- 信息栏---------------------end -->
+										</div><!--user_profile end-->
+										
+									</div><!--main-left-sidebar end-->
+								</div>
+								<!-- 左侧栏------------------------end -->
+								
+								<!-- 右侧栏------------------start -->
+								<div class="col-lg-9">
+									<div class="main-ws-sec">
+										
+										<div class="user-tab-sec">
+											<h3>{{user.username}}</h3>
+											<div class="star-descp">
+												<ul>
+													<li><i class="fa fa-star"></i></li>
+													<li><i class="fa fa-star"></i></li>
+													<li><i class="fa fa-star"></i></li>
+													<li><i class="fa fa-star"></i></li>
+													<li><i class="fa fa-star-half-o"></i></li>
+												</ul>
+												<a href="#" title="">Status</a>
+											</div><!--star-descp end-->
+										</div><!--user-tab-sec end-->
+										
+										<div class="tab-feed st2">
+												<ul>
+													<!-- 动态----------start -->
+													<li data-tab="feed-dd" class="active">
+														<a href="#" title="">
+															<img src="images/ic1.png" alt="">
+															<span>{{rightLabel[0]}}</span>
+														</a>
+													</li>
+													<!-- 动态----------end -->
+													<!-- 发送的礼物---------start -->
+													<li data-tab="send-dd">
+														<a href="#" title="">
+															<img src="images/ic6.png" alt="">
+															<span>{{rightLabel[1]}}</span>
+														</a>
+													</li>
+													<!-- 发送的礼物----------end -->
+													
+													<!-- 接受的礼物---------start -->
+													<li data-tab="take-dd">
+														<a href="#" title="">
+															<img src="images/ic6.png" alt="">
+															<span>{{rightLabel[2]}}</span>
+														</a>
+													</li>
+													<!-- 接受的礼物----------end -->
+												</ul>
+											</div><!-- tab-feed end-->
+										</div>
+										
+										<!-- 动态--------------------start -->
+										<div class="product-feed-tab current" id="feed-dd">
+											<div class="posts-section">
+												
+												<div class="post-bar" v-for="(item, index) in dynamics.data">
+													<div class="post_topbar">
+														<div class="usy-dt">
+															<template v-if="item.view.user.headStatus == 1">
+																<img :src="headLink" alt="" width="50px" height="50px" >
+															</template>
+															<template v-else>
+																<img :src="item.view.user.headLink" alt="" width="50px" height="50px">
+															</template>
+															<div class="usy-name">
+																<h3>{{item.view.user.username}}</h3>
+																<span><img src="images/clock.png" alt="">{{item.view.createDate}}</span>
+															</div>
+														</div>
+													</div>
+													
+													<div class="job_descp">
+														<p>
+															{{item.view.dynamic.content}} 
+														</p>
+													</div>
+													<template v-if="item.view.dynamic.image != ''">
+														<img :src="item.view.dynamic.image" height="300px" style="margin:10px 0 10px 10px"/>
+													</template>
+												</div><!--post-bar end-->
+												<div class="process-comm">
+													<a href="#" title=""><img src="images/process-icon.png" alt=""></a>
+												</div><!--process-comm end-->
+											</div><!--posts-section end-->
+										</div><!--product-feed-tab end-->
+										<!-- 动态---------------------end -->
+										<!-- 发送的礼物---------start -->
+										<div class="product-feed-tab" id="send-dd">
+											<div class="list-group">
+												<a class="list-group-item list-group-item-action" v-for="(item, index) in sendGiftOrder">
+													<div class="row" style="align-items: center;">
+														<div style="width: 10%;">
+															<img :src="item.view.gift.path" height="50px" width="50px" />
+														</div>
+														<div style="width: 5%;">
+															<span style="color: #51a5fb;">{{item.view.toUser.username}}</span>
+														</div>
+														<div style="width: 55%;">
+															<span>{{item.view.giftOrder.content}}</span>
+														</div>
+														<div style="width: 20%;">
+															<span>{{item.view.createDate}}</span>
+														</div>
+														<div style="width: 10%;">
+															<template v-if="item.view.giftOrder == 0">
+																<button class="btn btn-success">待付款</button>
+															</template>
+															<template v-else>
+																<button class="btn btn-success">已付款</button>
+															</template>
+														</div>
+													</div>
+												</a>
+											</div>
+										</div>
+										<!-- 发送的礼物----------end -->
+										
+										<!-- 接受的礼物---------start -->
+										<div class="product-feed-tab" id="take-dd">
+											<div class="list-group">
+												<a class="list-group-item list-group-item-action" v-for="(item, index) in takeGiftOrder">
+													<div class="row" style="align-items: center;">
+														<div style="width: 10%;">
+															<img :src="item.view.gift.path" height="50px" width="50px" />
+														</div>
+														<div style="width: 10%;">
+															<span style="color: #51a5fb;">{{item.view.giftOrder.username}}</span>
+														</div>
+														<div style="width: 60%;">
+															<span>{{item.view.giftOrder.content}}</span>
+														</div>
+														<div style="width: 20%;">
+															<span>{{item.view.createDate}}</span>
+														</div>
+													</div>
+												</a>
+											</div>
+										</div>
+										<!-- 接受的礼物----------end -->
+									</div><!--main-ws-sec end-->
+								</div>
+								<!-- 右侧栏------------------end -->
+								
+							</div>
+						</div><!-- main-section-data end-->
+					</div> 
+				</div>
+			</main>
+			
+			<!-- 底部---------------------start -->
+			<footer>
+				<div class="footy-sec mn no-margin">
+					<div class="container">
+						<ul>
+							<li><a href="#" title="">Help Center</a></li>
+							<li><a href="#" title="">Privacy Policy</a></li>
+							<li><a href="#" title="">Community Guidelines</a></li>
+							<li><a href="#" title="">Cookies Policy</a></li>
+							<li><a href="#" title="">Career</a></li>
+							<li><a href="#" title="">Forum</a></li>
+							<li><a href="#" title="">Language</a></li>
+							<li><a href="#" title="">Copyright Policy</a></li>
+						</ul>
+						<p><img src="images/copy-icon2.png" alt="">Copyright 2017</p>
+						<img class="fl-rgt" src="images/logo2.png" alt="">
+					</div>
+				</div>
+			</footer>
+			<!-- 底部---------------------end -->
+			
+		</div>
+		
+	</body>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/popper.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/flatpickr.min.js"></script>
+	<script type="text/javascript" src="lib/slick/slick.min.js"></script>
+	<script type="text/javascript" src="js/script.js"></script>
+	<script src="js/vue-2.4.0.js"></script>
+	<script src="js/vue-resource-1.3.4.js"></script>
+	<script src="pop/js/jquery.poptrox.min.js"></script>
+	<script>
+		var vm = new Vue({
+			el : '#app',
+			data:{
+				
+				/* 令牌-------------start  */
+				ticket:"",
+				/* 令牌-------------end  */
+				/* 个人信息----------------start */
+				userID:"",
+				user:"",
+				userInfo:"",
+				headLink:"images/user/default.png",
+				/* 个人信息----------------end */
+				
+				/* 动态---------------start */
+				dynamics:{
+					data:[],
+				},
+				/* 动态----------end */
+				
+				/* 发送的礼物-----------start */
+				sendGiftOrder:[],
+				/* 发送的礼物-----------end */
+				
+				/* 接受的礼物-----------start */
+				takeGiftOrder:[],
+				/* 接受的礼物-----------end */
+				
+				/* 标签---------------------start */
+				languageID:1,
+				topLabel:["个人资料", "消息", "退出"],
+				leftLabel:["升级", "充值", "金币", "生日", "教育", "身高", "体重", "工作", "国家", "地区"],
+				rightLabel:["动态", "发送的礼物", "接受的礼物"],
+				formLabel:["选择图片", "发布"]
+				/* 标签---------------------end */
+			},
+			methods:{
+				//跳转到登录页面
+				toLoginView(code) {
+					if(code == "302") {
+						window.location.href = "login.html"
+					}
+				},
+				checkTicket() {
+					this.ticket = localStorage.getItem("ticket");
+				},
+				//获取用户信息
+				getUserInfo() {
+					this.$http.get('/user/getUserInfoByID/',
+					{params : {id:this.userID, time:new Date().getTime()}},{header : {cookie:this.ticket}})
+					.then(function(res) {
+						this.userInfo = res.body.userInfo
+						this.user = res.body.user
+					},function() {
+						console.log('请求失败处理');
+					});
+				},
+				//获取动态
+				getLaterDynamic() {
+					this.$http.get('/user/getLaterDynamic/',
+					{params:{time:new Date().getTime(),userID:this.userID}},
+					{header:{cookie:this.ticket}})
+					.then(function(res) {
+						this.dynamics.data = res.body.data
+					},function() {
+						console.log('请求失败处理');
+					});
+				},
+				//获取发送的礼物
+				getSendGiftOrder() {
+					this.$http.get('/user/getSendGiftOrder/',
+					{params:{time:new Date().getTime()}},
+					{header:{cookie:this.ticket}})
+					.then(function(res) {
+						this.sendGiftOrder = res.body.data
+					},function() {
+						console.log('请求失败处理');
+					});
+				},
+				//获取接受的礼物
+				getTakeGiftOrder() {
+					this.$http.get('/user/getTakeGiftOrder/',
+					{params:{time:new Date().getTime()}},
+					{header:{cookie:this.ticket}})
+					.then(function(res) {
+						this.takeGiftOrder = res.body.data
+					},function() {
+						console.log('请求失败处理');
+					});
+				},
+				change() {
+					if(this.languageID == 1) {
+						this.topLabel = ["个人资料", "消息", "退出"]
+						this.leftLabel = ["升级", "充值", "金币", "生日", "教育", "身高", "体重", "工作", "国家", "地区"]
+						this.rightLabel = ["动态", "发送的礼物", "接受的礼物"]
+						this.formLabel = ["选择图片", "发布"]
+					} else if(this.languageID == 2) {
+						this.topLabel = ["個人資料", "消息", "退出"]
+						this.leftLabel = ["升级", "充值", "金幣", "生日", "教育", "身高", "體重", "工作", "國家", "地區"]
+						this.rightLabel = ["動態", "發送的禮物", "接受的禮物"]
+						this.formLabel = ["選擇圖片", "發布"]
+					} else if(this.languageID == 3) {
+						this.topLabel = ["personal data", "message", "log out"]
+						this.leftLabel = ["upgrade", "top up", "gold", "birthday", "education", "height", "weight", "job", "country", "city"]
+						this.rightLabel = ["dynamic state", "The gift sent", "Received gift"]
+						this.formLabel = ["select image", "publish"]
+					} else if(this.languageID == 4) {
+						this.topLabel = ["인적 사항", "소식.정보.", "퇴출"]
+						this.leftLabel = ["승급하다", "충전시키다", "잔액", "생일", "교육", "신장", "체중", "직업", "국가", "지역"]
+						this.rightLabel = ["동태", "선물 꾸러미", "선물을 받다"]
+						this.formLabel = ["그림 선택", "발포하다"]
+					} else if(this.languageID == 5) {
+						this.topLabel = ["个人资料", "しょうそく", "たいしゅつ"]
+						this.leftLabel = ["進級する", "[リチャージ", "やまぶき", "生まれた日", "きょういく", "身長", "たいじゅう", "こうさく", "こっか", "ちく"]
+						this.rightLabel = ["うごき", "送られたプレゼント", "受け取った贈り物"]
+						this.formLabel = ["画像を選択する", "敷いた"]
+					} else if(this.languageID == 6) {
+						this.topLabel = ["ข้อมูลส่วนบุคคล", "ข่าว", "ออก"]
+						this.leftLabel = ["อัพ เกรด", "ชาร์จ", "ทอง", "วัน", "ศึกษา", "สูง", "น้ำหนัก", "งาน", "ประเทศ", "ตั้ง"]
+						this.rightLabel = ["แบบ ไดนามิก", "ของขวัญที่ส่ง", "ของขวัญที่ยอมรับ"]
+						this.formLabel = ["เลือกรูปภาพ", "วาง จำหน่าย"]
+					}
+				},
+				getUrlQuery() {
+					var query = window.location.search.substring(1)
+					var vars = query.split("?")
+					var pairs = vars[0].split("=")
+					this.userID = pairs[1]
+				}
+			},
+			beforeMount() {
+				this.checkTicket()
+				this.getUrlQuery()
+				this.getUserInfo()
+			}
+		})
+	</script>
+</html>

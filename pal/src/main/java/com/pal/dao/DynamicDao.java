@@ -32,4 +32,6 @@ public interface DynamicDao {
 	@Select({"select count(*) from ", TABLE_NAME, " where status=#{status}"})
     int getLaterDynamicCount(int status);
 	
+	//根据用户ID获取数据
+	List<Dynamic> getDynamicByUserID(Integer userID, int status);
 }

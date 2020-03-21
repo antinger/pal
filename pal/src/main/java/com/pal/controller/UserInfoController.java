@@ -32,11 +32,11 @@ public class UserInfoController {
 	}
 	
 	//获取他人用户信息
-	@RequestMapping(path="/user/getUserInfoByUserName/", method=RequestMethod.GET)
+	@RequestMapping(path="/user/getUserInfoByID/", method=RequestMethod.GET)
 	@ResponseBody
-	public String getUserInfoByUserName(@RequestParam("username") String username) {
+	public String getUserInfoByID(@RequestParam("id") Integer id) {
 		try {
-			Map<String, Object> map = userInfoService.getUserInfoByUserName(username);
+			Map<String, Object> map = userInfoService.getUserInfoByID(id);
 			return PalUtils.toJSONString(200, map);
 		} catch (Exception e) {
 			return PalUtils.toJSONString(500, "获取用户信息失败");

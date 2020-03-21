@@ -1,34 +1,32 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.pal.dao.DynamicDao">
-    <sql id="table">dynamic</sql>
+<mapper namespace="com.pal.dao.GiftOrderDao">
+    <sql id="table">giftOrder</sql>
     <sql id="selectFields">
-    	id, userID, sex, content, image, status 
+    	id, giftID, username, toUsername, createDate, content, status
     </sql>
-    <!-- 根据状态分页获取所有的商品 -->
-    <select id="getLaterDynamic" resultType="com.pal.entity.Dynamic">
+    
+    <!-- 获取发送的礼物 -->
+    <select id="getSendGiftOrder" resultType="com.pal.entity.GiftOrder">
         SELECT
         <include refid="selectFields"/>
         FROM
         <include refid="table"/>
         WHERE
-        sex=#{sex} 
-        AND
-        status=#{status}
+        username = #{username}
         ORDER BY id DESC
-        limit #{start},#{limit}
     </select>
     
-    <select id="getDynamicByUserID" resultType="com.pal.entity.Dynamic">
+    <!-- 获取接受的礼物 -->
+    <select id="getTakeGiftOrder" resultType="com.pal.entity.GiftOrder">
         SELECT
         <include refid="selectFields"/>
         FROM
         <include refid="table"/>
         WHERE
-        userID=#{userID} 
-        AND
-        status=#{status}
+        toUsername = #{toUsername}
         ORDER BY id DESC
     </select>
+    
 </mapper>

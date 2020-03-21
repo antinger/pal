@@ -39,9 +39,9 @@ public class UserInfoService {
 	}
 	
 	//根据用户名获取信息
-	public Map<String, Object> getUserInfoByUserName(String username) {
+	public Map<String, Object> getUserInfoByID(Integer id) {
 		Map<String, Object> map = new HashMap<String, Object>();
-		User user = userDao.selectUserByUsername(username);
+		User user = userDao.selectUserByID(id);
 		dealUser(user, map);
 		return map;
 	}

@@ -31,6 +31,18 @@ public class DynamicController {
 		}
 	}
 	
+	//根据用户ID获取动态
+	@RequestMapping(path="/user/getDynamicByUserID/", method=RequestMethod.GET)
+	@ResponseBody
+	public String getDynamicByUserID(@RequestParam("userID") Integer userID) {
+		try {
+			Map<String, Object> map = dynamicService.getDynamicByUserID(userID);
+			return PalUtils.toJSONString(200, map);
+		} catch (Exception e) {
+			return PalUtils.toJSONString(500, "获取动态失败");
+		}
+	}
+	
 	//添加动态
 	@RequestMapping(path="/user/addDynamic/", method=RequestMethod.POST)
 	@ResponseBody
