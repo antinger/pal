@@ -31,6 +31,18 @@ public class UserController {
 		}
 	}
 	
+	//根据用户名获取用户
+	@RequestMapping(path="/user/getUserByUsername/", method=RequestMethod.GET)
+	@ResponseBody
+	public String getUserByUsername(@RequestParam("username") String username) {
+		try {
+			Map<String, Object> map = userService.getUserByUsername(username);
+			return PalUtils.toJSONString(200, map);
+		} catch (Exception e) {
+			return PalUtils.toJSONString(500, "获取推送用户失败");
+		}
+	}
+	
 	//获取首页推荐用户
 	@RequestMapping(path="/user/getLaterUser/", method=RequestMethod.GET)
 	@ResponseBody

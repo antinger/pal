@@ -273,5 +273,13 @@ public class UserService {
 		map.put("message", "更新成功");
 		return map;
 	}
+
+	public Map<String, Object> getUserByUsername(String username) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		User user = userDao.selectUserByUsername(username);
+		dealUserHeadLink(user);
+		map.put("user", user);
+		return map;
+	}
 	
 }

@@ -19,7 +19,7 @@
 	border-radius: 4px
 }
 .RadioStyle label span{
-	margin-right: 35px;
+	margin-right: 15px;
 }
 .RadioStyle input:checked + label {
 	background: url(../images/ico_checkon.svg) no-repeat right bottom;
