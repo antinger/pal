@@ -905,6 +905,23 @@
 				usePopupCaption: true
 			});
 		});
+		function chickUpgrade(){
+			this.getUserInfo()
+			// if(this.upgradeType == 0 || this.crown == 0 || this.shoptype == 0) {
+			// 	return false;
+			// }
+			// if(this.upgradeType == 2 && this.otherUsername == "") {
+			// 	return false;
+			// }
+			// if(this.upgradeType == 1) {
+			// 	this.upgradeCustom = this.upgradeType + "&" + this.ticket + "&" + this.crown + "&" + this.shoptype
+			// } else {
+			// 	this.upgradeCustom = this.upgradeType + "&" + this.otherUsername + "&" + this.crown + "&" + this.shoptype
+			// }
+			//console.log("输出" + this.upgradeCustom)
+			//document.getElementById("custom").value=this.upgradeCustom
+			return false
+		}
 	</script>
 	<script>
 		var vm = new Vue({
@@ -1218,22 +1235,6 @@
 					},function() {
 						console.log('请求失败处理');
 					});
-				},
-				chickUpgrade(){
-					if(this.upgradeType == 0 || this.crown == 0 || this.shoptype == 0) {
-						return false;
-					}
-					if(this.upgradeType == 2 && this.otherUsername == "") {
-						return false;
-					}
-					if(this.upgradeType == 1) {
-						this.upgradeCustom = this.upgradeType + "&" + this.ticket + "&" + this.crown + "&" + this.shoptype
-					} else {
-						this.upgradeCustom = this.upgradeType + "&" + this.otherUsername + "&" + this.crown + "&" + this.shoptype
-					}
-					console.log("输出" + this.upgradeCustom)
-					document.getElementById("custom").value=this.upgradeCustom
-					return true
 				},
 				change() {
 					if(this.languageID == 1) {
