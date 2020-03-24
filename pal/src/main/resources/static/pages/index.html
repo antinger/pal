@@ -522,7 +522,7 @@
 				</div>
 				
 				<div class="tab-content">
-					<div id="menu1" class="container-fluid tab-pane">
+					<div id="menu1" class="container-fluid tab-pane" v-bind:class="{ active: (1 == payType) }">
 						<!-- 升级-----------start -->
 						<div class="row" style="margin: 10px 0;">
 							<div style="margin-right: 25px;">
@@ -758,7 +758,7 @@
 						</form>
 						<!-- 升级-----------end -->
 					</div>
-					<div id="menu2" class="container-fluid tab-pane active">
+					<div id="menu2" class="container-fluid tab-pane" v-bind:class="{ active: (2 == payType) }">
 						<!-- 充值---------------------start -->
 						<div class="row" style="margin: 10px 0;">
 							<div style="margin-right: 25px;">
