@@ -81,6 +81,8 @@ public class PayController {
             // 自定义字段，我们存放的订单ID
             String custom = request.getParameter("custom");
             
+            System.out.println("获取自定义字段" + custom);
+            
 			Map<String, Object> map = null;
 			return PalUtils.toJSONString(200, map);
 		} catch (Exception e) {
