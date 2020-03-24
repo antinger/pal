@@ -15,7 +15,7 @@ import com.pal.utils.PalUtils;
 
 @Controller
 public class PayController {
-
+	
 	@RequestMapping(path="/paysuccess/", method=RequestMethod.GET)
 	@ResponseBody
 	public String paysuccess(HttpServletRequest request) {
