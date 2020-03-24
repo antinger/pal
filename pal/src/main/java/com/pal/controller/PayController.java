@@ -1,5 +1,10 @@
 package com.pal.controller;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.net.URLEncoder;
 import java.util.Enumeration;
 import java.util.Map;
@@ -15,6 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSON;
 import com.pal.utils.PalUtils;
+import com.pal.utils.PaypalConfig;
 
 @Controller
 public class PayController {
@@ -33,6 +39,48 @@ public class PayController {
                 str = str + "&" + paramName + "=" + URLEncoder.encode(paramValue, "UTF-8");
             }
 			System.out.println("paypal传递过来的交易信息:" + str);
+			
+			URL u = new URL(PaypalConfig.getWebscr());
+            HttpURLConnection uc = (HttpURLConnection) u.openConnection();
+            uc.setRequestMethod("POST");
+            uc.setDoOutput(true);
+            uc.setDoInput(true);
+            uc.setUseCaches(false);
+            //设置 HTTP 的头信息
+            uc.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+            PrintWriter pw = new PrintWriter(uc.getOutputStream());
+            pw.println(str);
+            pw.close();
+            
+            BufferedReader in = new BufferedReader(new InputStreamReader(uc.getInputStream()));
+            String res = in.readLine();
+            in.close();
+
+            /**
+             * 将 POST 信息分配给本地变量，可以根据您的需要添加
+             */
+            // 交易状态 Completed 代表交易成功
+            String paymentStatus = request.getParameter("payment_status");
+            System.out.println("交易状态" + paymentStatus);
+            // 交易时间
+            String paymentDate = request.getParameter("payment_date");
+            // 交易id
+            String txnId = request.getParameter("txn_id");
+            // 父交易id
+            String parentTxnId = request.getParameter("parent_txn_id");
+            // 收款人email
+            String receiverEmail = request.getParameter("receiver_email");
+            // 收款人id
+            String receiverId = request.getParameter("receiver_id");
+            // 付款人email
+            String payerEmail = request.getParameter("payer_email");
+            // 付款人id
+            String payerId = request.getParameter("payer_id");
+            // 交易金额
+            String mcGross = request.getParameter("mc_gross");
+            // 自定义字段，我们存放的订单ID
+            String custom = request.getParameter("custom");
+            
 			Map<String, Object> map = null;
 			return PalUtils.toJSONString(200, map);
 		} catch (Exception e) {
