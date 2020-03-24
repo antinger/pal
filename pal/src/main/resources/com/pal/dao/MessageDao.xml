@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pal.dao.MessageDao">
+    <sql id="table">message</sql>
+    <sql id="selectFields">
+    	id, content, createDate, userID, toUserID, status 
+    </sql>
+    <!-- 根据状态分页获取所有的商品 -->
+    <select id="getSendMessages" resultType="com.pal.entity.Message">
+        SELECT
+        <include refid="selectFields"/>
+        FROM
+        <include refid="table"/>
+        WHERE
+        userID = #{userID}
+    </select>
+    
+    <select id="getTakeMessages" resultType="com.pal.entity.Message">
+        SELECT
+        <include refid="selectFields"/>
+        FROM
+        <include refid="table"/>
+        WHERE
+        toUserID = #{toUserID}
+    </select>
+    
+    <select id="getMessageByToUserID" resultType="com.pal.entity.Message">
+        SELECT
+        <include refid="selectFields"/>
+        FROM
+        <include refid="table"/>
+        WHERE
+        userID = #{userID}
+        AND toUserID = #{toUserID}
+    </select>
+    
+</mapper>

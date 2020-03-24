@@ -88,14 +88,18 @@ public class GiftOrderService {
 	}
 
 	//添加礼物
-	public Map<String, Object> addGiftOrder(String toUsername, Integer giftID, String content) {
+	public Map<String, Object> addGiftOrder(String toUsername, Integer giftID, Integer num, String content) {
 		Map<String,Object> map = new HashMap<String, Object>();
 		User threadUser = getThreadUser();
+		Gift gift = giftDao.selectGiftById(giftID);
+		int price = num * gift.getPrice();
 		GiftOrder order = new GiftOrder();
 		order.setToUsername(toUsername);
 		order.setContent(content);
+		order.setNum(num);
 		order.setGiftID(giftID);
 		order.setUsername(threadUser.getUsername());
+		order.setPrice(price);
 		giftOrderDao.addGiftOrder(order);
 		map.put("message", "待付款");
 		return map;

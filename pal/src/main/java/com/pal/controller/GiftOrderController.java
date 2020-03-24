@@ -45,9 +45,9 @@ public class GiftOrderController {
 	//添加礼物记录
 	@RequestMapping(path="/user/addGiftOrder/", method=RequestMethod.POST)
 	@ResponseBody
-	public String addGiftOrder(@RequestParam("toUsername") String toUsername, @RequestParam("giftID") Integer giftID, @RequestParam("content") String content) {
+	public String addGiftOrder(@RequestParam("toUsername") String toUsername, @RequestParam("num") Integer num, @RequestParam("giftID") Integer giftID, @RequestParam("content") String content) {
 		try {
-			Map<String, Object> map = giftOrderService.addGiftOrder(toUsername, giftID, content);
+			Map<String, Object> map = giftOrderService.addGiftOrder(toUsername, giftID, num, content);
 			return PalUtils.toJSONString(200, map);
 		} catch (Exception e) {
 			return PalUtils.toJSONString(500, "获取动态失败");

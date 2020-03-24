@@ -17,6 +17,10 @@ public class GiftOrder {
 	
 	private String content;
 	
+	private Integer num;
+	
+	private Integer price;
+	
 	//0：生成记录-待付款
 	//1:记录完成-付款完成
 	private Integer status;
@@ -29,6 +33,8 @@ public class GiftOrder {
 		this.createDate = new Date();
 		this.content = "";
 		this.setStatus(0);
+		this.setNum(0);
+		this.price = 0;
 	}
 
 	public Integer getId() {
@@ -85,6 +91,22 @@ public class GiftOrder {
 
 	public void setStatus(Integer status) {
 		this.status = status;
+	}
+
+	public Integer getNum() {
+		return num;
+	}
+
+	public void setNum(Integer num) {
+		this.num = num;
+	}
+
+	public Integer getPrice() {
+		return price;
+	}
+
+	public void setPrice(Integer price) {
+		this.price = price;
 	}
 	
 }

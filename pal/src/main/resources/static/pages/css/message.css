@@ -1,0 +1,32 @@
+.message {  
+	display: none;  
+	width: 500px;
+	height: 200px;
+	position: fixed	;  
+	top: 200px;  left: 550px;  bottom: 0;  right: 0;  
+	padding: 15px;  z-index: 130;  
+	border-radius: 8px;
+	background-color: #fff;  
+	box-shadow: 0 3px 18px rgba(100, 0, 0, .5);  
+}
+.message-foot{  
+	height:50px;  
+	line-height:50px;  
+	width:100%;  
+	border-top: 1px #E5E5E5 solid;  
+	text-align: right;  
+}
+.message-cancel, .message-ok {  
+	padding:8px 15px;  
+	margin:15px 5px;  
+	border: none;  
+	border-radius: 5px;  
+	background-color: #337AB7;  
+	color: #fff;  
+	cursor:pointer;  
+}
+.message-cancel {  
+	background-color: #FFF;  
+	border:1px #CECECE solid;  
+	color: #000;  
+}

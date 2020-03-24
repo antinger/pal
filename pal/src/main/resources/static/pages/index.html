@@ -20,6 +20,7 @@
 		<link rel="stylesheet" type="text/css" href="css/index.css">
 		<link rel="stylesheet" type="text/css" href="css/radio.css" />
 		<link rel="stylesheet" type="text/css" href="css/pay.css" />
+		<link rel="stylesheet" type="text/css" href="css/message.css" />
 		<style>
 			#gallery { overflow: hidden; }
 			#gallery a { display: block; float: left; }
@@ -175,15 +176,14 @@
 												<div class="profiles-slider">
 													<div class="user-profy" v-for="(item,index) in pushUser">
 														<template v-if="item.headStatus == 1">
-															<img :src="headLink" alt="" width="30px" height="30px">
+															<img :src="headLink" alt="" width="30px" height="30px" @click="toUserView(item.id)">
 														</template>
 														<template v-else>
-															<img :src="item.headLink" alt="" width="30px" height="30px">
+															<img :src="item.headLink" alt="" width="30px" height="30px" @click="toUserView(item.id)">
 														</template>
 														<h3>{{item.username}}</h3>
 														<ul>
-															<li><a href="#" title="" class="followw">Follow</a></li>
-															<li><a href="#" title="" class="envlp"><img src="images/envelop.png" alt=""></a></li>
+															<li><a title="" class="envlp" @click="toMessageView(item.username, item.id)"><img src="images/envelop.png" alt=""></a></li>
 														</ul>
 													</div><!--user-profy end-->
 												</div><!--profiles-slider end-->
@@ -264,7 +264,7 @@
 																<template v-if="item.view.follow == false">
 																	<li><a title="" class="follow" @click="follow(item.view.user.id, index, 1)">Follow</a></li>
 																</template>	
-																<li><a title="" class="message-us"><i class="fa fa-envelope"></i></a></li>
+																<li><a title="" class="message-us" @click="toMessageView(item.view.user.username, item.view.user.id)"><i class="fa fa-envelope"></i></a></li>
 															</ul>
 														</div>
 													</div>
@@ -311,7 +311,7 @@
 															</template>
 															<div class="usy-name">
 																<h3>{{item.view.user.username}}</h3>
-																<span><img src="images/clock.png" alt="">{{item.view.createDate}}</span>
+																<span><img src="images/clock.png" alt="" >{{item.view.createDate}}</span>
 															</div>
 														</div>
 													</div>
@@ -331,6 +331,7 @@
 											</div><!--posts-section end-->
 										</div><!--product-feed-tab end-->
 										<!-- 动态---------------------end -->
+										
 										<!-- 关注-------------start -->
 										<div class="product-feed-tab" id="saved-jobs">
 											<div class="row">
@@ -338,16 +339,16 @@
 													<div class="company_profile_info">
 														<div class="company-up-info">
 															<template v-if="item.view.user.headStatus == 1">
-																<img :src="headLink" alt="" >
+																<img :src="headLink" alt="" @click="toUserView(item.view.user.id)">
 															</template>
 															<template v-else>
-																<img :src="item.view.user.headLink" alt="">
+																<img :src="item.view.user.headLink" alt="" @click="toUserView(item.view.user.id)">
 															</template>
 															<h3>{{item.view.user.username}}</h3>
 															<h4>{{item.view.sex}}</h4>
 															<h4>{{item.view.birthday}}</h4>
 															<ul>
-																<li><a title="" class="message-us"><i class="fa fa-envelope"></i></a></li>
+																<li><a title="" class="message-us"  @click="toMessageView(item.view.user.username, item.view.user.id)"><i class="fa fa-envelope"></i></a></li>
 															</ul>
 														</div>
 													</div>
@@ -355,6 +356,7 @@
 											</div>
 										</div><!--product-feed-tab end-->
 										<!-- 关注-------------end -->
+										
 										<!-- 粉丝----------start -->
 										<div class="product-feed-tab" id="my-bids">
 											<div class="row">
@@ -362,10 +364,10 @@
 													<div class="company_profile_info">
 														<div class="company-up-info">
 															<template v-if="item.view.user.headStatus == 1">
-																<img :src="headLink" alt="" >
+																<img :src="headLink" alt="" @click="toUserView(item.view.user.id)">
 															</template>
 															<template v-else>
-																<img :src="item.view.user.headLink" alt="">
+																<img :src="item.view.user.headLink" alt="" @click="toUserView(item.view.user.id)">
 															</template>
 															<h3>{{item.view.user.username}}</h3>
 															<h4>{{item.view.sex}}</h4>
@@ -374,7 +376,7 @@
 																<template v-if="item.view.follow == false">
 																	<li><a title="" class="follow" @click="follow(item.view.user.id, index, 2)">Follow</a></li>
 																</template>	
-																<li><a title="" class="message-us"><i class="fa fa-envelope"></i></a></li>
+																<li><a title="" class="message-us"  @click="toMessageView(item.view.user.username, item.view.user.id)"><i class="fa fa-envelope"></i></a></li>
 															</ul>
 														</div>
 													</div>
@@ -382,17 +384,18 @@
 											</div>
 										</div><!--product-feed-tab end-->
 										<!-- 粉丝----------end -->
+										
 										<!-- 游客-------------start -->
 										<div class="product-feed-tab" id="visitor-dd">
 											<div class="row">
 												<div class="col-lg-4 col-md-4 col-sm-6 col-12" v-for="(item, index) in visitor">
 													<div class="company_profile_info">
 														<div class="company-up-info">
-															<template v-if="item.view.user.headStatus == 1">
+															<template v-if="item.view.user.headStatus == 1" @click="toUserView(item.view.user.id)">
 																<img :src="headLink" alt="" >
 															</template>
 															<template v-else>
-																<img :src="item.view.user.headLink" alt="">
+																<img :src="item.view.user.headLink" alt="" @click="toUserView(item.view.user.id)">
 															</template>
 															<h3>{{item.view.user.username}}</h3>
 															<h4>{{item.view.sex}}</h4>
@@ -401,7 +404,7 @@
 																<template v-if="item.view.follow == false">
 																	<li><a title="" class="follow" @click="follow(item.view.user.id, index, 2)">Follow</a></li>
 																</template>	
-																<li><a title="" class="message-us"><i class="fa fa-envelope"></i></a></li>
+																<li><a title="" class="message-us"  @click="toMessageView(item.view.user.username, item.view.user.id)"><i class="fa fa-envelope"></i></a></li>
 															</ul>
 														</div>
 													</div>
@@ -415,7 +418,7 @@
 												<div class="RadioStyle">
 												    <div class="Block PaddingL">
 													    <template v-for="(item, index) in gifts">
-													        <input type="radio" name="gift" :id="index" />
+													        <input type="radio" name="gift" :id="index" v-model="giftID" :value="item.id"/>
 													        <label :for="index" style="text-align:center;">
 																<img :src="item.path" height="170px" width="150px"/>
 																<br>
@@ -425,9 +428,46 @@
 												    </div>
 												</div>
 											</div>
-											<div class="row">
-												搜索用户
+											<div class="row" style="margin-top:10px;">
+												<div class="col" style="margin-left:-15px">
+											      <input type="text" v-model="giftContent" class="form-control" placeholder="祝福语句">
+											    </div>
 											</div>
+											<div class="row" style="margin-top:10px;">
+												<div class="col" style="margin-left:-15px">
+											      <input type="number" v-model="num" class="form-control" placeholder="数量">
+											    </div>
+											</div>
+											<div class="row" style="margin-top:10px;">
+												<div class="col" style="margin-left:-15px">
+											      <input type="text" class="form-control" v-model="toUsername" placeholder="接收人">
+											    </div>
+											    <div class="col">
+											      <button class="btn btn-primary mb-2" @click="getTakeUser">搜索</button>
+											    </div>
+											</div>
+											<template v-if="takeUser!=''">
+												<div class="row">
+													<div class="RadioStyle">
+													    <div class="Block PaddingL">
+													        <input type="radio" name="gift" id="takeUser" />
+													        <label for="takeUser" style="text-align:center;">
+																<template v-if="takeUser.headStatus == 1">
+																	<img :src="headLink" alt="" width="100px" height="100px">
+																</template>
+																<template v-else>
+																	<img :src="takeUser.headLink" alt="" width="100px" height="100px">
+																</template>
+																<br>
+																<span>{{takeUser.username}}</span>
+															</label>
+													    </div>
+													</div>
+												</div>
+												<div class="row" style="margin-top:10px;">
+													<button class="btn btn-primary mb-2" @click="addGiftOrder">发送礼物</button>
+												</div>
+											</template>
 										</div><!--product-feed-tab end-->
 										<!-- 礼物-------------end -->
 									</div><!--main-ws-sec end-->
@@ -465,10 +505,22 @@
 			<div class="bgPop"></div>
 			<!--弹出框-->
 			<div class="pop">
-				<ul class="nav nav-tabs" >
-					<li role="presentation"><a href="#menu1" data-toggle="tab" class="btn btn-warning">升级</a></li>
-					<li role="presentation" class="active"><a href="#menu2" data-toggle="tab" class="btn btn-warning">账户充值</a></li>
-				</ul>
+				<div class="row" style="background: #2D56A1;">
+					<div class="col-11" >
+						<ul class="nav nav-tabs" >
+							<li role="presentation">
+								<a href="#menu1" data-toggle="tab" class="btn btn-warning" @click="changeType(1)">升级</a>
+							</li>
+							<li role="presentation" class="active">
+								<a href="#menu2" data-toggle="tab" class="btn btn-warning" @click="changeType(2)">账户充值</a>
+							</li>
+						</ul>
+					</div>
+					<div class="col-1" style="font-size: 35px;padding-top:10px;color:white;">
+						<span class="pop-close" @click="closeView">Ｘ</span>
+					</div>
+				</div>
+				
 				<div class="tab-content">
 					<div id="menu1" class="container-fluid tab-pane">
 						<!-- 升级-----------start -->
@@ -476,7 +528,7 @@
 							<div style="margin-right: 25px;">
 								<div class="RadioStyle">
 								    <div class="Block PaddingL">
-								        <input type="radio" name="a" id="model1-1" />
+								        <input type="radio" name="upgradeType" id="model1-1" v-model="upgradeType" value="1"/>
 								        <label for="model1-1">为自己升级</label>
 								    </div>
 								</div>
@@ -484,18 +536,41 @@
 							<div style="margin-right: 25px;">
 								<div class="RadioStyle">
 								    <div class="Block PaddingL">
-								        <input type="radio" name="a" id="model1-2" />
+								        <input type="radio" name="upgradeType" id="model1-2" v-model="upgradeType" value="2"/>
 								        <label for="model1-2">为别人升级</label>
 								    </div>
 								</div>
 							</div>
-							<div>
-								<input type="text" class="form-control" id="" placeholder="用户名">
-							</div>
-							<div>
-								<a class="btn btn-primary">搜索</a>
-							</div>
+							<template v-if="upgradeType == 2">
+								<div>
+									<input type="text" class="form-control" v-model="otherUsername" id="" placeholder="用户名">
+								</div>
+								<div>
+									<a class="btn btn-primary" @click="getOtherUser">搜索</a>
+								</div>
+							</template>
 						</div>
+						<!-- 为别人升级---------start -->
+						<template v-if="otherUser!='' && upgradeType == 2">
+							<div class="row">
+								<div class="RadioStyle">
+								    <div class="Block PaddingL">
+								        <input type="radio" name="gift" id="otherUser" />
+								        <label for="otherUser" style="text-align:center;">
+											<template v-if="otherUser.headStatus == 1">
+												<img :src="headLink" alt="" width="100px" height="100px">
+											</template>
+											<template v-else>
+												<img :src="otherUser.headLink" alt="" width="100px" height="100px">
+											</template>
+											<br>
+											<span>{{otherUser.username}}</span>
+										</label>
+								    </div>
+								</div>
+							</div>
+						</template>
+						<!-- 为别人升级----------end -->
 						<div class="row">
 							<div class="col-5" style="border: 1px solid #B9B9B9;margin-right: 15px;padding: 10px 20px 20px 20px;">
 								<div>
@@ -561,25 +636,25 @@
 										<div class="row">
 											<input type="radio" name="crown" id="model1-4" />
 											<label for="model1-4">
-												<span>102USD / 1月</span>
-												<span>102USD /月</span>
-												<span>节省0.00％</span>
+												<span>262USD / 3月</span>
+												<span>87.33USD /月</span>
+												<span>节省14.38％</span>
 											</label>
 										</div>
 										<div class="row">
 											<input type="radio" name="crown" id="model1-5" />
 											<label for="model1-5">
-												<span>102USD / 1月</span>
-												<span>102USD /月</span>
-												<span>节省0.00％</span>
+												<span>468USD / 6月</span>
+												<span>78USD /月</span>
+												<span>节省23.52％</span>
 											</label>
 										</div>
 										<div class="row">
 											<input type="radio" name="crown" id="model1-6" />
 											<label for="model1-6">
-												<span>102USD / 1月</span>
-												<span>102USD /月</span>
-												<span>节省0.00％</span>
+												<span>786USD / 12月</span>
+												<span>65.50USD /月</span>
+												<span>节省35.78％</span>
 											</label>
 										</div>
 								    </div>
@@ -628,17 +703,17 @@
 								        <div class="row">
 											<input type="radio" name="crown" id="model1-7" />
 											<label for="model1-7">
-												<span>102USD / 1月</span>
-												<span>102USD /月</span>
+												<span>16USD / 1月</span>
+												<span>16USD /月</span>
 												<span>节省0.00％</span>
 											</label>
 										</div>
 										<div class="row">
 											<input type="radio" name="crown" id="model1-8" />
 											<label for="model1-8">
-												<span>102USD / 1月</span>
+												<span>46USD / 3月</span>
 												<span>102USD /月</span>
-												<span>节省0.00％</span>
+												<span>节省15.33％</span>
 											</label>
 										</div>
 								    </div>
@@ -685,7 +760,7 @@
 							<div style="margin-right: 25px;">
 								<div class="RadioStyle">
 								    <div class="Block PaddingL">
-								        <input type="radio" name="a" id="model2-1" />
+								        <input type="radio" name="rechargeType" id="model2-1" v-model="rechargeType" value="1" />
 								        <label for="model2-1">为自己升级</label>
 								    </div>
 								</div>
@@ -693,20 +768,42 @@
 							<div style="margin-right: 25px;">
 								<div class="RadioStyle">
 								    <div class="Block PaddingL">
-								        <input type="radio" name="a" id="model2-2" />
+								        <input type="radio" name="rechargeType" id="model2-2" v-model="rechargeType" value="2"/>
 								        <label for="model2-2">为别人升级</label>
 								    </div>
 								</div>
 							</div>
-							<div>
-								<input type="text" class="form-control" id="" placeholder="用户名">
-							</div>
-							<div>
-								<a class="btn btn-primary">搜索</a>
-							</div>
+							<template v-if="rechargeType == 2">
+								<div>
+									<input type="text" class="form-control" v-model="rechargeUsername" id="" placeholder="用户名">
+								</div>
+								<div>
+									<a class="btn btn-primary" @click="getRechargeUser">搜索</a>
+								</div>
+							</template>
 						</div>
-						<hr />
-						<div class="row" style="padding-left: 30px;">
+						<!-- 为别人升级---------start -->
+						<template v-if="rechargeUser!='' && rechargeType == 2">
+							<div class="row">
+								<div class="RadioStyle">
+								    <div class="Block PaddingL">
+								        <input type="radio" name="gift" id="rechargeUser" />
+								        <label for="rechargeUser" style="text-align:center;">
+											<template v-if="rechargeUser.headStatus == 1">
+												<img :src="headLink" alt="" width="100px" height="100px">
+											</template>
+											<template v-else>
+												<img :src="rechargeUser.headLink" alt="" width="100px" height="100px">
+											</template>
+											<br>
+											<span>{{rechargeUser.username}}</span>
+										</label>
+								    </div>
+								</div>
+							</div>
+						</template>
+						<!-- 为别人升级----------end -->
+						<div class="row">
 							<div class="RadioStyle row">
 							    <div class="Block PaddingL">
 							        <input type="radio" name="a" id="model2-3" />
@@ -731,7 +828,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="row" style="margin-top: 10px;padding-left: 15px;">
+						<div class="row" style="margin-top: 10px;">
 							<div class="RadioStyle">
 							    <div class="Block PaddingL">
 							        <input type="radio" name="payment" id="model2-6" />
@@ -741,7 +838,7 @@
 							    </div>
 							</div>
 						</div>
-						<div class="row" style="margin-top: 10px;padding-left: 15px;">
+						<div class="row" style="margin-top: 10px;">
 							<form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" target="_blank" id="sform">
 								<input type="hidden" name="cmd" value="_xclick">	<!-- 立即支付 -->
 								<input type="hidden" name="business" value="sb-cmysd740119@business.example.com">  <!-- 商家账号-->
@@ -761,6 +858,25 @@
 			</div>
 	
 			<!-- 支付界面-------end -->
+			
+			<!-- 发送消息---start -->
+			<div class="message">
+				<div class="row" style="background: #E44D3A;display: flex;justify-content: space-between;padding: 5px 10px;">
+					<div>
+						<span style="color:white;">{{messageUsername}}</span>
+					</div>
+					<div>
+						<span style="color:white;" @click="closeMessageView">Ｘ</span>
+					</div>
+				</div>
+				<div class="row" style="padding: 5px;">
+					<textarea class="form-control" v-model="messageContent" id="exampleFormControlTextarea1" rows="3"></textarea>
+				</div>
+				<div class="row" style="display: flex;justify-content: center;padding: 0 5px;">
+					<button type="button" class="btn btn-success btn-lg btn-block" @click="sendMessage">发送</button>
+				</div>
+			</div>
+			<!-- 发送消息--end -->
 			
 		</div>
 		
@@ -839,7 +955,31 @@
 				
 				/* 礼物-----------start */
 				gifts:[],
+				takeUser:"",
+				num:1,
+				toUsername:"",
+				giftID:0,
+				giftContent:"",
 				/* 礼物---------------end */
+				
+				/* 消息-----start */
+				messageContent:"",
+				messageToUserID:0,
+				messageUsername:"",
+				/* 消息-----end */
+				
+				/* 支付----------------start */
+				//升级还是充值
+				payType:0,
+				//升级---为自己支付,还是为别人支付
+				upgradeType:0,
+				otherUser:"",
+				otherUsername:"",
+				//充值-------为自己支付,还是为别人支付
+				rechargeType:0,
+				rechargeUser:"",
+				rechargeUsername:"",
+				/* 支付----------------end */
 				
 				/* 标签---------------------start */
 				languageID:1,
@@ -979,6 +1119,35 @@
 						console.log('请求失败处理');
 					});
 				},
+				//获取接收人
+				getTakeUser(){
+					this.$http.get('/user/getUserByUsername/',
+						{params : {time:new Date().getTime(), username:this.toUsername}},{header : {cookie:this.ticket}})
+					.then(function(res) {
+						this.takeUser = res.body.user
+					},function() {
+						console.log('请求失败处理');
+					});
+				},
+				//发送礼物
+				addGiftOrder(){
+					console.log("发送请求")
+					if(this.giftID == 0 || this.toUsername == "" || this.takeUser == "") {
+						return ;
+					}
+					var formData = new FormData();
+					formData.append('content', this.giftContent);
+					formData.append('num', this.num);
+					formData.append('giftID', this.giftID);
+					formData.append('toUsername', this.toUsername);
+				    this.$http.post('/user/addGiftOrder/', formData, 
+				    {headers: { 'Content-Type': 'multipart/form-data', cookie:this.ticket}}).
+				    then(function (res) {
+				    	this.toUsername = ""
+				    }, function (res) {
+				      console.log(res.body);
+				    });
+				},
 				//跳转到登录页面
 				toLoginView(code) {
 					if(code == "302") {
@@ -990,6 +1159,57 @@
 				},
 				toView() {
 					$('.bgPop,.pop').show();
+				},
+				closeView(){
+					$('.bgPop,.pop').hide();
+				},
+				toMessageView(username, toUserID) {
+					this.messageToUserID = toUserID
+					this.messageUsername = username
+					$('.bgPop,.message').show();
+				},
+				closeMessageView() {
+					$('.bgPop,.message').hide();
+					this.messageToUserID = 0
+					this.messageUsername = ""
+						this.messageContent = ""
+				},
+				//添加消息
+				sendMessage(){
+					if(this.messageContent == "") {
+						return ;
+					}
+					var formData = new FormData();
+					formData.append('content', this.messageContent);
+					formData.append('toUserID', this.messageToUserID);
+					this.$http.post('/user/addMessage/', formData).
+					then(function (res) {
+						this.closeMessageView()
+					}, function (res) {
+					  console.log(res.body);
+					});
+				},
+				/* 支付 */
+				changeType(payType){
+					this.payType = payType;
+				},
+				getOtherUser(){
+					this.$http.get('/user/getUserByUsername/',
+						{params : {time:new Date().getTime(), username:this.otherUsername}},{header : {cookie:this.ticket}})
+					.then(function(res) {
+						this.otherUser = res.body.user
+					},function() {
+						console.log('请求失败处理');
+					});
+				},
+				getRechargeUser(){
+					this.$http.get('/user/getUserByUsername/',
+						{params : {time:new Date().getTime(), username:this.rechargeUsername}},{header : {cookie:this.ticket}})
+					.then(function(res) {
+						this.rechargeUser = res.body.user
+					},function() {
+						console.log('请求失败处理');
+					});
 				},
 				change() {
 					if(this.languageID == 1) {

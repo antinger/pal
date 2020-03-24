@@ -17,11 +17,11 @@ import com.pal.entity.GiftOrder;
 public interface GiftOrderDao {
 	
 	String TABLE_NAME = "giftOrder";
-    String INSERT_FIELDS = " giftID, username, toUsername, createDate, content, status ";
+    String INSERT_FIELDS = " giftID, num, price, username, toUsername, createDate, content, status ";
     String SELECT_FIELDS = " id, " + INSERT_FIELDS;
     
     //添加礼物
-    @Insert({"insert into ", TABLE_NAME, "(", INSERT_FIELDS, ") values (#{giftID},#{username},#{toUsername},#{createDate},#{content}, #{status})"})
+    @Insert({"insert into ", TABLE_NAME, "(", INSERT_FIELDS, ") values (#{giftID},#{num},#{price},#{username},#{toUsername},#{createDate},#{content}, #{status})"})
     void addGiftOrder(GiftOrder giftOrder);
     
     //通过ID获取礼物记录
