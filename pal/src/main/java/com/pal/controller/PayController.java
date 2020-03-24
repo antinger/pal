@@ -3,6 +3,7 @@ package com.pal.controller;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
@@ -27,7 +28,8 @@ public class PayController {
 	
 	@RequestMapping(path="/paysuccess/", method=RequestMethod.POST)
 	@ResponseBody
-	public String paysuccess(HttpServletRequest request, HttpServletResponse response) {
+	public String paysuccess(HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException {
+		request.setCharacterEncoding("UTF-8");
 		try {
 			System.out.println("支付成功---------");
 			Enumeration<String> parameterNames = request.getParameterNames();
