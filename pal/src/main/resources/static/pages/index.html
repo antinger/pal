@@ -753,7 +753,7 @@
 							<input type="hidden" name="bn" value="IC_Sample">
 							<input type='hidden' name='rm' value='2'>
 							<!-- 自定义变量 -->
-							<input type='hidden' name='custom' value='' v-model="upgradeCustom">
+							<input type='hidden' name='custom' value='' id="custom">
 							<button type="submit"><img src="images/paypal.png"></button>
 						</form>
 						<!-- 升级-----------end -->
@@ -1231,6 +1231,8 @@
 					} else {
 						this.upgradeCustom = this.upgradeType + "&" + this.otherUsername + "&" + this.crown + "&" + this.shoptype
 					}
+					console.log("输出" + this.upgradeCustom)
+					document.getElementById("custom").value=this.upgradeCustom
 					return true
 				},
 				change() {
