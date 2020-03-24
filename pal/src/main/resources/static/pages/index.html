@@ -754,7 +754,7 @@
 							<input type='hidden' name='rm' value='2'>
 							<!-- 自定义变量 -->
 							<input type='hidden' name='custom' value='' id="custom">
-							<button @click="chickUpgrade"><img src="images/paypal.png"></button>
+							<button @click="checkUpgrade"><img src="images/paypal.png"></button>
 						</form>
 						<!-- 升级-----------end -->
 					</div>
@@ -835,7 +835,7 @@
 						<div class="row" style="margin-top: 10px;">
 							<div class="RadioStyle">
 							    <div class="Block PaddingL">
-							        <input type="radio" name="recharge" id="model2-6" v-model="recharge"/>
+							        <input type="radio" name="recharge" id="model2-6" v-model="recharge" value="1"/>
 							        <label for="model2-6">
 										<img src="images/pay/paypal.png" height="80px"/>
 									</label>
@@ -843,17 +843,23 @@
 							</div>
 						</div>
 						<div class="row" style="margin-top: 10px;">
-							<form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" target="_blank" id="sform">
+							<form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" target="_blank" id="sform-2">
 								<input type="hidden" name="cmd" value="_xclick">	<!-- 立即支付 -->
 								<input type="hidden" name="business" value="sb-cmysd740119@business.example.com">  <!-- 商家账号-->
 								<input id='item_number' type="hidden" name="item_number" value="产品编号"> <!-- 产品编号-->
-								<input id='amount' type="hidden" name="amount">  <!-- 付款/充值金额  -->
+								<input id='amount2' type="hidden" name="amount">  <!-- 付款/充值金额  -->
+								<!-- 支付成功后paypal后台发送回调地址-->
+								<input type='hidden' name='notify_url' value='http://47.115.142.159:8080/paysuccess/'>  
+								<!-- 支付成功后网页跳转地址-->
+								<input type='hidden' name='return' value='http://47.115.142.159:8080/pages/success.html'> 
 								<input type="hidden" name="currency_code" value="USD">	<!-- 货币 -->
 								<input type='hidden' name='charset' value='utf-8'>	<!-- 字符集 -->
 								<input type="hidden" name="no_shipping" value="1"> <!-- 不要求客户提供收货地址 -->
 								<input type="hidden" name="bn" value="IC_Sample">
 								<input type='hidden' name='rm' value='2'>
-								<a class="btn btn-success">立即支付</a>
+								<!-- 自定义变量 -->
+								<input type='hidden' name='custom' id="custom2">
+								<a class="btn btn-success" @click="checkRecharge">立即支付</a>
 							</form>
 						</div>
 						<!-- 充值-----------------------end -->
@@ -977,18 +983,28 @@
 				payType:0,
 				//升级---为自己支付,还是为别人支付
 				upgradeType:0,
+				//为别人升级-显示得用户
 				otherUser:"",
+				//别人得用户名
 				otherUsername:"",
+				//选择升级
 				crown:0,
+				//自定义变量
 				upgradeCustom:"",
-				//支付方式
+				//升级支付方式
 				shoptype:"",
 				//充值-------为自己支付,还是为别人支付
 				rechargeType:0,
+				//为别人充值得用户
 				rechargeUser:"",
+				//别人得名字
 				rechargeUsername:"",
+				//充值金额
 				money:0,
+				//选择充值方式
 				recharge:0,
+				//自定义变量
+				rechargeCustom:"",
 				/* 支付----------------end */
 				
 				/* 标签---------------------start */
@@ -1222,7 +1238,7 @@
 						console.log('请求失败处理');
 					});
 				},
-				chickUpgrade(){
+				checkUpgrade(){
 					if(this.upgradeType == 0 || this.crown == 0 || this.shoptype == 0) {
 						return
 					}
@@ -1230,14 +1246,30 @@
 						return
 					}
 					if(this.upgradeType == 1) {
-						this.upgradeCustom = this.upgradeType + "&" + this.ticket + "&" + this.crown + "&" + this.shoptype
+						this.upgradeCustom = this.upgradeType + "&" + this.ticket + "&" + this.crown + "&" + this.shoptype + "&" + this.payType
 					} else {
-						this.upgradeCustom = this.upgradeType + "&" + this.otherUsername + "&" + this.crown + "&" + this.shoptype
+						this.upgradeCustom = this.upgradeType + "&" + this.otherUsername + "&" + this.crown + "&" + this.shoptype + "&" + this.payType
 					}
 					console.log("输出" + this.upgradeCustom)
 					document.getElementById("custom").value=this.upgradeCustom
 					document.getElementById("amount").value=this.crown
 					document.getElementById("sform-1").submit()
+				},
+				checkRecharge(){
+					if(this.rechargeType == 0 || this.money == 0 || this.recharge == 0) {
+						return
+					}
+					if(this.rechargeType == 2 && this.rechargeUsername == "" && this.rechargeUser == null) {
+						return
+					}
+					if(this.rechargeType == 1) {
+						this.rechargeCustom = this.rechargeType + "&" + this.ticket + "&" + this.money + "&" + this.recharge + "&" + this.payType
+					} else {
+						this.rechargeCustom = this.rechargeType + "&" + this.rechargeUsername + "&" + this.money + "&" + this.recharge + "&" + this.payType
+					}
+					document.getElementById("custom2").value=this.rechargeCustom
+					document.getElementById("amount2").value=this.crown
+					document.getElementById("sform-2").submit()
 				},
 				change() {
 					if(this.languageID == 1) {
