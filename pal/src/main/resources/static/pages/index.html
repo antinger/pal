@@ -723,7 +723,7 @@
 						<div class="row" style="margin-top: 10px;">
 							<div class="RadioStyle">
 							    <div class="Block PaddingL">
-							        <input type="radio" name="payment" id="model1-9" />
+							        <input type="radio" name="payment" id="model1-9" v-model="shoptype" value="1"/>
 							        <label for="model1-9">
 										<img src="images/pay/paypal.png" height="80px"/>
 									</label>
@@ -731,7 +731,7 @@
 							</div>
 							<div class="RadioStyle" style="margin-left: 30px;">
 							    <div class="Block PaddingL">
-							        <input type="radio" name="payment" id="model1-10" />
+							        <input type="radio" name="payment" id="model1-10" v-model="shoptype" value="2"/>
 							        <label for="model1-10">
 										<img src="images/pay/yue.png" height="80px" width="200px"/>
 									</label>
@@ -753,7 +753,7 @@
 							<input type="hidden" name="bn" value="IC_Sample">
 							<input type='hidden' name='rm' value='2'>
 							<!-- 自定义变量 -->
-							<input type='hidden' name='custom' value='' v-model="upgradeCustom">
+							<input type='hidden' name='custom' value='' id="custom">
 							<button type="submit"><img src="images/paypal.png"></button>
 						</form>
 						<!-- 升级-----------end -->
@@ -981,6 +981,8 @@
 				otherUsername:"",
 				crown:0,
 				upgradeCustom:"",
+				//支付方式
+				shoptype:"",
 				//充值-------为自己支付,还是为别人支付
 				rechargeType:0,
 				rechargeUser:"",
@@ -1218,17 +1220,19 @@
 					});
 				},
 				chickUpgrade(){
-					if(this.upgradeType == 0 || this.crown == 0) {
+					if(this.upgradeType == 0 || this.crown == 0 || this.shoptype == 0) {
 						return false;
 					}
 					if(this.upgradeType == 2 && this.otherUsername == "") {
 						return false;
 					}
 					if(this.upgradeType == 1) {
-						this.upgradeCustom = this.upgradeType + "&" + this.ticket + "&" + this.crown
+						this.upgradeCustom = this.upgradeType + "&" + this.ticket + "&" + this.crown + "&" + this.shoptype
 					} else {
-						this.upgradeCustom = this.upgradeType + "&" + this.otherUsername + "&" + this.crown
+						this.upgradeCustom = this.upgradeType + "&" + this.otherUsername + "&" + this.crown + "&" + this.shoptype
 					}
+					console.log("输出" + this.upgradeCustom)
+					document.getElementById("custom").value=this.upgradeCustom
 					return true
 				},
 				change() {
