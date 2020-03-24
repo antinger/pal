@@ -738,7 +738,7 @@
 							    </div>
 							</div>
 						</div>
-						<form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" target="_blank" id="sform" onsubmit="return chickUpgrade()">
+						<form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" target="_blank" id="sform" onsubmit="return chechupgrade()">
 							<input type="hidden" name="cmd" value="_xclick">	<!-- 立即支付 -->
 							<input type="hidden" name="business" value="sb-cmysd740119@business.example.com">  <!-- 商家账号-->
 							<input id='item_number' type="hidden" name="item_number" value="产品编号"> <!-- 产品编号-->
@@ -905,22 +905,8 @@
 				usePopupCaption: true
 			});
 		});
-		function chickUpgrade(){
-			this.getUserInfo()
-			// if(this.upgradeType == 0 || this.crown == 0 || this.shoptype == 0) {
-			// 	return false;
-			// }
-			// if(this.upgradeType == 2 && this.otherUsername == "") {
-			// 	return false;
-			// }
-			// if(this.upgradeType == 1) {
-			// 	this.upgradeCustom = this.upgradeType + "&" + this.ticket + "&" + this.crown + "&" + this.shoptype
-			// } else {
-			// 	this.upgradeCustom = this.upgradeType + "&" + this.otherUsername + "&" + this.crown + "&" + this.shoptype
-			// }
-			//console.log("输出" + this.upgradeCustom)
-			//document.getElementById("custom").value=this.upgradeCustom
-			return false
+		function chechupgrade(){
+			return this.chickUpgrade()
 		}
 	</script>
 	<script>
@@ -1236,6 +1222,22 @@
 						console.log('请求失败处理');
 					});
 				},
+				chickUpgrade(){
+					if(this.upgradeType == 0 || this.crown == 0 || this.shoptype == 0) {
+						return false;
+					}
+					if(this.upgradeType == 2 && this.otherUsername == "") {
+						return false;
+					}
+					if(this.upgradeType == 1) {
+						this.upgradeCustom = this.upgradeType + "&" + this.ticket + "&" + this.crown + "&" + this.shoptype
+					} else {
+						this.upgradeCustom = this.upgradeType + "&" + this.otherUsername + "&" + this.crown + "&" + this.shoptype
+					}
+					console.log("输出" + this.upgradeCustom)
+					document.getElementById("custom").value=this.upgradeCustom
+					return true
+				},
 				change() {
 					if(this.languageID == 1) {
 						this.topLabel = ["个人资料", "消息", "退出"]
@@ -1274,6 +1276,10 @@
 				      console.log(this.image);
 				}
 			},
+			mounted() {
+			    //将Vue方法传到全局对象window中
+			    window.updateSocket = this.chickUpgrade;
+			}
 			beforeMount() {
 				this.checkTicket()
 				this.getUserInfo()
