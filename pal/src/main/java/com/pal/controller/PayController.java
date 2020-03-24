@@ -20,6 +20,7 @@ public class PayController {
 	@ResponseBody
 	public String paysuccess(HttpServletRequest request) {
 		try {
+			System.out.println("支付成功---------");
 			System.out.println(JSON.toJSONString(request));
 			Map<String, Object> map = null;
 			return PalUtils.toJSONString(200, map);
