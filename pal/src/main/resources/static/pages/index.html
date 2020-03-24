@@ -115,14 +115,14 @@
 												<ul class="flw-hr">
 													<li>
 														<div id="gallery">
-															<a @click="toView" class="flww">
+															<a @click="toView(1)" class="flww">
 																<i class="la la-plus"></i> {{leftLabel[0]}}
 															</a>
 														</div>
 													</li>
 													<li>
 														<div id="gallery-recharge">
-															<a @click="toView" class="flww">
+															<a @click="toView(2)" class="flww">
 																{{leftLabel[1]}}
 															</a>
 														</div>
@@ -508,10 +508,10 @@
 				<div class="row" style="background: #2D56A1;">
 					<div class="col-11" >
 						<ul class="nav nav-tabs" >
-							<li role="presentation">
+							<li role="presentation"  v-bind:class="{ active: (1 == payType) }">
 								<a href="#menu1" data-toggle="tab" class="btn btn-warning" @click="changeType(1)">升级</a>
 							</li>
-							<li role="presentation" class="active">
+							<li role="presentation"  v-bind:class="{ active: (2 == payType) }">
 								<a href="#menu2" data-toggle="tab" class="btn btn-warning" @click="changeType(2)">账户充值</a>
 							</li>
 						</ul>
@@ -738,7 +738,7 @@
 							    </div>
 							</div>
 						</div>
-						<form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" target="_blank" id="sform" onsubmit="return checkupgrade()">
+						<form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" target="_blank" id="sform-1">
 							<input type="hidden" name="cmd" value="_xclick">	<!-- 立即支付 -->
 							<input type="hidden" name="business" value="sb-cmysd740119@business.example.com">  <!-- 商家账号-->
 							<input id='item_number' type="hidden" name="item_number" value="产品编号"> <!-- 产品编号-->
@@ -754,7 +754,7 @@
 							<input type='hidden' name='rm' value='2'>
 							<!-- 自定义变量 -->
 							<input type='hidden' name='custom' value='' id="custom">
-							<button type="submit"><img src="images/paypal.png"></button>
+							<button @click="chickUpgrade"><img src="images/paypal.png"></button>
 						</form>
 						<!-- 升级-----------end -->
 					</div>
@@ -905,9 +905,6 @@
 				usePopupCaption: true
 			});
 		});
-		function checkupgrade(){
-			return chickUpgrade()
-		}
 	</script>
 	<script>
 		var vm = new Vue({
@@ -1168,7 +1165,8 @@
 				checkTicket() {
 					this.ticket = localStorage.getItem("ticket");
 				},
-				toView() {
+				toView(payType) {
+					this.payType = payType
 					$('.bgPop,.pop').show();
 				},
 				closeView(){
@@ -1224,10 +1222,10 @@
 				},
 				chickUpgrade(){
 					if(this.upgradeType == 0 || this.crown == 0 || this.shoptype == 0) {
-						return false;
+						return
 					}
 					if(this.upgradeType == 2 && this.otherUsername == "") {
-						return false;
+						return
 					}
 					if(this.upgradeType == 1) {
 						this.upgradeCustom = this.upgradeType + "&" + this.ticket + "&" + this.crown + "&" + this.shoptype
@@ -1236,7 +1234,7 @@
 					}
 					console.log("输出" + this.upgradeCustom)
 					document.getElementById("custom").value=this.upgradeCustom
-					return true
+					document.getElementById("sform-1").submit()
 				},
 				change() {
 					if(this.languageID == 1) {
@@ -1275,10 +1273,6 @@
 				      this.image= event.target.files[0]
 				      console.log(this.image);
 				}
-			},
-			mounted() {
-			    //将Vue方法传到全局对象window中
-			    window.updateSocket = this.chickUpgrade;
 			},
 			beforeMount() {
 				this.checkTicket()
