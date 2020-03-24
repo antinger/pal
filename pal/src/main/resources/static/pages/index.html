@@ -626,7 +626,7 @@
 								<div class="RadioStyle">
 								    <div class="Block PaddingL">
 								        <div class="row">
-											<input type="radio" name="crown" id="model1-3" />
+											<input type="radio" name="crown" id="model1-3" v-model="crown"/>
 											<label for="model1-3">
 												<span>102USD / 1月</span>
 												<span>102USD /月</span>
@@ -634,7 +634,7 @@
 											</label>
 										</div>
 										<div class="row">
-											<input type="radio" name="crown" id="model1-4" />
+											<input type="radio" name="crown" id="model1-4" v-model="crown" />
 											<label for="model1-4">
 												<span>262USD / 3月</span>
 												<span>87.33USD /月</span>
@@ -642,7 +642,7 @@
 											</label>
 										</div>
 										<div class="row">
-											<input type="radio" name="crown" id="model1-5" />
+											<input type="radio" name="crown" id="model1-5"  v-model="crown"/>
 											<label for="model1-5">
 												<span>468USD / 6月</span>
 												<span>78USD /月</span>
@@ -650,7 +650,7 @@
 											</label>
 										</div>
 										<div class="row">
-											<input type="radio" name="crown" id="model1-6" />
+											<input type="radio" name="crown" id="model1-6"  v-model="crown"/>
 											<label for="model1-6">
 												<span>786USD / 12月</span>
 												<span>65.50USD /月</span>
@@ -701,7 +701,7 @@
 								<div class="RadioStyle">
 								    <div class="Block PaddingL">
 								        <div class="row">
-											<input type="radio" name="crown" id="model1-7" />
+											<input type="radio" name="crown" id="model1-7"  v-model="crown"/>
 											<label for="model1-7">
 												<span>16USD / 1月</span>
 												<span>16USD /月</span>
@@ -709,7 +709,7 @@
 											</label>
 										</div>
 										<div class="row">
-											<input type="radio" name="crown" id="model1-8" />
+											<input type="radio" name="crown" id="model1-8"  v-model="crown"/>
 											<label for="model1-8">
 												<span>46USD / 3月</span>
 												<span>102USD /月</span>
@@ -738,20 +738,24 @@
 							    </div>
 							</div>
 						</div>
-						<div class="row" style="margin-top: 10px;">
-							<form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" target="_blank" id="sform">
-								<input type="hidden" name="cmd" value="_xclick">	<!-- 立即支付 -->
-								<input type="hidden" name="business" value="sb-cmysd740119@business.example.com">  <!-- 商家账号-->
-								<input id='item_number' type="hidden" name="item_number" value="产品编号"> <!-- 产品编号-->
-								<input id='amount' type="hidden" name="amount" value="100">  <!-- 付款/充值金额  -->
-								<input type="hidden" name="currency_code" value="USD">	<!-- 货币 -->
-								<input type='hidden' name='charset' value='utf-8'>	<!-- 字符集 -->
-								<input type="hidden" name="no_shipping" value="1"> <!-- 不要求客户提供收货地址 -->
-								<input type="hidden" name="bn" value="IC_Sample">
-								<input type='hidden' name='rm' value='2'>
-								<a class="btn btn-success">立即支付</a>
-							</form>
-						</div>
+						<form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" target="_blank" id="sform" onsubmit="return chickUpgrade()">
+							<input type="hidden" name="cmd" value="_xclick">	<!-- 立即支付 -->
+							<input type="hidden" name="business" value="sb-cmysd740119@business.example.com">  <!-- 商家账号-->
+							<input id='item_number' type="hidden" name="item_number" value="产品编号"> <!-- 产品编号-->
+							<input id='amount' type="hidden" name="amount" value="100">  <!-- 付款/充值金额  -->
+							<input type="hidden" name="currency_code" value="USD">	<!-- 货币 -->
+							<!-- 支付成功后paypal后台发送回调地址-->
+							<input type='hidden' name='notify_url' value='http://47.115.142.159:8080/paysuccess/'>  
+							<!-- 支付成功后网页跳转地址-->
+							<input type='hidden' name='return' value='http://47.115.142.159:8080/pages/success.html'> 
+							<input type='hidden' name='charset' value='utf-8'>	<!-- 字符集 -->
+							<input type="hidden" name="no_shipping" value="1"> <!-- 不要求客户提供收货地址 -->
+							<input type="hidden" name="bn" value="IC_Sample">
+							<input type='hidden' name='rm' value='2'>
+							<!-- 自定义变量 -->
+							<input type='hidden' name='custom' value='' v-model="upgradeCustom">
+							<button type="submit"><img src="images/paypal.png"></button>
+						</form>
 						<!-- 升级-----------end -->
 					</div>
 					<div id="menu2" class="container-fluid tab-pane active">
@@ -843,7 +847,7 @@
 								<input type="hidden" name="cmd" value="_xclick">	<!-- 立即支付 -->
 								<input type="hidden" name="business" value="sb-cmysd740119@business.example.com">  <!-- 商家账号-->
 								<input id='item_number' type="hidden" name="item_number" value="产品编号"> <!-- 产品编号-->
-								<input id='amount' type="hidden" name="amount" value="100">  <!-- 付款/充值金额  -->
+								<input id='amount' type="hidden" name="amount" v-model="crown">  <!-- 付款/充值金额  -->
 								<input type="hidden" name="currency_code" value="USD">	<!-- 货币 -->
 								<input type='hidden' name='charset' value='utf-8'>	<!-- 字符集 -->
 								<input type="hidden" name="no_shipping" value="1"> <!-- 不要求客户提供收货地址 -->
@@ -975,6 +979,8 @@
 				upgradeType:0,
 				otherUser:"",
 				otherUsername:"",
+				crown:0,
+				upgradeCustom:"",
 				//充值-------为自己支付,还是为别人支付
 				rechargeType:0,
 				rechargeUser:"",
@@ -1210,6 +1216,20 @@
 					},function() {
 						console.log('请求失败处理');
 					});
+				},
+				chickUpgrade(){
+					if(this.upgradeType == 0 || this.crown == 0) {
+						return false;
+					}
+					if(this.upgradeType == 2 && this.otherUsername == "") {
+						return false;
+					}
+					if(this.upgradeType == 1) {
+						this.upgradeCustom = this.upgradeType + "&" + this.ticket + "&" + this.crown
+					} else {
+						this.upgradeCustom = this.upgradeType + "&" + this.otherUsername + "&" + this.crown
+					}
+					return true
 				},
 				change() {
 					if(this.languageID == 1) {
