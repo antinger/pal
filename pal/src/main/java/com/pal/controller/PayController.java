@@ -16,21 +16,9 @@ import com.pal.utils.PalUtils;
 @Controller
 public class PayController {
 	
-	@RequestMapping(path="/paysuccess/", method=RequestMethod.GET)
+	@RequestMapping(path="/paysuccess/", method=RequestMethod.POST)
 	@ResponseBody
 	public String paysuccess(HttpServletRequest request) {
-		try {
-			System.out.println(JSON.toJSONString(request));
-			Map<String, Object> map = null;
-			return PalUtils.toJSONString(200, map);
-		} catch (Exception e) {
-			return PalUtils.toJSONString(500, "获取推送用户失败");
-		}
-	}
-	
-	@RequestMapping(path="/payfail/", method=RequestMethod.GET)
-	@ResponseBody
-	public String payfail(HttpServletRequest request) {
 		try {
 			System.out.println(JSON.toJSONString(request));
 			Map<String, Object> map = null;
