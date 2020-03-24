@@ -32,8 +32,8 @@ public class OrderForm {
 		this.toUserName = "";
 		this.content = "";
 		this.price = 0;
-		this.createDate = null;
-		this.doneDate = null;
+		this.createDate = new Date();
+		this.doneDate = new Date();
 	}
 
 	public Integer getId() {
