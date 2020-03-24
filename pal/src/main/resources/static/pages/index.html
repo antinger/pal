@@ -626,7 +626,7 @@
 								<div class="RadioStyle">
 								    <div class="Block PaddingL">
 								        <div class="row">
-											<input type="radio" name="crown" id="model1-3" v-model="crown"/>
+											<input type="radio" name="crown" id="model1-3" v-model="crown" value="102"/>
 											<label for="model1-3">
 												<span>102USD / 1月</span>
 												<span>102USD /月</span>
@@ -634,7 +634,7 @@
 											</label>
 										</div>
 										<div class="row">
-											<input type="radio" name="crown" id="model1-4" v-model="crown" />
+											<input type="radio" name="crown" id="model1-4" v-model="crown" value="262"/>
 											<label for="model1-4">
 												<span>262USD / 3月</span>
 												<span>87.33USD /月</span>
@@ -642,7 +642,7 @@
 											</label>
 										</div>
 										<div class="row">
-											<input type="radio" name="crown" id="model1-5"  v-model="crown"/>
+											<input type="radio" name="crown" id="model1-5"  v-model="crown" value="468"/>
 											<label for="model1-5">
 												<span>468USD / 6月</span>
 												<span>78USD /月</span>
@@ -650,7 +650,7 @@
 											</label>
 										</div>
 										<div class="row">
-											<input type="radio" name="crown" id="model1-6"  v-model="crown"/>
+											<input type="radio" name="crown" id="model1-6"  v-model="crown" value="786"/>
 											<label for="model1-6">
 												<span>786USD / 12月</span>
 												<span>65.50USD /月</span>
@@ -701,7 +701,7 @@
 								<div class="RadioStyle">
 								    <div class="Block PaddingL">
 								        <div class="row">
-											<input type="radio" name="crown" id="model1-7"  v-model="crown"/>
+											<input type="radio" name="crown" id="model1-7"  v-model="crown" value="16"/>
 											<label for="model1-7">
 												<span>16USD / 1月</span>
 												<span>16USD /月</span>
@@ -709,10 +709,10 @@
 											</label>
 										</div>
 										<div class="row">
-											<input type="radio" name="crown" id="model1-8"  v-model="crown"/>
+											<input type="radio" name="crown" id="model1-8"  v-model="crown" value="46"/>
 											<label for="model1-8">
 												<span>46USD / 3月</span>
-												<span>102USD /月</span>
+												<span>15.33USD /月</span>
 												<span>节省15.33％</span>
 											</label>
 										</div>
@@ -742,7 +742,7 @@
 							<input type="hidden" name="cmd" value="_xclick">	<!-- 立即支付 -->
 							<input type="hidden" name="business" value="sb-cmysd740119@business.example.com">  <!-- 商家账号-->
 							<input id='item_number' type="hidden" name="item_number" value="产品编号"> <!-- 产品编号-->
-							<input id='amount' type="hidden" name="amount" value="100">  <!-- 付款/充值金额  -->
+							<input id='amount' type="hidden" name="amount" >  <!-- 付款/充值金额  -->
 							<input type="hidden" name="currency_code" value="USD">	<!-- 货币 -->
 							<!-- 支付成功后paypal后台发送回调地址-->
 							<input type='hidden' name='notify_url' value='http://47.115.142.159:8080/paysuccess/'>  
@@ -810,21 +810,21 @@
 						<div class="row">
 							<div class="RadioStyle row">
 							    <div class="Block PaddingL">
-							        <input type="radio" name="a" id="model2-3" />
+							        <input type="radio" name="money" id="model2-3" v-model="money" />
 							        <label for="model2-3">
-										<img src="images/pay/yue.png" height="80px" width="200px" />
+										<img src="images/pay/yue.png" height="80px" width="200px" value="500"/>
 										500美元
 									</label>
 							    </div>
 								<div class="Block PaddingL">
-								    <input type="radio" name="a" id="model2-4" />
+								    <input type="radio" name="money" id="model2-4" v-model="money" value="200"/>
 								    <label for="model2-4">
 										<img src="images/pay/yue.png" height="80px" width="200px"/>
 										200美元
 									</label>
 								</div>
 								<div class="Block PaddingL">
-								    <input type="radio" name="a" id="model2-5" />
+								    <input type="radio" name="money" id="model2-5" v-model="money" value="100" />
 								    <label for="model2-5">
 										<img src="images/pay/yue.png" height="80px" width="200px"/>
 										100美元
@@ -835,7 +835,7 @@
 						<div class="row" style="margin-top: 10px;">
 							<div class="RadioStyle">
 							    <div class="Block PaddingL">
-							        <input type="radio" name="payment" id="model2-6" />
+							        <input type="radio" name="recharge" id="model2-6" v-model="recharge"/>
 							        <label for="model2-6">
 										<img src="images/pay/paypal.png" height="80px"/>
 									</label>
@@ -847,7 +847,7 @@
 								<input type="hidden" name="cmd" value="_xclick">	<!-- 立即支付 -->
 								<input type="hidden" name="business" value="sb-cmysd740119@business.example.com">  <!-- 商家账号-->
 								<input id='item_number' type="hidden" name="item_number" value="产品编号"> <!-- 产品编号-->
-								<input id='amount' type="hidden" name="amount" v-model="crown">  <!-- 付款/充值金额  -->
+								<input id='amount' type="hidden" name="amount">  <!-- 付款/充值金额  -->
 								<input type="hidden" name="currency_code" value="USD">	<!-- 货币 -->
 								<input type='hidden' name='charset' value='utf-8'>	<!-- 字符集 -->
 								<input type="hidden" name="no_shipping" value="1"> <!-- 不要求客户提供收货地址 -->
@@ -987,6 +987,8 @@
 				rechargeType:0,
 				rechargeUser:"",
 				rechargeUsername:"",
+				money:0,
+				recharge:0,
 				/* 支付----------------end */
 				
 				/* 标签---------------------start */
@@ -1234,6 +1236,7 @@
 					}
 					console.log("输出" + this.upgradeCustom)
 					document.getElementById("custom").value=this.upgradeCustom
+					document.getElementById("amount").value=this.crown
 					document.getElementById("sform-1").submit()
 				},
 				change() {
