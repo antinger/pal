@@ -73,6 +73,7 @@ public class MemberTicketService {
 		}
 		memberTicket.setExpired(new Date(expired));
 		memberTicket.setStatus(0);
+		System.out.println("开始添加会员");
 		memberTicketDao.addMemberTicket(memberTicket);
 	}
 	
