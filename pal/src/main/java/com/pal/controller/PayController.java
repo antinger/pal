@@ -105,8 +105,10 @@ public class PayController {
             	//为自己升级还是为别人升级
             	String upgradeType = customs[1];
             	if("1".equals(upgradeType)) {
+            		System.out.println("为自己升级");
             		memberTicketService.addMemberTicketForUsername(ticket, money);
             	} else {
+            		System.out.println("为别人升级");
             		String toUsername = customs[4];
             		memberTicketService.addMemberTicketForToUsername(ticket, toUsername, money);
             	}
@@ -114,8 +116,10 @@ public class PayController {
             	//充值
             	String recharge = customs[1];
             	if("1".equals(recharge)) {
+            		System.out.println("为自己充值");
             		map = walletService.rechargeByTicket(ticket, money);
             	} else {
+            		System.out.println("为别人充值");
             		String toUsername = customs[4];
             		map = walletService.recharge(ticket, toUsername, money);
             	}
