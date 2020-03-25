@@ -46,7 +46,8 @@ public class WalletService {
 	//为别人充值
 	public Map<String, Object> recharge(String ticket, String username, String money) {
 		Map<String, Object> map = new HashMap<String, Object>();
-		walletDao.updateWallet(username, Integer.valueOf(money));
+		Wallet wallet = walletDao.selectByUsername(username);
+		walletDao.updateWallet(wallet.getUsername(), wallet.getBalance() + Integer.valueOf(money));
 		orderFormService.addOrderForm(getThreadUserName(ticket), username, "充值", Integer.valueOf(money));
 		map.put("message", "充值成功");
 		return map;
@@ -55,7 +56,8 @@ public class WalletService {
 	//为自己充值
 	public Map<String, Object> rechargeByTicket(String ticket, String money) {
 		Map<String, Object> map = new HashMap<String, Object>();
-		walletDao.updateWallet(getThreadUserName(ticket), Integer.valueOf(money));
+		Wallet wallet = walletDao.selectByUsername(getThreadUserName(ticket));
+		walletDao.updateWallet(wallet.getUsername(), wallet.getBalance() + Integer.valueOf(money));
 		orderFormService.addOrderForm(getThreadUserName(ticket), getThreadUserName(ticket), "充值", Integer.valueOf(money));
 		map.put("message", "充值成功");
 		return map;
