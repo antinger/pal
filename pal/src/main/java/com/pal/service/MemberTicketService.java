@@ -31,6 +31,7 @@ public class MemberTicketService {
 		//获取当前线程用户名
 		String username = getThreadUserName(ticket);
 		//添加会员
+		System.out.println("添加会员");
 		addMemeberTicket(username, money);
 		orderFormService.addOrderForm(username, username, "升级", Integer.valueOf(money));
 		map.put("message", "充值成功");
