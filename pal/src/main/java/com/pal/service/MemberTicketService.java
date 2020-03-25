@@ -58,19 +58,23 @@ public class MemberTicketService {
 		String[] messages = message.split("&");
 		Integer grade = Integer.valueOf(messages[0]);
 		Integer mouths = Integer.valueOf(messages[1]);
+		long expired = 0L;
 		if(memberTicket == null) {
 			memberTicket = new MemberTicket();
-		}
-		memberTicket.setGrade(grade);
-		memberTicket.setUsername(username);
-		long expired = memberTicket.getExpired().getTime();
-		long createDate = memberTicket.getCreateDate().getTime();
-		if(expired < createDate) {
 			memberTicket.setCreateDate(new Date());
 			expired = new Date().getTime() + mouths * 30 * 1000 * 60 * 60 * 24;
 		} else {
-			expired = expired + mouths * 30 * 1000 * 60 * 60 * 24;
+			expired = memberTicket.getExpired().getTime();
+			long createDate = memberTicket.getCreateDate().getTime();
+			if(expired < createDate) {
+				memberTicket.setCreateDate(new Date());
+				expired = new Date().getTime() + mouths * 30 * 1000 * 60 * 60 * 24;
+			} else {
+				expired = expired + mouths * 30 * 1000 * 60 * 60 * 24;
+			}
 		}
+		memberTicket.setGrade(grade);
+		memberTicket.setUsername(username);
 		memberTicket.setExpired(new Date(expired));
 		memberTicket.setStatus(0);
 		System.out.println("开始添加会员");
