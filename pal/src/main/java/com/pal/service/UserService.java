@@ -53,28 +53,28 @@ public class UserService {
 	public Map<String, Object> register(String username, String password, String email, Date birthday, Integer sex, String ip) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		if(username == null || "".equals(username)) {
-			map.put("username", "用户名不能为空");
+			map.put("eor", "用户名不能为空");
 			return map;
 		}
 		if(email == null || "".equals(email)) {
-			map.put("email", "邮箱不能为空");
+			map.put("eor", "邮箱不能为空");
 			return map;
 		}
 		if(birthday == null) {
-			map.put("birthday", "生日不能为空");
+			map.put("eor", "生日不能为空");
 			return map;
 		}
 		if(password == null || "".equals(password)) {
-			map.put("password", "密码不能为空");
+			map.put("eor", "密码不能为空");
 			return map;
 		}
 		if(password.length() <6) {
-			map.put("password", "密码至少需要六位数");
+			map.put("eor", "密码至少需要六位数");
 			return map;
 		}
 		User user = userDao.selectUserByUsername(username);
 		if(user != null) {
-			map.put("username", "用户名已经注册");
+			map.put("eor", "用户名已经注册");
 			return map;
 		}
 		user = new User();
@@ -101,24 +101,24 @@ public class UserService {
 	public Map<String, Object> login(String username, String password) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		if(username == null || "".equals(username)) {
-			map.put("username", "用户名不能为空");
+			map.put("eor", "用户名不能为空");
 			return map;
 		}
 		if(password == null || "".equals(password)) {
-			map.put("password", "密码不能为空");
+			map.put("eor", "密码不能为空");
 			return map;
 		}
 		if(password.length() <6) {
-			map.put("password", "密码至少需要六位数");
+			map.put("eor", "密码至少需要六位数");
 			return map;
 		}
 		User user = userDao.selectUserByUsername(username);
 		if(user == null) {
-			map.put("username", "用户名未注册");
+			map.put("eor", "用户名未注册");
 			return map;
 		}
 		if(!user.getPassword().equals(PalUtils.MD5(password + user.getSalt()))) {
-			map.put("password", "密码不正确");
+			map.put("eor", "密码不正确");
 			return map;
 		}
 		//更新用户登录时间
