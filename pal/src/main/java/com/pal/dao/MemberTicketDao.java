@@ -27,7 +27,7 @@ public interface MemberTicketDao {
     @Insert({"insert into ", TABLE_NAME, "(", INSERT_FIELDS, ") values (#{username},#{createDate},#{expired},#{status})"})
     void addMemberTicket(MemberTicket memberTicket);
     
-    @Select({"select ", SELECT_FIELDS, " from ", TABLE_NAME, " where ticket=#{ticket}"})
+    @Select({"select ", SELECT_FIELDS, " from ", TABLE_NAME, " where username=#{username}"})
     MemberTicket selectByMemberTicket(String username);
     
     //获取未读的消息量
