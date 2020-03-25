@@ -35,6 +35,9 @@ public class GiftOrderService {
 	@Autowired
 	GiftDao giftDao;
 	
+	@Autowired
+	WalletService walletService;
+	
 	//获取发送的礼物
 	public Map<String, Object> getSendGiftOrder() {
 		Map<String,Object> map = new HashMap<String, Object>();
@@ -93,6 +96,11 @@ public class GiftOrderService {
 		User threadUser = getThreadUser();
 		Gift gift = giftDao.selectGiftById(giftID);
 		int price = num * gift.getPrice();
+		//添加钱包消费记录
+		map = walletService.giftOrder(price, toUsername);
+		if(map.containsKey("flag")) {
+			return map;
+		}
 		GiftOrder order = new GiftOrder();
 		order.setToUsername(toUsername);
 		order.setContent(content);
@@ -101,17 +109,21 @@ public class GiftOrderService {
 		order.setUsername(threadUser.getUsername());
 		order.setPrice(price);
 		giftOrderDao.addGiftOrder(order);
-		map.put("message", "待付款");
 		return map;
 	}
 
 	//更新礼物记录状态
 	public Map<String, Object> updateGiftOrderStatus(Integer id) {
 		Map<String,Object> map = new HashMap<String, Object>();
+		GiftOrder giftOrder = giftOrderDao.selectGiftOrderById(id);
+		//添加钱包消费记录
+		map = walletService.giftOrder(giftOrder.getPrice(), giftOrder.getToUsername());
+		if(map.containsKey("flag")) {
+			return map;
+		}
 		giftOrderDao.updateStatus(id, 1);
 		map.put("message", "付款成功");
 		return map;
 	}
-	
 	
 }

@@ -1169,6 +1169,10 @@
 				    this.$http.post('/user/addGiftOrder/', formData, 
 				    {headers: { 'Content-Type': 'multipart/form-data', cookie:this.ticket}}).
 				    then(function (res) {
+						if(res.body.flag) {
+							this.toView(2)
+							return
+						}
 				    	this.toUsername = ""
 				    }, function (res) {
 				      console.log(res.body);
@@ -1246,14 +1250,32 @@
 						return
 					}
 					if(this.upgradeType == 1) {
-						this.upgradeCustom = this.upgradeType + "&" + this.ticket + "&" + this.crown + "&" + this.shoptype + "&" + this.payType
+						this.upgradeCustom = this.payType + "&" + this.upgradeType + "&" + this.ticket + "&" + this.crown
 					} else {
-						this.upgradeCustom = this.upgradeType + "&" + this.otherUsername + "&" + this.crown + "&" + this.shoptype + "&" + this.payType
+						this.upgradeCustom = this.payType + "&" + this.upgradeType + "&" + this.ticket + "&" + this.crown + "&" + this.otherUsername
 					}
-					console.log("输出" + this.upgradeCustom)
-					document.getElementById("custom").value=this.upgradeCustom
-					document.getElementById("amount").value=this.crown
-					document.getElementById("sform-1").submit()
+					if(this.shoptype == 1) {
+						//第三方
+						console.log("输出" + this.upgradeCustom)
+						document.getElementById("custom").value=this.upgradeCustom
+						document.getElementById("amount").value=this.crown
+						document.getElementById("sform-1").submit()
+					} else if(this.shoptype == 2){
+						//余额
+						var formData = new FormData();
+						formData.append('upgradeType', this.upgradeType);
+						formData.append('money', this.crown);
+						formData.append('toUsername', this.otherUsername);
+						this.$http.post('/user/updateUserWallet/', formData).
+						then(function (res) {
+							if(res.body.flag) {
+								this.toView(2)
+								alert("fail")
+							}
+						}, function (res) {
+						  console.log(res.body);
+						});
+					}
 				},
 				checkRecharge(){
 					if(this.rechargeType == 0 || this.money == 0 || this.recharge == 0) {
@@ -1263,9 +1285,9 @@
 						return
 					}
 					if(this.rechargeType == 1) {
-						this.rechargeCustom = this.rechargeType + "&" + this.ticket + "&" + this.money + "&" + this.recharge + "&" + this.payType
+						this.rechargeCustom = this.payType + "&" + this.recharge + "&" + this.ticket + "&" + this.money
 					} else {
-						this.rechargeCustom = this.rechargeType + "&" + this.rechargeUsername + "&" + this.money + "&" + this.recharge + "&" + this.payType
+						this.rechargeCustom = this.payType + "&" + this.recharge + "&" + this.ticket + "&" + this.money + "&" + this.rechargeUsername
 					}
 					document.getElementById("custom2").value=this.rechargeCustom
 					document.getElementById("amount2").value=this.money
