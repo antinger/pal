@@ -133,7 +133,7 @@
 														<span>{{leftLabel[2]}} :</span>
 													</li>
 													<li>
-														<span>34</span>
+														<span>{{wallet.balance}}</span>
 													</li>
 												</ul>
 											</div>
@@ -923,6 +923,7 @@
 				/* 个人信息----------------start */
 				user:"",
 				userInfo:"",
+				wallet:"",
 				headLink:"images/user/default.png",
 				/* 个人信息----------------end */
 				
@@ -1038,6 +1039,7 @@
 					.then(function(res) {
 						this.userInfo = res.body.userInfo
 						this.user = res.body.user
+						this.wallet = res.body.wallet
 					},function() {
 						console.log('请求失败处理');
 					});
