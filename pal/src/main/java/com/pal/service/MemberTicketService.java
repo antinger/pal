@@ -55,7 +55,7 @@ public class MemberTicketService {
 		MemberTicket memberTicket = memberTicketDao.selectByMemberTicket(username);
 		//级别
 		String message = PalUtils.getGrade(money);
-		String[] messages = message.split("*");
+		String[] messages = message.split("&");
 		Integer grade = Integer.valueOf(messages[0]);
 		Integer mouths = Integer.valueOf(messages[1]);
 		if(memberTicket == null) {

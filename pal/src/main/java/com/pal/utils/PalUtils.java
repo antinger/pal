@@ -99,17 +99,17 @@ public class PalUtils {
     //获取级数
     public static String getGrade(String money) {
     	if(money.equals("102")) {
-    		return "1*1";
+    		return "1&1";
     	} else if(money.equals("262")) {
-    		return "1*2";
+    		return "1&2";
     	} else if(money.equals("468")) {
-    		return "1*6";
+    		return "1&6";
     	} else if(money.equals("786")) {
-    		return "1*12";
+    		return "1&12";
     	} else if(money.equals("16")) {
-    		return "2*1";
+    		return "2&1";
     	} else if(money.equals("46")) {
-    		return "2*3";
+    		return "2&3";
     	}
     	return "";
     }
