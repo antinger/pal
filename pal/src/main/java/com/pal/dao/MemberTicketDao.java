@@ -20,11 +20,11 @@ import com.pal.entity.Message;
 public interface MemberTicketDao {
 	
 	String TABLE_NAME = "memberTicket";
-    String INSERT_FIELDS = " username, createDate, expired, status ";
+    String INSERT_FIELDS = " username, createDate, expired, grade, status ";
     String SELECT_FIELDS = " id, " + INSERT_FIELDS;
     
     //添加会员
-    @Insert({"insert into ", TABLE_NAME, "(", INSERT_FIELDS, ") values (#{username},#{createDate},#{expired},#{status})"})
+    @Insert({"insert into ", TABLE_NAME, "(", INSERT_FIELDS, ") values (#{username},#{createDate},#{expired},#{grade},#{status})"})
     void addMemberTicket(MemberTicket memberTicket);
     
     @Select({"select ", SELECT_FIELDS, " from ", TABLE_NAME, " where username=#{username}"})
