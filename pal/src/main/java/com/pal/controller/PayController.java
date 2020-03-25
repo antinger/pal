@@ -41,32 +41,7 @@ public class PayController {
 		request.setCharacterEncoding("UTF-8");
 		try {
 			Map<String, Object> map = null;
-			System.out.println("支付成功---------");
-			Enumeration<String> parameterNames = request.getParameterNames();
-			String str = "cmd=_notify-validate";
-			while (parameterNames.hasMoreElements()) {
-                String paramName = parameterNames.nextElement();
-                String paramValue = request.getParameter(paramName);
-                //此处的编码一定要和自己的网站编码一致，不然会出现乱码，paypal回复的通知为‘INVALID’
-                str = str + "&" + paramName + "=" + URLEncoder.encode(paramValue, "UTF-8");
-            }
-			System.out.println("paypal传递过来的交易信息:" + str);
 			
-			URL u = new URL(PaypalConfig.getWebscr());
-            HttpURLConnection uc = (HttpURLConnection) u.openConnection();
-            uc.setRequestMethod("POST");
-            uc.setDoOutput(true);
-            uc.setDoInput(true);
-            uc.setUseCaches(false);
-            //设置 HTTP 的头信息
-            uc.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
-            PrintWriter pw = new PrintWriter(uc.getOutputStream());
-            pw.println(str);
-            pw.close();
-            
-            BufferedReader in = new BufferedReader(new InputStreamReader(uc.getInputStream()));
-            String res = in.readLine();
-            in.close();
 
             /**
              * 将 POST 信息分配给本地变量，可以根据您的需要添加
