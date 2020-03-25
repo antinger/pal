@@ -19,8 +19,8 @@ public class OrderFormService {
 		orderForm.setToUserName(toUsername);
 		orderForm.setContent(content);
 		orderForm.setPrice(price);
-		orderFormDao.addOrderForm(orderForm);
 		orderForm.setCard(PalUtils.getRandomUUID());
+		orderFormDao.addOrderForm(orderForm);
 	}
 	
 }
