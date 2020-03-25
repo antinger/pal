@@ -28,6 +28,12 @@ public class WalletService {
 	@Autowired
 	OrderFormService orderFormService;
 	
+	@Autowired
+	WalletOrderService walletOrderService;
+	
+	@Autowired
+	MemberTicketService memberTicketService;
+	
 	//获取当前用户钱包
 	public Map<String, Object> getUserWallet() {
 		User user = getThreadUser();
@@ -63,6 +69,49 @@ public class WalletService {
 	
 	private User getThreadUser() {
 		return hostHolder.getUser();
+	}
+
+	//用钱包升级
+	public Map<String, Object> upgrade(Integer money, String toUsername, Integer upgradeType) {
+		Map<String, Object> map = updateWallet(money);
+		if(map.containsKey("flag")) {
+			return map;
+		}
+		User threadUser = getThreadUser();
+		//为自己升级
+		if(upgradeType == 1) {
+			walletOrderService.addWalletOrder(threadUser.getUsername(), threadUser.getUsername(), "升级", money);
+			memberTicketService.addMemeberTicket(threadUser.getUsername(), String.valueOf(money));
+		} else {
+			//为别人升级
+			walletOrderService.addWalletOrder(threadUser.getUsername(), toUsername, "升级", money);
+			memberTicketService.addMemeberTicket(toUsername, String.valueOf(money));
+		}
+		return map;
+	}
+	
+	//使用钱包买礼物
+	public Map<String, Object> giftOrder(Integer money, String toUsername) {
+		Map<String, Object> map = updateWallet(money);
+		if(map.containsKey("flag")) {
+			return map;
+		}
+		User threadUser = getThreadUser();
+		walletOrderService.addWalletOrder(threadUser.getUsername(), toUsername, "送礼物", money);
+		return map;
+	}
+	
+	private Map<String, Object> updateWallet(Integer money) {
+		User threadUser = getThreadUser();
+		Wallet wallet = walletDao.selectByUsername(threadUser.getUsername());
+		Map<String, Object> map = new HashMap<String, Object>();
+		if(wallet.getBalance() < money) {
+			map.put("flag", true);
+			return map;
+		}
+		Integer balance = wallet.getBalance() - money;
+		walletDao.updateWallet(threadUser.getUsername(), balance);
+		return map;
 	}
 	
 }

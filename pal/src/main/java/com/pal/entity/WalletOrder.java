@@ -28,7 +28,7 @@ public class WalletOrder {
 		this.toUserName = "";
 		this.content = "";
 		this.price = 0;
-		this.createDate = null;
+		this.createDate = new Date();
 	}
 
 	public Integer getId() {

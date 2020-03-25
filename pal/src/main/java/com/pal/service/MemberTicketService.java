@@ -49,7 +49,7 @@ public class MemberTicketService {
 		return map;
 	}
 	
-	private void addMemeberTicket(String username, String money) {
+	public void addMemeberTicket(String username, String money) {
 		//获取会员
 		MemberTicket memberTicket = memberTicketDao.selectByMemberTicket(username);
 		//级别
