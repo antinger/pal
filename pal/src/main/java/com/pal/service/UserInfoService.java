@@ -9,10 +9,12 @@ import org.springframework.stereotype.Service;
 
 import com.pal.dao.UserDao;
 import com.pal.dao.UserInfoDao;
+import com.pal.dao.WalletDao;
 import com.pal.entity.HostHolder;
 import com.pal.entity.User;
 import com.pal.entity.UserInfo;
 import com.pal.entity.ViewObject;
+import com.pal.entity.Wallet;
 import com.pal.utils.PalUtils;
 
 @Service
@@ -26,6 +28,9 @@ public class UserInfoService {
 	
 	@Autowired
 	UserInfoDao userInfoDao;
+	
+	@Autowired
+	WalletDao walletDao;
 	
 	@Autowired
 	UserDao userDao;
@@ -51,6 +56,8 @@ public class UserInfoService {
 		if(!"".equals(user.getHeadLink())) {
 			user.setHeadLink(qiniuService.dealOnlyImage(user.getHeadLink()));
 		}
+		Wallet wallet = walletDao.selectByUsername(user.getUsername());
+		map.put("wallet", wallet);
 		map.put("user", user);
 		UserInfo userInfo = userInfoDao.selectByUsername(user.getUsername());
 		ViewObject view = new ViewObject();

@@ -37,8 +37,8 @@ public class WalletService {
 	//获取当前用户钱包
 	public Map<String, Object> getUserWallet() {
 		User user = getThreadUser();
-		Wallet wallet = walletDao.selectByUsername(user.getUsername());
 		Map<String, Object> map = new HashMap<String, Object>();
+		Wallet wallet = walletDao.selectByUsername(user.getUsername());
 		map.put("wallet", wallet);
 		return map;
 	}
