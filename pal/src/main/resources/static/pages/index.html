@@ -130,10 +130,19 @@
 												</ul>
 												<ul class="flw-status">
 													<li>
-														<span>{{leftLabel[2]}} :</span>
+														<span>
+															<template v-if="member">
+																<template v-if="member.grade == 1">
+																	<img src="images/pay/huangguan.png" width="30px"/>
+																</template>
+																<template v-if="member.grade == 2">
+																	<img src="images/pay/zuanshi.png" width="30px"/>
+																</template>
+															</template>
+														</span>
 													</li>
 													<li>
-														<span>{{wallet.balance}}</span>
+														<span>{{leftLabel[2]}} : {{wallet.balance}}</span>
 													</li>
 												</ul>
 											</div>
@@ -924,6 +933,7 @@
 				user:"",
 				userInfo:"",
 				wallet:"",
+				member:"",
 				headLink:"images/user/default.png",
 				/* 个人信息----------------end */
 				
@@ -1040,6 +1050,7 @@
 						this.userInfo = res.body.userInfo
 						this.user = res.body.user
 						this.wallet = res.body.wallet
+						this.member = res.body.member
 					},function() {
 						console.log('请求失败处理');
 					});

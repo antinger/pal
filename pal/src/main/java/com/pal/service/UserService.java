@@ -13,12 +13,14 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.pal.dao.FollowUserDao;
 import com.pal.dao.LoginTicketDao;
+import com.pal.dao.MemberTicketDao;
 import com.pal.dao.UserDao;
 import com.pal.dao.UserInfoDao;
 import com.pal.dao.WalletDao;
 import com.pal.entity.FollowUser;
 import com.pal.entity.HostHolder;
 import com.pal.entity.LoginTicket;
+import com.pal.entity.MemberTicket;
 import com.pal.entity.User;
 import com.pal.entity.UserInfo;
 import com.pal.entity.ViewObject;
@@ -48,6 +50,9 @@ public class UserService {
 
 	@Autowired
 	FollowUserDao followUserDao;
+	
+	@Autowired
+	MemberTicketDao memberTicketDao;
 	
 	//注册
 	public Map<String, Object> register(String username, String password, String email, Date birthday, Integer sex, String ip) {
@@ -216,6 +221,7 @@ public class UserService {
 			view.setView("sex", user.getSex() == 0 ? "男" : "女");
 			view.setView("birthday", PalUtils.formatBirth(userInfo.getBirthday()));
 			view.setView("follow", false);
+			dealMember(view, user.getUsername());
 			FollowUser followUser = followUserDao.getFollowUserByUserID(threadUser.getId(), user.getId());
 			if(followUser != null) {
 				view.setView("follow", true);
@@ -280,6 +286,15 @@ public class UserService {
 		dealUserHeadLink(user);
 		map.put("user", user);
 		return map;
+	}
+	
+	private void dealMember(ViewObject view, String username) {
+		MemberTicket memberTicket = memberTicketDao.selectByMemberTicket(username);
+		if(memberTicket != null) {
+			if(memberTicket.getCreateDate().getTime() > memberTicket.getExpired().getTime() && memberTicket.getStatus() == 0) {
+				view.setView("member", memberTicket.getGrade());
+			}
+		}
 	}
 	
 }

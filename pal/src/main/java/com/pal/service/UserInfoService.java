@@ -7,10 +7,12 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.pal.dao.MemberTicketDao;
 import com.pal.dao.UserDao;
 import com.pal.dao.UserInfoDao;
 import com.pal.dao.WalletDao;
 import com.pal.entity.HostHolder;
+import com.pal.entity.MemberTicket;
 import com.pal.entity.User;
 import com.pal.entity.UserInfo;
 import com.pal.entity.ViewObject;
@@ -35,6 +37,9 @@ public class UserInfoService {
 	@Autowired
 	UserDao userDao;
 	
+	@Autowired
+	MemberTicketDao memberTicketDao;
+	
 	//获取用户信息
 	public Map<String, Object> getUserInfo() {
 		Map<String, Object> map = new HashMap<String, Object>();
@@ -58,12 +63,22 @@ public class UserInfoService {
 		}
 		Wallet wallet = walletDao.selectByUsername(user.getUsername());
 		map.put("wallet", wallet);
+		dealMember(map, user.getUsername());
 		map.put("user", user);
 		UserInfo userInfo = userInfoDao.selectByUsername(user.getUsername());
 		ViewObject view = new ViewObject();
 		view.setView("info", userInfo);
 		view.setView("birthday", PalUtils.formatBirth(userInfo.getBirthday()));
 		map.put("userInfo", view);
+	}
+	
+	private void dealMember(Map<String, Object> map, String username) {
+		MemberTicket memberTicket = memberTicketDao.selectByMemberTicket(username);
+		if(memberTicket != null) {
+			if(memberTicket.getCreateDate().getTime() > memberTicket.getExpired().getTime() && memberTicket.getStatus() == 0) {
+				map.put("member", memberTicket.getGrade());
+			}
+		}
 	}
 	
 	//更新用户信息
