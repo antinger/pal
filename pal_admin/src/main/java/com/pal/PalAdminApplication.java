@@ -1,4 +1,4 @@
-package com.pal.pal_admin;
+package com.pal;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
