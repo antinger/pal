@@ -9,10 +9,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.pal.dao.FollowUserDao;
+import com.pal.dao.MemberTicketDao;
 import com.pal.dao.UserDao;
 import com.pal.dao.UserInfoDao;
 import com.pal.entity.FollowUser;
 import com.pal.entity.HostHolder;
+import com.pal.entity.MemberTicket;
 import com.pal.entity.User;
 import com.pal.entity.UserInfo;
 import com.pal.entity.ViewObject;
@@ -35,6 +37,9 @@ public class FollowUserService {
 	
 	@Autowired
 	UserInfoDao userInfoDao;
+	
+	@Autowired
+	MemberTicketDao memberTicketDao;
 
 	//关注
 	public Map<String, Object> follow(Integer followUserID) {
@@ -68,6 +73,15 @@ public class FollowUserService {
 	//获取粉丝
 	public Map<String, Object> getFans() {
 		Map<String, Object> map = new HashMap<String, Object>();
+		MemberTicket memberTicket = memberTicketDao.selectByMemberTicket(getThreadUser().getUsername());
+		if(memberTicket == null) {
+			map.put("member", true);
+			return map;
+		}
+		if(memberTicket.getCreateDate().getTime() > memberTicket.getExpired().getTime() || memberTicket.getStatus() == 1) {
+			map.put("member", true);
+			return map;
+		}
 		User threadUser = getThreadUser();
 		List<FollowUser> followUsers = followUserDao.getFans(threadUser.getId());
 		List<ViewObject> data = new ArrayList<ViewObject>();

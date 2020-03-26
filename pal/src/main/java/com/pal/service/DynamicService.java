@@ -11,9 +11,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.pal.dao.DynamicDao;
+import com.pal.dao.MemberTicketDao;
 import com.pal.dao.UserDao;
 import com.pal.entity.Dynamic;
 import com.pal.entity.HostHolder;
+import com.pal.entity.MemberTicket;
 import com.pal.entity.User;
 import com.pal.entity.ViewObject;
 import com.pal.utils.PalUtils;
@@ -33,9 +35,23 @@ public class DynamicService {
 	@Autowired
 	HostHolder hostHolder;
 	
+	@Autowired
+	MemberTicketDao memberTicketDao;
+	
 	//获取动态
 	public Map<String, Object> getLaterDynamic(Integer page, Integer limit) {
 		Map<String, Object> map = new HashMap<String, Object>();
+		if(page > 1) {
+			MemberTicket memberTicket = memberTicketDao.selectByMemberTicket(getThreadUser().getUsername());
+			if(memberTicket == null) {
+				map.put("member", true);
+				return map;
+			}
+			if(memberTicket.getCreateDate().getTime() > memberTicket.getExpired().getTime() || memberTicket.getStatus() == 1) {
+				map.put("member", true);
+				return map;
+			}
+		}
 		int status = 0;
 		int start = (page - 1) * limit;
 		User threadUser = getThreadUser();

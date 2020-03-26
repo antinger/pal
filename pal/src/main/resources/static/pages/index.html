@@ -267,7 +267,7 @@
 																<img :src="item.view.user.headLink" alt="" @click="toUserView(item.view.user.id)">
 															</template>
 															<h3>{{item.view.user.username}}</h3>
-															<h4>
+															<h4 style="color: #E44D3A;">
 																{{item.view.sex}}-
 																{{item.view.member == 1 ? '皇冠' : ''}}
 																{{item.view.member == 2 ? '钻石' : ''}}
@@ -1044,21 +1044,12 @@
 					var url = "home.html?userID=" + id
 					window.location.href = url
 				},
-				//获取用户信息
-				getUserInfoByUserName(username) {
-					this.$http.get('/user/getUserInfoByUserName/',
-					{params : {username:username, time:new Date().getTime()}},{header : {cookie:this.ticket}})
-					.then(function(res) {
-						console.log(JSON.stringify(res))
-					},function() {
-						console.log('请求失败处理');
-					});
-				},
 				//获取当前用户信息
 				getUserInfo() {
 					this.$http.get('/user/getUserInfo/',{header:{cookie:this.ticket}},
 					{params : {time:new Date().getTime()}})
 					.then(function(res) {
+						this.toLoginView(res)
 						this.userInfo = res.body.userInfo
 						this.user = res.body.user
 						this.wallet = res.body.wallet
@@ -1072,6 +1063,7 @@
 					this.$http.get('/user/getPushUser/',
 					{params : {time:new Date().getTime()}}, {header:{cookie:this.ticket}})
 					.then(function(res) {
+						this.toLoginView(res)
 						this.pushUser = res.body.data
 					},function() {
 						console.log('请求失败处理');
@@ -1082,6 +1074,7 @@
 					this.$http.get('/user/getLaterUser/',
 					{params : {page:this.laterUser.page,limit:15,time:new Date().getTime()}},{header : {cookie:this.ticket}})
 					.then(function(res) {
+						this.toLoginView(res)
 						this.laterUser.pageCount = res.body.pageCount
 						this.laterUser.data = res.body.data
 					},function() {
@@ -1095,6 +1088,7 @@
 				    this.$http.post('/user/follow/', formData, 
 				    {headers: {cookie:this.ticket}}).
 				    then(function (res) {
+						this.toLoginView(res)
 				    	if(type == 1) {
 				    		this.laterUser.data[index].view.follow = true
 				    	} else if(type == 2) {
@@ -1112,7 +1106,8 @@
 				    this.$http.post('/user/addDynamic/', formData, 
 				    {headers: { 'Content-Type': 'multipart/form-data', cookie:this.ticket}}).
 				    then(function (res) {
-				    	
+				    	this.toLoginView(res)
+						this.content = ""
 				    }, function (res) {
 				      console.log(res.body);
 				    });
@@ -1123,6 +1118,11 @@
 					{params:{time:new Date().getTime(),page:this.dynamics.page,limit:5}},
 					{header:{cookie:this.ticket}})
 					.then(function(res) {
+						this.toLoginView(res)
+						if(res.body.member) {
+							this.toView(1)
+							return ;
+						}
 						this.dynamics.page ++
 						this.dynamics.data = res.body.data
 				    	this.dynamics.pageCount = res.body.pageCount
@@ -1135,6 +1135,7 @@
 					this.$http.get('/user/getFollowUser/',
 					{params : {time:new Date().getTime()}},{header : {cookie:this.ticket}})
 					.then(function(res) {
+						this.toLoginView(res)
 						this.followUser = res.body.data
 					},function() {
 						console.log('请求失败处理');
@@ -1145,6 +1146,11 @@
 					this.$http.get('/user/getFans/',
 					{params : {time:new Date().getTime()}},{header : {cookie:this.ticket}})
 					.then(function(res) {
+						this.toLoginView(res)
+						if(res.body.member) {
+							this.toView(1)
+							return ;
+						}
 						this.fansUser = res.body.data
 					},function() {
 						console.log('请求失败处理');
@@ -1155,6 +1161,7 @@
 					this.$http.get('/user/getVisitor/',
 					{params : {time:new Date().getTime()}},{header : {cookie:this.ticket}})
 					.then(function(res) {
+						this.toLoginView(res)
 						this.visitor = res.body.data
 					},function() {
 						console.log('请求失败处理');
@@ -1165,6 +1172,7 @@
 					this.$http.get('/user/getLaterGift/',
 					{params : {time:new Date().getTime()}},{header : {cookie:this.ticket}})
 					.then(function(res) {
+						this.toLoginView(res)
 						this.gifts = res.body.data
 					},function() {
 						console.log('请求失败处理');
@@ -1175,6 +1183,7 @@
 					this.$http.get('/user/getUserByUsername/',
 						{params : {time:new Date().getTime(), username:this.toUsername}},{header : {cookie:this.ticket}})
 					.then(function(res) {
+						this.toLoginView(res)
 						this.takeUser = res.body.user
 					},function() {
 						console.log('请求失败处理');
@@ -1204,13 +1213,24 @@
 				    });
 				},
 				//跳转到登录页面
-				toLoginView(code) {
-					if(code == "302") {
+				toLoginView(res) {
+					if(res.body.code == "302") {
 						window.location.href = "login.html"
 					}
 				},
 				checkTicket() {
 					this.ticket = localStorage.getItem("ticket");
+					if(this.ticket == "") {
+						window.location.href = "login.html"
+						return 
+					}
+					this.getUserInfo()
+					this.getPushUser()
+					this.getLaterUser()
+					this.getLaterDynamic()
+					this.getFollowUser()
+					this.getFans()
+					this.getLaterGift()
 				},
 				toView(payType) {
 					this.payType = payType
@@ -1358,13 +1378,6 @@
 			},
 			beforeMount() {
 				this.checkTicket()
-				this.getUserInfo()
-				this.getPushUser()
-				this.getLaterUser()
-				this.getLaterDynamic()
-				this.getFollowUser()
-				this.getFans()
-				this.getLaterGift()
 			}
 		})
 	</script>
