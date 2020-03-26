@@ -291,7 +291,7 @@ public class UserService {
 	private void dealMember(ViewObject view, String username) {
 		MemberTicket memberTicket = memberTicketDao.selectByMemberTicket(username);
 		if(memberTicket != null) {
-			if(memberTicket.getCreateDate().getTime() > memberTicket.getExpired().getTime() && memberTicket.getStatus() == 0) {
+			if(memberTicket.getCreateDate().getTime() < memberTicket.getExpired().getTime() && memberTicket.getStatus() == 0) {
 				view.setView("member", memberTicket.getGrade());
 			}
 		}
