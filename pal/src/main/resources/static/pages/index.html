@@ -267,16 +267,25 @@
 																<img :src="item.view.user.headLink" alt="" @click="toUserView(item.view.user.id)">
 															</template>
 															<h3>{{item.view.user.username}}</h3>
-															<h4>{{item.view.sex}}
+															<h4>
+																{{item.view.sex}}-
+																{{item.view.member == 1 ? '皇冠' : ''}}
+																{{item.view.member == 2 ? '钻石' : ''}}
 															</h4>
-															<img src="images/pay/huangguan.png" width="15px" height="15px" v-if="item.view.member == 1"/>
-															<img src="images/pay/zuanshi.png" width="15px" height="15px" v-if="item.view.member == 2"/>									
+															
 															<h4>{{item.view.birthday}}</h4>
 															<ul>
 																<template v-if="item.view.follow == false">
-																	<li><a title="" class="follow" @click="follow(item.view.user.id, index, 1)">Follow</a></li>
+																	<li>
+																		<a title="" class="follow" 
+																	@click="follow(item.view.user.id, index, 1)">Follow</a>
+																	</li>
 																</template>	
-																<li><a title="" class="message-us" @click="toMessageView(item.view.user.username, item.view.user.id)"><i class="fa fa-envelope"></i></a></li>
+																<li>
+																	<a title="" class="message-us" 
+															@click="toMessageView(item.view.user.username, item.view.user.id)">
+																	<i class="fa fa-envelope"></i></a>
+																</li>
 															</ul>
 														</div>
 													</div>
