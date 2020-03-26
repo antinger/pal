@@ -75,7 +75,7 @@ public class UserInfoService {
 	private void dealMember(Map<String, Object> map, String username) {
 		MemberTicket memberTicket = memberTicketDao.selectByMemberTicket(username);
 		if(memberTicket != null) {
-			if(memberTicket.getCreateDate().getTime() > memberTicket.getExpired().getTime() && memberTicket.getStatus() == 0) {
+			if(memberTicket.getCreateDate().getTime() < memberTicket.getExpired().getTime() && memberTicket.getStatus() == 0) {
 				map.put("member", memberTicket.getGrade());
 			}
 		}
