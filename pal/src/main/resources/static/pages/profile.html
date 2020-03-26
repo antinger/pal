@@ -325,7 +325,7 @@
 					formData.append('town', this.town);
 					this.$http.post('/user/updateUserInfo/', formData, {header:{"cookie":this.ticket}})
 					.then(function (res) {
-						console.log(res.body)
+						this.toLoginView(res)
 					}, function (res) {
 					    console.log(res.body);
 					});
@@ -340,14 +340,14 @@
 					formData.append('password', this.password);
 					this.$http.post('/user/updatePassword/', formData, {header:{"cookie":this.ticket}})
 					.then(function (res) {
-						console.log(res.body)
+						this.toLoginView(res)
 					}, function (res) {
 					    console.log(res.body);
 					});
 				},
 				//更新头像
 				onChange(event) {
-				      this.headLink = event.target.files[0]
+				    this.headLink = event.target.files[0]
 				},
 				updateHeadLink(){
 					var formData = new FormData();
@@ -355,7 +355,7 @@
 					this.$http.post('/user/updateHeadLink/', formData, 
 					{header:{"cookie":this.ticket, 'Content-Type':'multipart/form-data'}})
 					.then(function (res) {
-						console.log(res.body)
+						this.toLoginView(res)
 					}, function (res) {
 					    console.log(res.body);
 					});
@@ -371,13 +371,23 @@
 					formData.append('like', this.like);
 					this.$http.post('/user/updateEncrypted/', formData, {header:{"cookie":this.ticket}})
 					.then(function (res) {
-						console.log(res.body)
+						this.toLoginView(res)
 					}, function (res) {
 					    console.log(res.body);
 					});
 				},
+				//跳转到登录页面
+				toLoginView(res) {
+					if(res.body.code == "302") {
+						window.location.href = "login.html"
+					}
+				},
 				checkTicket() {
 					this.ticket = localStorage.getItem("ticket");
+					if(this.ticket == "") {
+						window.location.href = "login.html"
+						return 
+					}
 				},
 				logout(){
 					this.$http.get('/user/logout/',

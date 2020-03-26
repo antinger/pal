@@ -342,20 +342,19 @@
 				/* 标签---------------------end */
 			},
 			methods:{
-				//跳转到登录页面
-				toLoginView(code) {
-					if(code == "302") {
-						window.location.href = "login.html"
-					}
-				},
 				checkTicket() {
 					this.ticket = localStorage.getItem("ticket");
+					if(this.ticket == "") {
+						window.location.href = "login.html"
+						return 
+					}
 				},
 				//获取用户信息
 				getUserInfo() {
 					this.$http.get('/user/getUserInfoByID/',
 					{params : {id:this.userID, time:new Date().getTime()}},{header : {cookie:this.ticket}})
 					.then(function(res) {
+						this.toLoginView(res)
 						this.userInfo = res.body.userInfo
 						this.user = res.body.user
 					},function() {
@@ -368,6 +367,7 @@
 					{params:{time:new Date().getTime(),userID:this.userID}},
 					{header:{cookie:this.ticket}})
 					.then(function(res) {
+						this.toLoginView(res)
 						this.dynamics.data = res.body.data
 					},function() {
 						console.log('请求失败处理');
@@ -379,6 +379,7 @@
 					{params:{time:new Date().getTime()}},
 					{header:{cookie:this.ticket}})
 					.then(function(res) {
+						this.toLoginView(res)
 						this.sendGiftOrder = res.body.data
 					},function() {
 						console.log('请求失败处理');
@@ -390,10 +391,17 @@
 					{params:{time:new Date().getTime()}},
 					{header:{cookie:this.ticket}})
 					.then(function(res) {
+						this.toLoginView(res)
 						this.takeGiftOrder = res.body.data
 					},function() {
 						console.log('请求失败处理');
 					});
+				},
+				//跳转到登录页面
+				toLoginView(res) {
+					if(res.body.code == "302") {
+						window.location.href = "login.html"
+					}
 				},
 				logout(){
 					this.$http.get('/user/logout/',

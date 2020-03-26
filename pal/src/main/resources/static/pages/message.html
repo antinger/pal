@@ -238,11 +238,27 @@
 				content:""
 			},
 			methods:{
+				checkTicket() {
+					this.ticket = localStorage.getItem("ticket");
+					if(this.ticket == "") {
+						window.location.href = "login.html"
+						return 
+					}
+					this.clearLinkTimer()
+					this.clearTimer()
+				},
+				//跳转到登录页面
+				toLoginView(res) {
+					if(res.body.code == "302") {
+						window.location.href = "login.html"
+					}
+				},
 				//分页获取所有的汉服
 				getLinkman() {
 					this.$http.get('/user/getLinkman/',
 					{params : {time:new Date().getTime()}})
 					.then(function(res){
+						this.toLoginView(res)
 						this.linkMan = res.body.data
 					},function() {
 						console.log('请求失败处理');
@@ -260,6 +276,7 @@
 					this.$http.get('/user/getMessageDetail/',
 					{params : {time:new Date().getTime(), userID:this.userID}})
 					.then(function(res){
+						this.toLoginView(res)
 						this.message = res.body.data
 					},function() {
 						console.log('请求失败处理');
@@ -275,6 +292,7 @@
 					formData.append('toUserID', this.userID);
 					this.$http.post('/user/addMessage/', formData).
 					then(function (res) {
+						this.toLoginView(res)
 						this.content = ""
 					}, function (res) {
 					  console.log(res.body);
@@ -309,8 +327,7 @@
 				this.getLinkman()
 			},
 			beforeDestroy() {
-				this.clearLinkTimer()
-				this.clearTimer()
+				this.checkTicket()
 			}
 		})
 	</script>
