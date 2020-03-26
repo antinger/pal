@@ -54,7 +54,7 @@
 									</li>
 									
 									<li>
-										<a href="#" title="" class="not-box-open">
+										<a @click="logout()" title="" class="not-box-open">
 											<span><img src="images/icon6.png" alt=""></span>
 											退出
 										</a>
@@ -291,7 +291,16 @@
 				},
 				createTimer() {
 					timer = setInterval(this.getMessageDetail, 2000)
-				}
+				},
+				logout(){
+					this.$http.get('/user/logout/',
+						{params : {time:new Date().getTime()})
+					.then(function(res) {
+						window.location.href = "login.html"
+					},function() {
+						console.log('请求失败处理');
+					});
+				},
 			},
 			mounted() {
 				this.createLinkTimer()

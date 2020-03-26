@@ -51,7 +51,7 @@
 									</a>
 								</li>
 								<li>
-									<a href="message.html" title="" class="not-box-open">
+									<a @click="logout" title="" class="not-box-open">
 										<span><img src="images/icon7.png" alt=""></span>
 										{{topLabel[2]}}
 									</a>
@@ -378,6 +378,15 @@
 				},
 				checkTicket() {
 					this.ticket = localStorage.getItem("ticket");
+				},
+				logout(){
+					this.$http.get('/user/logout/',
+						{params : {time:new Date().getTime()})
+					.then(function(res) {
+						window.location.href = "login.html"
+					},function() {
+						console.log('请求失败处理');
+					});
 				},
 				change() {
 					if(this.languageID == 1) {
