@@ -1340,7 +1340,7 @@
 				},
 				logout(){
 					this.$http.get('/user/logout/',
-						{params : {time:new Date().getTime()})
+						{params : {time:new Date().getTime()}})
 					.then(function(res) {
 						window.location.href = "login.html"
 					},function() {
