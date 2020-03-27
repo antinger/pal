@@ -280,7 +280,7 @@
 					formData.append('password', this.password);
 					this.$http.post('/login/', formData)
 					.then(function (res) {
-						if(res.body.eor != "") {
+						if(res.body.eor) {
 							alert(res.body.eor)
 							return 
 						}
