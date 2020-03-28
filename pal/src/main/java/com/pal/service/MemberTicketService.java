@@ -59,7 +59,9 @@ public class MemberTicketService {
 		Integer grade = Integer.valueOf(messages[0]);
 		Integer mouths = Integer.valueOf(messages[1]);
 		long expired = 1000L * 60 * 60 * 24 * 30 * mouths;;
+		boolean flag = true;
 		if(memberTicket == null) {
+			flag = false;
 			memberTicket = new MemberTicket();
 			memberTicket.setCreateDate(new Date());
 			expired = new Date().getTime() + expired;
@@ -77,7 +79,11 @@ public class MemberTicketService {
 		memberTicket.setUsername(username);
 		memberTicket.setExpired(new Date(expired));
 		memberTicket.setStatus(0);
-		memberTicketDao.addMemberTicket(memberTicket);
+		if(flag) {
+			memberTicketDao.updateMemberTicket(memberTicket);
+		} else {
+			memberTicketDao.addMemberTicket(memberTicket);
+		}
 	}
 	
 	//获取当前线程用户

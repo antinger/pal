@@ -34,6 +34,11 @@ public interface MemberTicketDao {
     @Select({"select count(*) from ", TABLE_NAME, " where uerrID=#{userID} and status=#{status}"})
     int getNumByStatus(Integer userID, int status);
     
+    //更新会员
+    @Update({"update ", TABLE_NAME, " set createDate=#{createDate},status=#{status},grade=#{grade},expired=#{expired} where username=#{username}"})
+	void updateMemberTicket(MemberTicket memberTicket);
+    
+    
     //获取发送的消息
     List<Message> getSendMessages(Integer userID);
     
