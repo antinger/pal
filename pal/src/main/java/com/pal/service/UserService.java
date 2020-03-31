@@ -235,7 +235,7 @@ public class UserService {
 	
 	//处理用户头像
 	private void dealUserHeadLink(User user) {
-		if(user.getHeadStatus() == 0) {
+		if(user.getHeadStatus() == 0 && !"".equals(user.getHeadLink())) {
 			user.setHeadLink(qiniuService.dealOnlyImage(user.getHeadLink()));
 		}
 	}
