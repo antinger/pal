@@ -54,6 +54,9 @@ public class UserService {
 	@Autowired
 	MemberTicketDao memberTicketDao;
 	
+	@Autowired
+	VisitorService visitorService;
+	
 	//注册
 	public Map<String, Object> register(String username, String password, String email, Date birthday, Integer sex, String ip) {
 		Map<String, Object> map = new HashMap<String, Object>();
@@ -283,6 +286,7 @@ public class UserService {
 	public Map<String, Object> getUserByUsername(String username) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		User user = userDao.selectUserByUsername(username);
+		visitorService.addVisitor(user.getId());
 		dealUserHeadLink(user);
 		map.put("user", user);
 		return map;
