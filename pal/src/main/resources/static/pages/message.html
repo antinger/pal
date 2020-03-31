@@ -38,25 +38,23 @@
 							</div><!--search-bar end-->
 							<nav>
 								<ul>
-									
 									<li>
 										<a href="profile.html" title="">
 											<span><img src="images/icon4.png" alt=""></span>
-											Profiles
+											{{topLabel[0]}}
 										</a>
 									</li>
 									
 									<li>
 										<a href="#" title="" class="not-box-open">
 											<span><img src="images/icon6.png" alt=""></span>
-											Messages
+											{{topLabel[1]}}
 										</a>
 									</li>
-									
 									<li>
-										<a @click="logout()" title="" class="not-box-open">
-											<span><img src="images/icon6.png" alt=""></span>
-											退出
+										<a @click="logout" title="" class="not-box-open">
+											<span><img src="images/icon7.png" alt=""></span>
+											{{topLabel[2]}}
 										</a>
 									</li>
 								</ul>
@@ -65,18 +63,17 @@
 								<a href="#" title=""><i class="fa fa-bars"></i></a>
 							</div><!--menu-btn end-->
 							<div class="user-account">
-								<div class="user-info">
-									<a href="#" title="">ENGLISH</a>
-									<i class="la la-sort-down"></i>
+								<div class="user-info" style="width: 150px;">
+									<select style="background: #E44D3A;border: none;color: white;" 
+									class="form-control form-control-lg language" v-model="languageID" @click="change">
+										<option selected="true" value="1">中文简体</option>
+										<option value="2">中文-繁體</option>
+										<option value="3">English</option>
+										<option value="4">한국어</option>
+										<option value="5">にほんご</option>
+										<option value="6">ภาษาไทย</option>
+									</select>
 								</div>
-								<div class="user-account-settingss">
-									<ul class="us-links">
-										<li><a href="profile-account-setting.html" title="">Account Setting</a></li>
-										<li><a href="#" title="">Privacy</a></li>
-										<li><a href="#" title="">Faqs</a></li>
-										<li><a href="#" title="">Terms & Conditions</a></li>
-									</ul>
-								</div><!--user-account-settingss end-->
 							</div>
 						</div><!--header-data end-->
 					</div>
@@ -235,7 +232,10 @@
 				timer:"",
 				linkTimer:"",
 				//发送消息
-				content:""
+				content:"",
+				
+				languageID:1,
+				topLabel:["个人资料", "消息", "退出"],
 			},
 			methods:{
 				checkTicket() {
@@ -318,6 +318,21 @@
 					},function() {
 						console.log('请求失败处理');
 					});
+				},
+				change() {
+					if(this.languageID == 1) {
+						this.topLabel = ["个人资料", "消息", "退出"],
+					} else if(this.languageID == 2) {
+						this.topLabel = ["個人資料", "消息", "退出"],
+					} else if(this.languageID == 3) {
+						this.topLabel = ["personal data", "message", "log out"]
+					} else if(this.languageID == 4) {
+						this.topLabel = ["인적 사항", "소식.정보.", "퇴출"]
+					} else if(this.languageID == 5) {
+						this.topLabel = ["个人资料", "しょうそく", "たいしゅつ"]
+					} else if(this.languageID == 6) {
+						this.topLabel = ["ข้อมูลส่วนบุคคล", "ข่าว", "ออก"]
+					}
 				}
 			},
 			mounted() {
