@@ -101,6 +101,9 @@ public class MessageService {
 				view.setView("flag", false);
 				dealMessage(message.getUserID(), view);
 			}
+			if(message.getStatus() == 0) {
+				messageDao.updateStatus(message.getId(), 1);
+			}
 			view.setView("message", message);
 			view.setView("createDate", PalUtils.formatDate(message.getCreateDate()));
 			data.add(view);

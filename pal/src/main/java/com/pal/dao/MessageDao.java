@@ -37,5 +37,8 @@ public interface MessageDao {
     
     //获取消息
 	List<Message> getMessageByToUserID(int userID, Integer toUserID);
+	
+	@Update({"update ", TABLE_NAME, " set status=#{status} where id=#{id}"})
+    void updateStatus(@Param("id") Integer id, @Param("status") Integer status);
     
 }
