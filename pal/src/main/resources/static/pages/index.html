@@ -291,7 +291,7 @@
 													</div>
 												</div>
 												<div class="process-comm">
-													<a href="#" title=""><img src="images/process-icon.png" alt=""></a>
+													<a href="#" @click="preUser" title=""><img src="images/process-icon.png" alt=""></a>
 												</div>
 											</div>
 										</div>
@@ -347,7 +347,7 @@
 													</template>
 												</div><!--post-bar end-->
 												<div class="process-comm">
-													<a href="#" title=""><img src="images/process-icon.png" alt=""></a>
+													<a href="#" title="" @click="preDynamic"><img src="images/process-icon.png" alt=""></a>
 												</div><!--process-comm end-->
 											</div><!--posts-section end-->
 										</div><!--product-feed-tab end-->
@@ -1076,12 +1076,20 @@
 						console.log('请求失败处理');
 					});
 				},
+				preUser(){
+					this.laterUser.page ++
+					this.getLaterUser()
+				},
 				//获取首页推荐的用户
 				getLaterUser() {
 					this.$http.get('/user/getLaterUser/',
 					{params : {page:this.laterUser.page,limit:15,time:new Date().getTime()}},{header : {cookie:this.ticket}})
 					.then(function(res) {
 						this.toLoginView(res)
+						if(res.body.member) {
+							this.toView(1)
+							return ;
+						}
 						this.laterUser.pageCount = res.body.pageCount
 						this.laterUser.data = res.body.data
 					},function() {
@@ -1119,6 +1127,11 @@
 				      console.log(res.body);
 				    });
 				},
+				//获取动态
+				preDynamic(){
+					this.dynamics.page ++
+					this.getLaterDynamic()
+				},
 				//获取动态----分页获取
 				getLaterDynamic() {
 					this.$http.get('/user/getLaterDynamic/',
@@ -1130,7 +1143,6 @@
 							this.toView(1)
 							return ;
 						}
-						this.dynamics.page ++
 						this.dynamics.data = res.body.data
 				    	this.dynamics.pageCount = res.body.pageCount
 					},function() {
