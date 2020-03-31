@@ -321,6 +321,7 @@
 					formData.append('education', this.education);
 					formData.append('height', this.height);
 					formData.append('weight', this.weight);
+					formData.append('job', this.job);
 					formData.append('country', this.country);
 					formData.append('town', this.town);
 					this.$http.post('/user/updateUserInfo/', formData, {header:{"cookie":this.ticket}})
