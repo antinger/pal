@@ -96,10 +96,10 @@ public class MessageService {
 			ViewObject view = new ViewObject();
 			if(message.getUserID() == threadUser.getId()) {
 				view.setView("flag", true);
-				dealMessage(message.getToUserID(), view);
+				dealMessage(message.getUserID(), view);
 			} else {
 				view.setView("flag", false);
-				dealMessage(message.getUserID(), view);
+				dealMessage(message.getToUserID(), view);
 			}
 			if(message.getStatus() == 0) {
 				messageDao.updateStatus(message.getId(), 1);
