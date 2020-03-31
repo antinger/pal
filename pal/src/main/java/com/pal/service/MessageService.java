@@ -120,6 +120,10 @@ public class MessageService {
 	public Map<String, Object> addMessage(String content, int toUserID) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		User threadUser = getThreadUser();
+		if(threadUser.getBannedStatus() == 1) {
+			map.put("eor", "禁言中");
+			return map;
+		}
 		Message message = new Message();
 		message.setContent(content);
 		message.setToUserID(toUserID);

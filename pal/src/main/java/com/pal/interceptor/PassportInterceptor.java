@@ -47,6 +47,9 @@ public class PassportInterceptor implements HandlerInterceptor {
                 return true;
             }
             User user = userDao.selectUserByUsername(loginTicket.getUsername());
+            if(user.getStatus() == 1) {
+            	return true;
+            }
             hostHolder.setUser(user);
         }
         return true;
