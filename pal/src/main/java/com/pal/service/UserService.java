@@ -203,8 +203,19 @@ public class UserService {
 	
 	//获取首页推荐用户
 	public Map<String, Object> getLaterUser(int page, int limit) {
-		int start = (page - 1) * limit;
 		Map<String, Object> map = new HashMap<String, Object>();
+		if(page > 2) {
+			MemberTicket memberTicket = memberTicketDao.selectByMemberTicket(getThreadUser().getUsername());
+			if(memberTicket == null) {
+				map.put("member", true);
+				return map;
+			}
+			if(memberTicket.getCreateDate().getTime() > memberTicket.getExpired().getTime() || memberTicket.getStatus() == 1) {
+				map.put("member", true);
+				return map;
+			}
+		}
+		int start = (page - 1) * limit;
 		User threadUser = getThreadUser();
 		Integer sex = threadUser.getSex();
 		Integer target = sex == 0 ? 1 : 0;
