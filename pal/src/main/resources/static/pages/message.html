@@ -3,7 +3,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>WorkWise Html Template</title>
+		<title>消息界面</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
@@ -320,7 +320,19 @@
 					});
 				},
 				change() {
-					
+					if(this.languageID == 1) {
+						this.topLabel = ["个人资料", "消息", "退出"]
+					} else if(this.languageID == 2) {
+						this.topLabel = ["個人資料", "消息", "退出"]
+					} else if(this.languageID == 3) {
+						this.topLabel = ["personal data", "message", "log out"]
+					} else if(this.languageID == 4) {
+						this.topLabel = ["인적 사항", "소식.정보.", "퇴출"]
+					} else if(this.languageID == 5) {
+						this.topLabel = ["个人资料", "しょうそく", "たいしゅつ"]
+					} else if(this.languageID == 6) {
+						this.topLabel = ["ข้อมูลส่วนบุคคล", "ข่าว", "ออก"]
+					}
 				}
 			},
 			mounted() {
