@@ -385,6 +385,9 @@
 					this.$http.post('/user/updateEncrypted/', formData, {header:{"cookie":this.ticket}})
 					.then(function (res) {
 						this.toLoginView(res)
+						this.name = ""
+						this.email = ""
+						this.like = ""
 						alert("更新成功")
 					}, function (res) {
 					    console.log(res.body);
