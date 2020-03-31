@@ -18,18 +18,6 @@ public class VisitorController {
 	@Autowired
 	VisitorService visitorService;
 	
-	//添加游客
-	@RequestMapping(path="/user/addVisitor/", method=RequestMethod.POST)
-	@ResponseBody
-	public String addVisitor(@RequestParam("visitorID") Integer visitorID) {
-		try {
-			Map<String, Object> map = visitorService.addVisitor(visitorID);
-			return PalUtils.toJSONString(200, map);
-		} catch (Exception e) {
-			return PalUtils.toJSONString(500, "访问失败");
-		}
-	}
-	
 	//获取访问
 	@RequestMapping(path="/user/getVisitor/", method=RequestMethod.GET)
 	@ResponseBody
