@@ -41,7 +41,7 @@ public class DynamicService {
 	//获取动态
 	public Map<String, Object> getLaterDynamic(Integer page, Integer limit) {
 		Map<String, Object> map = new HashMap<String, Object>();
-		if(page > 1) {
+		if(page > 2) {
 			MemberTicket memberTicket = memberTicketDao.selectByMemberTicket(getThreadUser().getUsername());
 			if(memberTicket == null) {
 				map.put("member", true);
