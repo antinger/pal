@@ -368,6 +368,7 @@
 					{header:{"cookie":this.ticket, 'Content-Type':'multipart/form-data'}})
 					.then(function (res) {
 						this.toLoginView(res)
+						alert("更新成功")
 					}, function (res) {
 					    console.log(res.body);
 					});
