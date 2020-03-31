@@ -115,7 +115,7 @@ public class MessageService {
 	//处理消息
 	private void dealMessage(Integer userID, ViewObject view) {
 		User user = userDao.selectUserByID(userID);
-		if(user.getHeadStatus() == 1) {
+		if(user.getHeadStatus() == 0) {
 			user.setHeadLink(qiniuService.dealOnlyImage(user.getHeadLink()));
 		}
 		view.setView("user", user);
