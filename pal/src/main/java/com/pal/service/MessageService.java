@@ -95,14 +95,14 @@ public class MessageService {
 		for (Message message : messages) {
 			ViewObject view = new ViewObject();
 			if(message.getUserID() == threadUser.getId()) {
-				view.setView("flag", false);
-				dealMessage(message.getUserID(), view);
-			} else {
 				view.setView("flag", true);
 				dealMessage(message.getUserID(), view);
-			}
-			if(message.getStatus() == 0) {
-				messageDao.updateStatus(message.getId(), 1);
+			} else {
+				view.setView("flag", false);
+				dealMessage(message.getUserID(), view);
+				if(message.getStatus() == 0) {
+					messageDao.updateStatus(message.getId(), 1);
+				}
 			}
 			view.setView("message", message);
 			view.setView("createDate", PalUtils.formatDate(message.getCreateDate()));
