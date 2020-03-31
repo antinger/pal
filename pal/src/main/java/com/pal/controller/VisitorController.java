@@ -34,12 +34,8 @@ public class VisitorController {
 	@RequestMapping(path="/user/getVisitor/", method=RequestMethod.GET)
 	@ResponseBody
 	public String getVistor() {
-		try {
 			Map<String, Object> map = visitorService.getVistor();
 			return PalUtils.toJSONString(200, map);
-		} catch (Exception e) {
-			return PalUtils.toJSONString(500, "获取失败");
-		}
 	}
 	
 }
