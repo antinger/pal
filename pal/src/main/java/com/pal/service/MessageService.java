@@ -4,10 +4,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
+import java.util.Map.Entry;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -51,28 +50,31 @@ public class MessageService {
 		List<Message> takeMessages = messageDao.getTakeMessages(threadUser.getId());
 		List<Message> sendMessages = messageDao.getSendMessages(threadUser.getId());
 		List<ViewObject> data = new ArrayList<>();
-		Set<Integer> counter = new HashSet<>();
+		Map<Integer, ViewObject> temp = new HashMap<Integer, ViewObject>();
 		for (Message message : takeMessages) {
 			ViewObject view = null;
-			if(!counter.contains(message.getUserID())) {
+			if(!temp.containsKey(message.getUserID())) {
 				view = new ViewObject();
 				dealMessage(message.getUserID(), view);
 				view.setView("count", 0);
-				counter.add(message.getUserID());
+				temp.put(message.getUserID(), view);
 			}
 			if(message.getStatus() == 0) {
+				view = temp.get(message.getUserID());
 				int count = Integer.valueOf(view.getView().get("count").toString()) + 1;
 				view.setView("count", count);
+				temp.put(message.getUserID(), view);
 			}
-			data.add(view);
 		}
 		for (Message message : sendMessages) {
-			if(!counter.contains(message.getToUserID())) {
+			if(!temp.containsKey(message.getToUserID())) {
 				ViewObject view = new ViewObject();
 				dealMessage(message.getToUserID(), view);
-				counter.add(message.getToUserID());
-				data.add(view);
+				temp.put(message.getToUserID(), view);
 			}
+		}
+		for (Entry<Integer, ViewObject> entry : temp.entrySet()) {
+			data.add(entry.getValue());
 		}
 		map.put("data", data);
 		return map;
