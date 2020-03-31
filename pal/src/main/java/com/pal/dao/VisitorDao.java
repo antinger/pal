@@ -17,6 +17,6 @@ public interface VisitorDao {
     int addVistor(Visitor visitor);
     
     //获取游客
-	List<Visitor> getVistor(Integer userID);
+	List<Visitor> getVistor(Integer visitorID);
 	
 }
