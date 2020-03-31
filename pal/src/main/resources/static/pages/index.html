@@ -599,7 +599,7 @@
 										<img src="images/pay/huangguan.png" width="40px"/>
 									</label>
 									<label>
-										<h5>{{type[0]}}</h5>
+										<h5>{{typeLabel[0]}}</h5>
 									</label>
 								</div>
 								<div class="row">
@@ -687,7 +687,7 @@
 										<img src="images/pay/zuanshi.png" width="40px"/>
 									</label>
 									<label>
-										<h5>{{type[1]}}</h5>
+										<h5>{{typeLabel[1]}}</h5>
 									</label>
 								</div>
 								<div class="row">
@@ -834,21 +834,21 @@
 							        <input type="radio" name="money" id="model2-3" v-model="money" value="500"/>
 							        <label for="model2-3">
 										<img src="images/pay/yue.png" height="80px" width="200px" />
-										500美元
+										500USB
 									</label>
 							    </div>
 								<div class="Block PaddingL">
 								    <input type="radio" name="money" id="model2-4" v-model="money" value="200"/>
 								    <label for="model2-4">
 										<img src="images/pay/yue.png" height="80px" width="200px"/>
-										200美元
+										200USB
 									</label>
 								</div>
 								<div class="Block PaddingL">
 								    <input type="radio" name="money" id="model2-5" v-model="money" value="100" />
 								    <label for="model2-5">
 										<img src="images/pay/yue.png" height="80px" width="200px"/>
-										100美元
+										100USB
 									</label>
 								</div>
 							</div>
@@ -1040,7 +1040,7 @@
 				upgradeLabel:["为自己升级", "为别人升级"],
 				rechargeLabel:["为自己充值", "为别人充值"],
 				search:"搜索",
-				type:["皇冠会员", "钻石会员"],
+				typeLabel:["皇冠会员", "钻石会员"],
 				upgrade1:["尽情聊天", "查看谁喜欢你", "认识更多单身异性", "让你倍受瞩目", "每日3000字内翻译", "更多展示机会"],
 				/* 标签---------------------end */
 			},
@@ -1363,7 +1363,7 @@
 						this.upgradeLabel = ["为自己升级", "为别人升级"],
 						this.rechargeLabel = ["为自己充值", "为别人充值"],
 						this.search = "搜索",
-						this.type = ["皇冠会员", "钻石会员"],
+						this.typeLabel = ["皇冠会员", "钻石会员"],
 						this.upgrade1 = ["尽情聊天", "查看谁喜欢你", "认识更多单身异性", "让你倍受瞩目", "每日3000字内翻译", "更多展示机会"]
 					} else if(this.languageID == 2) {
 						this.topLabel = ["個人資料", "消息", "退出"]
@@ -1374,7 +1374,7 @@
 						this.upgradeLabel = ["為自己升級", "為別人升級"],
 						this.rechargeLabel = ["為自己充值", "為別人充值"],
 						this.search = "搜索",
-						this.type = ["皇冠會員", "鉆石會員"],
+						this.typeLabel = ["皇冠會員", "鉆石會員"],
 						this.upgrade1 = ["盡情聊天", "查看誰喜歡妳", "認識更多單身異性", "讓妳倍受矚目", "每日3000字內翻譯", "更多展示機會"]
 					} else if(this.languageID == 3) {
 						this.topLabel = ["personal data", "message", "log out"]
@@ -1385,7 +1385,7 @@
 						this.upgradeLabel = ["Upgrade yourself", "Upgrade for someone else"],
 						this.rechargeLabel = ["Top up for yourself", "Top up for someone else"],
 						this.search = "search",
-						this.type = ["Crown members", "Diamond membership"],
+						this.typeLabel = ["Crown members", "Diamond membership"],
 						this.upgrade1 = ["Enjoy chatting", "Find out who likes you", "Meet more single people", "high-profile", "Daily translation within 3000 words", "More presentation opportunities"]
 					} else if(this.languageID == 4) {
 						this.topLabel = ["인적 사항", "소식.정보.", "퇴출"]
@@ -1396,7 +1396,7 @@
 						this.upgradeLabel = ["한 단계 업그레이드", "다른 사람을 업그레이드시키다"],
 						this.rechargeLabel = ["자신을 위해 충당하다.", "다른 사람을 위해 충당하다"],
 						this.search = "검색하다",
-						this.type = ["크라운 회원", "다이아몬드 회원"],
+						this.typeLabel = ["크라운 회원", "다이아몬드 회원"],
 						this.upgrade1 = ["맘껏 한담하다", "누가 당신을 좋아하는지 확인해보세요.", "솔로 이성을 더 많이 알게 됩니다.", "많은 주목을 받고 있습니다.", "매일 3000자로 번역하다", "더 많은 전시 기회"]
 					} else if(this.languageID == 5) {
 						this.topLabel = ["个人资料", "しょうそく", "たいしゅつ"]
@@ -1407,7 +1407,7 @@
 						this.upgradeLabel = ["自分をアップグレードする", "人のためになる"],
 						this.rechargeLabel = ["自分にチャージする", "他人にチャージする"],
 						this.search = "名·他サ",
-						this.type = ["クラウン会員", "ダイヤモンド会員"],
+						this.typeLabel = ["クラウン会員", "ダイヤモンド会員"],
 						this.upgrade1 = ["思う存分話す", "誰があなたを好きか調べて", "独身異性をより多く知る", "注目されている", "1日3000字以内に翻訳する", "より多くの展示機会"]
 					} else if(this.languageID == 6) {
 						this.topLabel = ["ข้อมูลส่วนบุคคล", "ข่าว", "ออก"]
@@ -1418,7 +1418,7 @@
 						this.upgradeLabel = ["อัพเกรดด้วยตัวคุณเอง", "อัพเกรดสําหรับผู้อื่น"],
 						this.rechargeLabel = ["เติมเงินด้วยตัวคุณเอง", "เติมเงินให้คนอื่น"],
 						this.search = "ค้น หา",
-						this.type = ["สมาชิกคราวน์", "สมาชิกเพชร"],
+						this.typeLabel = ["สมาชิกคราวน์", "สมาชิกเพชร"],
 						this.upgrade1 = ["สนทนา", "ดูว่าใครถูกใจคุณ", "พบกับซิงเกิ้ลมากขึ้นและเพศตรงข้าม", "มันดูน่าสนใจมาก", "3000 คําต่อวัน", "ผลงานเพิ่มเติม"]
 					}
 				},
