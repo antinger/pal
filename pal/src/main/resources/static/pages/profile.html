@@ -222,7 +222,7 @@
 												</div>
 												<div class="save-stngs pd2">
 													<ul>
-														<li><a class="btn btn-success">{{btnLabel[4]}}</a></li>
+														<li><a class="btn btn-success" @click="updateEncrypted">{{btnLabel[4]}}</a></li>
 													</ul>
 												</div><!--save-stngs end-->
 											</form>
@@ -327,12 +327,21 @@
 					this.$http.post('/user/updateUserInfo/', formData, {header:{"cookie":this.ticket}})
 					.then(function (res) {
 						this.toLoginView(res)
+						this.education = ""
+						this.height = ""
+						this.weight = ""
+						this.job = ""
+						this.town =""
+						alert("更新成功")
 					}, function (res) {
 					    console.log(res.body);
 					});
 				},
 				//更新账号
 				updatePassword(){
+					if(this.password == "" || this.repeat == ""){
+						return
+					}
 					if(this.password != this.repeat) {
 						return ;
 					}
@@ -342,6 +351,8 @@
 					this.$http.post('/user/updatePassword/', formData, {header:{"cookie":this.ticket}})
 					.then(function (res) {
 						this.toLoginView(res)
+						this.oldPassword = ""
+						alert("更新成功")
 					}, function (res) {
 					    console.log(res.body);
 					});
@@ -373,6 +384,7 @@
 					this.$http.post('/user/updateEncrypted/', formData, {header:{"cookie":this.ticket}})
 					.then(function (res) {
 						this.toLoginView(res)
+						alert("更新成功")
 					}, function (res) {
 					    console.log(res.body);
 					});
