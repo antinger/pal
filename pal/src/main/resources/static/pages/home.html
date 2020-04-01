@@ -139,7 +139,7 @@
 												<ul>
 													<!-- 动态----------start -->
 													<li data-tab="feed-dd" class="active">
-														<a href="#" title="">
+														<a @click="getLaterDynamic" title="">
 															<img src="images/ic1.png" alt="">
 															<span>{{rightLabel[0]}}</span>
 														</a>
@@ -147,7 +147,7 @@
 													<!-- 动态----------end -->
 													<!-- 发送的礼物---------start -->
 													<li data-tab="send-dd">
-														<a href="#" title="">
+														<a @click="getSendGiftOrder" title="">
 															<img src="images/ic6.png" alt="">
 															<span>{{rightLabel[1]}}</span>
 														</a>
@@ -156,7 +156,7 @@
 													
 													<!-- 接受的礼物---------start -->
 													<li data-tab="take-dd">
-														<a href="#" title="">
+														<a @click="getTakeGiftOrder" title="">
 															<img src="images/ic6.png" alt="">
 															<span>{{rightLabel[2]}}</span>
 														</a>
@@ -449,6 +449,7 @@
 				this.checkTicket()
 				this.getUrlQuery()
 				this.getUserInfo()
+				this.getLaterDynamic()
 			}
 		})
 	</script>
