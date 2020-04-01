@@ -296,6 +296,10 @@ public class UserService {
 
 	public Map<String, Object> getUserByUsername(String username) {
 		Map<String, Object> map = new HashMap<String, Object>();
+		User threadUser = getThreadUser();
+		if(threadUser.getUsername() == username) {
+			return map;
+		}
 		User user = userDao.selectUserByUsername(username);
 		visitorService.addVisitor(user.getId());
 		dealUserHeadLink(user);
