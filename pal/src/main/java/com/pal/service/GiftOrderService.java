@@ -60,6 +60,7 @@ public class GiftOrderService {
 		Map<String,Object> map = new HashMap<String, Object>();
 		User threadUser = getThreadUser();
 		List<GiftOrder> giftOrders = giftOrderDao.getTakeGiftOrder(threadUser.getUsername());
+		System.out.println("获取接收的礼物" + giftOrders.size());
 		List<ViewObject> data = new ArrayList<ViewObject>();
 		for (GiftOrder giftOrder : giftOrders) {
 			ViewObject view = new ViewObject();
