@@ -16,6 +16,7 @@ import com.pal.entity.GiftOrder;
 import com.pal.entity.HostHolder;
 import com.pal.entity.User;
 import com.pal.entity.ViewObject;
+import com.pal.utils.PalUtils;
 
 @Service
 public class GiftOrderService {
@@ -47,7 +48,7 @@ public class GiftOrderService {
 		for (GiftOrder giftOrder : giftOrders) {
 			ViewObject view = new ViewObject();
 			view.setView("giftOrder", giftOrder);
-			view.setView("createDate", giftOrder.getCreateDate());
+			view.setView("createDate", PalUtils.formatDate(giftOrder.getCreateDate()));
 			dealGift(giftOrder, view);
 			dealUser(giftOrder.getToUsername(), view, "toUser");
 			data.add(view);
@@ -65,7 +66,7 @@ public class GiftOrderService {
 		for (GiftOrder giftOrder : giftOrders) {
 			ViewObject view = new ViewObject();
 			view.setView("giftOrder", giftOrder);
-			view.setView("createDate", giftOrder.getCreateDate());
+			view.setView("createDate", PalUtils.formatDate(giftOrder.getCreateDate()));
 			dealGift(giftOrder, view);
 			dealUser(giftOrder.getUsername(), view, "sendUser");
 			data.add(view);
