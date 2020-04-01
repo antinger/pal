@@ -138,16 +138,16 @@
 										<div class="tab-feed st2">
 												<ul>
 													<!-- 动态----------start -->
-													<li data-tab="feed-dd" class="active">
-														<a @click="getLaterDynamic" title="">
+													<li data-tab="feed-dd" v-bind:class="{ active: (1 == tempIndex) }">
+														<a @click="getLaterDynamic(1)" title="">
 															<img src="images/ic1.png" alt="">
 															<span>{{rightLabel[0]}}</span>
 														</a>
 													</li>
 													<!-- 动态----------end -->
 													<!-- 发送的礼物---------start -->
-													<li data-tab="send-dd">
-														<a @click="getSendGiftOrder" title="">
+													<li data-tab="send-dd" v-bind:class="{ active: (2 == tempIndex) }">
+														<a @click="getSendGiftOrder(2)" title="">
 															<img src="images/ic6.png" alt="">
 															<span>{{rightLabel[1]}}</span>
 														</a>
@@ -155,8 +155,8 @@
 													<!-- 发送的礼物----------end -->
 													
 													<!-- 接受的礼物---------start -->
-													<li data-tab="take-dd">
-														<a @click="getTakeGiftOrder" title="">
+													<li data-tab="take-dd" v-bind:class="{ active: (3 == tempIndex) }">
+														<a @click="getTakeGiftOrder(3)" title="">
 															<img src="images/ic6.png" alt="">
 															<span>{{rightLabel[2]}}</span>
 														</a>
@@ -167,7 +167,7 @@
 										</div>
 										
 										<!-- 动态--------------------start -->
-										<div class="product-feed-tab current" id="feed-dd">
+										<div class="product-feed-tab" id="feed-dd" v-bind:class="{ current: (1 == tempIndex) }">
 											<div class="posts-section">
 												
 												<div class="post-bar" v-for="(item, index) in dynamics.data">
@@ -202,7 +202,7 @@
 										</div><!--product-feed-tab end-->
 										<!-- 动态---------------------end -->
 										<!-- 发送的礼物---------start -->
-										<div class="product-feed-tab" id="send-dd">
+										<div class="product-feed-tab" id="send-dd" v-bind:class="{ current: (2 == tempIndex) }">
 											<div class="list-group">
 												<a class="list-group-item list-group-item-action" v-for="(item, index) in sendGiftOrder">
 													<div class="row" style="align-items: center;">
@@ -233,7 +233,7 @@
 										<!-- 发送的礼物----------end -->
 										
 										<!-- 接受的礼物---------start -->
-										<div class="product-feed-tab" id="take-dd">
+										<div class="product-feed-tab" id="take-dd" v-bind:class="{ current: (3 == tempIndex) }">
 											<div class="list-group">
 												<a class="list-group-item list-group-item-action" v-for="(item, index) in takeGiftOrder">
 													<div class="row" style="align-items: center;">
@@ -326,6 +326,8 @@
 				takeGiftOrder:[],
 				/* 接受的礼物-----------end */
 				
+				tempIndex:1,
+				
 				/* 标签---------------------start */
 				languageID:1,
 				topLabel:["个人资料", "消息", "退出"],
@@ -355,8 +357,9 @@
 					});
 				},
 				//获取动态
-				getLaterDynamic() {
-					this.$http.get('/user/getLaterDynamic/',
+				getLaterDynamic(index) {
+					this.tempIndex = index
+					this.$http.get('/user/getDynamicByUserID/',
 					{params:{time:new Date().getTime(),userID:this.userID}},
 					{header:{cookie:this.ticket}})
 					.then(function(res) {
@@ -367,7 +370,8 @@
 					});
 				},
 				//获取发送的礼物
-				getSendGiftOrder() {
+				getSendGiftOrder(index) {
+					this.tempIndex = index
 					this.$http.get('/user/getSendGiftOrder/',
 					{params:{time:new Date().getTime()}},
 					{header:{cookie:this.ticket}})
@@ -379,7 +383,8 @@
 					});
 				},
 				//获取接受的礼物
-				getTakeGiftOrder() {
+				getTakeGiftOrder(index) {
+					this.tempIndex = index
 					this.$http.get('/user/getTakeGiftOrder/',
 					{params:{time:new Date().getTime()}},
 					{header:{cookie:this.ticket}})
@@ -449,7 +454,7 @@
 				this.checkTicket()
 				this.getUrlQuery()
 				this.getUserInfo()
-				this.getLaterDynamic()
+				this.getLaterDynamic(1)
 			}
 		})
 	</script>
