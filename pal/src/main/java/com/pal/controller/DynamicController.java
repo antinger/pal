@@ -55,6 +55,17 @@ public class DynamicController {
 		}
 	}
 	
+	@RequestMapping(path="/user/addDynamicContent/", method=RequestMethod.POST)
+	@ResponseBody
+	public String addDynamic(@RequestParam("content") String content) {
+		try {
+			Map<String, Object> map = dynamicService.addDynamic(content, null);
+			return PalUtils.toJSONString(200, map);
+		} catch (Exception e) {
+			return PalUtils.toJSONString(500, "添加动态失败");
+		}
+	}
+	
 	//审核动态
 	@RequestMapping(path="/user/updateDynamic/", method=RequestMethod.GET)
 	@ResponseBody
