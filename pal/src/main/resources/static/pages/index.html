@@ -1311,6 +1311,10 @@
 						if(res.body.eor){
 							alert(res.body.eor)
 						}
+						if(res.body.member) {
+							this.toView(1)
+							return ;
+						}
 						this.closeMessageView()
 					}, function (res) {
 					  console.log(res.body);
