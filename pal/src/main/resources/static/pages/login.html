@@ -259,7 +259,9 @@
 					formData.append('sex', this.sex);
 					this.$http.post('/register/', formData)
 					.then(function (res) {
-						alert(res.body.message)
+						if(res.body.message){
+							alert(res.body.message)
+						}
 						if(res.body.eor != "") {
 							alert(res.body.eor)
 							return 
@@ -307,11 +309,13 @@
 					formData.append('like', this.like);
 					this.$http.post('/reset/', formData)
 					.then(function (res) {
+						if(res.body.message){
+							alert(res.body.message)
+						}
 						if(res.body.eor){
 							alert(res.body.eor)
 							return
 						}
-						alert("更新成功")
 						this.username = ""
 						this.name = ''
 						this.email = ''
