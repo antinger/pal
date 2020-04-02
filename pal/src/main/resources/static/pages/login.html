@@ -263,6 +263,11 @@
 							alert(res.body.eor)
 							return 
 						}
+						alert("注册成功")
+						this.username = ""
+						this.password = ""
+						this.email = ""
+						this.birthday = ""
 						if(res.body.ticket != "") {
 							localStorage.setItem('ticket',res.body.ticket)
 							window.location.href="index.html"
@@ -280,7 +285,7 @@
 					formData.append('password', this.password);
 					this.$http.post('/login/', formData)
 					.then(function (res) {
-						if(res.body.eor) {
+						if(res.body.eor != "") {
 							alert(res.body.eor)
 							return 
 						}
@@ -303,7 +308,15 @@
 					formData.append('like', this.like);
 					this.$http.post('/reset/', formData)
 					.then(function (res) {
-						
+						if(res.body.eor){
+							alert(res.body.eor)
+							return
+						}
+						alert("更新成功")
+						this.username = ""
+						this.name = ''
+						this.email = ''
+						this.like = ''
 					}, function (res) {
 					    console.log(res.body);
 					});
