@@ -259,6 +259,7 @@
 					formData.append('sex', this.sex);
 					this.$http.post('/register/', formData)
 					.then(function (res) {
+						alert(res.body.message)
 						if(res.body.eor != "") {
 							alert(res.body.eor)
 							return 
@@ -270,7 +271,6 @@
 						if(res.body.ticket != "") {
 							localStorage.setItem('ticket',res.body.ticket)
 						}
-						alert(res.body.message)
 					}, function (res) {
 					    console.log(res.body);
 					});
