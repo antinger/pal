@@ -292,6 +292,9 @@
 					formData.append('toUserID', this.userID);
 					this.$http.post('/user/addMessage/', formData).
 					then(function (res) {
+						if(res.body.eor){
+							alert(res.body.eor)
+						}
 						this.toLoginView(res)
 						this.content = ""
 					}, function (res) {

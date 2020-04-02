@@ -3,6 +3,7 @@ package com.pal.service;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -11,9 +12,11 @@ import java.util.Map.Entry;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.pal.dao.MemberTicketDao;
 import com.pal.dao.MessageDao;
 import com.pal.dao.UserDao;
 import com.pal.entity.HostHolder;
+import com.pal.entity.MemberTicket;
 import com.pal.entity.Message;
 import com.pal.entity.User;
 import com.pal.entity.ViewObject;
@@ -33,6 +36,9 @@ public class MessageService {
 	
 	@Autowired
 	QiniuService qiniuService;
+	
+	@Autowired
+	MemberTicketDao memberTicketDao;
 
 	//获取未读的消息
 	public Map<String, Object> getMessageNumByStatus() {
@@ -128,6 +134,19 @@ public class MessageService {
 		if(threadUser.getBannedStatus() == 1) {
 			map.put("eor", "禁言中");
 			return map;
+		}
+		MemberTicket member = memberTicketDao.selectByMemberTicket(threadUser.getUsername());
+		int count = messageDao.getNumByUserID(threadUser.getId());
+		if(count == 4) {
+			if(member == null) {
+				map.put("member", true);
+				return map;
+			} else {
+				if(member.getExpired().getTime() < new Date().getTime() || member.getStatus() == 1) {
+					map.put("member", true);
+					return map;
+				}
+			}
 		}
 		Message message = new Message();
 		message.setContent(content);

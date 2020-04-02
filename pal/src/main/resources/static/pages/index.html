@@ -1308,6 +1308,9 @@
 					formData.append('toUserID', this.messageToUserID);
 					this.$http.post('/user/addMessage/', formData).
 					then(function (res) {
+						if(res.body.eor){
+							alert(res.body.eor)
+						}
 						this.closeMessageView()
 					}, function (res) {
 					  console.log(res.body);
