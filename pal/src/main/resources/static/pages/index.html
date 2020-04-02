@@ -316,7 +316,7 @@
 																		style="position:absolute;top:0;left:0;font-size:34px; opacity:0">
 															</div>
 															<div class="col-2">
-																<a href="#" class="btn btn-primary" @click="addDynamic">{{formLabel[1]}}</a>
+																<a class="btn btn-primary" @click="addDynamic">{{formLabel[1]}}</a>
 															</div>
 														</div>
 													</form>
@@ -1127,8 +1127,10 @@
 				    this.$http.post('/user/addDynamic/', formData, 
 				    {headers: { 'Content-Type': 'multipart/form-data', cookie:this.ticket}}).
 				    then(function (res) {
+						if(res.body.message){
+							alert(res.body.message)
+						}
 				    	this.toLoginView(res)
-						alert("发布成功")
 						this.content = ""
 				    }, function (res) {
 				      console.log(res.body);
@@ -1233,7 +1235,9 @@
 							this.toView(2)
 							return
 						}
-						alert("发送成功")
+						if(res.body.message){
+							alert(res.body.message)
+						}
 				    	this.toUsername = ""
 						this.num = 0
 						this.giftID = 0

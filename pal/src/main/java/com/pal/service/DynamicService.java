@@ -102,7 +102,7 @@ public class DynamicService {
 		dynamic.setStatus(1);
 		dynamic.setContent(content);
 		dynamicDao.addDynamic(dynamic);
-		map.put("message", "发布成功");
+		map.put("message", "发布成功，等待审核");
 		return map;
 	}
 	
