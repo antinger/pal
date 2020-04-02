@@ -30,7 +30,7 @@ public class EncryptedController {
 		}
 	}
 	
-	//通过密保充值密码
+	//通过密保更新密码
 	@RequestMapping(path="/reset/", method=RequestMethod.POST)
 	@ResponseBody
 	public String reset(@RequestParam("username") String username, @RequestParam("name") String name, @RequestParam("email") String email, @RequestParam("like") String like) {

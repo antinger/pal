@@ -53,19 +53,19 @@ public class EncryptedService {
 		Map<String, Object> map = new HashMap<String, Object>();
 		Encrypted encrypted = encryptedDao.selectByUsername(username);
 		if(encrypted == null) {
-			map.put("username", "用户名无效");
+			map.put("eor", "用户名无效");
 			return map;
 		}
 		if(encrypted.getName().equals(name)) {
-			map.put("name", "名字无效");
+			map.put("eor", "名字无效");
 			return map;
 		}
 		if(encrypted.getEmail().equals(email)) {
-			map.put("email", "邮箱无效");
+			map.put("eor", "邮箱无效");
 			return map;
 		}
 		if(encrypted.getLike().equals(like)) {
-			map.put("like", "喜欢的人无效");
+			map.put("eor", "喜欢的人无效");
 			return map;
 		}
 		User user = userDao.selectUserByUsername(username);
