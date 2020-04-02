@@ -112,6 +112,7 @@ public class GiftOrderService {
 		order.setUsername(threadUser.getUsername());
 		order.setPrice(price);
 		giftOrderDao.addGiftOrder(order);
+		map.put("message", "发送成功");
 		return map;
 	}
 
