@@ -851,6 +851,12 @@
 										100USB
 									</label>
 								</div>
+								<div class="Block PaddingL">
+								    <input type="radio" name="money" id="model2-6" />
+								    <label for="model2-6">
+										其他
+									</label>
+								</div>
 							</div>
 						</div>
 						<div class="row" style="margin-top: 10px;">
@@ -1122,6 +1128,7 @@
 				    {headers: { 'Content-Type': 'multipart/form-data', cookie:this.ticket}}).
 				    then(function (res) {
 				    	this.toLoginView(res)
+						alert("发布成功")
 						this.content = ""
 				    }, function (res) {
 				      console.log(res.body);
@@ -1226,6 +1233,7 @@
 							this.toView(2)
 							return
 						}
+						alert("发送成功")
 				    	this.toUsername = ""
 						this.num = 0
 						this.giftID = 0
