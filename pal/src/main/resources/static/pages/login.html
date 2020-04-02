@@ -263,7 +263,6 @@
 							alert(res.body.eor)
 							return 
 						}
-						alert(res.body.message)
 						this.username = ""
 						this.password = ""
 						this.email = ""
@@ -271,6 +270,7 @@
 						if(res.body.ticket != "") {
 							localStorage.setItem('ticket',res.body.ticket)
 						}
+						alert(res.body.message)
 					}, function (res) {
 					    console.log(res.body);
 					});
