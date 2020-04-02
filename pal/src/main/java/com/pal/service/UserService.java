@@ -102,6 +102,7 @@ public class UserService {
 		addWallet(username);
 		String ticket = addTicket(username);
 		map.put("ticket", ticket);
+		map.put("message", "注册成功");
 		return map;
 	}
 	
