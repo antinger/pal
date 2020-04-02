@@ -262,7 +262,7 @@
 						if(res.body.message){
 							alert(res.body.message)
 						}
-						if(res.body.eor != "") {
+						if(res.body.eor) {
 							alert(res.body.eor)
 							return 
 						}
@@ -270,7 +270,7 @@
 						this.password = ""
 						this.email = ""
 						this.birthday = ""
-						if(res.body.ticket != "") {
+						if(res.body.ticket) {
 							localStorage.setItem('ticket',res.body.ticket)
 						}
 					}, function (res) {
@@ -290,7 +290,7 @@
 							alert(res.body.eor)
 							return 
 						}
-						if(res.body.ticket != "") {
+						if(res.body.ticket) {
 							localStorage.setItem('ticket',res.body.ticket)
 							window.location.href="index.html"
 						}
