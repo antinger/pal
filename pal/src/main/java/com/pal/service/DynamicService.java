@@ -91,14 +91,16 @@ public class DynamicService {
 	//添加动态
 	public Map<String, Object> addDynamic(String content, MultipartFile image) throws IOException {
 		Map<String, Object> map = new HashMap<String, Object>();
-		Map<String, Object> saveImage = qiniuService.saveImage(image);
 		User threadUser = getThreadUser();
 		Dynamic dynamic = new Dynamic();
+		if(image != null) {
+			Map<String, Object> saveImage = qiniuService.saveImage(image);
+			dynamic.setImage(saveImage.get("fileList").toString());
+		}
 		dynamic.setUserID(threadUser.getId());
 		dynamic.setSex(threadUser.getSex());
 		dynamic.setStatus(1);
 		dynamic.setContent(content);
-		dynamic.setImage(saveImage.get("fileList").toString());
 		dynamicDao.addDynamic(dynamic);
 		map.put("message", "发布成功");
 		return map;
