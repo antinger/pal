@@ -857,7 +857,7 @@
 							<div class="form-group row" style="align-items: center;">
 							    <label for="inputEmail3" class="col-sm-5 col-form-label">{{btnLabel[2]}} : </label>
 							    <div class="col-sm-7">
-							      <input type="email" class="form-control" id="inputEmail3" v-model="money">
+							      <input type="number" class="form-control" id="inputEmail3" v-model="money">
 							    </div>
 							</div>
 						</div>
@@ -1233,12 +1233,12 @@
 				    this.$http.post('/user/addGiftOrder/', formData, 
 				    {headers: { 'Content-Type': 'multipart/form-data', cookie:this.ticket}}).
 				    then(function (res) {
+						if(res.body.message){
+							alert(res.body.message)
+						}
 						if(res.body.flag) {
 							this.toView(2)
 							return
-						}
-						if(res.body.message){
-							alert(res.body.message)
 						}
 				    	this.toUsername = ""
 						this.num = 0
