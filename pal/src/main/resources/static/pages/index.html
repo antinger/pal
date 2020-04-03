@@ -98,70 +98,6 @@
 					<div class="container">
 						<div class="main-section-data">
 							<div class="row">
-								<!-- 左侧栏------------------------start -->
-								<div class="col-lg-3">
-									<div class="main-left-sidebar">
-										<div class="user_profile">
-											<div class="user-pro-img">
-												<template v-if="user.headStatus==1">
-													<img :src="headLink" alt="" width="170px" height="170px" @click="toUserView(user.id)">
-												</template>
-												<template v-else>
-													<img :src="user.headLink" alt="" width="170px" height="170px" @click="toUserView(user.id)">
-												</template>
-												
-											</div><!--user-pro-img end-->
-											<div class="user_pro_status">
-												<ul class="flw-hr">
-													<li>
-														<div id="gallery">
-															<a @click="toView(1)" class="flww">
-																<i class="la la-plus"></i> {{leftLabel[0]}}
-															</a>
-														</div>
-													</li>
-													<li>
-														<div id="gallery-recharge">
-															<a @click="toView(2)" class="flww">
-																{{leftLabel[1]}}
-															</a>
-														</div>
-													</li>
-												</ul>
-												<ul class="flw-status">
-													<li>
-														<span style="text-align: center;">
-															<template v-if="member">
-																<template v-if="member == 1">
-																	<img src="images/pay/huangguan.png" width="35px"/>
-																</template>
-																<template v-if="member == 2">
-																	<img src="images/pay/zuanshi.png" width="35px"/>
-																</template>
-															</template>
-														</span>
-													</li>
-													<li>
-														<span>{{leftLabel[2]}} : {{wallet.balance}}</span>
-													</li>
-												</ul>
-											</div>
-											<!-- 信息栏---------------------start -->
-											<ul class="social_links">
-												<li><a href="#" title="">{{leftLabel[3]}} ：{{userInfo.view.birthday}}</a></li>
-												<li><a href="#" title="">{{leftLabel[4]}} ：{{userInfo.view.info.education}}</a></li>
-												<li><a href="#" title="">{{leftLabel[5]}} ：{{userInfo.view.info.height}}</a></li>
-												<li><a href="#" title="">{{leftLabel[6]}} ：{{userInfo.view.info.weight}}</a></li>
-												<li><a href="#" title="">{{leftLabel[7]}} ：{{userInfo.view.info.job}}</a></li>
-												<li><a href="#" title="">{{leftLabel[8]}} ：{{userInfo.view.info.country}}</a></li>
-												<li><a href="#" title="">{{leftLabel[9]}} ：{{userInfo.view.info.town}}</a></li>
-											</ul>
-											<!-- 信息栏---------------------end -->
-										</div><!--user_profile end-->
-										
-									</div><!--main-left-sidebar end-->
-								</div>
-								<!-- 左侧栏------------------------end -->
 								
 								<!-- 右侧栏------------------start -->
 								<div class="col-lg-9">
@@ -494,6 +430,70 @@
 									</div><!--main-ws-sec end-->
 								</div>
 								<!-- 右侧栏------------------end -->
+								<!-- 左侧栏------------------------start -->
+								<div class="col-lg-3">
+									<div class="main-left-sidebar">
+										<div class="user_profile">
+											<div class="user-pro-img">
+												<template v-if="user.headStatus==1">
+													<img :src="headLink" alt="" width="170px" height="170px" @click="toUserView(user.id)">
+												</template>
+												<template v-else>
+													<img :src="user.headLink" alt="" width="170px" height="170px" @click="toUserView(user.id)">
+												</template>
+												
+											</div><!--user-pro-img end-->
+											<div class="user_pro_status">
+												<ul class="flw-hr">
+													<li>
+														<div id="gallery">
+															<a @click="toView(1)" class="flww">
+																<i class="la la-plus"></i> {{leftLabel[0]}}
+															</a>
+														</div>
+													</li>
+													<li>
+														<div id="gallery-recharge">
+															<a @click="toView(2)" class="flww">
+																{{leftLabel[1]}}
+															</a>
+														</div>
+													</li>
+												</ul>
+												<ul class="flw-status">
+													<li>
+														<span style="text-align: center;">
+															<template v-if="member">
+																<template v-if="member == 1">
+																	<img src="images/pay/huangguan.png" width="35px"/>
+																</template>
+																<template v-if="member == 2">
+																	<img src="images/pay/zuanshi.png" width="35px"/>
+																</template>
+															</template>
+														</span>
+													</li>
+													<li>
+														<span>{{leftLabel[2]}} : {{wallet.balance}}</span>
+													</li>
+												</ul>
+											</div>
+											<!-- 信息栏---------------------start -->
+											<ul class="social_links">
+												<li><a href="#" title="">{{leftLabel[3]}} ：{{userInfo.view.birthday}}</a></li>
+												<li><a href="#" title="">{{leftLabel[4]}} ：{{userInfo.view.info.education}}</a></li>
+												<li><a href="#" title="">{{leftLabel[5]}} ：{{userInfo.view.info.height}}</a></li>
+												<li><a href="#" title="">{{leftLabel[6]}} ：{{userInfo.view.info.weight}}</a></li>
+												<li><a href="#" title="">{{leftLabel[7]}} ：{{userInfo.view.info.job}}</a></li>
+												<li><a href="#" title="">{{leftLabel[8]}} ：{{userInfo.view.info.country}}</a></li>
+												<li><a href="#" title="">{{leftLabel[9]}} ：{{userInfo.view.info.town}}</a></li>
+											</ul>
+											<!-- 信息栏---------------------end -->
+										</div><!--user_profile end-->
+										
+									</div><!--main-left-sidebar end-->
+								</div>
+								<!-- 左侧栏------------------------end -->
 								
 							</div>
 						</div><!-- main-section-data end-->
