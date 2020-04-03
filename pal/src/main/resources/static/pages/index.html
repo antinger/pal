@@ -27,6 +27,21 @@
 			#gallery a { display: block; float: left; }
 			#gallery-recharge { overflow: hidden; }
 			#gallery-recharge a { display: block; float: left; }
+			.user-search{
+				position: absolute;
+				padding-top:20px;
+				top:24px;
+				left:-81px;
+				width: 180px;
+				height: 188px;
+				border:1px solid #ddd;
+				display: block;
+				line-height: 1.2;
+				text-align: center;
+				background-color: #fff;
+				z-index: 1;
+			}
+			
 		</style>
 	</head>
 	
@@ -43,8 +58,11 @@
 						<div class="search-bar">
 							<form>
 								<input type="text" name="search" placeholder="Search...">
-								<button type="submit"><i class="la la-search"></i></button>
+								<button ><i class="la la-search"></i></button>
 							</form>
+							<div class="user-search" style="display: none;">
+								搜索结果
+							</div>
 						</div><!--search-bar end-->
 						<nav>
 							<ul>
