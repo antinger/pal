@@ -21,6 +21,7 @@
 		<link rel="stylesheet" type="text/css" href="css/radio.css" />
 		<link rel="stylesheet" type="text/css" href="css/pay.css" />
 		<link rel="stylesheet" type="text/css" href="css/message.css" />
+		<link rel="stylesheet" type="text/css" href="css/iconfont.css" />
 		<style>
 			#gallery { overflow: hidden; }
 			#gallery a { display: block; float: left; }
@@ -203,10 +204,14 @@
 																<img :src="item.view.user.headLink" alt="" @click="toUserView(item.view.user.id)">
 															</template>
 															<h3>{{item.view.user.username}}</h3>
-															<h4 style="color: #E44D3A;">
-																{{item.view.sex}}-
-																{{item.view.member == 1 ? '皇冠' : ''}}
-																{{item.view.member == 2 ? '钻石' : ''}}
+															<h4 style="color: #E44D3A;" style="align-items: center;">
+																{{item.view.sex}}
+																<span class="icon iconfont icon-huangguan" style="color: #F7D501;font-size: 24px;" v-if="item.view.member == 1">
+																	
+																</span>
+																<span class="icon iconfont icon-zuanshi" style="color: #1e6f35;font-size: 24px;" v-if="item.view.member == 2">
+																	
+																</span>
 															</h4>
 															
 															<h4>{{item.view.birthday}}</h4>
