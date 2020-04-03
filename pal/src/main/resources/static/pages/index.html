@@ -58,7 +58,7 @@
 							<a href="#" title=""><img src="images/logo.png" alt=""></a>
 						</div><!--logo end-->
 						<div class="search-bar">
-							<form>
+							<form v-on:submit.prevent="onSubmit">
 								<input type="text" v-model="searchUserName" placeholder="Search...">
 								<button><i class="la la-search" @click="getSearchaUser"></i></button>
 							</form>
