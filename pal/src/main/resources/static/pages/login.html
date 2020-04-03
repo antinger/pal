@@ -7,6 +7,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
+		<meta http-equiv="X-UA-Compatible" content="IE=11"> 
 		<link rel="stylesheet" type="text/css" href="css/animate.css">
 		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 		<link rel="stylesheet" type="text/css" href="css/line-awesome.css">
@@ -34,7 +35,8 @@
 			<div class="sign-in-page">
 				<div class="signin-popup">
 					<div class="signin-pop">
-						<div class="row international">
+						
+						<div class="row" style="padding: 50px 0;">
 							<div class="col-lg-6">
 								<select class="form-control form-control-lg language" v-model="languageID" @click="change">
 									<option selected="true" value="1">中文简体</option>
@@ -44,18 +46,6 @@
 									<option value="5">にほんご</option>
 									<option value="6">ภาษาไทย</option>
 								</select>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-lg-6">
-								<div class="cmp-info">
-									<div class="cm-logo">
-										<img src="images/cm-logo.png" alt="">
-										<p>Join A secret date for A local party and date to start your perfect date</p>
-									</div><!--cm-logo end-->	
-								</div><!--cmp-info end-->
-							</div>
-							<div class="col-lg-6">
 								<div class="login-sec">
 									<ul class="sign-control">
 										<li data-tab="tab-1" class="current"><a href="#" title="">{{label[0]}}</a></li>				
@@ -78,11 +68,7 @@
 													</div>
 												</div>
 												<div class="col-lg-12 no-pdd">
-													<div class="checky-sec">
-														<div class="fgt-sec">
-															<a class="btn btn-danger" @click="login">{{label[0]}}</a>
-														</div><!--fgt-sec end-->
-													</div>
+													<a class="btn btn-danger btn-lg btn-block" @click="login">{{label[0]}}</a>
 												</div>
 											</div>
 										</form>
@@ -128,7 +114,7 @@
 													</div>
 													
 													<div class="col-lg-12 no-pdd">
-														<a class="btn btn-danger" @click="register">{{label[1]}}</a>
+														<a class="btn btn-danger btn-lg btn-block" @click="register">{{label[1]}}</a>
 													</div>
 												</div>
 											</form>
@@ -168,11 +154,7 @@
 													</div>
 												</div>
 												<div class="col-lg-12 no-pdd">
-													<div class="checky-sec">
-														<div class="fgt-sec">
-															<a class="btn btn-danger" @click="reset">{{label[3]}}</a>
-														</div><!--fgt-sec end-->
-													</div>
+													<a class="btn btn-danger btn-lg btn-block" @click="reset">{{label[3]}}</a>
 												</div>
 											</div>
 										</form>
@@ -180,6 +162,49 @@
 									</div><!--sign_in_sec end-->
 								</div><!--login-sec end-->
 							</div>
+							<div class="col-lg-6">
+								<div class="row no-gutters" style="padding:5px;">
+								    <div class="col-md-3">
+								      <img src="images/login/1.png" class="card-img" alt="" style="border-radius: 50%;height: 100px;width: 100px;">
+								    </div>
+								    <div class="col-md-9">
+								      <div class="card-body">
+								        <p class="card-text">这里给了我冒险的感觉！该网站非常易于使用，并遇到了有趣的人</p>
+								      </div>
+								    </div>
+								</div>
+								<div class="row no-gutters" style="padding:5px;">
+								    <div class="col-md-3">
+								      <img src="images/login/2.png" class="card-img" alt="" style="border-radius: 50%;height: 100px;width: 100px;">
+								    </div>
+								    <div class="col-md-9">
+								      <div class="card-body">
+								        <p class="card-text">结识来自不同国家的人，而不是他们自己，却有着相似的兴趣和价值观，真是太酷了。</p>
+								      </div>
+								    </div>
+								</div>
+								<div class="row no-gutters" style="padding:5px;">
+								    <div class="col-md-3">
+								      <img src="images/login/3.png" class="card-img" alt="" style="border-radius: 50%;height: 100px;width: 100px;">
+								    </div>
+								    <div class="col-md-9">
+								      <div class="card-body">
+								        <p class="card-text">这里有很多有趣的人...我在这里爱上了她。</p>
+								      </div>
+								    </div>
+								</div>
+								<div class="row no-gutters" style="padding:5px;">
+								    <div class="col-md-3">
+								      <img src="images/login/4.png" class="card-img" alt="" style="border-radius: 50%;height: 100px;width: 100px;">
+								    </div>
+								    <div class="col-md-9">
+								      <div class="card-body">
+								        <p class="card-text">我的约会变得非常糟糕，所以我决定尝试一个全球约会...我在这里遇到了他，我们无法停止互相交谈！</p>
+								      </div>
+								    </div>
+								</div>
+							</div>
+							
 						</div>		
 					</div><!--signin-pop end-->
 				</div><!--signin-popup end-->
@@ -201,6 +226,8 @@
 	 <!--时间js start-->
 	<script src="time/js/moment-with-locales.js"></script>
 	<script src="time/js/bootstrap-datetimepicker.js"></script>
+	<script src="js/browser.min.js"></script>
+	<script src="js/polyfill.min.js" type="text/javascript" charset="utf-8"></script>
 	<script type="text/javascript">
 	    $(function () {
 	        $('#datetimepicker3').datetimepicker({
@@ -208,7 +235,7 @@
 	        });
 	    });
 	</script>
-	<script type="text/javascript">
+	<script type="text/babel">
 		var vm = new Vue({
 			el : '#app',
 			data:{
