@@ -27,15 +27,17 @@
 			#gallery a { display: block; float: left; }
 			#gallery-recharge { overflow: hidden; }
 			#gallery-recharge a { display: block; float: left; }
+			.search-bar{
+				position: relative;
+			}
 			.user-search{
 				position: absolute;
 				padding-top:20px;
-				top:24px;
-				left:-81px;
-				width: 180px;
-				height: 188px;
+				top:40px;
+				width: 280px;
+				height: 120px;
 				border:1px solid #ddd;
-				display: block;
+				display: none;
 				line-height: 1.2;
 				text-align: center;
 				background-color: #fff;
@@ -57,10 +59,10 @@
 						</div><!--logo end-->
 						<div class="search-bar">
 							<form>
-								<input type="text" name="search" placeholder="Search...">
-								<button ><i class="la la-search"></i></button>
+								<input type="text" v-model="searchUserName" placeholder="Search...">
+								<button @click="getSearchaUser"><i class="la la-search"></i></button>
 							</form>
-							<div class="user-search" style="display: none;">
+							<div class="user-search" >
 								搜索结果
 							</div>
 						</div><!--search-bar end-->
@@ -996,6 +998,10 @@
 				headLink:"images/user/default.png",
 				/* 个人信息----------------end */
 				
+				//寻找
+				searchUserName:"",
+				searchUser:"",
+				
 				/* 照片墙-----------------start */
 				pushUser:[],
 				/* 照片墙-----------------end */
@@ -1108,6 +1114,18 @@
 						this.user = res.body.user
 						this.wallet = res.body.wallet
 						this.member = res.body.member
+					},function() {
+						console.log('请求失败处理');
+					});
+				},
+				//查找用户
+				getSearchaUser(){
+					this.$http.get('/user/getUserByUsername/',
+						{params : {time:new Date().getTime(), username:this.searchUserName}},{header : {cookie:this.ticket}})
+					.then(function(res) {
+						this.toLoginView(res)
+						$('.user-search').show();
+						this.searchUser = res.body.user
 					},function() {
 						console.log('请求失败处理');
 					});
