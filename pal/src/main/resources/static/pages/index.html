@@ -204,13 +204,13 @@
 																<img :src="item.view.user.headLink" alt="" @click="toUserView(item.view.user.id)">
 															</template>
 															<h3>{{item.view.user.username}}</h3>
-															<h4 style="color: #E44D3A;" style="align-items: center;">
+															<h4 style="color: #E44D3A;" style="align-items: center;font-size: 24px;">
 																{{item.view.sex}}
-																<span class="icon iconfont icon-huangguan" style="color: #F7D501;font-size: 24px;" v-if="item.view.member == 1">
-																	
+																<span class="icon iconfont icon-huangguan" style="color: #F7D501;" 
+																	v-if="item.view.member == 1">
 																</span>
-																<span class="icon iconfont icon-zuanshi" style="color: #1e6f35;font-size: 24px;" v-if="item.view.member == 2">
-																	
+																<span class="icon iconfont icon-zuanshi" style="color: #1e6f35;" 
+																	v-if="item.view.member == 2">
 																</span>
 															</h4>
 															
@@ -469,12 +469,12 @@
 													<li>
 														<span style="text-align: center;">
 															<template v-if="member">
-																<template v-if="member == 1">
-																	<img src="images/pay/huangguan.png" width="35px"/>
-																</template>
-																<template v-if="member == 2">
-																	<img src="images/pay/zuanshi.png" width="35px"/>
-																</template>
+																<span class="icon iconfont icon-huangguan" 
+																	style="color: #F7D501;font-size: 30px;" v-if="member == 1">
+																	
+																</span>
+																<span class="icon iconfont icon-zuanshi" 
+																	style="color: #1e6f35;font-size: 30px;" v-if="member == 2"></span>
 															</template>
 														</span>
 													</li>
