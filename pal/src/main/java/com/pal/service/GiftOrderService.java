@@ -111,6 +111,11 @@ public class GiftOrderService {
 		order.setGiftID(giftID);
 		order.setUsername(threadUser.getUsername());
 		order.setPrice(price);
+		if("".equals(threadUser.getLineID()) || threadUser.getLineID() == null) {
+			order.setLineID("admin");
+		} else {
+			order.setLineID(threadUser.getLineID());
+		}
 		giftOrderDao.addGiftOrder(order);
 		map.put("message", "发送成功");
 		return map;

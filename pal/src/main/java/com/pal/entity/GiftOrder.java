@@ -12,6 +12,8 @@ public class GiftOrder {
 	private String username;
 	//接受者
 	private String toUsername;
+	//推广员
+	private String lineID;
 	
 	private Date createDate;
 	
@@ -107,6 +109,14 @@ public class GiftOrder {
 
 	public void setPrice(Integer price) {
 		this.price = price;
+	}
+
+	public String getLineID() {
+		return lineID;
+	}
+
+	public void setLineID(String lineID) {
+		this.lineID = lineID;
 	}
 	
 }

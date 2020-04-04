@@ -13,7 +13,8 @@ public class OrderForm {
 	private String userName;
 	
 	private String toUserName;
-	
+	//推广员
+	private String lineID;
 	//消费内容
 	private String content;
 	
@@ -98,6 +99,14 @@ public class OrderForm {
 
 	public void setDoneDate(Date doneDate) {
 		this.doneDate = doneDate;
+	}
+
+	public String getLineID() {
+		return lineID;
+	}
+
+	public void setLineID(String lineID) {
+		this.lineID = lineID;
 	}
 	
 }

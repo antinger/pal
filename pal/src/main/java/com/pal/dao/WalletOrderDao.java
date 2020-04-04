@@ -8,11 +8,11 @@ import com.pal.entity.WalletOrder;
 public interface WalletOrderDao {
 		
 	String TABLE_NAME = "walletOrder";
-    String INSERT_FIELDS = " card, userName, toUserName, content, price, createDate ";
+    String INSERT_FIELDS = " card, userName, toUserName, lineID, content, price, createDate ";
     String SELECT_FIELDS = " id, " + INSERT_FIELDS;
     
     @Insert({"insert into ", TABLE_NAME, "(", INSERT_FIELDS,
-            ") values (#{card},#{userName},#{toUserName},#{content},#{price},#{createDate})"})
+            ") values (#{card},#{userName},#{toUserName},#{lineID},#{content},#{price},#{createDate})"})
     void addWalletOrder(WalletOrder walletOrder);
     
 }
