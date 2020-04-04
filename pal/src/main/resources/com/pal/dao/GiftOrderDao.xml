@@ -4,7 +4,7 @@
 <mapper namespace="com.pal.dao.GiftOrderDao">
     <sql id="table">giftOrder</sql>
     <sql id="selectFields">
-    	id, giftID, num, price, username, toUsername, createDate, content, status
+    	id, giftID, num, price, username, toUsername, lineID, createDate, content, status
     </sql>
     
     <!-- 获取发送的礼物 -->
