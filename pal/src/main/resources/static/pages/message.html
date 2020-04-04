@@ -17,6 +17,7 @@
 		<link rel="stylesheet" type="text/css" href="lib/slick/slick-theme.css">
 		<link rel="stylesheet" type="text/css" href="css/style.css">
 		<link rel="stylesheet" type="text/css" href="css/responsive.css">
+		<link rel="stylesheet" type="text/css" href="css/iconfont.css" />
 	</head>
 
 
@@ -110,6 +111,14 @@
 													<div class="usr-mg-info">
 														<h3>{{item.view.user.username}}</h3>
 													</div><!--usr-mg-info end-->
+													<div style="align-items: center;">
+														<span class="icon iconfont icon-huangguan" style="color: #F7D501;font-size: 24px;"
+															v-if="item.view.member == 1">
+														</span>
+														<span class="icon iconfont icon-zuanshi" style="color: #1e6f35;font-size: 24px;" 
+															v-if="item.view.member == 2">
+														</span>
+													</div>
 													<template v-if="item.view.count > 0">
 														<span class="msg-notifc">{{item.view.count}}</span>
 													</template>
