@@ -124,6 +124,12 @@ public class MessageService {
 		if(user.getHeadStatus() == 0) {
 			user.setHeadLink(qiniuService.dealOnlyImage(user.getHeadLink()));
 		}
+		MemberTicket memberTicket = memberTicketDao.selectByMemberTicket(user.getUsername());
+		if(memberTicket != null) {
+			if(memberTicket.getCreateDate().getTime() < memberTicket.getExpired().getTime() && memberTicket.getStatus() == 0) {
+				view.setView("member", memberTicket.getGrade());
+			}
+		}
 		view.setView("user", user);
 	}
 	
