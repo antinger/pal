@@ -16,12 +16,12 @@ import com.pal.entity.User;
 public interface UserDao {
 	
 	String TABLE_NAME = "user";
-    String INSERT_FIELDS = " username, email, password, salt, headLink, sex, createDate, onLineStatus, updateDate, status, headStatus, pushStatus, lineID, address ";
+    String INSERT_FIELDS = " username, email, password, salt, headLink, sex, createDate, onLineStatus, updateDate, status, headStatus, pushStatus, lineID, address, type ";
     String SELECT_FIELDS = " id, " + INSERT_FIELDS;
     
     //添加用户
     @Insert({"insert into ", TABLE_NAME, "(", INSERT_FIELDS,
-            ") values (#{username},#{email},#{password},#{salt},#{headLink},#{sex},#{createDate},#{onLineStatus},#{updateDate},#{status},#{headStatus},#{pushStatus},#{lineID},#{address})"})
+            ") values (#{username},#{email},#{password},#{salt},#{headLink},#{sex},#{createDate},#{onLineStatus},#{updateDate},#{status},#{headStatus},#{pushStatus},#{lineID},#{address},#{type})"})
     void addUser(User user);
     
     //获取用户

@@ -4,7 +4,7 @@
 <mapper namespace="com.pal.dao.UserDao">
     <sql id="table">user</sql>
     <sql id="selectFields">
-    	id, username, password, salt, headLink, sex, createDate, onLineStatus, updateDate, status, headStatus, pushStatus, lineID, address
+    	id, username, password, salt, headLink, sex, createDate, onLineStatus, updateDate, status, headStatus, pushStatus, lineID, address, type
     </sql>
     
     <!-- 根据推送状态获取用户 -->

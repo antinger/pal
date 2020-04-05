@@ -52,6 +52,9 @@ public class User {
 	
 	//是否禁言 正常-0 禁用-1
 	private Integer bannedStatus;
+	
+	//内部人员0-普通 1-内部
+	private Integer type;
 
 	public User() {
 		this.id = 0;
@@ -68,6 +71,7 @@ public class User {
 		this.pushStatus = 1;
 		this.lineID = "";
 		this.address = "";
+		this.type = 0;
 		this.bannedStatus = 0;
 	}
 	
@@ -197,6 +201,14 @@ public class User {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public Integer getType() {
+		return type;
+	}
+
+	public void setType(Integer type) {
+		this.type = type;
 	}
 	
 }
