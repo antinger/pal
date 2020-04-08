@@ -316,5 +316,12 @@ public class UserService {
 			}
 		}
 	}
+
+	public Map<String, Object> updateOnLineStatus(Integer onLineStatus) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		User threadUser = getThreadUser();
+		userDao.updateOnLineStatus(threadUser.getId(), onLineStatus);
+		return map;
+	}
 	
 }

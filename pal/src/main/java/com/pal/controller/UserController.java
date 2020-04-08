@@ -43,6 +43,17 @@ public class UserController {
 		}
 	}
 	
+	@RequestMapping(path="/user/updateOnLineStatus/", method=RequestMethod.GET)
+	@ResponseBody
+	public String updateOnLineStatus(@RequestParam("onLineStatus") Integer onLineStatus) {
+		try {
+			Map<String, Object> map = userService.updateOnLineStatus(onLineStatus);
+			return PalUtils.toJSONString(200, map);
+		} catch (Exception e) {
+			return PalUtils.toJSONString(500, "获取推送用户失败");
+		}
+	}
+	
 	//获取首页推荐用户
 	@RequestMapping(path="/user/getLaterUser/", method=RequestMethod.GET)
 	@ResponseBody
