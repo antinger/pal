@@ -22,7 +22,7 @@ public interface OrderFormDao {
     void addOrderForm(OrderForm orderForm);
     
     //获取未读的消息量
-    @Select({"select count(*) from ", TABLE_NAME, " where uerrID=#{userID} and status=#{status}"})
+    @Select({"select count(*) from ", TABLE_NAME, " where userID=#{userID} and status=#{status}"})
     int getNumByStatus(Integer userID, int status);
     
     //获取发送的消息
