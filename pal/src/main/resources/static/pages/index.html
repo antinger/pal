@@ -165,23 +165,23 @@
 											<div class="tab-feed st2">
 												<ul>
 													<!-- 推荐----------start -->
-													<li data-tab="info-dd" class="active"  @click="getLaterUser">
-														<a href="#" title="">
+													<li data-tab="info-dd" v-bind:class="{ active: (0 == indexTemp) }" @click="getLaterUser(0)">
+														<a  title="">
 															<img src="images/ic2.png" alt="">
 															<span>{{rightLabel[0]}}</span>
 														</a>
 													</li>
 													<!-- 推荐----------end -->
 													<!-- 动态----------start -->
-													<li data-tab="feed-dd" @click="getLaterDynamic">
-														<a  href="#" title="">
+													<li data-tab="feed-dd" v-bind:class="{ active: (1 == indexTemp) }" @click="getLaterDynamic(1)">
+														<a  title="">
 															<img src="images/ic1.png" alt="">
 															<span>{{rightLabel[1]}}</span>
 														</a>
 													</li>
 													<!-- 动态----------end -->
 													<!-- 关注----------start -->
-													<li data-tab="saved-jobs" @click="getFollowUser">
+													<li data-tab="saved-jobs" v-bind:class="{ active: (2 == indexTemp) }" @click="getFollowUser(2)">
 														<a title="">
 															<img src="images/ic4.png" alt="">
 															<span>{{rightLabel[2]}}</span>
@@ -189,7 +189,7 @@
 													</li>
 													<!-- 关注----------end -->
 													<!-- 粉丝----------start -->
-													<li data-tab="my-bids" @click="getFans">
+													<li data-tab="my-bids" v-bind:class="{ active: (3 == indexTemp) }" @click="getFans(3)">
 														<a   title="">
 															<img src="images/ic5.png" alt="">
 															<span>{{rightLabel[3]}}</span>
@@ -197,7 +197,7 @@
 													</li>
 													<!-- 粉丝----------end -->
 													<!-- 游客----------start -->
-													<li data-tab="visitor-dd" @click="getVistor">
+													<li data-tab="visitor-dd" v-bind:class="{ active: (4 == indexTemp) }" @click="getVistor(4)">
 														<a  title="" >
 															<img src="images/ic4.png" alt="">
 															<span>{{rightLabel[4]}}</span>
@@ -205,7 +205,7 @@
 													</li>
 													<!-- 游客----------end -->
 													<!-- 礼物----------start -->
-													<li data-tab="gift-dd" @click="getLaterGift">
+													<li data-tab="gift-dd" v-bind:class="{ active: (5 == indexTemp) }" @click="getLaterGift(5)">
 														<a  title="" >
 															<img src="images/ic6.png" alt="">
 															<span>{{rightLabel[5]}}</span>
@@ -218,7 +218,7 @@
 										
 										
 										<!-- 推荐------------------start -->
-										<div class="product-feed-tab current" id="info-dd">
+										<div class="product-feed-tab" v-bind:class="{ current: (0 == indexTemp) }" id="info-dd">
 											<div class="row">
 												<div class="col-lg-4 col-md-4 col-sm-6 col-12" v-for="(item, index) in laterUser.data">
 													<div class="company_profile_info">
@@ -265,7 +265,7 @@
 										<!--推荐---------------------- end-->
 										
 										<!-- 动态--------------------start -->
-										<div class="product-feed-tab" id="feed-dd">
+										<div class="product-feed-tab" v-bind:class="{ current: (1 == indexTemp) }" id="feed-dd">
 											<div class="posts-section">
 												<div class="post-bar">
 													<form class="was-validated publish">
@@ -321,7 +321,7 @@
 										<!-- 动态---------------------end -->
 										
 										<!-- 关注-------------start -->
-										<div class="product-feed-tab" id="saved-jobs">
+										<div class="product-feed-tab" v-bind:class="{ current: (2 == indexTemp) }" id="saved-jobs">
 											<div class="row">
 												<div class="col-lg-4 col-md-4 col-sm-6 col-12" v-for="(item, index) in followUser">
 													<div class="company_profile_info">
@@ -346,7 +346,7 @@
 										<!-- 关注-------------end -->
 										
 										<!-- 粉丝----------start -->
-										<div class="product-feed-tab" id="my-bids">
+										<div class="product-feed-tab" v-bind:class="{ current: (3 == indexTemp) }" id="my-bids">
 											<div class="row">
 												<div class="col-lg-4 col-md-4 col-sm-6 col-12" v-for="(item, index) in fansUser">
 													<div class="company_profile_info">
@@ -374,7 +374,7 @@
 										<!-- 粉丝----------end -->
 										
 										<!-- 游客-------------start -->
-										<div class="product-feed-tab" id="visitor-dd">
+										<div class="product-feed-tab" v-bind:class="{ current: (4 == indexTemp) }" id="visitor-dd">
 											<div class="row">
 												<div class="col-lg-4 col-md-4 col-sm-6 col-12" v-for="(item, index) in visitor">
 													<div class="company_profile_info">
@@ -401,7 +401,7 @@
 										</div><!--product-feed-tab end-->
 										<!-- 游客-------------end -->
 										<!-- 礼物-------------start -->
-										<div class="product-feed-tab" id="gift-dd">
+										<div class="product-feed-tab" v-bind:class="{ current: (5 == indexTemp) }" id="gift-dd">
 											<div class="row">
 												<div class="RadioStyle">
 												    <div class="Block PaddingL">
@@ -1019,6 +1019,8 @@
 				},
 				/* 获取最新用户--------------start */
 				
+				indexTemp:0,
+				
 				/* 发布动态-----------------start */
 				image:"",
 				content:"",
@@ -1152,7 +1154,8 @@
 					this.getLaterUser()
 				},
 				//获取首页推荐的用户
-				getLaterUser() {
+				getLaterUser(index) {
+					this.indexTemp = index
 					this.$http.get('/user/getLaterUser/',
 					{params : {page:this.laterUser.page,limit:15,time:new Date().getTime()}},{header : {cookie:this.ticket}})
 					.then(function(res) {
@@ -1224,7 +1227,8 @@
 					this.getLaterDynamic()
 				},
 				//获取动态----分页获取
-				getLaterDynamic() {
+				getLaterDynamic(index) {
+					this.indexTemp = index
 					this.$http.get('/user/getLaterDynamic/',
 					{params:{time:new Date().getTime(),page:this.dynamics.page,limit:5}},
 					{header:{cookie:this.ticket}})
@@ -1242,7 +1246,8 @@
 					});
 				},
 				//获取关注的人
-				getFollowUser() {
+				getFollowUser(index) {
+					this.indexTemp = index
 					this.$http.get('/user/getFollowUser/',
 					{params : {time:new Date().getTime()}},{header : {cookie:this.ticket}})
 					.then(function(res) {
@@ -1253,7 +1258,8 @@
 					});
 				},
 				//获取粉丝
-				getFans() {
+				getFans(index) {
+					this.indexTemp = index
 					this.$http.get('/user/getFans/',
 					{params : {time:new Date().getTime()}},{header : {cookie:this.ticket}})
 					.then(function(res) {
@@ -1268,7 +1274,8 @@
 					});
 				},
 				//获取游客
-				getVistor() {
+				getVistor(index) {
+					this.indexTemp = index
 					this.$http.get('/user/getVisitor/',
 					{params : {time:new Date().getTime()}},{header : {cookie:this.ticket}})
 					.then(function(res) {
@@ -1279,7 +1286,8 @@
 					});
 				},
 				//获取礼物
-				getLaterGift() {
+				getLaterGift(index) {
+					this.indexTemp = index
 					this.$http.get('/user/getLaterGift/',
 					{params : {time:new Date().getTime()}},{header : {cookie:this.ticket}})
 					.then(function(res) {
