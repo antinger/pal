@@ -319,6 +319,7 @@
 				/* 令牌-------------start  */
 				ticket:"",
 				/* 令牌-------------end  */
+				threadUser:'',
 				/* 个人信息----------------start */
 				userID:"",
 				user:"",
@@ -366,6 +367,15 @@
 						this.toLoginView(res)
 						this.userInfo = res.body.userInfo
 						this.user = res.body.user
+					},function() {
+						console.log('请求失败处理');
+					});
+				},
+				getThreadUserInfo() {
+					this.$http.get('/user/getUserInfo/',{header:{cookie:this.ticket}},
+					{params : {time:new Date().getTime()}})
+					.then(function(res) {
+						this.threadUser = res.body.user
 					},function() {
 						console.log('请求失败处理');
 					});
@@ -468,6 +478,7 @@
 				this.checkTicket()
 				this.getUrlQuery()
 				this.getUserInfo()
+				this.getThreadUserInfo()
 				this.getLaterDynamic(1)
 			}
 		})
