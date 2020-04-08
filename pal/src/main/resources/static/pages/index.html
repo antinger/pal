@@ -1233,7 +1233,6 @@
 					{params:{time:new Date().getTime(),page:this.dynamics.page,limit:5}},
 					{header:{cookie:this.ticket}})
 					.then(function(res) {
-						console.log(JSON.stringify(res))
 						this.toLoginView(res)
 						if(res.body.member) {
 							this.toView(1)
@@ -1346,7 +1345,7 @@
 					this.ticket = localStorage.getItem("ticket");
 					if(this.ticket == "") {
 						window.location.href = "login.html"
-						return 
+						return
 					}
 					this.getUserInfo()
 					this.getPushUser()
