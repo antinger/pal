@@ -228,7 +228,7 @@
 											<div class="row">
 												<div class="col-lg-4 col-md-4 col-sm-6 col-12" v-for="(item, index) in laterUser.data">
 													<div class="company_profile_info">
-														<div class="company-up-info">
+														<div class="company-up-info" style="justify-content: center;">
 															<template v-if="item.view.user.headStatus == 1 || item.view.user.headLink == ''">
 																<img :src="headLink" alt="" @click="toUserView(item.view.user.id)" >
 															</template>
