@@ -141,9 +141,9 @@
 													<li><i class="fa fa-star-half-o"></i></li>
 												</ul>
 												<div class="form-group col-md-2">
-												  <select id="inputState" class="form-control" style="border: none;">
-													<option selected>在线</option>
-													<option>下线</option>
+												  <select id="inputState" class="form-control" style="border: none;" v-model="onLineStatus" @click="line">
+													<option selected value="0">在线</option>
+													<option value="1">下线</option>
 												  </select>
 												</div>
 											</div><!--star-descp end-->
@@ -1016,6 +1016,9 @@
 				headLink:"images/user/default.png",
 				/* 个人信息----------------end */
 				
+				//在线
+				onLineStatus:0,
+				
 				//寻找
 				searchUserName:"",
 				searchUser:"",
@@ -1482,6 +1485,15 @@
 						{params : {time:new Date().getTime()}})
 					.then(function(res) {
 						window.location.href = "login.html"
+					},function() {
+						console.log('请求失败处理');
+					});
+				},
+				line(){
+					this.$http.get('/user/updateOnLineStatus/',
+						{params : {time:new Date().getTime(), onLineStatus:this.onLineStatus}})
+					.then(function(res) {
+						
 					},function() {
 						console.log('请求失败处理');
 					});
