@@ -65,7 +65,11 @@ $(window).on("load", function() {
 
     //  ============= COVER GAP FUNCTION =========
 
-   
+    var gap = $(".container").offset().left;
+    $(".cover-sec > a, .chatbox-list").css({
+        "right": gap
+    });
+
     //  ============= OVERVIEW EDIT FUNCTION =========
 
     $(".overview-open").on("click", function(){
