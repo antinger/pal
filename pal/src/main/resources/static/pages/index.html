@@ -165,48 +165,48 @@
 											<div class="tab-feed st2">
 												<ul>
 													<!-- 推荐----------start -->
-													<li data-tab="info-dd" class="active">
-														<a  title="" @click="getLaterUser">
+													<li data-tab="info-dd" class="active"  @click="getLaterUser">
+														<a  title="">
 															<img src="images/ic2.png" alt="">
 															<span>{{rightLabel[0]}}</span>
 														</a>
 													</li>
 													<!-- 推荐----------end -->
 													<!-- 动态----------start -->
-													<li data-tab="feed-dd">
-														<a  title="" @click="getLaterDynamic">
+													<li data-tab="feed-dd" @click="getLaterDynamic">
+														<a  title="">
 															<img src="images/ic1.png" alt="">
 															<span>{{rightLabel[1]}}</span>
 														</a>
 													</li>
 													<!-- 动态----------end -->
 													<!-- 关注----------start -->
-													<li data-tab="saved-jobs">
-														<a title="" @click="getFollowUser">
+													<li data-tab="saved-jobs" @click="getFollowUser">
+														<a title="">
 															<img src="images/ic4.png" alt="">
 															<span>{{rightLabel[2]}}</span>
 														</a>
 													</li>
 													<!-- 关注----------end -->
 													<!-- 粉丝----------start -->
-													<li data-tab="my-bids">
-														<a   title="" @click="getFans">
+													<li data-tab="my-bids" @click="getFans">
+														<a   title="">
 															<img src="images/ic5.png" alt="">
 															<span>{{rightLabel[3]}}</span>
 														</a>
 													</li>
 													<!-- 粉丝----------end -->
 													<!-- 游客----------start -->
-													<li data-tab="visitor-dd">
-														<a  title="" @click="getVistor">
+													<li data-tab="visitor-dd" @click="getVistor">
+														<a  title="" >
 															<img src="images/ic4.png" alt="">
 															<span>{{rightLabel[4]}}</span>
 														</a>
 													</li>
 													<!-- 游客----------end -->
 													<!-- 礼物----------start -->
-													<li data-tab="gift-dd">
-														<a  title="" @click="getLaterGift">
+													<li data-tab="gift-dd" @click="getLaterGift">
+														<a  title="" >
 															<img src="images/ic6.png" alt="">
 															<span>{{rightLabel[5]}}</span>
 														</a>
@@ -1229,6 +1229,7 @@
 					{params:{time:new Date().getTime(),page:this.dynamics.page,limit:5}},
 					{header:{cookie:this.ticket}})
 					.then(function(res) {
+						console.log(JSON.stringify(res))
 						this.toLoginView(res)
 						if(res.body.member) {
 							this.toView(1)
