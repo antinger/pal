@@ -92,7 +92,7 @@
 												
 											</div><!--user-pro-img end-->
 											<div class="user_pro_status" v-if="threadUser.id != userID">
-												<button class="btn" style="border-radius: 100%;" @click="toVideo"><img src="images/video.png" width="40px"/></button>
+												<button class="btn" style="border-radius: 100%;"><img src="images/video.png" width="40px"/></button>
 												
 											</div>
 											<!-- 信息栏---------------------start -->
@@ -406,9 +406,6 @@
 					},function() {
 						console.log('请求失败处理');
 					});
-				},
-				toVideo(){
-					alert('金币不足')
 				},
 				//跳转到登录页面
 				toLoginView(res) {
