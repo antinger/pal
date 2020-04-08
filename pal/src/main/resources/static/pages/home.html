@@ -91,10 +91,7 @@
 												</template>
 												
 											</div><!--user-pro-img end-->
-											<div class="user_pro_status" v-if="threadUser.id != userID">
-												<button class="btn" style="border-radius: 100%;"><img src="images/video.png" width="40px"/></button>
-												
-											</div>
+											
 											<!-- 信息栏---------------------start -->
 											<ul class="social_links">
 												<li><a href="#" title="">{{leftLabel[3]}} ：{{userInfo.view.birthday}}</a></li>
@@ -307,7 +304,6 @@
 				/* 令牌-------------start  */
 				ticket:"",
 				/* 令牌-------------end  */
-				threadUser:'',
 				/* 个人信息----------------start */
 				userID:"",
 				user:"",
@@ -355,15 +351,6 @@
 						this.toLoginView(res)
 						this.userInfo = res.body.userInfo
 						this.user = res.body.user
-					},function() {
-						console.log('请求失败处理');
-					});
-				},
-				getThreadUserInfo() {
-					this.$http.get('/user/getUserInfo/',{header:{cookie:this.ticket}},
-					{params : {time:new Date().getTime()}})
-					.then(function(res) {
-						this.threadUser = res.body.user
 					},function() {
 						console.log('请求失败处理');
 					});
@@ -466,7 +453,6 @@
 				this.checkTicket()
 				this.getUrlQuery()
 				this.getUserInfo()
-				this.getThreadUserInfo()
 				this.getLaterDynamic(1)
 			}
 		})
