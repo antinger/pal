@@ -3,7 +3,7 @@ $(window).on("load", function() {
 
     
 
-    //×îÐÂ×îÈ«×îºÃµÄBootstrapÄ£°å£ºhttp://www.bootstrapmb.com
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È«ï¿½ï¿½Ãµï¿½BootstrapÄ£ï¿½å£ºhttp://www.bootstrapmb.com
     //============= POST PROJECT POPUP FUNCTION =========
 
     $(".post_project").on("click", function(){
@@ -65,11 +65,7 @@ $(window).on("load", function() {
 
     //  ============= COVER GAP FUNCTION =========
 
-    var gap = $(".container").offset().left;
-    $(".cover-sec > a, .chatbox-list").css({
-        "right": gap
-    });
-
+   
     //  ============= OVERVIEW EDIT FUNCTION =========
 
     $(".overview-open").on("click", function(){
