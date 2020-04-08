@@ -1224,7 +1224,7 @@
 				//获取动态
 				preDynamic(){
 					this.dynamics.page ++
-					this.getLaterDynamic()
+					this.getLaterDynamic(1)
 				},
 				//获取动态----分页获取
 				getLaterDynamic(index) {
@@ -1350,7 +1350,7 @@
 					}
 					this.getUserInfo()
 					this.getPushUser()
-					this.getLaterUser()
+					this.getLaterUser(0)
 				},
 				toView(payType) {
 					this.payType = payType
