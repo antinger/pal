@@ -144,7 +144,7 @@
 											</div><!--star-descp end-->
 											
 											<!-- 上照片墙---start -->
-											<div class="top-profiles">
+											<!-- <div class="top-profiles">
 												<div class="profiles-slider">
 													<div class="user-profy" v-for="(item,index) in pushUser">
 														<template v-if="item.headStatus == 1">
@@ -157,8 +157,31 @@
 														<ul>
 															<li><a title="" class="envlp" @click="toMessageView(item.username, item.id)"><img src="images/envelop.png" alt=""></a></li>
 														</ul>
-													</div><!--user-profy end-->
-												</div><!--profiles-slider end-->
+													</div>
+												</div>
+											</div> -->
+											<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+											  <div class="carousel-inner">
+											    <div class="carousel-item" v-for="(item,index) in pushUser">
+											      <template v-if="item.headStatus == 1">
+											      	<img :src="headLink" alt="" width="30px" height="30px" @click="toUserView(item.id)">
+											      </template>
+											      <template v-else>
+											      	<img :src="item.headLink" alt="" width="30px" height="30px" @click="toUserView(item.id)">
+											      </template>
+											      <h3>{{item.username}}</h3>
+											      <ul>
+											      	<li><a title="" class="envlp" @click="toMessageView(item.username, item.id)"><img src="images/envelop.png" alt=""></a></li>
+											      </ul>
+											    </div>
+											    
+											  </div>
+											  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+												《
+											  </a>
+											  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+												》
+											  </a>
 											</div>
 											<!-- 上照片墙---end -->
 											
