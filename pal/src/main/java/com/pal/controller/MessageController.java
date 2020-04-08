@@ -22,8 +22,12 @@ public class MessageController {
 	@RequestMapping(path="/user/getLinkman/", method=RequestMethod.GET)
 	@ResponseBody
 	public String getLinkman() {
+		try {
 			Map<String, Object> map = messageService.getLinkman();
 			return PalUtils.toJSONString(200, map);
+		} catch (Exception e) {
+			return PalUtils.toJSONString(500, "获取推送用户失败");
+		}
 	}
 	
 	//获取消息
