@@ -495,7 +495,7 @@
 															{{user.username}}
 														</button>
 													</div>
-													<div class="form-group col-md-5" >
+													<div class="col-md-5" >
 													  <select id="inputState" class="form-control"  v-model="onLineStatus" @click="line"
 													  style="background-color: rgb(83, 214, 144); color: rgb(255, 255, 255);">
 														<option selected value="0">在线</option>
@@ -517,7 +517,9 @@
 												</div>
 												<div class="row">
 													<div class="col-md-5">
-														<span>{{leftLabel[2]}} : {{wallet.balance}}</span>
+														<button class="btn" style="background-color:#53d690;color:#ffffff;">
+															{{leftLabel[2]}} : {{wallet.balance}}
+														</button>
 													</div>
 													<div class="col-md-5">
 														<span style="text-align: center;">
