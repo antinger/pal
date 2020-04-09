@@ -116,7 +116,6 @@ $(window).on("load", function() {
         $(".wrapper").removeClass("overlay");
         return false;
     });
-    console.log("你好");
     //  ============= SKILLS EDIT FUNCTION =========
 
     $(".skills-open").on("click", function(){
@@ -236,7 +235,7 @@ $(window).on("load", function() {
     $(".forum-links-btn > a, .forum-links").on("click", function(){
         e.stopPropagation();
     });
-
+    console.log("你好");
     //  ============= PORTFOLIO SLIDER FUNCTION =========
 
     $('.profiles-slider').slick({
