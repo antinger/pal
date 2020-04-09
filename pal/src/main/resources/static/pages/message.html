@@ -45,7 +45,7 @@
 							<ul class="list-group list-group-flush">
 								<li class="list-group-item" v-for="(item, index) in linkMan" @click="toDetailView(index)" :id="index" 
 								v-bind:class="{ active: (index == indexTemp) }" style="padding: 18px 8px !important;">
-									<figure class="avatar " v-bind:class="{avatar-state-success: (item.view.user.onLineStatus == 0) }">
+									<figure class="avatar " v-bind:class="{'avatar-state-success': (item.view.user.onLineStatus == 0) }">
 										<template v-if="item.view.user.headStatus == 1">
 											<img :src="headLink" class="rounded-circle" alt="">
 										</template>
