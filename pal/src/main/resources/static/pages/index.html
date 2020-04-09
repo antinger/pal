@@ -143,22 +143,6 @@
 									<div class="main-ws-sec">
 										
 										<div class="user-tab-sec">
-											<h3>{{user.username}}</h3>
-											<div class="star-descp row" style="align-items: center;">
-												<ul>
-													<li><i class="fa fa-star"></i></li>
-													<li><i class="fa fa-star"></i></li>
-													<li><i class="fa fa-star"></i></li>
-													<li><i class="fa fa-star"></i></li>
-													<li><i class="fa fa-star-half-o"></i></li>
-												</ul>
-												<div class="form-group col-md-2">
-												  <select id="inputState" class="form-control" style="border: none;" v-model="onLineStatus" @click="line">
-													<option selected value="0">在线</option>
-													<option value="1">下线</option>
-												  </select>
-												</div>
-											</div><!--star-descp end-->
 											
 											<!-- 上照片墙---start -->
 											<div class="top-profiles">
@@ -538,6 +522,15 @@
 														</span>
 													</li>
 												</ul>
+												<h3>{{user.username}}</h3>
+												<div class="star-descp row" style="align-items: center;">
+													<div class="form-group col-md-2">
+													  <select id="inputState" class="form-control" style="border: none;" v-model="onLineStatus" @click="line">
+														<option selected value="0">在线</option>
+														<option value="1">下线</option>
+													  </select>
+													</div>
+												</div>
 											</div>
 											<!-- 信息栏---------------------start -->
 											<ul class="social_links">
