@@ -42,7 +42,7 @@
         WHERE
         userID = #{userID}
         AND toUserID = #{toUserID}
-        ADN status=#{status}
+        AND status=#{status}
     </select>
     
 </mapper>

@@ -45,8 +45,12 @@ public class MessageController {
 	@RequestMapping(path="/user/getTakeMessage/", method=RequestMethod.GET)
 	@ResponseBody
 	public String getTakeMessage(@RequestParam("userID") Integer userID) {
+		try {
 			Map<String, Object> map = messageService.getTakeMessage(userID);
 			return PalUtils.toJSONString(200, map);
+		} catch (Exception e) {
+			return PalUtils.toJSONString(500, "获取推送用户失败");
+		}
 	}
 	
 	//添加消息
