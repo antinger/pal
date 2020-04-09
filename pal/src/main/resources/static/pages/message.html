@@ -98,7 +98,7 @@
 					<!-- ./ Chats sidebar -->
 				   
 					<!-- Chat -->
-					<div class="chat show">
+					<div class="chat">
 						<div class="chat-body"> <!-- .no-message -->
 							<div class="messages">
 								<template v-for="(item, index) in message">
@@ -148,7 +148,7 @@
 										<i data-feather="arrow-left"></i>
 									</button>
 								</div>
-								<input type="text" class="form-control" placeholder="Write a message." v-model="content">
+								<input type="text" class="form-control" maxlength="140" placeholder="Write a message." v-model="content">
 								<div class="form-buttons">
 									<button @click="sendMessage" class="btn btn-primary">
 										<i data-feather="send"></i>
