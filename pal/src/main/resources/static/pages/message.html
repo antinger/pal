@@ -45,16 +45,24 @@
 							<ul class="list-group list-group-flush">
 								<li class="list-group-item" v-for="(item, index) in linkMan" @click="toDetailView(index)" :id="index" 
 								v-bind:class="{ active: (index == indexTemp) }">
-									<figure class="avatar avatar-state-success">
-										<img src="./dist/media/img/avatar1.png" class="rounded-circle" alt="image">
+									<figure class="avatar " v-bind:class="{ avatar-state-success: (item.view.user.onLineStatus == 0) }">
+										<img :src="headLink" class="rounded-circle" alt="" v-if="item.view.user.headStatus == 1">
+										<img :src="item.view.user.headLink" class="rounded-circle" alt="" v-else>
 									</figure>
 									<div class="users-list-body">
 										<div>
 											<h5 class="text-primary">{{item.view.user.username}}</h5>
 										</div>
 										<div class="users-list-action">
-											<div class="new-message-count">{{item.view.count}}</div>
-											<small class="text-primary">03:41 PM</small>
+											<div class="new-message-count" v-if="item.view.count > 0">{{item.view.count}}</div>
+											<small class="text-primary">
+												<span class="icon iconfont icon-huangguan" style="color: #F7D501;font-size: 24px;"
+													v-if="item.view.member == 1">
+												</span>
+												<span class="icon iconfont icon-zuanshi" style="color: #1e6f35;font-size: 24px;" 
+													v-if="item.view.member == 2">
+												</span>
+											</small>
 										</div>
 									</div>
 								</li>
