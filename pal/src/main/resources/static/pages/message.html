@@ -284,6 +284,7 @@
 					this.createTimer()
 				},
 				getMessageDetail() {
+					this.message=""
 					this.$http.get('/user/getMessageDetail/',
 					{params : {time:new Date().getTime(), userID:this.userID}})
 					.then(function(res){
@@ -308,6 +309,7 @@
 						}
 						this.toLoginView(res)
 						this.content = ""
+						this.getMessageDetail()
 					}, function (res) {
 					  console.log(res.body);
 					});
