@@ -490,12 +490,12 @@
 											</div><!--user-pro-img end-->
 											<div class="user_pro_status">
 												<div class="row" style="justify-content: center;margin-bottom: 10px;">
-													<div class="col-md-6">
+													<div class="col-6">
 														<button class="btn" style="background-color:#53d690;color:#ffffff;">
 															{{user.username}}
 														</button>
 													</div>
-													<div class="col-md-5" >
+													<div class="col-5" >
 													  <select id="inputState" class="form-control"  v-model="onLineStatus" @click="line"
 													  style="background-color: rgb(83, 214, 144); color: rgb(255, 255, 255);">
 														<option selected value="0">在线</option>
@@ -504,24 +504,24 @@
 													</div>
 												</div>
 												<div class="row" style="justify-content: center;margin-bottom: 10px;">
-													<div class="col-md-6">
+													<div class="col-6">
 														<button class="btn" style="background-color:#53d690;color:#ffffff;" @click="toView(1)">
 															<i class="la la-plus"></i> {{leftLabel[0]}}
 														</button>
 													</div>
-													<div class="col-md-5">
+													<div class="col-5">
 														<button class="btn" style="background-color:#53d690;color:#ffffff;" @click="toView(2)">
 															{{leftLabel[1]}}
 														</button>
 													</div>
 												</div>
 												<div class="row" style="justify-content: center;">
-													<div class="col-md-6">
+													<div class="col-6">
 														<button class="btn" style="background-color:#53d690;color:#ffffff;">
 															{{leftLabel[2]}} : {{wallet.balance}}
 														</button>
 													</div>
-													<div class="col-md-5">
+													<div class="col-5">
 														<span style="text-align: center;">
 															<template v-if="member">
 																<span class="icon iconfont icon-huangguan" 
