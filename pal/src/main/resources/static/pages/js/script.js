@@ -235,7 +235,6 @@ $(window).on("load", function() {
     $(".forum-links-btn > a, .forum-links").on("click", function(){
         e.stopPropagation();
     });
-    console.log("你好");
     //  ============= PORTFOLIO SLIDER FUNCTION =========
 
     $('.profiles-slider').slick({
@@ -278,7 +277,7 @@ $(window).on("load", function() {
 
 
     });
-
+    console.log("你好");
 
 
 
