@@ -321,7 +321,7 @@
 						}
 						this.toLoginView(res)
 						this.content = ""
-						this.getMessageDetail()
+						this.message.push(res.body.message)
 					}, function (res) {
 					  console.log(res.body);
 					});
