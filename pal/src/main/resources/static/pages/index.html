@@ -490,7 +490,7 @@
 											</div><!--user-pro-img end-->
 											<div class="user_pro_status">
 												<div class="row" style="justify-content: center;">
-													<div class="col-md-5">
+													<div class="col-md-6">
 														<button class="btn" style="background-color:#53d690;color:#ffffff;">
 															{{user.username}}
 														</button>
@@ -515,24 +515,22 @@
 														</button>
 													</div>
 												</div>
-												
-												<ul class="flw-status">
-													<li>
+												<div class="row">
+													<div class="col-md-5">
 														<span>{{leftLabel[2]}} : {{wallet.balance}}</span>
-													</li>
-													<li>
+													</div>
+													<div class="col-md-5">
 														<span style="text-align: center;">
 															<template v-if="member">
 																<span class="icon iconfont icon-huangguan" 
 																	style="color: #F7D501;font-size: 30px;" v-if="member == 1">
-																	
 																</span>
 																<span class="icon iconfont icon-zuanshi" 
 																	style="color: #1e6f35;font-size: 30px;" v-if="member == 2"></span>
 															</template>
 														</span>
-													</li>
-												</ul>
+													</div>
+												</div>
 											</div>
 											<!-- 信息栏---------------------start -->
 											<ul class="social_links">
