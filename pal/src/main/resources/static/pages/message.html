@@ -102,7 +102,7 @@
 												v-if="item.view.message.content.length < 30">
 												{{item.view.message.content}}
 											</div>
-											<div class="message-content col-3" v-else style="margin-right: 10px;">
+											<div class="message-content" v-else style="margin-right: 10px;">
 												{{item.view.message.content}}
 											</div>
 											<div class="time">{{item.view.createDate}}</div>
@@ -123,7 +123,7 @@
 											<div class="message-content" v-if="item.view.message.content.length < 30">
 												{{item.view.message.content}}
 											</div>
-											<div class="message-content col-3" v-else>
+											<div class="message-content" v-else>
 												{{item.view.message.content}}
 											</div>
 											<div class="time">{{item.view.createDate}}</div>
