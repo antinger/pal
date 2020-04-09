@@ -1,7 +1,7 @@
 $(window).on("load", function() {
     "use strict";
 
-    
+    console.log("你好");
 
     //������ȫ��õ�Bootstrapģ�壺http://www.bootstrapmb.com
     //============= POST PROJECT POPUP FUNCTION =========
