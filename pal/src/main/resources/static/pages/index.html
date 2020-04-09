@@ -74,6 +74,18 @@
 						<nav>
 							<ul>
 								<li>
+									<a @click="toView(1)" title="" >
+										<span><img src="images/icon4.png" alt=""></span>
+										{{leftLabel[0]}}
+									</a>
+								</li>
+								<li>
+									<a @click="toView(2)"  title="" >
+										<span><img src="images/icon4.png" alt=""></span>
+										{{leftLabel[1]}}
+									</a>
+								</li>
+								<li>
 									<a href="profile.html" title="" >
 										<span><img src="images/icon4.png" alt=""></span>
 										{{topLabel[0]}}
@@ -162,7 +174,7 @@
 														<ul>
 															<li><a title="" class="envlp" @click="toMessageView(item.username, item.id)"><img src="images/envelop.png" alt=""></a></li>
 															<li>
-																<a class="btn btn-danger" style="padding: 0px 10px !important;" @click="toVideo"><img src="images/video.png" width="40px" style="height: 25px !important;"/></a>
+																<a class="btn btn-danger" style="padding: 0px 10px !important;" @click="toVideo"><img src="images/video.png" width="40px" style="height: 35px !important;"/></a>
 															</li>
 														</ul>
 													</div>
