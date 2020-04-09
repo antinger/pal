@@ -1,1103 +1,1603 @@
 
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-<title>WorkWise Html Template</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="" />
-<meta name="keywords" content="" />
-<link rel="stylesheet" type="text/css" href="css/animate.css">
-<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="css/line-awesome.css">
-<link rel="stylesheet" type="text/css" href="css/line-awesome-font-awesome.min.css">
-<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
-<link rel="stylesheet" type="text/css" href="css/jquery.mCustomScrollbar.min.css">
-<link rel="stylesheet" type="text/css" href="lib/slick/slick.css">
-<link rel="stylesheet" type="text/css" href="lib/slick/slick-theme.css">
-<link rel="stylesheet" type="text/css" href="css/style.css">
-<link rel="stylesheet" type="text/css" href="css/responsive.css">
-</head>
-
-
-<body>
+	<head>
+		<meta charset="UTF-8">
+		<title>home page</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<link rel="stylesheet" type="text/css" href="css/animate.css">
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="css/flatpickr.min.css">
+		<link rel="stylesheet" type="text/css" href="css/line-awesome.css">
+		<link rel="stylesheet" type="text/css" href="css/line-awesome-font-awesome.min.css">
+		<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+		<link rel="stylesheet" type="text/css" href="lib/slick/slick.css">
+		<link rel="stylesheet" type="text/css" href="lib/slick/slick-theme.css">
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<link rel="stylesheet" type="text/css" href="css/responsive.css">
+		<link rel="stylesheet" type="text/css" href="css/index.css">
+		<link rel="stylesheet" type="text/css" href="css/radio.css" />
+		<link rel="stylesheet" type="text/css" href="css/pay.css" />
+		<link rel="stylesheet" type="text/css" href="css/message.css" />
+		<link rel="stylesheet" type="text/css" href="css/iconfont.css" />
+		<style>
+			#gallery { overflow: hidden; }
+			#gallery a { display: block; float: left; }
+			#gallery-recharge { overflow: hidden; }
+			#gallery-recharge a { display: block; float: left; }
+			.search-bar{
+				position: relative;
+			}
+			.user-search{
+				position: absolute;
+				padding:20px;
+				top:40px;
+				width: 280px;
+				height: 100px;
+				border:1px solid #ddd;
+				display: none;
+				line-height: 1.2;
+				text-align: center;
+				background-color: #fff;
+				z-index: 1;
+			}
+			
+		</style>
+	</head>
 	
+	<body>
 
-	<div class="wrapper">
-		
-
-
-		<header>
-			<div class="container">
-				<div class="header-data">
-					<div class="logo">
-						<a href="index.html" title=""><img src="images/logo.png" alt=""></a>
-					</div><!--logo end-->
-					<div class="search-bar">
-						<form>
-							<input type="text" name="search" placeholder="Search...">
-							<button type="submit"><i class="la la-search"></i></button>
-						</form>
-					</div><!--search-bar end-->
-					<nav>
-						<ul>
-							<li>
-								<a href="index.html" title="">
-									<span><img src="images/icon1.png" alt=""></span>
-									Home
-								</a>
-							</li>
-							<li>
-								<a href="companies.html" title="">
-									<span><img src="images/icon2.png" alt=""></span>
-									Companies
-								</a>
-							</li>
-							<li>
-								<a href="projects.html" title="">
-									<span><img src="images/icon3.png" alt=""></span>
-									Projects
-								</a>
-							</li>
-							<li>
-								<a href="profiles.html" title="">
-									<span><img src="images/icon4.png" alt=""></span>
-									Profiles
-								</a>
-								<ul>
-									<li><a href="user-profile.html" title="">User Profile</a></li>
-									<li><a href="my-profile-feed.html" title="">my-profile-feed</a></li>
-								</ul>
-							</li>
-							<li>
-								<a href="jobs.html" title="">
-									<span><img src="images/icon5.png" alt=""></span>
-									Jobs
-								</a>
-							</li>
-							<li>
-								<a href="#" title="" class="not-box-open">
-									<span><img src="images/icon6.png" alt=""></span>
-									Messages
-								</a>
-								<div class="notification-box msg">
-									<div class="nt-title">
-										<h4>Setting</h4>
-										<a href="#" title="">Clear all</a>
-									</div>
-									<div class="nott-list">
-										<div class="notfication-details">
-							  				<div class="noty-user-img">
-							  					<img src="images/resources/ny-img1.png" alt="">
-							  				</div>
-							  				<div class="notification-info">
-							  					<h3><a href="messages.html" title="">Jassica William</a> </h3>
-							  					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do.</p>
-							  					<span>2 min ago</span>
-							  				</div><!--notification-info -->
-						  				</div>
-						  				<div class="notfication-details">
-							  				<div class="noty-user-img">
-							  					<img src="images/resources/ny-img2.png" alt="">
-							  				</div>
-							  				<div class="notification-info">
-							  					<h3><a href="messages.html" title="">Jassica William</a></h3>
-							  					<p>Lorem ipsum dolor sit amet.</p>
-							  					<span>2 min ago</span>
-							  				</div><!--notification-info -->
-						  				</div>
-						  				<div class="notfication-details">
-							  				<div class="noty-user-img">
-							  					<img src="images/resources/ny-img3.png" alt="">
-							  				</div>
-							  				<div class="notification-info">
-							  					<h3><a href="messages.html" title="">Jassica William</a></h3>
-							  					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempo incididunt ut labore et dolore magna aliqua.</p>
-							  					<span>2 min ago</span>
-							  				</div><!--notification-info -->
-						  				</div>
-						  				<div class="view-all-nots">
-						  					<a href="messages.html" title="">View All Messsages</a>
-						  				</div>
-									</div><!--nott-list end-->
-								</div><!--notification-box end-->
-							</li>
-							<li>
-								<a href="#" title="" class="not-box-open">
-									<span><img src="images/icon7.png" alt=""></span>
-									Notification
-								</a>
-								<div class="notification-box">
-									<div class="nt-title">
-										<h4>Setting</h4>
-										<a href="#" title="">Clear all</a>
-									</div>
-									<div class="nott-list">
-										<div class="notfication-details">
-							  				<div class="noty-user-img">
-							  					<img src="images/resources/ny-img1.png" alt="">
-							  				</div>
-							  				<div class="notification-info">
-							  					<h3><a href="#" title="">Jassica William</a> Comment on your project.</h3>
-							  					<span>2 min ago</span>
-							  				</div><!--notification-info -->
-						  				</div>
-						  				<div class="notfication-details">
-							  				<div class="noty-user-img">
-							  					<img src="images/resources/ny-img2.png" alt="">
-							  				</div>
-							  				<div class="notification-info">
-							  					<h3><a href="#" title="">Jassica William</a> Comment on your project.</h3>
-							  					<span>2 min ago</span>
-							  				</div><!--notification-info -->
-						  				</div>
-						  				<div class="notfication-details">
-							  				<div class="noty-user-img">
-							  					<img src="images/resources/ny-img3.png" alt="">
-							  				</div>
-							  				<div class="notification-info">
-							  					<h3><a href="#" title="">Jassica William</a> Comment on your project.</h3>
-							  					<span>2 min ago</span>
-							  				</div><!--notification-info -->
-						  				</div>
-						  				<div class="notfication-details">
-							  				<div class="noty-user-img">
-							  					<img src="images/resources/ny-img2.png" alt="">
-							  				</div>
-							  				<div class="notification-info">
-							  					<h3><a href="#" title="">Jassica William</a> Comment on your project.</h3>
-							  					<span>2 min ago</span>
-							  				</div><!--notification-info -->
-						  				</div>
-						  				<div class="view-all-nots">
-						  					<a href="#" title="">View All Notification</a>
-						  				</div>
-									</div><!--nott-list end-->
-								</div><!--notification-box end-->
-							</li>
-						</ul>
-					</nav><!--nav end-->
-					<div class="menu-btn">
-						<a href="#" title=""><i class="fa fa-bars"></i></a>
-					</div><!--menu-btn end-->
-					<div class="user-account">
-						<div class="user-info">
-							<img src="images/resources/user.png" alt="">
-							<a href="#" title="">John</a>
-							<i class="la la-sort-down"></i>
-						</div>
-						<div class="user-account-settingss">
-							<h3>Online Status</h3>
-							<ul class="on-off-status">
-								<li>
-									<div class="fgt-sec">
-										<input type="radio" name="cc" id="c5">
-										<label for="c5">
-											<span></span>
-										</label>
-										<small>Online</small>
-									</div>
-								</li>
-								<li>
-									<div class="fgt-sec">
-										<input type="radio" name="cc" id="c6">
-										<label for="c6">
-											<span></span>
-										</label>
-										<small>Offline</small>
-									</div>
-								</li>
-							</ul>
-							<h3>Custom Status</h3>
-							<div class="search_form">
-								<form>
-									<input type="text" name="search">
-									<button type="submit">Ok</button>
-								</form>
-							</div><!--search_form end-->
-							<h3>Setting</h3>
-							<ul class="us-links">
-								<li><a href="profile-account-setting.html" title="">Account Setting</a></li>
-								<li><a href="#" title="">Privacy</a></li>
-								<li><a href="#" title="">Faqs</a></li>
-								<li><a href="#" title="">Terms & Conditions</a></li>
-							</ul>
-							<h3 class="tc"><a href="#" title="">Logout</a></h3>
-						</div><!--user-account-settingss end-->
-					</div>
-				</div><!--header-data end-->
-			</div>
-		</header><!--header end-->	
-
-		<main>
-			<div class="main-section">
+		<div class="wrapper" id="app">
+			<!-- 头部--------------------start -->
+			<header>
 				<div class="container">
-					<div class="main-section-data">
-						<div class="row">
-							<div class="col-lg-3 col-md-4 pd-left-none no-pd">
-								<div class="main-left-sidebar no-margin">
-									<div class="user-data full-width">
-										<div class="user-profile">
-											<div class="username-dt">
-												<div class="usr-pic">
-													<img src="images/resources/user-pic.png" alt="">
-												</div>
-											</div><!--username-dt end-->
-											<div class="user-specs">
-												<h3>John Doe</h3>
-												<span>Graphic Designer at Self Employed</span>
-											</div>
-										</div><!--user-profile end-->
-										<ul class="user-fw-status">
-											<li>
-												<h4>Following</h4>
-												<span>34</span>
-											</li>
-											<li>
-												<h4>Followers</h4>
-												<span>155</span>
-											</li>
-											<li>
-												<a href="#" title="">View Profile</a>
-											</li>
-										</ul>
-									</div><!--user-data end-->
-									<div class="suggestions full-width">
-										<div class="sd-title">
-											<h3>Suggestions</h3>
-											<i class="la la-ellipsis-v"></i>
-										</div><!--sd-title end-->
-										<div class="suggestions-list">
-											<div class="suggestion-usd">
-												<img src="images/resources/s1.png" alt="">
-												<div class="sgt-text">
-													<h4>Jessica William</h4>
-													<span>Graphic Designer</span>
-												</div>
-												<span><i class="la la-plus"></i></span>
-											</div>
-											<div class="suggestion-usd">
-												<img src="images/resources/s2.png" alt="">
-												<div class="sgt-text">
-													<h4>John Doe</h4>
-													<span>PHP Developer</span>
-												</div>
-												<span><i class="la la-plus"></i></span>
-											</div>
-											<div class="suggestion-usd">
-												<img src="images/resources/s3.png" alt="">
-												<div class="sgt-text">
-													<h4>Poonam</h4>
-													<span>Wordpress Developer</span>
-												</div>
-												<span><i class="la la-plus"></i></span>
-											</div>
-											<div class="suggestion-usd">
-												<img src="images/resources/s4.png" alt="">
-												<div class="sgt-text">
-													<h4>Bill Gates</h4>
-													<span>C & C++ Developer</span>
-												</div>
-												<span><i class="la la-plus"></i></span>
-											</div>
-											<div class="suggestion-usd">
-												<img src="images/resources/s5.png" alt="">
-												<div class="sgt-text">
-													<h4>Jessica William</h4>
-													<span>Graphic Designer</span>
-												</div>
-												<span><i class="la la-plus"></i></span>
-											</div>
-											<div class="suggestion-usd">
-												<img src="images/resources/s6.png" alt="">
-												<div class="sgt-text">
-													<h4>John Doe</h4>
-													<span>PHP Developer</span>
-												</div>
-												<span><i class="la la-plus"></i></span>
-											</div>
-											<div class="view-more">
-												<a href="#" title="">View More</a>
-											</div>
-										</div><!--suggestions-list end-->
-									</div><!--suggestions end-->
-									<div class="tags-sec full-width">
-										<ul>
-											<li><a href="#" title="">Help Center</a></li>
-											<li><a href="#" title="">About</a></li>
-											<li><a href="#" title="">Privacy Policy</a></li>
-											<li><a href="#" title="">Community Guidelines</a></li>
-											<li><a href="#" title="">Cookies Policy</a></li>
-											<li><a href="#" title="">Career</a></li>
-											<li><a href="#" title="">Language</a></li>
-											<li><a href="#" title="">Copyright Policy</a></li>
-										</ul>
-										<div class="cp-sec">
-											<img src="images/logo2.png" alt="">
-											<p><img src="images/cp.png" alt="">Copyright 2017</p>
-										</div>
-									</div><!--tags-sec end-->
-								</div><!--main-left-sidebar end-->
+					<div class="header-data">
+						<div class="logo">
+							<a title=""><img src="images/logo.png" alt=""></a>
+						</div><!--logo end-->
+						<div class="search-bar">
+							<form v-on:submit.prevent="onSubmit">
+								<input type="text" v-model="searchUserName" placeholder="Search...">
+								<button><i class="la la-search" @click="getSearchaUser"></i></button>
+							</form>
+							<div class="user-search" v-if="searchUser">
+								<template v-if="searchUser.headStatus == 1">
+									<img :src="headLink" alt="" width="50px" height="50px" @click="toUserView(searchUser.id)">
+								</template>
+								<template v-else>
+									<img :src="searchUser.headLink" alt="" width="50px" height="50px" @click="toUserView(searchUser.id)">
+								</template>
 							</div>
-							<div class="col-lg-6 col-md-8 no-pd">
-								<div class="main-ws-sec">
-									<div class="post-topbar">
-										<div class="user-picy">
-											<img src="images/resources/user-pic.png" alt="">
-										</div>
-										<div class="post-st">
-											<ul>
-												<li><a class="post_project" href="#" title="">Post a Project</a></li>
-												<li><a class="post-jb active" href="#" title="">Post a Job</a></li>
-											</ul>
-										</div><!--post-st end-->
-									</div><!--post-topbar end-->
-									<div class="posts-section">
-										<div class="post-bar">
-											<div class="post_topbar">
-												<div class="usy-dt">
-													<img src="images/resources/us-pic.png" alt="">
-													<div class="usy-name">
-														<h3>John Doe</h3>
-														<span><img src="images/clock.png" alt="">3 min ago</span>
-													</div>
-												</div>
-												<div class="ed-opts">
-													<a href="#" title="" class="ed-opts-open"><i class="la la-ellipsis-v"></i></a>
-													<ul class="ed-options">
-														<li><a href="#" title="">Edit Post</a></li>
-														<li><a href="#" title="">Unsaved</a></li>
-														<li><a href="#" title="">Unbid</a></li>
-														<li><a href="#" title="">Close</a></li>
-														<li><a href="#" title="">Hide</a></li>
-													</ul>
-												</div>
-											</div>
-											<div class="epi-sec">
-												<ul class="descp">
-													<li><img src="images/icon8.png" alt=""><span>Epic Coder</span></li>
-													<li><img src="images/icon9.png" alt=""><span>India</span></li>
-												</ul>
-												<ul class="bk-links">
-													<li><a href="#" title=""><i class="la la-bookmark"></i></a></li>
-													<li><a href="#" title=""><i class="la la-envelope"></i></a></li>
-												</ul>
-											</div>
-											<div class="job_descp">
-												<h3>Senior Wordpress Developer</h3>
-												<ul class="job-dt">
-													<li><a href="#" title="">Full Time</a></li>
-													<li><span>$30 / hr</span></li>
-												</ul>
-												<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam luctus hendrerit metus, ut ullamcorper quam finibus at. Etiam id magna sit amet... <a href="#" title="">view more</a></p>
-												<ul class="skill-tags">
-													<li><a href="#" title="">HTML</a></li>
-													<li><a href="#" title="">PHP</a></li>
-													<li><a href="#" title="">CSS</a></li>
-													<li><a href="#" title="">Javascript</a></li>
-													<li><a href="#" title="">Wordpress</a></li> 	
-												</ul>
-											</div>
-											<div class="job-status-bar">
-												<ul class="like-com">
-													<li>
-														<a href="#"><i class="la la-heart"></i> Like</a>
-														<img src="images/liked-img.png" alt="">
-														<span>25</span>
-													</li> 
-													<li><a href="#" title="" class="com"><img src="images/com.png" alt=""> Comment 15</a></li>
-												</ul>
-												<a><i class="la la-eye"></i>Views 50</a>
-											</div>
-										</div><!--post-bar end-->
-										<div class="top-profiles">
+						</div><!--search-bar end-->
+						<nav>
+							<ul>
+								<li>
+									<a @click="toView(1)" title="" >
+										<span><img src="images/icon2.png" alt=""></span>
+										{{leftLabel[0]}}
+									</a>
+								</li>
+								<li>
+									<a @click="toView(2)"  title="" >
+										<span><img src="images/icon3.png" alt=""></span>
+										{{leftLabel[1]}}
+									</a>
+								</li>
+								<li>
+									<a href="profile.html" title="" >
+										<span><img src="images/icon4.png" alt=""></span>
+										{{topLabel[0]}}
+									</a>
+								</li>
+								
+								<li>
+									<a href="message.html" title="" class="not-box-open" >
+										<span><img src="images/icon6.png" alt=""></span>
+										{{topLabel[1]}}
+									</a>
+								</li>
+								<li>
+									<a @click="logout" title="" class="not-box-open" >
+										<span><img src="images/icon7.png" alt=""></span>
+										{{topLabel[2]}}
+									</a>
+								</li>
+							</ul>
+						</nav><!--nav end-->
+						<div class="menu-btn">
+							<a  title=""><i class="fa fa-bars"></i></a>
+						</div><!--menu-btn end-->
+						<div class="user-account">
+							<div class="user-info" style="width: 150px;">
+								<select style="background: #E44D3A;border: none;color: white;padding: 2px;" 
+								class="form-control form-control-lg language" v-model="languageID" @click="change">
+									<option selected="true" value="1">中文简体</option>
+									<option value="2">中文-繁體</option>
+									<option value="3">English</option>
+									<option value="4">한국어</option>
+									<option value="5">にほんご</option>
+									<option value="6">ภาษาไทย</option>
+								</select>
+							</div>
+						</div>
+					</div><!--header-data end-->
+				</div>
+			</header><!--header end-->	
+			<!-- 头部--------------------end -->
+			
+			<!-- 背景图-------------------start -->
+			
+			<!-- 背景图-------------------end -->
+
+			
+			<main>
+				<div class="main-section">
+					<div class="container">
+						<div class="main-section-data">
+							<div class="row">
+								
+								<!-- 右侧栏------------------start -->
+								<div class="col-lg-9">
+									<div class="main-ws-sec">
+										
+										<div class="user-tab-sec">
 											
-											<div class="profiles-slider">
-												<div class="user-profy">
-													<img src="images/resources/user1.png" alt="">
-													<h3>John Doe</h3>
-													<span>Graphic Designer</span>
-													<ul>
-														<li><a href="#" title="" class="followw">Follow</a></li>
-														<li><a href="#" title="" class="envlp"><img src="images/envelop.png" alt=""></a></li>
-														<li><a href="#" title="" class="hire">hire</a></li>
-													</ul>
-													<a href="#" title="">View Profile</a>
-												</div><!--user-profy end-->
-												<div class="user-profy">
-													<img src="images/resources/user2.png" alt="">
-													<h3>John Doe</h3>
-													<span>Graphic Designer</span>
-													<ul>
-														<li><a href="#" title="" class="followw">Follow</a></li>
-														<li><a href="#" title="" class="envlp"><img src="images/envelop.png" alt=""></a></li>
-														<li><a href="#" title="" class="hire">hire</a></li>
-													</ul>
-													<a href="#" title="">View Profile</a>
-												</div><!--user-profy end-->
-												<div class="user-profy">
-													<img src="images/resources/user3.png" alt="">
-													<h3>John Doe</h3>
-													<span>Graphic Designer</span>
-													<ul>
-														<li><a href="#" title="" class="followw">Follow</a></li>
-														<li><a href="#" title="" class="envlp"><img src="images/envelop.png" alt=""></a></li>
-														<li><a href="#" title="" class="hire">hire</a></li>
-													</ul>
-													<a href="#" title="">View Profile</a>
-												</div><!--user-profy end-->
-												<div class="user-profy">
-													<img src="images/resources/user1.png" alt="">
-													<h3>John Doe</h3>
-													<span>Graphic Designer</span>
-													<ul>
-														<li><a href="#" title="" class="followw">Follow</a></li>
-														<li><a href="#" title="" class="envlp"><img src="images/envelop.png" alt=""></a></li>
-														<li><a href="#" title="" class="hire">hire</a></li>
-													</ul>
-													<a href="#" title="">View Profile</a>
-												</div><!--user-profy end-->
-												<div class="user-profy">
-													<img src="images/resources/user2.png" alt="">
-													<h3>John Doe</h3>
-													<span>Graphic Designer</span>
-													<ul>
-														<li><a href="#" title="" class="followw">Follow</a></li>
-														<li><a href="#" title="" class="envlp"><img src="images/envelop.png" alt=""></a></li>
-														<li><a href="#" title="" class="hire">hire</a></li>
-													</ul>
-													<a href="#" title="">View Profile</a>
-												</div><!--user-profy end-->
-												<div class="user-profy">
-													<img src="images/resources/user3.png" alt="">
-													<h3>John Doe</h3>
-													<span>Graphic Designer</span>
-													<ul>
-														<li><a href="#" title="" class="followw">Follow</a></li>
-														<li><a href="#" title="" class="envlp"><img src="images/envelop.png" alt=""></a></li>
-														<li><a href="#" title="" class="hire">hire</a></li>
-													</ul>
-													<a href="#" title="">View Profile</a>
-												</div><!--user-profy end-->
-											</div><!--profiles-slider end-->
-										</div><!--top-profiles end-->
-										<div class="post-bar">
-											<div class="post_topbar">
-												<div class="usy-dt">
-													<img src="images/resources/us-pic.png" alt="">
-													<div class="usy-name">
-														<h3>John Doe</h3>
-														<span><img src="images/clock.png" alt="">3 min ago</span>
-													</div>
-												</div>
-												<div class="ed-opts">
-													<a href="#" title="" class="ed-opts-open"><i class="la la-ellipsis-v"></i></a>
-													<ul class="ed-options">
-														<li><a href="#" title="">Edit Post</a></li>
-														<li><a href="#" title="">Unsaved</a></li>
-														<li><a href="#" title="">Unbid</a></li>
-														<li><a href="#" title="">Close</a></li>
-														<li><a href="#" title="">Hide</a></li>
-													</ul>
-												</div>
-											</div>
-											<div class="epi-sec">
-												<ul class="descp">
-													<li><img src="images/icon8.png" alt=""><span>Epic Coder</span></li>
-													<li><img src="images/icon9.png" alt=""><span>India</span></li>
-												</ul>
-												<ul class="bk-links">
-													<li><a href="#" title=""><i class="la la-bookmark"></i></a></li>
-													<li><a href="#" title=""><i class="la la-envelope"></i></a></li>
-													<li><a href="#" title="" class="bid_now">Bid Now</a></li>
-												</ul>
-											</div>
-											<div class="job_descp">
-												<h3>Senior Wordpress Developer</h3>
-												<ul class="job-dt">
-													<li><a href="#" title="">Full Time</a></li>
-													<li><span>$30 / hr</span></li>
-												</ul>
-												<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam luctus hendrerit metus, ut ullamcorper quam finibus at. Etiam id magna sit amet... <a href="#" title="">view more</a></p>
-												<ul class="skill-tags">
-													<li><a href="#" title="">HTML</a></li>
-													<li><a href="#" title="">PHP</a></li>
-													<li><a href="#" title="">CSS</a></li>
-													<li><a href="#" title="">Javascript</a></li>
-													<li><a href="#" title="">Wordpress</a></li> 	
-												</ul>
-											</div>
-											<div class="job-status-bar">
-												<ul class="like-com">
-													<li>
-														<a href="#"><i class="la la-heart"></i> Like</a>
-														<img src="images/liked-img.png" alt="">
-														<span>25</span>
-													</li> 
-													<li><a href="#" title="" class="com"><img src="images/com.png" alt=""> Comment 15</a></li>
-												</ul>
-												<a><i class="la la-eye"></i>Views 50</a>
-											</div>
-										</div><!--post-bar end-->
-										<div class="posty">
-											<div class="post-bar no-margin">
-												<div class="post_topbar">
-													<div class="usy-dt">
-														<img src="images/resources/us-pc2.png" alt="">
-														<div class="usy-name">
-															<h3>John Doe</h3>
-															<span><img src="images/clock.png" alt="">3 min ago</span>
-														</div>
-													</div>
-													<div class="ed-opts">
-														<a href="#" title="" class="ed-opts-open"><i class="la la-ellipsis-v"></i></a>
-														<ul class="ed-options">
-															<li><a href="#" title="">Edit Post</a></li>
-															<li><a href="#" title="">Unsaved</a></li>
-															<li><a href="#" title="">Unbid</a></li>
-															<li><a href="#" title="">Close</a></li>
-															<li><a href="#" title="">Hide</a></li>
+											<!-- 上照片墙---start -->
+											<div class="top-profiles">
+												<div class="profiles-slider">
+													<div class="user-profy" v-for="(item,index) in pushUser">
+														<template v-if="item.headStatus == 1">
+															<img :src="headLink" alt="" width="30px" height="30px" @click="toUserView(item.id)">
+														</template>
+														<template v-else>
+															<img :src="item.headLink" alt="" width="30px" height="30px" @click="toUserView(item.id)">
+														</template>
+														<h3>{{item.username}}</h3>
+														<ul>
+															<li><a title="" class="envlp" @click="toMessageView(item.username, item.id)"><img src="images/envelop.png" alt=""></a></li>
+															<li>
+																<a class="btn btn-danger" style="padding: 0px 10px !important;" @click="toVideo"><img src="images/video.png" width="40px" style="height: 25px !important;"/></a>
+															</li>
 														</ul>
 													</div>
 												</div>
-												<div class="epi-sec">
-													<ul class="descp">
-														<li><img src="images/icon8.png" alt=""><span>Epic Coder</span></li>
-														<li><img src="images/icon9.png" alt=""><span>India</span></li>
-													</ul>
-													<ul class="bk-links">
-														<li><a href="#" title=""><i class="la la-bookmark"></i></a></li>
-														<li><a href="#" title=""><i class="la la-envelope"></i></a></li>
-													</ul>
-												</div>
-												<div class="job_descp">
-													<h3>Senior Wordpress Developer</h3>
-													<ul class="job-dt">
-														<li><a href="#" title="">Full Time</a></li>
-														<li><span>$30 / hr</span></li>
-													</ul>
-													<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam luctus hendrerit metus, ut ullamcorper quam finibus at. Etiam id magna sit amet... <a href="#" title="">view more</a></p>
-													<ul class="skill-tags">
-														<li><a href="#" title="">HTML</a></li>
-														<li><a href="#" title="">PHP</a></li>
-														<li><a href="#" title="">CSS</a></li>
-														<li><a href="#" title="">Javascript</a></li>
-														<li><a href="#" title="">Wordpress</a></li> 	
-													</ul>
-												</div>
-												<div class="job-status-bar">
-													<ul class="like-com">
-														<li>
-															<a href="#"><i class="la la-heart"></i> Like</a>
-															<img src="images/liked-img.png" alt="">
-															<span>25</span>
-														</li> 
-														<li><a href="#" title="" class="com"><img src="images/com.png" alt=""> Comment 15</a></li>
-													</ul>
-													<a><i class="la la-eye"></i>Views 50</a>
-												</div>
-											</div><!--post-bar end-->
-											<div class="comment-section">
-												<div class="plus-ic">
-													<i class="la la-plus"></i>
-												</div>
-												<div class="comment-sec">
-													<ul>
-														<li>
-															<div class="comment-list">
-																<div class="bg-img">
-																	<img src="images/resources/bg-img1.png" alt="">
-																</div>
-																<div class="comment">
-																	<h3>John Doe</h3>
-																	<span><img src="images/clock.png" alt=""> 3 min ago</span>
-																	<p>Lorem ipsum dolor sit amet, </p>
-																	<a href="#" title="" class="active"><i class="fa fa-reply-all"></i>Reply</a>
-																</div>
-															</div><!--comment-list end-->
+											</div>
+											
+											<!-- 上照片墙---end -->
+											
+											<div class="tab-feed st2">
+												<ul>
+													<!-- 推荐----------start -->
+													<li data-tab="info-dd" v-bind:class="{ active: (0 == indexTemp) }" @click="getLaterUser(0)">
+														<a  title="">
+															<img src="images/ic2.png" alt="">
+															<span>{{rightLabel[0]}}</span>
+														</a>
+													</li>
+													<!-- 推荐----------end -->
+													<!-- 动态----------start -->
+													<li data-tab="feed-dd" v-bind:class="{ active: (1 == indexTemp) }" @click="getLaterDynamic(1)">
+														<a  title="">
+															<img src="images/ic1.png" alt="">
+															<span>{{rightLabel[1]}}</span>
+														</a>
+													</li>
+													<!-- 动态----------end -->
+													<!-- 关注----------start -->
+													<li data-tab="saved-jobs" v-bind:class="{ active: (2 == indexTemp) }" @click="getFollowUser(2)">
+														<a title="">
+															<img src="images/ic4.png" alt="">
+															<span>{{rightLabel[2]}}</span>
+														</a>
+													</li>
+													<!-- 关注----------end -->
+													<!-- 粉丝----------start -->
+													<li data-tab="my-bids" v-bind:class="{ active: (3 == indexTemp) }" @click="getFans(3)">
+														<a   title="">
+															<img src="images/ic5.png" alt="">
+															<span>{{rightLabel[3]}}</span>
+														</a>
+													</li>
+													<!-- 粉丝----------end -->
+													<!-- 游客----------start -->
+													<li data-tab="visitor-dd" v-bind:class="{ active: (4 == indexTemp) }" @click="getVistor(4)">
+														<a  title="" >
+															<img src="images/ic4.png" alt="">
+															<span>{{rightLabel[4]}}</span>
+														</a>
+													</li>
+													<!-- 游客----------end -->
+													<!-- 礼物----------start -->
+													<li data-tab="gift-dd" v-bind:class="{ active: (5 == indexTemp) }" @click="getLaterGift(5)">
+														<a  title="" >
+															<img src="images/ic6.png" alt="">
+															<span>{{rightLabel[5]}}</span>
+														</a>
+													</li>
+													<!-- 礼物---------end -->
+												</ul>
+											</div><!-- tab-feed end-->
+										</div><!--user-tab-sec end-->
+										
+										
+										<!-- 推荐------------------start -->
+										<div class="product-feed-tab" v-bind:class="{ current: (0 == indexTemp) }" id="info-dd">
+											<div class="row">
+												<div class="col-lg-4 col-md-4 col-sm-6 col-12" v-for="(item, index) in laterUser.data">
+													<div class="company_profile_info">
+														<div class="company-up-info" style="justify-content: center;">
+															<template v-if="item.view.user.headStatus == 1 || item.view.user.headLink == ''">
+																<img :src="headLink" alt="" @click="toUserView(item.view.user.id)" >
+															</template>
+															<template v-else>
+																<img :src="item.view.user.headLink" alt="" @click="toUserView(item.view.user.id)">
+															</template>
+															
+															<div class="row" style="justify-content: center;align-items: center;">
+																<h3>
+																{{item.view.user.username}}
+																</h3>
+																<h3 style="border-radius: 6px;text-align: center;background: #00B540;width: 12px;height: 12px;display: block;" v-if="item.view.user.onLineStatus == 0"></h3>
+															</div>
+															<h4 style="color: #E44D3A;align-items: center;font-size: 24px;">
+																{{item.view.sex}}
+																<span class="icon iconfont icon-huangguan" style="color: #F7D501;font-size: 24px;" 
+																	v-if="item.view.member == 1">
+																</span>
+																<span class="icon iconfont icon-zuanshi" style="color: #1e6f35;font-size: 24px;" 
+																	v-if="item.view.member == 2">
+																</span>
+															</h4>
+															
+															<h4>{{item.view.birthday}}</h4>
 															<ul>
+																<template v-if="item.view.follow == false">
+																	<li>
+																		<a title="" class="follow" 
+																	@click="follow(item.view.user.id, index, 1)">Follow</a>
+																	</li>
+																</template>	
 																<li>
-																	<div class="comment-list">
-																		<div class="bg-img">
-																			<img src="images/resources/bg-img2.png" alt="">
-																		</div>
-																		<div class="comment">
-																			<h3>John Doe</h3>
-																			<span><img src="images/clock.png" alt=""> 3 min ago</span>
-																			<p>Hi John </p>
-																			<a href="#" title=""><i class="fa fa-reply-all"></i>Reply</a>
-																		</div>
-																	</div><!--comment-list end-->
+																	<a title="" class="message-us" 
+															@click="toMessageView(item.view.user.username, item.view.user.id)">
+																	<i class="fa fa-envelope"></i></a>
+																</li>
+																<li>
+																	<a class="btn btn-danger" style="padding: 0px 10px !important;" @click="toVideo"><img src="images/video.png" width="40px" style="height: 35px !important;"/></a>
 																</li>
 															</ul>
-														</li>
-														<li>
-															<div class="comment-list">
-																<div class="bg-img">
-																	<img src="images/resources/bg-img3.png" alt="">
-																</div>
-																<div class="comment">
-																	<h3>John Doe</h3>
-																	<span><img src="images/clock.png" alt=""> 3 min ago</span>
-																	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam luctus hendrerit metus, ut ullamcorper quam finibus at.</p>
-																	<a href="#" title=""><i class="fa fa-reply-all"></i>Reply</a>
-																</div>
-															</div><!--comment-list end-->
-														</li>
-													</ul>
-												</div><!--comment-sec end-->
-												<div class="post-comment">
-													<div class="cm_img">
-														<img src="images/resources/bg-img4.png" alt="">
+														</div>
 													</div>
-													<div class="comment_box">
-														<form>
-															<input type="text" placeholder="Post a comment">
-															<button type="submit">Send</button>
-														</form>
+												</div>
+												<div class="process-comm">
+													<a  @click="preUser" title=""><img src="images/process-icon.png" alt=""></a>
+												</div>
+											</div>
+										</div>
+										<!--推荐---------------------- end-->
+										
+										<!-- 动态--------------------start -->
+										<div class="product-feed-tab" v-bind:class="{ current: (1 == indexTemp) }" id="feed-dd">
+											<div class="posts-section">
+												<div class="post-bar">
+													<form class="was-validated publish">
+														<div class="form-group">
+															<textarea class="form-control" id="exampleFormControlTextarea1" rows="3" v-model="content"></textarea>
+														</div>
+														<div class="form-group row">
+															<div class="file-container" 
+																style="display:inline-block;position:relative;
+																overflow: hidden;vertical-align:middle">
+															        <button class="btn btn-success fileinput-button" type="button">
+																		{{formLabel[0]}}
+																	</button>
+															        <input type="file" id="jobData" v-on:change="onChange($event)"
+																		style="position:absolute;top:0;left:0;font-size:34px; opacity:0">
+															</div>
+															<div class="col-2">
+																<a class="btn btn-primary" @click="addDynamic">{{formLabel[1]}}</a>
+															</div>
+														</div>
+													</form>
+												</div>
+												<div class="post-bar" v-for="(item, index) in dynamics.data">
+													<div class="post_topbar">
+														<div class="usy-dt">
+															<template v-if="item.view.user.headStatus == 1">
+																<img :src="headLink" alt="" width="50px" height="50px" @click="toUserView(item.view.user.id)" >
+															</template>
+															<template v-else>
+																<img :src="item.view.user.headLink" alt="" width="50px" height="50px" @click="toUserView(item.view.user.id)">
+															</template>
+															<div class="usy-name">
+																<h3>{{item.view.user.username}}</h3>
+																<span><img src="images/clock.png" alt="" >{{item.view.createDate}}</span>
+															</div>
+														</div>
 													</div>
-												</div><!--post-comment end-->
-											</div><!--comment-section end-->
-										</div><!--posty end-->
-										<div class="process-comm">
-											<a href="#" title=""><img src="images/process-icon.png" alt=""></a>
-										</div><!--process-comm end-->
-									</div><!--posts-section end-->
-								</div><!--main-ws-sec end-->
-							</div>
-							<div class="col-lg-3 pd-right-none no-pd">
-								<div class="right-sidebar">
-									<div class="widget widget-about">
-										<img src="images/wd-logo.png" alt="">
-										<h3>Track Time on Workwise</h3>
-										<span>Pay only for the Hours worked</span>
-										<div class="sign_link">
-											<h3><a href="#" title="">Sign up</a></h3>
-											<a href="#" title="">Learn More</a>
+													
+													<div class="job_descp">
+														<p>
+															{{item.view.dynamic.content}} 
+														</p>
+													</div>
+													<template v-if="item.view.dynamic.image != ''">
+														<img :src="item.view.dynamic.image" height="300px" style="margin:10px 0 10px 10px"/>
+													</template>
+												</div><!--post-bar end-->
+												<div class="process-comm">
+													<a  title="" @click="preDynamic"><img src="images/process-icon.png" alt=""></a>
+												</div><!--process-comm end-->
+											</div><!--posts-section end-->
+										</div><!--product-feed-tab end-->
+										<!-- 动态---------------------end -->
+										
+										<!-- 关注-------------start -->
+										<div class="product-feed-tab" v-bind:class="{ current: (2 == indexTemp) }" id="saved-jobs">
+											<div class="row">
+												<div class="col-lg-4 col-md-4 col-sm-6 col-12" v-for="(item, index) in followUser">
+													<div class="company_profile_info">
+														<div class="company-up-info">
+															<template v-if="item.view.user.headStatus == 1">
+																<img :src="headLink" alt="" @click="toUserView(item.view.user.id)">
+															</template>
+															<template v-else>
+																<img :src="item.view.user.headLink" alt="" @click="toUserView(item.view.user.id)">
+															</template>
+															<h3>{{item.view.user.username}}</h3>
+															<h4>{{item.view.sex}}</h4>
+															<h4>{{item.view.birthday}}</h4>
+															<ul>
+																<li><a title="" class="message-us"  @click="toMessageView(item.view.user.username, item.view.user.id)"><i class="fa fa-envelope"></i></a></li>
+															</ul>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div><!--product-feed-tab end-->
+										<!-- 关注-------------end -->
+										
+										<!-- 粉丝----------start -->
+										<div class="product-feed-tab" v-bind:class="{ current: (3 == indexTemp) }" id="my-bids">
+											<div class="row">
+												<div class="col-lg-4 col-md-4 col-sm-6 col-12" v-for="(item, index) in fansUser">
+													<div class="company_profile_info">
+														<div class="company-up-info">
+															<template v-if="item.view.user.headStatus == 1">
+																<img :src="headLink" alt="" @click="toUserView(item.view.user.id)">
+															</template>
+															<template v-else>
+																<img :src="item.view.user.headLink" alt="" @click="toUserView(item.view.user.id)">
+															</template>
+															<h3>{{item.view.user.username}}</h3>
+															<h4>{{item.view.sex}}</h4>
+															<h4>{{item.view.birthday}}</h4>
+															<ul>
+																<template v-if="item.view.follow == false">
+																	<li><a title="" class="follow" @click="follow(item.view.user.id, index, 2)">Follow</a></li>
+																</template>	
+																<li><a title="" class="message-us"  @click="toMessageView(item.view.user.username, item.view.user.id)"><i class="fa fa-envelope"></i></a></li>
+															</ul>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div><!--product-feed-tab end-->
+										<!-- 粉丝----------end -->
+										
+										<!-- 游客-------------start -->
+										<div class="product-feed-tab" v-bind:class="{ current: (4 == indexTemp) }" id="visitor-dd">
+											<div class="row">
+												<div class="col-lg-4 col-md-4 col-sm-6 col-12" v-for="(item, index) in visitor">
+													<div class="company_profile_info">
+														<div class="company-up-info">
+															<template v-if="item.view.user.headStatus == 1" @click="toUserView(item.view.user.id)">
+																<img :src="headLink" alt="" >
+															</template>
+															<template v-else>
+																<img :src="item.view.user.headLink" alt="" @click="toUserView(item.view.user.id)">
+															</template>
+															<h3>{{item.view.user.username}}</h3>
+															<h4>{{item.view.sex}}</h4>
+															<h4>{{item.view.birthday}}</h4>
+															<ul>
+																<template v-if="item.view.follow == false">
+																	<li><a title="" class="follow" @click="follow(item.view.user.id, index, 2)">Follow</a></li>
+																</template>	
+																<li><a title="" class="message-us"  @click="toMessageView(item.view.user.username, item.view.user.id)"><i class="fa fa-envelope"></i></a></li>
+															</ul>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div><!--product-feed-tab end-->
+										<!-- 游客-------------end -->
+										<!-- 礼物-------------start -->
+										<div class="product-feed-tab" v-bind:class="{ current: (5 == indexTemp) }" id="gift-dd">
+											<div class="row">
+												<div class="RadioStyle">
+												    <div class="Block PaddingL">
+													    <template v-for="(item, index) in gifts">
+													        <input type="radio" name="gift" :id="index" v-model="giftID" :value="item.id"/>
+													        <label :for="index" style="text-align:center;">
+																<img :src="item.path" height="170px" width="150px"/>
+																<br>
+																<span>{{item.price}}</span>
+															</label>
+														</template>
+												    </div>
+												</div>
+											</div>
+											<div class="row" style="margin-top:10px;">
+												<div class="col" style="margin-left:-15px">
+											      <input type="text" v-model="giftContent" class="form-control" placeholder="祝福语句">
+											    </div>
+											</div>
+											<div class="row" style="margin-top:10px;">
+												<div class="col" style="margin-left:-15px">
+											      <input type="number" v-model="num" class="form-control" placeholder="数量">
+											    </div>
+											</div>
+											<div class="row" style="margin-top:10px;">
+												<div class="col" style="margin-left:-15px">
+											      <input type="text" class="form-control" v-model="toUsername" placeholder="接收人">
+											    </div>
+											    <div class="col">
+											      <button class="btn btn-primary mb-2" @click="getTakeUser">搜索</button>
+											    </div>
+											</div>
+											<template v-if="takeUser!=''">
+												<div class="row">
+													<div class="RadioStyle">
+													    <div class="Block PaddingL">
+													        <input type="radio" name="gift" id="takeUser" />
+													        <label for="takeUser" style="text-align:center;">
+																<template v-if="takeUser.headStatus == 1">
+																	<img :src="headLink" alt="" width="100px" height="100px">
+																</template>
+																<template v-else>
+																	<img :src="takeUser.headLink" alt="" width="100px" height="100px">
+																</template>
+																<br>
+																<span>{{takeUser.username}}</span>
+															</label>
+													    </div>
+													</div>
+												</div>
+												<div class="row" style="margin-top:10px;">
+													<button class="btn btn-primary mb-2" @click="addGiftOrder">发送礼物</button>
+												</div>
+											</template>
+										</div><!--product-feed-tab end-->
+										<!-- 礼物-------------end -->
+									</div><!--main-ws-sec end-->
+								</div>
+								<!-- 右侧栏------------------end -->
+								<!-- 左侧栏------------------------start -->
+								<div class="col-lg-3">
+									<div class="main-left-sidebar">
+										<div class="user_profile">
+											<div class="user-pro-img">
+												<template v-if="user.headStatus==1">
+													<img :src="headLink" alt="" width="170px" height="170px" @click="toUserView(user.id)">
+												</template>
+												<template v-else>
+													<img :src="user.headLink" alt="" width="170px" height="170px" @click="toUserView(user.id)">
+												</template>
+												
+											</div><!--user-pro-img end-->
+											<div class="user_pro_status">
+												<div class="row" style="justify-content: center;margin-bottom: 10px;">
+													<div class="col-6">
+														<button class="btn" style="background-color:#53d690;color:#ffffff;">
+															{{user.username}}
+														</button>
+													</div>
+													<div class="col-5" >
+													  <select id="inputState" class="form-control"  v-model="onLineStatus" @click="line"
+													  style="background-color: rgb(83, 214, 144); color: rgb(255, 255, 255);">
+														<option selected value="0">在线</option>
+														<option value="1">隐身</option>
+													  </select>
+													</div>
+												</div>
+												<div class="row" style="justify-content: center;margin-bottom: 10px;">
+													<div class="col-6">
+														<button class="btn" style="background-color:#53d690;color:#ffffff;" @click="toView(1)">
+															<i class="la la-plus"></i> {{leftLabel[0]}}
+														</button>
+													</div>
+													<div class="col-5">
+														<button class="btn" style="background-color:#53d690;color:#ffffff;" @click="toView(2)">
+															{{leftLabel[1]}}
+														</button>
+													</div>
+												</div>
+												<div class="row" style="justify-content: center;">
+													<div class="col-6">
+														<button class="btn" style="background-color:#53d690;color:#ffffff;">
+															{{leftLabel[2]}} : {{wallet.balance}}
+														</button>
+													</div>
+													<div class="col-5">
+														<span style="text-align: center;">
+															<template v-if="member">
+																<span class="icon iconfont icon-huangguan" 
+																	style="color: #F7D501;font-size: 30px;" v-if="member == 1">
+																</span>
+																<span class="icon iconfont icon-zuanshi" 
+																	style="color: #1e6f35;font-size: 30px;" v-if="member == 2"></span>
+															</template>
+														</span>
+													</div>
+												</div>
+											</div>
+											<!-- 信息栏---------------------start -->
+											<ul class="social_links">
+												<li><a href="#" title="">{{leftLabel[3]}} ：{{userInfo.view.birthday}}</a></li>
+												<li><a href="#" title="">{{leftLabel[4]}} ：{{userInfo.view.info.education}}</a></li>
+												<li><a href="#" title="">{{leftLabel[5]}} ：{{userInfo.view.info.height}}</a></li>
+												<li><a href="#" title="">{{leftLabel[6]}} ：{{userInfo.view.info.weight}}</a></li>
+												<li><a href="#" title="">{{leftLabel[7]}} ：{{userInfo.view.info.job}}</a></li>
+												<li><a href="#" title="">{{leftLabel[8]}} ：{{userInfo.view.info.country}}</a></li>
+												<li><a href="#" title="">{{leftLabel[9]}} ：{{userInfo.view.info.town}}</a></li>
+											</ul>
+											
+											<!-- 信息栏---------------------end -->
+										</div><!--user_profile end-->
+										<div class="company_profile_info">
+											<div class="company-up-info">
+												<img :src="headLink" alt="" >
+												<h3>客服</h3>
+												<ul>
+													<li>
+														<a title="" class="message-us" 
+														@click="toMessageView('kefu',19)">
+														<i class="fa fa-envelope"></i></a>
+													</li>
+												</ul>
+											</div>
 										</div>
-									</div><!--widget-about end-->
-									<div class="widget widget-jobs">
-										<div class="sd-title">
-											<h3>Top Jobs</h3>
-											<i class="la la-ellipsis-v"></i>
-										</div>
-										<div class="jobs-list">
-											<div class="job-info">
-												<div class="job-details">
-													<h3>Senior Product Designer</h3>
-													<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit..</p>
-												</div>
-												<div class="hr-rate">
-													<span>$25/hr</span>
-												</div>
-											</div><!--job-info end-->
-											<div class="job-info">
-												<div class="job-details">
-													<h3>Senior UI / UX Designer</h3>
-													<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit..</p>
-												</div>
-												<div class="hr-rate">
-													<span>$25/hr</span>
-												</div>
-											</div><!--job-info end-->
-											<div class="job-info">
-												<div class="job-details">
-													<h3>Junior Seo Designer</h3>
-													<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit..</p>
-												</div>
-												<div class="hr-rate">
-													<span>$25/hr</span>
-												</div>
-											</div><!--job-info end-->
-											<div class="job-info">
-												<div class="job-details">
-													<h3>Senior PHP Designer</h3>
-													<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit..</p>
-												</div>
-												<div class="hr-rate">
-													<span>$25/hr</span>
-												</div>
-											</div><!--job-info end-->
-											<div class="job-info">
-												<div class="job-details">
-													<h3>Senior Developer Designer</h3>
-													<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit..</p>
-												</div>
-												<div class="hr-rate">
-													<span>$25/hr</span>
-												</div>
-											</div><!--job-info end-->
-										</div><!--jobs-list end-->
-									</div><!--widget-jobs end-->
-									<div class="widget widget-jobs">
-										<div class="sd-title">
-											<h3>Most Viewed This Week</h3>
-											<i class="la la-ellipsis-v"></i>
-										</div>
-										<div class="jobs-list">
-											<div class="job-info">
-												<div class="job-details">
-													<h3>Senior Product Designer</h3>
-													<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit..</p>
-												</div>
-												<div class="hr-rate">
-													<span>$25/hr</span>
-												</div>
-											</div><!--job-info end-->
-											<div class="job-info">
-												<div class="job-details">
-													<h3>Senior UI / UX Designer</h3>
-													<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit..</p>
-												</div>
-												<div class="hr-rate">
-													<span>$25/hr</span>
-												</div>
-											</div><!--job-info end-->
-											<div class="job-info">
-												<div class="job-details">
-													<h3>Junior Seo Designer</h3>
-													<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit..</p>
-												</div>
-												<div class="hr-rate">
-													<span>$25/hr</span>
-												</div>
-											</div><!--job-info end-->
-										</div><!--jobs-list end-->
-									</div><!--widget-jobs end-->
-									<div class="widget suggestions full-width">
-										<div class="sd-title">
-											<h3>Most Viewed People</h3>
-											<i class="la la-ellipsis-v"></i>
-										</div><!--sd-title end-->
-										<div class="suggestions-list">
-											<div class="suggestion-usd">
-												<img src="images/resources/s1.png" alt="">
-												<div class="sgt-text">
-													<h4>Jessica William</h4>
-													<span>Graphic Designer</span>
-												</div>
-												<span><i class="la la-plus"></i></span>
-											</div>
-											<div class="suggestion-usd">
-												<img src="images/resources/s2.png" alt="">
-												<div class="sgt-text">
-													<h4>John Doe</h4>
-													<span>PHP Developer</span>
-												</div>
-												<span><i class="la la-plus"></i></span>
-											</div>
-											<div class="suggestion-usd">
-												<img src="images/resources/s3.png" alt="">
-												<div class="sgt-text">
-													<h4>Poonam</h4>
-													<span>Wordpress Developer</span>
-												</div>
-												<span><i class="la la-plus"></i></span>
-											</div>
-											<div class="suggestion-usd">
-												<img src="images/resources/s4.png" alt="">
-												<div class="sgt-text">
-													<h4>Bill Gates</h4>
-													<span>C &amp; C++ Developer</span>
-												</div>
-												<span><i class="la la-plus"></i></span>
-											</div>
-											<div class="suggestion-usd">
-												<img src="images/resources/s5.png" alt="">
-												<div class="sgt-text">
-													<h4>Jessica William</h4>
-													<span>Graphic Designer</span>
-												</div>
-												<span><i class="la la-plus"></i></span>
-											</div>
-											<div class="suggestion-usd">
-												<img src="images/resources/s6.png" alt="">
-												<div class="sgt-text">
-													<h4>John Doe</h4>
-													<span>PHP Developer</span>
-												</div>
-												<span><i class="la la-plus"></i></span>
-											</div>
-											<div class="view-more">
-												<a href="#" title="">View More</a>
-											</div>
-										</div><!--suggestions-list end-->
-									</div>
-								</div><!--right-sidebar end-->
-							</div>
-						</div>
-					</div><!-- main-section-data end-->
-				</div> 
-			</div>
-		</main>
-
-
-
-
-		<div class="post-popup pst-pj">
-			<div class="post-project">
-				<h3>Post a project</h3>
-				<div class="post-project-fields">
-					<form>
-						<div class="row">
-							<div class="col-lg-12">
-								<input type="text" name="title" placeholder="Title">
-							</div>
-							<div class="col-lg-12">
-								<div class="inp-field">
-									<select>
-										<option>Category</option>
-										<option>Category 1</option>
-										<option>Category 2</option>
-										<option>Category 3</option>
-									</select>
+									</div><!--main-left-sidebar end-->
 								</div>
+								<!-- 左侧栏------------------------end -->
+								
 							</div>
-							<div class="col-lg-12">
-								<input type="text" name="skills" placeholder="Skills">
-							</div>
-							<div class="col-lg-12">
-								<div class="price-sec">
-									<div class="price-br">
-										<input type="text" name="price1" placeholder="Price">
-										<i class="la la-dollar"></i>
-									</div>
-									<span>To</span>
-									<div class="price-br">
-										<input type="text" name="price1" placeholder="Price">
-										<i class="la la-dollar"></i>
-									</div>
-								</div>
-							</div>
-							<div class="col-lg-12">
-								<textarea name="description" placeholder="Description"></textarea>
-							</div>
-							<div class="col-lg-12">
-								<ul>
-									<li><button class="active" type="submit" value="post">Post</button></li>
-									<li><a href="#" title="">Cancel</a></li>
-								</ul>
-							</div>
-						</div>
-					</form>
-				</div><!--post-project-fields end-->
-				<a href="#" title=""><i class="la la-times-circle-o"></i></a>
-			</div><!--post-project end-->
-		</div><!--post-project-popup end-->
-
-		<div class="post-popup job_post">
-			<div class="post-project">
-				<h3>Post a job</h3>
-				<div class="post-project-fields">
-					<form>
-						<div class="row">
-							<div class="col-lg-12">
-								<input type="text" name="title" placeholder="Title">
-							</div>
-							<div class="col-lg-12">
-								<div class="inp-field">
-									<select>
-										<option>Category</option>
-										<option>Category 1</option>
-										<option>Category 2</option>
-										<option>Category 3</option>
-									</select>
-								</div>
-							</div>
-							<div class="col-lg-12">
-								<input type="text" name="skills" placeholder="Skills">
-							</div>
-							<div class="col-lg-6">
-								<div class="price-br">
-									<input type="text" name="price1" placeholder="Price">
-									<i class="la la-dollar"></i>
-								</div>
-							</div>
-							<div class="col-lg-6">
-								<div class="inp-field">
-									<select>
-										<option>Full Time</option>
-										<option>Half time</option>
-									</select>
-								</div>
-							</div>
-							<div class="col-lg-12">
-								<textarea name="description" placeholder="Description"></textarea>
-							</div>
-							<div class="col-lg-12">
-								<ul>
-									<li><button class="active" type="submit" value="post">Post</button></li>
-									<li><a href="#" title="">Cancel</a></li>
-								</ul>
-							</div>
-						</div>
-					</form>
-				</div><!--post-project-fields end-->
-				<a href="#" title=""><i class="la la-times-circle-o"></i></a>
-			</div><!--post-project end-->
-		</div><!--post-project-popup end-->
-
-
-
-		<div class="chatbox-list">
-			<div class="chatbox">
-				<div class="chat-mg">
-					<a href="#" title=""><img src="images/resources/usr-img1.png" alt=""></a>
-					<span>2</span>
+						</div><!-- main-section-data end-->
+					</div> 
 				</div>
-				<div class="conversation-box">
-					<div class="con-title mg-3">
-						<div class="chat-user-info">
-							<img src="images/resources/us-img1.png" alt="">
-							<h3>John Doe <span class="status-info"></span></h3>
-						</div>
-						<div class="st-icons">
-							<a href="#" title=""><i class="la la-cog"></i></a>
-							<a href="#" title="" class="close-chat"><i class="la la-minus-square"></i></a>
-							<a href="#" title="" class="close-chat"><i class="la la-close"></i></a>
-						</div>
-					</div>
-					<div class="chat-hist mCustomScrollbar" data-mcs-theme="dark">
-						<div class="chat-msg">
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec rutrum congue leo eget malesuada. Vivamus suscipit tortor eget felis porttitor.</p>
-							<span>Sat, Aug 23, 1:10 PM</span>
-						</div>
-						<div class="date-nd">
-							<span>Sunday, August 24</span>
-						</div>
-						<div class="chat-msg st2">
-							<p>Cras ultricies ligula.</p>
-							<span>5 minutes ago</span>
-						</div>
-						<div class="chat-msg">
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec rutrum congue leo eget malesuada. Vivamus suscipit tortor eget felis porttitor.</p>
-							<span>Sat, Aug 23, 1:10 PM</span>
-						</div>
-					</div><!--chat-list end-->
-					<div class="typing-msg">
-						<form>
-							<textarea placeholder="Type a message here"></textarea>
-							<button type="submit"><i class="fa fa-send"></i></button>
-						</form>
-						<ul class="ft-options">
-							<li><a href="#" title=""><i class="la la-smile-o"></i></a></li>
-							<li><a href="#" title=""><i class="la la-camera"></i></a></li>
-							<li><a href="#" title=""><i class="fa fa-paperclip"></i></a></li>
+			</main>
+			
+			<!-- 底部---------------------start -->
+			<footer>
+				<div class="footy-sec mn no-margin">
+					<div class="container">
+						<ul>
+							<li><a title="">Help Center</a></li>
+							<li><a title="">Privacy Policy</a></li>
+							<li><a title="">Community Guidelines</a></li>
+							<li><a title="">Cookies Policy</a></li>
+							<li><a title="">Career</a></li>
+							<li><a title="">Forum</a></li>
+							<li><a title="">Language</a></li>
+							<li><a title="">Copyright Policy</a></li>
 						</ul>
-					</div><!--typing-msg end-->
-				</div><!--chat-history end-->
-			</div>
-			<div class="chatbox">
-				<div class="chat-mg">
-					<a href="#" title=""><img src="images/resources/usr-img2.png" alt=""></a>
-				</div>
-				<div class="conversation-box">
-					<div class="con-title mg-3">
-						<div class="chat-user-info">
-							<img src="images/resources/us-img1.png" alt="">
-							<h3>John Doe <span class="status-info"></span></h3>
-						</div>
-						<div class="st-icons">
-							<a href="#" title=""><i class="la la-cog"></i></a>
-							<a href="#" title="" class="close-chat"><i class="la la-minus-square"></i></a>
-							<a href="#" title="" class="close-chat"><i class="la la-close"></i></a>
-						</div>
+						<p><img src="images/copy-icon2.png" alt="">Copyright 2017</p>
+						<img class="fl-rgt" src="images/logo2.png" alt="">
 					</div>
-					<div class="chat-hist mCustomScrollbar" data-mcs-theme="dark">
-						<div class="chat-msg">
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec rutrum congue leo eget malesuada. Vivamus suscipit tortor eget felis porttitor.</p>
-							<span>Sat, Aug 23, 1:10 PM</span>
-						</div>
-						<div class="date-nd">
-							<span>Sunday, August 24</span>
-						</div>
-						<div class="chat-msg st2">
-							<p>Cras ultricies ligula.</p>
-							<span>5 minutes ago</span>
-						</div>
-						<div class="chat-msg">
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec rutrum congue leo eget malesuada. Vivamus suscipit tortor eget felis porttitor.</p>
-							<span>Sat, Aug 23, 1:10 PM</span>
-						</div>
-					</div><!--chat-list end-->
-					<div class="typing-msg">
-						<form>
-							<textarea placeholder="Type a message here"></textarea>
-							<button type="submit"><i class="fa fa-send"></i></button>
-						</form>
-						<ul class="ft-options">
-							<li><a href="#" title=""><i class="la la-smile-o"></i></a></li>
-							<li><a href="#" title=""><i class="la la-camera"></i></a></li>
-							<li><a href="#" title=""><i class="fa fa-paperclip"></i></a></li>
+				</div>
+			</footer>
+			<!-- 底部---------------------end -->
+			<!-- 支付界面-----------start -->
+			<!--遮罩层-->
+			<div class="bgPop"></div>
+			<!--弹出框-->
+			<div class="pop">
+				<div class="row" style="background: #2D56A1;">
+					<div class="col-11" >
+						<ul class="nav nav-tabs" >
+							<li role="presentation"  v-bind:class="{ active: (1 == payType) }">
+								<a href="#menu1" data-toggle="tab" class="btn btn-warning" @click="changeType(1)">{{payTop[0]}}</a>
+							</li>
+							<li role="presentation"  v-bind:class="{ active: (2 == payType) }">
+								<a href="#menu2" data-toggle="tab" class="btn btn-warning" @click="changeType(2)">{{payTop[1]}}</a>
+							</li>
 						</ul>
-					</div><!--typing-msg end-->
-				</div><!--chat-history end-->
-			</div>
-			<div class="chatbox">
-				<div class="chat-mg bx">
-					<a href="#" title=""><img src="images/chat.png" alt=""></a>
-					<span>2</span>
-				</div>
-				<div class="conversation-box">
-					<div class="con-title">
-						<h3>Messages</h3>
-						<a href="#" title="" class="close-chat"><i class="la la-minus-square"></i></a>
 					</div>
-					<div class="chat-list">
-						<div class="conv-list active">
-							<div class="usrr-pic">
-								<img src="images/resources/usy1.png" alt="">
-								<span class="active-status activee"></span>
+					<div class="col-1" style="font-size: 35px;padding-top:10px;color:white;">
+						<span class="pop-close" @click="closeView">Ｘ</span>
+					</div>
+				</div>
+				
+				<div class="tab-content">
+					<div id="menu1" class="container-fluid tab-pane" v-bind:class="{ active: (1 == payType) }">
+						<!-- 升级-----------start -->
+						<div class="row" style="margin: 10px 0;">
+							<div style="margin-right: 25px;">
+								<div class="RadioStyle">
+								    <div class="Block PaddingL">
+								        <input type="radio" name="upgradeType" id="model1-1" v-model="upgradeType" value="1"/>
+								        <label for="model1-1">{{upgradeLabel[0]}}</label>
+								    </div>
+								</div>
 							</div>
-							<div class="usy-info">
-								<h3>John Doe</h3>
-								<span>Lorem ipsum dolor <img src="images/smley.png" alt=""></span>
+							<div style="margin-right: 25px;">
+								<div class="RadioStyle">
+								    <div class="Block PaddingL">
+								        <input type="radio" name="upgradeType" id="model1-2" v-model="upgradeType" value="2"/>
+								        <label for="model1-2">{{upgradeLabel[1]}}</label>
+								    </div>
+								</div>
 							</div>
-							<div class="ct-time">
-								<span>1:55 PM</span>
-							</div>
-							<span class="msg-numbers">2</span>
+							<template v-if="upgradeType == 2">
+								<div>
+									<input type="text" class="form-control" v-model="otherUsername" id="" :placeholder="btnLabel[0]">
+								</div>
+								<div>
+									<a class="btn btn-primary" @click="getOtherUser">{{searchLabel}}</a>
+								</div>
+							</template>
 						</div>
-						<div class="conv-list">
-							<div class="usrr-pic">
-								<img src="images/resources/usy2.png" alt="">
+						<!-- 为别人升级---------start -->
+						<template v-if="otherUser!='' && upgradeType == 2">
+							<div class="row">
+								<div class="RadioStyle">
+								    <div class="Block PaddingL">
+								        <input type="radio" name="gift" id="otherUser" />
+								        <label for="otherUser" style="text-align:center;">
+											<template v-if="otherUser.headStatus == 1">
+												<img :src="headLink" alt="" width="100px" height="100px">
+											</template>
+											<template v-else>
+												<img :src="otherUser.headLink" alt="" width="100px" height="100px">
+											</template>
+											<br>
+											<span>{{otherUser.username}}</span>
+										</label>
+								    </div>
+								</div>
 							</div>
-							<div class="usy-info">
-								<h3>John Doe</h3>
-								<span>Lorem ipsum dolor <img src="images/smley.png" alt=""></span>
+						</template>
+						<!-- 为别人升级----------end -->
+						<div class="row">
+							<div class="col-5" style="border: 1px solid #B9B9B9;margin-right: 15px;padding: 10px 20px 20px 20px;">
+								<div>
+									<label style="margin-right: 10px;">
+										<img src="images/pay/huangguan.png" width="40px"/>
+									</label>
+									<label>
+										<h5>{{typeLabel[0]}}</h5>
+									</label>
+								</div>
+								<div class="row">
+									<div style="width: 50%;">
+										<label>
+											<img src="images/pay/duigou.png" width="25px"/>
+										</label>
+										<label>{{upgrade1[0]}}</label>
+									</div>
+									<div style="width: 50%;">
+										<label>
+											<img src="images/pay/duigou.png" width="25px"/>
+										</label>
+										<label>{{upgrade1[1]}}</label>
+									</div>
+								</div>
+								<div class="row">
+									<div style="width: 50%;">
+										<label>
+											<img src="images/pay/duigou.png" width="25px"/>
+										</label>
+										<label>{{upgrade1[2]}}</label>
+									</div>
+									<div style="width: 50%;">
+										<label>
+											<img src="images/pay/duigou.png" width="25px"/>
+										</label>
+										<label>{{upgrade1[3]}}</label>
+									</div>
+								</div>
+								<div class="row">
+									<div style="width: 50%;">
+										<label>
+											<img src="images/pay/duigou.png" width="25px"/>
+										</label>
+										<label>{{upgrade1[4]}}</label>
+									</div>
+									<div style="width: 50%;">
+										<label>
+											<img src="images/pay/duigou.png" width="25px"/>
+										</label>
+										<label>{{upgrade1[5]}}</label>
+									</div>
+								</div>
+								<div class="RadioStyle">
+								    <div class="Block PaddingL">
+								        <div class="row">
+											<input type="radio" name="crown" id="model1-3" v-model="crown" value="102"/>
+											<label for="model1-3">
+												<span>102USD / 1月</span>
+												<span>102USD /月</span>
+												<span>节省0.00％</span>
+											</label>
+										</div>
+										<div class="row">
+											<input type="radio" name="crown" id="model1-4" v-model="crown" value="262"/>
+											<label for="model1-4">
+												<span>262USD / 3月</span>
+												<span>87.33USD /月</span>
+												<span>节省14.38％</span>
+											</label>
+										</div>
+										<div class="row">
+											<input type="radio" name="crown" id="model1-5"  v-model="crown" value="468"/>
+											<label for="model1-5">
+												<span>468USD / 6月</span>
+												<span>78USD /月</span>
+												<span>节省23.52％</span>
+											</label>
+										</div>
+										<div class="row">
+											<input type="radio" name="crown" id="model1-6"  v-model="crown" value="786"/>
+											<label for="model1-6">
+												<span>786USD / 12月</span>
+												<span>65.50USD /月</span>
+												<span>节省35.78％</span>
+											</label>
+										</div>
+								    </div>
+								</div>
 							</div>
-							<div class="ct-time">
-								<span>11:39 PM</span>
+							<div class="col-5" style="border: 1px solid #B9B9B9;margin-right: 15px;padding: 10px 20px 20px 20px;">
+								<div>
+									<label style="margin-right: 10px;">
+										<img src="images/pay/zuanshi.png" width="40px"/>
+									</label>
+									<label>
+										<h5>{{typeLabel[1]}}</h5>
+									</label>
+								</div>
+								<div class="row">
+									<div style="width: 50%;">
+										<label>
+											<img src="images/pay/duigou.png" width="25px"/>
+										</label>
+										<label>{{upgrade1[0]}}</label>
+									</div>
+									<div style="width: 50%;">
+										<label>
+											<img src="images/pay/duigou.png" width="25px"/>
+										</label>
+										<label>{{upgrade1[1]}}</label>
+									</div>
+								</div>
+								<div class="row">
+									<div style="width: 50%;">
+										<label>
+											<img src="images/pay/duigou.png" width="25px"/>
+										</label>
+										<label>{{upgrade1[2]}}</label>
+									</div>
+									<div style="width: 50%;">
+										<label>
+											<img src="images/pay/duigou.png" width="25px"/>
+										</label>
+										<label>{{upgrade1[3]}}</label>
+									</div>
+								</div>
+								
+								<div class="RadioStyle">
+								    <div class="Block PaddingL">
+								        <div class="row">
+											<input type="radio" name="crown" id="model1-7"  v-model="crown" value="16"/>
+											<label for="model1-7">
+												<span>16USD / 1月</span>
+												<span>16USD /月</span>
+												<span>节省0.00％</span>
+											</label>
+										</div>
+										<div class="row">
+											<input type="radio" name="crown" id="model1-8"  v-model="crown" value="46"/>
+											<label for="model1-8">
+												<span>46USD / 3月</span>
+												<span>15.33USD /月</span>
+												<span>节省15.33％</span>
+											</label>
+										</div>
+								    </div>
+								</div>
 							</div>
 						</div>
-						<div class="conv-list">
-							<div class="usrr-pic">
-								<img src="images/resources/usy3.png" alt="">
+						<div class="row" style="margin-top: 10px;">
+							<div class="RadioStyle">
+							    <div class="Block PaddingL">
+							        <input type="radio" name="payment" id="model1-9" v-model="shoptype" value="1"/>
+							        <label for="model1-9">
+										<img src="images/pay/paypal.png" height="80px"/>
+									</label>
+							    </div>
 							</div>
-							<div class="usy-info">
-								<h3>John Doe</h3>
-								<span>Lorem ipsum dolor <img src="images/smley.png" alt=""></span>
-							</div>
-							<div class="ct-time">
-								<span>0.28 AM</span>
+							<div class="RadioStyle" style="margin-left: 30px;">
+							    <div class="Block PaddingL">
+							        <input type="radio" name="payment" id="model1-10" v-model="shoptype" value="2"/>
+							        <label for="model1-10">
+										<img src="images/pay/yue.png" height="80px" width="200px"/>
+									</label>
+							    </div>
 							</div>
 						</div>
-					</div><!--chat-list end-->
-				</div><!--conversation-box end-->
+						<form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" target="_blank" id="sform-1">
+							<input type="hidden" name="cmd" value="_xclick">	<!-- 立即支付 -->
+							<input type="hidden" name="business" value="sb-cmysd740119@business.example.com">  <!-- 商家账号-->
+							<input id='item_number' type="hidden" name="item_number" value="产品编号"> <!-- 产品编号-->
+							<input id='amount' type="hidden" name="amount" >  <!-- 付款/充值金额  -->
+							<input type="hidden" name="currency_code" value="USD">	<!-- 货币 -->
+							<!-- 支付成功后paypal后台发送回调地址-->
+							<input type='hidden' name='notify_url' value='http://47.115.142.159:8080/paysuccess/'>  
+							<!-- 支付成功后网页跳转地址-->
+							<input type='hidden' name='return' value='http://47.115.142.159:8080/pages/success.html'> 
+							<input type='hidden' name='charset' value='utf-8'>	<!-- 字符集 -->
+							<input type="hidden" name="no_shipping" value="1"> <!-- 不要求客户提供收货地址 -->
+							<input type="hidden" name="bn" value="IC_Sample">
+							<input type='hidden' name='rm' value='2'>
+							<!-- 自定义变量 -->
+							<input type='hidden' name='custom' value='' id="custom">
+							<button @click="checkUpgrade"><img src="images/paypal.png"></button>
+						</form>
+						<!-- 升级-----------end -->
+					</div>
+					<div id="menu2" class="container-fluid tab-pane" v-bind:class="{ active: (2 == payType) }">
+						<!-- 充值---------------------start -->
+						<div class="row" style="margin: 10px 0;">
+							<div style="margin-right: 25px;">
+								<div class="RadioStyle">
+								    <div class="Block PaddingL">
+								        <input type="radio" name="rechargeType" id="model2-1" v-model="rechargeType" value="1" />
+								        <label for="model2-1">{{rechargeLabel[0]}}</label>
+								    </div>
+								</div>
+							</div>
+							<div style="margin-right: 25px;">
+								<div class="RadioStyle">
+								    <div class="Block PaddingL">
+								        <input type="radio" name="rechargeType" id="model2-2" v-model="rechargeType" value="2"/>
+								        <label for="model2-2">{{rechargeLabel[1]}}</label>
+								    </div>
+								</div>
+							</div>
+							<template v-if="rechargeType == 2">
+								<div>
+									<input type="text" class="form-control" v-model="rechargeUsername" id="" :placeholder="btnLabel[0]">
+								</div>
+								<div>
+									<a class="btn btn-primary" @click="getRechargeUser">{{searchLabel}}</a>
+								</div>
+							</template>
+						</div>
+						<!-- 为别人升级---------start -->
+						<template v-if="rechargeUser!='' && rechargeType == 2">
+							<div class="row">
+								<div class="RadioStyle">
+								    <div class="Block PaddingL">
+								        <input type="radio" name="gift" id="rechargeUser" />
+								        <label for="rechargeUser" style="text-align:center;">
+											<template v-if="rechargeUser.headStatus == 1">
+												<img :src="headLink" alt="" width="100px" height="100px">
+											</template>
+											<template v-else>
+												<img :src="rechargeUser.headLink" alt="" width="100px" height="100px">
+											</template>
+											<br>
+											<span>{{rechargeUser.username}}</span>
+										</label>
+								    </div>
+								</div>
+							</div>
+						</template>
+						<!-- 为别人升级----------end -->
+						<div class="row">
+							<div class="RadioStyle row">
+							    <div class="Block PaddingL">
+							        <input type="radio" name="money" id="model2-3" v-model="money" value="500"/>
+							        <label for="model2-3">
+										<img src="images/pay/yue.png" height="80px" width="200px" />
+										500USB
+									</label>
+							    </div>
+								<div class="Block PaddingL">
+								    <input type="radio" name="money" id="model2-4" v-model="money" value="200"/>
+								    <label for="model2-4">
+										<img src="images/pay/yue.png" height="80px" width="200px"/>
+										200USB
+									</label>
+								</div>
+								<div class="Block PaddingL">
+								    <input type="radio" name="money" id="model2-5" v-model="money" value="100" />
+								    <label for="model2-5">
+										<img src="images/pay/yue.png" height="80px" width="200px"/>
+										100USB
+									</label>
+								</div>
+							</div>
+						</div>
+						<div class="row" style="margin-top: 10px;">
+							<div class="form-group row" style="align-items: center;">
+							    <label for="inputEmail3" class="col-sm-5 col-form-label">{{btnLabel[2]}} : </label>
+							    <div class="col-sm-7">
+							      <input type="number" class="form-control" id="inputEmail3" v-model="money">
+							    </div>
+							</div>
+						</div>
+						<div class="row" style="margin-top: 10px;">
+							<div class="RadioStyle">
+							    <div class="Block PaddingL">
+							        <input type="radio" name="recharge" id="model2-6" v-model="recharge" value="1"/>
+							        <label for="model2-6">
+										<img src="images/pay/paypal.png" height="80px"/>
+									</label>
+							    </div>
+							</div>
+						</div>
+						<div class="row" style="margin-top: 10px;">
+							<form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" target="_blank" id="sform-2">
+								<input type="hidden" name="cmd" value="_xclick">	<!-- 立即支付 -->
+								<input type="hidden" name="business" value="sb-cmysd740119@business.example.com">  <!-- 商家账号-->
+								<input id='item_number' type="hidden" name="item_number" value="产品编号"> <!-- 产品编号-->
+								<input id='amount2' type="hidden" name="amount">  <!-- 付款/充值金额  -->
+								<!-- 支付成功后paypal后台发送回调地址-->
+								<input type='hidden' name='notify_url' value='http://47.115.142.159:8080/paysuccess/'>  
+								<!-- 支付成功后网页跳转地址-->
+								<input type='hidden' name='return' value='http://47.115.142.159:8080/pages/success.html'> 
+								<input type="hidden" name="currency_code" value="USD">	<!-- 货币 -->
+								<input type='hidden' name='charset' value='utf-8'>	<!-- 字符集 -->
+								<input type="hidden" name="no_shipping" value="1"> <!-- 不要求客户提供收货地址 -->
+								<input type="hidden" name="bn" value="IC_Sample">
+								<input type='hidden' name='rm' value='2'>
+								<!-- 自定义变量 -->
+								<input type='hidden' name='custom' id="custom2">
+								<a class="btn btn-success" @click="checkRecharge">{{btnLabel[1]}}</a>
+							</form>
+						</div>
+						<!-- 充值-----------------------end -->
+					</div>
+				</div>
 			</div>
-		</div><!--chatbox-list end-->
-
-	</div><!--theme-layout end-->
-
-
-
-<script type="text/javascript" src="js/jquery.min.js"></script>
-<script type="text/javascript" src="js/popper.js"></script>
-<script type="text/javascript" src="js/bootstrap.min.js"></script>
-<script type="text/javascript" src="js/jquery.mCustomScrollbar.js"></script>
-<script type="text/javascript" src="lib/slick/slick.min.js"></script>
-<script type="text/javascript" src="js/scrollbar.js"></script>
-<script type="text/javascript" src="js/script.js"></script>
-
-</body>
+			
+			<!-- 支付界面-------end -->
+			
+			<!-- 发送消息---start -->
+			<div class="message">
+				<div class="row" style="background: #E44D3A;display: flex;justify-content: space-between;padding: 5px 10px;">
+					<div>
+						<span style="color:white;">{{messageUsername}}</span>
+					</div>
+					<div>
+						<span style="color:white;" @click="closeMessageView">Ｘ</span>
+					</div>
+				</div>
+				<div class="row" style="padding: 5px;">
+					<textarea class="form-control" v-model="messageContent" id="exampleFormControlTextarea1" rows="3"></textarea>
+				</div>
+				<div class="row" style="display: flex;justify-content: center;padding: 0 5px;">
+					<button type="button" class="btn btn-success btn-lg btn-block" @click="sendMessage">发送</button>
+				</div>
+			</div>
+			<!-- 发送消息--end -->
+			
+		</div>
+		
+		
+	</body>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/popper.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script src="pop/js/jquery.poptrox.min.js"></script>
+	<script type="text/javascript" src="js/flatpickr.min.js"></script>
+	<script type="text/javascript" src="lib/slick/slick.min.js"></script>
+	<script type="text/javascript" src="js/script.js"></script>
+	
+	<script src="js/browser.min.js"></script>
+	<script src="js/polyfill.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/vue-2.4.0.js"></script>
+	<script src="js/vue-resource-1.3.4.js"></script>
+	<script src="js/vue-router-3.0.1.js"></script>
+	<script>
+		$(function() {				
+			$('#gallery').poptrox({
+				usePopupCaption: true,
+			});
+			$('#gallery-recharge').poptrox({
+				usePopupCaption: true
+			});
+		});
+	</script>
+	<script type="text/babel">
+		var vm = new Vue({
+			el : '#app',
+			data:{
+				
+				/* 令牌-------------start  */
+				ticket:"",
+				/* 令牌-------------end  */
+				/* 个人信息----------------start */
+				user:"",
+				userInfo:"",
+				wallet:"",
+				member:"",
+				headLink:"images/user/default.png",
+				/* 个人信息----------------end */
+				
+				//在线
+				onLineStatus:0,
+				
+				//寻找
+				searchUserName:"",
+				searchUser:"",
+				
+				/* 照片墙-----------------start */
+				pushUser:[],
+				/* 照片墙-----------------end */
+				
+				/* 获取最新用户--------------start */
+				laterUser:{
+					page:1,
+					data:[],
+					pageCount:1
+				},
+				/* 获取最新用户--------------start */
+				
+				indexTemp:0,
+				
+				/* 发布动态-----------------start */
+				image:"",
+				content:"",
+				/* 发布动态-----------------start */
+				
+				/* 展示动态--------------start */
+				dynamics:{
+					page:1,
+					data:[],
+					pageCount:1
+				},
+				/* 展示动态--------------end */
+				
+				/* 展示关注-------------start */
+				followUser:[],
+				/* 展示关注-------------end */
+				
+				/* 展示粉丝-------------start */
+				fansUser:[],
+				/* 展示粉丝-------------end */
+				
+				/* 游客------------start */
+				visitor:[],
+				/* 游客------------end */
+				
+				/* 礼物-----------start */
+				gifts:[],
+				takeUser:"",
+				num:1,
+				toUsername:"",
+				giftID:0,
+				giftContent:"",
+				/* 礼物---------------end */
+				
+				/* 消息-----start */
+				messageContent:"",
+				messageToUserID:0,
+				messageUsername:"",
+				/* 消息-----end */
+				
+				/* 支付----------------start */
+				//升级还是充值
+				payType:0,
+				//升级---为自己支付,还是为别人支付
+				upgradeType:0,
+				//为别人升级-显示得用户
+				otherUser:"",
+				//别人得用户名
+				otherUsername:"",
+				//选择升级
+				crown:0,
+				//自定义变量
+				upgradeCustom:"",
+				//升级支付方式
+				shoptype:"",
+				//充值-------为自己支付,还是为别人支付
+				rechargeType:0,
+				//为别人充值得用户
+				rechargeUser:"",
+				//别人得名字
+				rechargeUsername:"",
+				//充值金额
+				money:0,
+				//选择充值方式
+				recharge:0,
+				//自定义变量
+				rechargeCustom:"",
+				/* 支付----------------end */
+				
+				/* 标签---------------------start */
+				languageID:1,
+				topLabel:["个人资料", "消息", "退出"],
+				leftLabel:["升级", "充值", "金币", "生日", "教育", "身高", "体重", "工作", "国家", "地区"],
+				rightLabel:["推荐", "动态", "关注", "粉丝", "游客", "礼品"],
+				formLabel:["选择图片", "发布"],
+				payTop:["升级", "账户充值"],
+				upgradeLabel:["为自己升级", "为别人升级"],
+				rechargeLabel:["为自己充值", "为别人充值"],
+				searchLabel:"搜索",
+				typeLabel:["皇冠会员", "钻石会员"],
+				upgrade1:["尽情聊天", "查看谁喜欢你", "认识更多单身异性", "让你倍受瞩目", "每日3000字内翻译", "更多展示机会"],
+				btnLabel:["用户名", "立即支付", "自由输入"]
+				/* 标签---------------------end */
+			},
+			methods:{
+				//前往用户主页
+				toUserView(id){
+					$('.user-search').hide()
+					var url = "home.html?userID=" + id
+					window.location.href = url
+				},
+				//获取当前用户信息
+				getUserInfo() {
+					this.$http.get('/user/getUserInfo/',{header:{cookie:this.ticket}},
+					{params : {time:new Date().getTime()}})
+					.then(function(res) {
+						this.toLoginView(res)
+						this.userInfo = res.body.userInfo
+						this.user = res.body.user
+						this.wallet = res.body.wallet
+						this.member = res.body.member
+					},function() {
+						console.log('请求失败处理');
+					});
+				},
+				//查找用户
+				getSearchaUser(){
+					this.$http.get('/user/getUserByUsername/',
+						{params : {time:new Date().getTime(), username:this.searchUserName}},{header : {cookie:this.ticket}})
+					.then(function(res) {
+						this.toLoginView(res)
+						$('.user-search').show();
+						this.searchUser = res.body.user
+					},function() {
+						console.log('请求失败处理');
+					});
+				},
+				//获取推送的用户
+				getPushUser() {
+					this.$http.get('/user/getPushUser/',
+					{params : {time:new Date().getTime()}}, {header:{cookie:this.ticket}})
+					.then(function(res) {
+						this.toLoginView(res)
+						this.pushUser = res.body.data
+					},function() {
+						console.log('请求失败处理');
+					});
+				},
+				preUser(){
+					this.laterUser.page ++
+					this.getLaterUser()
+				},
+				//获取首页推荐的用户
+				getLaterUser(index) {
+					this.indexTemp = index
+					this.$http.get('/user/getLaterUser/',
+					{params : {page:this.laterUser.page,limit:15,time:new Date().getTime()}},{header : {cookie:this.ticket}})
+					.then(function(res) {
+						this.toLoginView(res)
+						if(res.body.member) {
+							this.toView(1)
+							return ;
+						}
+						this.laterUser.pageCount = res.body.pageCount
+						this.laterUser.data = res.body.data
+					},function() {
+						console.log('请求失败处理');
+					});
+				},
+				//添加关注
+				follow(followUserID, index, type){
+				    var formData = new FormData();
+					formData.append('followUserID', followUserID);
+				    this.$http.post('/user/follow/', formData, 
+				    {headers: {cookie:this.ticket}}).
+				    then(function (res) {
+						this.toLoginView(res)
+				    	if(type == 1) {
+				    		this.laterUser.data[index].view.follow = true
+				    	} else if(type == 2) {
+				    		this.fansUser[index].view.follow = true
+				    	}
+				    }, function (res) {
+				      console.log(res.body);
+				    });
+				},
+				//发布动态
+				addDynamic(){
+					if(this.image == ""){
+						this.image = null
+						var formData = new FormData();
+						formData.append('content', this.content);
+						this.$http.post('/user/addDynamicContent/', formData, 
+						{headers: { 'Content-Type': 'multipart/form-data', cookie:this.ticket}}).
+						then(function (res) {
+							if(res.body.message){
+								alert(res.body.message)
+							}
+							this.toLoginView(res)
+							this.content = ""
+						}, function (res) {
+						  console.log(res.body);
+						});
+						return 
+					}
+				    var formData = new FormData();
+					formData.append('image', this.image);
+					formData.append('content', this.content);
+				    this.$http.post('/user/addDynamic/', formData, 
+				    {headers: { 'Content-Type': 'multipart/form-data', cookie:this.ticket}}).
+				    then(function (res) {
+						if(res.body.message){
+							alert(res.body.message)
+						}
+				    	this.toLoginView(res)
+						this.content = ""
+				    }, function (res) {
+				      console.log(res.body);
+				    });
+				},
+				//获取动态
+				preDynamic(){
+					this.dynamics.page ++
+					this.getLaterDynamic(1)
+				},
+				//获取动态----分页获取
+				getLaterDynamic(index) {
+					this.indexTemp = index
+					this.$http.get('/user/getLaterDynamic/',
+					{params:{time:new Date().getTime(),page:this.dynamics.page,limit:5}},
+					{header:{cookie:this.ticket}})
+					.then(function(res) {
+						this.toLoginView(res)
+						if(res.body.member) {
+							this.toView(1)
+							return ;
+						}
+						this.dynamics.data = res.body.data
+				    	this.dynamics.pageCount = res.body.pageCount
+					},function() {
+						console.log('请求失败处理');
+					});
+				},
+				//获取关注的人
+				getFollowUser(index) {
+					this.indexTemp = index
+					this.$http.get('/user/getFollowUser/',
+					{params : {time:new Date().getTime()}},{header : {cookie:this.ticket}})
+					.then(function(res) {
+						this.toLoginView(res)
+						this.followUser = res.body.data
+					},function() {
+						console.log('请求失败处理');
+					});
+				},
+				//获取粉丝
+				getFans(index) {
+					this.indexTemp = index
+					this.$http.get('/user/getFans/',
+					{params : {time:new Date().getTime()}},{header : {cookie:this.ticket}})
+					.then(function(res) {
+						this.toLoginView(res)
+						if(res.body.member) {
+							this.toView(1)
+							return ;
+						}
+						this.fansUser = res.body.data
+					},function() {
+						console.log('请求失败处理');
+					});
+				},
+				//获取游客
+				getVistor(index) {
+					this.indexTemp = index
+					this.$http.get('/user/getVisitor/',
+					{params : {time:new Date().getTime()}},{header : {cookie:this.ticket}})
+					.then(function(res) {
+						this.toLoginView(res)
+						this.visitor = res.body.data
+					},function() {
+						console.log('请求失败处理');
+					});
+				},
+				//获取礼物
+				getLaterGift(index) {
+					this.indexTemp = index
+					this.$http.get('/user/getLaterGift/',
+					{params : {time:new Date().getTime()}},{header : {cookie:this.ticket}})
+					.then(function(res) {
+						this.toLoginView(res)
+						this.gifts = res.body.data
+					},function() {
+						console.log('请求失败处理');
+					});
+				},
+				//获取接收人
+				getTakeUser(){
+					this.$http.get('/user/getUserByUsername/',
+						{params : {time:new Date().getTime(), username:this.toUsername}},{header : {cookie:this.ticket}})
+					.then(function(res) {
+						this.toLoginView(res)
+						this.takeUser = res.body.user
+					},function() {
+						console.log('请求失败处理');
+					});
+				},
+				//发送礼物
+				addGiftOrder(){
+					console.log("发送请求")
+					if(this.giftID == 0 || this.toUsername == "" || this.takeUser == "") {
+						return ;
+					}
+					var formData = new FormData();
+					formData.append('content', this.giftContent);
+					formData.append('num', this.num);
+					formData.append('giftID', this.giftID);
+					formData.append('toUsername', this.toUsername);
+				    this.$http.post('/user/addGiftOrder/', formData, 
+				    {headers: { 'Content-Type': 'multipart/form-data', cookie:this.ticket}}).
+				    then(function (res) {
+						if(res.body.message){
+							alert(res.body.message)
+						}
+						if(res.body.flag) {
+							this.toView(2)
+							return
+						}
+				    	this.toUsername = ""
+						this.num = 0
+						this.giftID = 0
+				    }, function (res) {
+				      console.log(res.body);
+				    });
+				},
+				toVideo(){
+					alert("金币不足")
+					this.toView(2)
+				},
+				//跳转到登录页面
+				toLoginView(res) {
+					if(res.body.code == "302") {
+						window.location.href = "login.html"
+					}
+				},
+				checkTicket() {
+					this.ticket = localStorage.getItem("ticket");
+					if(this.ticket == "") {
+						window.location.href = "login.html"
+						return
+					}
+					this.getUserInfo()
+					this.getPushUser()
+					this.getLaterUser(0)
+				},
+				toView(payType) {
+					this.payType = payType
+					$('.bgPop,.pop').show();
+				},
+				closeView(){
+					$('.bgPop,.pop').hide();
+				},
+				toMessageView(username, toUserID) {
+					this.messageToUserID = toUserID
+					this.messageUsername = username
+					$('.bgPop,.message').show();
+				},
+				closeMessageView() {
+					$('.bgPop,.message').hide();
+					this.messageToUserID = 0
+					this.messageUsername = ""
+						this.messageContent = ""
+				},
+				//添加消息
+				sendMessage() {
+					if(this.messageContent == "") {
+						return
+					}
+					var formData = new FormData();
+					formData.append('content', this.messageContent);
+					formData.append('toUserID', this.messageToUserID);
+					this.$http.post('/user/addMessage/', formData).
+					then(function (res) {
+						if(res.body.eor){
+							alert(res.body.eor)
+						}
+						if(res.body.member) {
+							this.toView(1)
+							return ;
+						}
+						this.closeMessageView()
+					}, function (res) {
+					  console.log(res.body);
+					});
+				},
+				/* 支付 */
+				changeType(payType){
+					this.payType = payType;
+				},
+				getOtherUser(){
+					this.$http.get('/user/getUserByUsername/',
+						{params : {time:new Date().getTime(), username:this.otherUsername}},{header : {cookie:this.ticket}})
+					.then(function(res) {
+						this.otherUser = res.body.user
+					},function() {
+						console.log('请求失败处理');
+					});
+				},
+				getRechargeUser(){
+					this.$http.get('/user/getUserByUsername/',
+						{params : {time:new Date().getTime(), username:this.rechargeUsername}},{header : {cookie:this.ticket}})
+					.then(function(res) {
+						this.rechargeUser = res.body.user
+					},function() {
+						console.log('请求失败处理');
+					});
+				},
+				checkUpgrade(){
+					if(this.upgradeType == 0 || this.crown == 0 || this.shoptype == 0) {
+						return
+					}
+					if(this.upgradeType == 2 && this.otherUsername == "") {
+						return
+					}
+					if(this.upgradeType == 1) {
+						this.upgradeCustom = this.payType + "&" + this.upgradeType + "&" + this.ticket + "&" + this.crown
+					} else {
+						this.upgradeCustom = this.payType + "&" + this.upgradeType + "&" + this.ticket + "&" + this.crown + "&" + this.otherUsername
+					}
+					if(this.shoptype == 1) {
+						//第三方
+						console.log("输出" + this.upgradeCustom)
+						document.getElementById("custom").value=this.upgradeCustom
+						document.getElementById("amount").value=this.crown
+						document.getElementById("sform-1").submit()
+					} else if(this.shoptype == 2){
+						//余额
+						var formData = new FormData();
+						formData.append('upgradeType', this.upgradeType);
+						formData.append('money', this.crown);
+						formData.append('toUsername', this.otherUsername);
+						this.$http.post('/user/updateUserWallet/', formData).
+						then(function (res) {
+							if(res.body.flag) {
+								this.toView(2)
+								alert("fail")
+							}
+						}, function (res) {
+						  console.log(res.body);
+						});
+					}
+				},
+				checkRecharge(){
+					if(this.rechargeType == 0 || this.money == 0 || this.recharge == 0) {
+						return
+					}
+					if(this.rechargeType == 2 && this.rechargeUsername == "" && this.rechargeUser == null) {
+						return
+					}
+					if(this.rechargeType == 1) {
+						this.rechargeCustom = this.payType + "&" + this.recharge + "&" + this.ticket + "&" + this.money
+					} else {
+						this.rechargeCustom = this.payType + "&" + this.recharge + "&" + this.ticket + "&" + this.money + "&" + this.rechargeUsername
+					}
+					document.getElementById("custom2").value=this.rechargeCustom
+					document.getElementById("amount2").value=this.money
+					document.getElementById("sform-2").submit()
+				},
+				logout(){
+					this.$http.get('/user/logout/',
+						{params : {time:new Date().getTime()}})
+					.then(function(res) {
+						window.location.href = "login.html"
+					},function() {
+						console.log('请求失败处理');
+					});
+				},
+				line(){
+					this.$http.get('/user/updateOnLineStatus/',
+						{params : {time:new Date().getTime(), onLineStatus:this.onLineStatus}})
+					.then(function(res) {
+						
+					},function() {
+						console.log('请求失败处理');
+					});
+				},
+				change() {
+					if(this.languageID == 1) {
+						this.topLabel = ["个人资料", "消息", "退出"]
+						this.leftLabel = ["升级", "充值", "金币", "生日", "教育", "身高", "体重", "工作", "国家", "地区"]
+						this.rightLabel = ["推荐", "动态", "关注", "粉丝", "游客", "礼品"]
+						this.formLabel = ["选择图片", "发布"]
+						this.payTop = ["升级", "账户充值"],
+						this.upgradeLabel = ["为自己升级", "为别人升级"],
+						this.rechargeLabel = ["为自己充值", "为别人充值"],
+						this.searchLabel = "搜索",
+						this.typeLabel = ["皇冠会员", "钻石会员"],
+						this.upgrade1 = ["尽情聊天", "查看谁喜欢你", "认识更多单身异性", "让你倍受瞩目", "每日3000字内翻译", "更多展示机会"]
+						this.btnLabel = ["用户名", "立即支付", "自由输入"]
+					} else if(this.languageID == 2) {
+						this.topLabel = ["個人資料", "消息", "退出"]
+						this.leftLabel = ["升级", "充值", "金幣", "生日", "教育", "身高", "體重", "工作", "國家", "地區"]
+						this.rightLabel = ["推薦", "動態", "關註", "粉絲", "遊客", "禮品"]
+						this.formLabel = ["選擇圖片", "發布"]
+						this.payTop = ["升级", "賬戶充值"],
+						this.upgradeLabel = ["為自己升級", "為別人升級"],
+						this.rechargeLabel = ["為自己充值", "為別人充值"],
+						this.searchLabel = "搜索",
+						this.typeLabel = ["皇冠會員", "鉆石會員"],
+						this.upgrade1 = ["盡情聊天", "查看誰喜歡妳", "認識更多單身異性", "讓妳倍受矚目", "每日3000字內翻譯", "更多展示機會"]
+						this.btnLabel = ["用戶名", "立即支付", "自由輸入"]
+					} else if(this.languageID == 3) {
+						this.topLabel = ["personal data", "message", "log out"]
+						this.leftLabel = ["upgrade", "top up", "gold", "birthday", "education", "height", "weight", "job", "country", "city"]
+						this.rightLabel = ["recommend", "dynamic state", "attention", "fans", "visitor", "gift"]
+						this.formLabel = ["select image", "publish"]
+						this.payTop = ["upgrade", "account recharge"],
+						this.upgradeLabel = ["Upgrade yourself", "Upgrade for someone else"],
+						this.rechargeLabel = ["Top up for yourself", "Top up for someone else"],
+						this.searchLabel = "search",
+						this.typeLabel = ["Crown members", "Diamond membership"],
+						this.upgrade1 = ["Enjoy chatting", "Find out who likes you", "Meet more single people", "high-profile", "Daily translation within 3000 words", "More presentation opportunities"]
+						this.btnLabel = ["username", "Pay now", "Free to enter"]
+					} else if(this.languageID == 4) {
+						this.topLabel = ["인적 사항", "소식.정보.", "퇴출"]
+						this.leftLabel = ["승급하다", "충전시키다", "잔액", "생일", "교육", "신장", "체중", "직업", "국가", "지역"]
+						this.rightLabel = ["천거하다", "동태", "관심", "당면", "여행객", "선물."]
+						this.formLabel = ["그림 선택", "발포하다"]
+						this.payTop = ["승급하다", "계정 충전"],
+						this.upgradeLabel = ["한 단계 업그레이드", "다른 사람을 업그레이드시키다"],
+						this.rechargeLabel = ["자신을 위해 충당하다.", "다른 사람을 위해 충당하다"],
+						this.searchLabel = "검색하다",
+						this.typeLabel = ["크라운 회원", "다이아몬드 회원"],
+						this.upgrade1 = ["맘껏 한담하다", "누가 당신을 좋아하는지 확인해보세요.", "솔로 이성을 더 많이 알게 됩니다.", "많은 주목을 받고 있습니다.", "매일 3000자로 번역하다", "더 많은 전시 기회"]
+						this.btnLabel = ["아이디", "지금 지불하다", "자유입력"]
+					} else if(this.languageID == 5) {
+						this.topLabel = ["个人资料", "しょうそく", "たいしゅつ"]
+						this.leftLabel = ["進級する", "[リチャージ", "やまぶき", "生まれた日", "きょういく", "身長", "たいじゅう", "こうさく", "こっか", "ちく"]
+						this.rightLabel = ["せわ", "うごき", "配慮する", "材料はリョクトウ", "遊覧客", "贈り物"]
+						this.formLabel = ["画像を選択する", "敷いた"]
+						this.payTop = ["進級する", "アカウントチャージ"],
+						this.upgradeLabel = ["自分をアップグレードする", "人のためになる"],
+						this.rechargeLabel = ["自分にチャージする", "他人にチャージする"],
+						this.searchLabel = "名·他サ",
+						this.typeLabel = ["クラウン会員", "ダイヤモンド会員"],
+						this.upgrade1 = ["思う存分話す", "誰があなたを好きか調べて", "独身異性をより多く知る", "注目されている", "1日3000字以内に翻訳する", "より多くの展示機会"]
+						this.btnLabel = ["ゆーざめい", "即時支払い", "ふりーふぉーむにゅうりょく"]
+					} else if(this.languageID == 6) {
+						this.topLabel = ["ข้อมูลส่วนบุคคล", "ข่าว", "ออก"]
+						this.leftLabel = ["อัพ เกรด", "ชาร์จ", "ทอง", "วัน", "ศึกษา", "สูง", "น้ำหนัก", "งาน", "ประเทศ", "ตั้ง"]
+						this.rightLabel = ["แนะ นำ", "แบบ ไดนามิก", "กังวล", "แฟนๆ", "นัก ท่อง เที่ยว", "ขวัญ"]
+						this.formLabel = ["เลือกรูปภาพ", "วาง จำหน่าย"]
+						this.payTop = ["อัพ เกรด", "บัญชีเติมเงิน"],
+						this.upgradeLabel = ["อัพเกรดด้วยตัวคุณเอง", "อัพเกรดสําหรับผู้อื่น"],
+						this.rechargeLabel = ["เติมเงินด้วยตัวคุณเอง", "เติมเงินให้คนอื่น"],
+						this.searchLabel = "ค้น หา",
+						this.typeLabel = ["สมาชิกคราวน์", "สมาชิกเพชร"],
+						this.upgrade1 = ["สนทนา", "ดูว่าใครถูกใจคุณ", "พบกับซิงเกิ้ลมากขึ้นและเพศตรงข้าม", "มันดูน่าสนใจมาก", "3000 คําต่อวัน", "ผลงานเพิ่มเติม"]
+						this.btnLabel = ["ชื่อผู้ใช้", "จ่ายทันที", "ป้อนข้อมูลฟรี"]
+					}
+				},
+				onChange(event) {
+				      this.image= event.target.files[0]
+				      console.log(this.image);
+				}
+			},
+			beforeMount() {
+				this.checkTicket()
+			}
+		})
+	</script>
 </html>
