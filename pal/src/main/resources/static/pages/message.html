@@ -61,18 +61,19 @@
 									</figure>
 									<div class="users-list-body" style="color: #EFEFEF;">
 										<div>
-											<h5 class="text-primary">{{item.view.user.username}}</h5>
+											<h5 class="text-primary">
+											{{item.view.user.username}}
+											<span class="icon iconfont icon-huangguan" style="color: #F7D501;font-size: 24px;"
+											v-if="item.view.member == 1">
+											</span>
+											<span class="icon iconfont icon-zuanshi" style="color: #1e6f35;font-size: 24px;" 
+												v-if="item.view.member == 2">
+											</span>
+											</h5>
 										</div>
 										<div class="users-list-action">
 											<div class="new-message-count">{{item.view.count}}</div>
-											<div>
-												<span class="icon iconfont icon-huangguan" style="color: #F7D501;font-size: 24px;" 
-												v-if="item.view.member == 1">
-												</span>
-												<span class="icon iconfont icon-zuanshi" style="color: #1e6f35;font-size: 24px;" 
-													v-if="item.view.member == 2">
-												</span>
-											</div>
+											
 										</div>
 									</div>
 								</li>
