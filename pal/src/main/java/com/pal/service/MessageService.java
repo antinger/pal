@@ -159,7 +159,13 @@ public class MessageService {
 		message.setToUserID(toUserID);
 		message.setUserID(threadUser.getId());
 		messageDao.addMessage(message);
+		ViewObject view = new ViewObject();
+		view.setView("message", message);
+		view.setView("createDate", PalUtils.formatDate(message.getCreateDate()));
+		view.setView("flag", true);
+		dealMessage(message.getUserID(), view);
 		map.put("message", "添加成功");
+		map.put("message", view);
 		return map;
 	}
 	
