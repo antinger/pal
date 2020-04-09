@@ -492,21 +492,12 @@
 												<button class="btn btn-lg" style="background-color:#53d690;color:#ffffff;">
 													{{user.username}}
 												</button>
-												<ul class="flw-status">
-													<li >
-														<button class="btn" style="background-color:#53d690;color:#ffffff;">
-															{{user.username}}
-														</button>
-													</li>
-													<li>
-														<div class="form-group col-md-12">
-														  <select id="inputState" class="form-control"  v-model="onLineStatus" @click="line">
-															<option selected value="0">在线</option>
-															<option value="1">下线</option>
-														  </select>
-														</div>
-													</li>
-												</ul>
+												<div class="form-group col-md-12">
+												  <select id="inputState" class="form-control"  v-model="onLineStatus" @click="line">
+													<option selected value="0">在线</option>
+													<option value="1">下线</option>
+												  </select>
+												</div>
 												<ul class="flw-hr">
 													<li>
 														<div id="gallery">
