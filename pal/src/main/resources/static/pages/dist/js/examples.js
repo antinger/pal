@@ -11,22 +11,7 @@ $(function () {
                 var chat_body = $('.layout .content .chat .chat-body');
                 if (chat_body.length > 0) {
 
-                    type = type ? type : '';
-                    message = message ? message : 'I did not understand what you said!';
-
-                    $('.layout .content .chat .chat-body .messages').append(`<div class="message-item ` + type + `">
-                        <div class="message-avatar">
-                            <figure class="avatar" title="` + (type == 'outgoing-message' ? 'Mirabelle Tow' : 'Byrom Guittet') + `">
-                                <img src="./dist/media/img/` + (type == 'outgoing-message' ? 'women_avatar5.jpg' : 'man_avatar3.jpg') + `" class="rounded-circle">
-                            </figure>
-                        </div>
-                        <div>
-                            <div class="message-content">
-                                ` + message + `
-                            </div>
-                            <div class="time">14:50 PM ` + (type == 'outgoing-message' ? '<i class="ti-double-check"></i>' : '') + `</div>
-                        </div>
-                    </div>`);
+                   
 
                     setTimeout(function () {
                         chat_body.scrollTop(chat_body.get(0).scrollHeight, -1).niceScroll({
