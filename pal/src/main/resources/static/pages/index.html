@@ -490,7 +490,7 @@
 											</div><!--user-pro-img end-->
 											<div class="user_pro_status">
 												<div class="row" style="justify-content: center;">
-													<div>
+													<div class="col-md-5">
 														<button class="btn" style="background-color:#53d690;color:#ffffff;">
 															{{user.username}}
 														</button>
@@ -504,33 +504,18 @@
 													</div>
 												</div>
 												<div class="row" style="justify-content: center;">
-													<div>
+													<div class="col-md-5">
 														<button class="btn" style="background-color:#53d690;color:#ffffff;" @click="toView(1)">
 															<i class="la la-plus"></i> {{leftLabel[0]}}
 														</button>
 													</div>
-													<div>
+													<div class="col-md-5">
 														<button class="btn" style="background-color:#53d690;color:#ffffff;" @click="toView(2)">
 															{{leftLabel[1]}}
 														</button>
 													</div>
 												</div>
-												<ul class="flw-hr">
-													<li>
-														<div id="gallery">
-															<a @click="toView(1)" class="flww">
-																<i class="la la-plus"></i> {{leftLabel[0]}}
-															</a>
-														</div>
-													</li>
-													<li>
-														<div id="gallery-recharge">
-															<a @click="toView(2)" class="flww">
-																{{leftLabel[1]}}
-															</a>
-														</div>
-													</li>
-												</ul>
+												
 												<ul class="flw-status">
 													<li>
 														<span>{{leftLabel[2]}} : {{wallet.balance}}</span>
