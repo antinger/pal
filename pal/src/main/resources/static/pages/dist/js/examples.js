@@ -5,25 +5,7 @@ $(function () {
      *
      **/
 
-    var RobaExamle = {
-        Message: {
-            add: function (message, type) {
-                var chat_body = $('.layout .content .chat .chat-body');
-                if (chat_body.length > 0) {
-
-                   
-
-                    setTimeout(function () {
-                        chat_body.scrollTop(chat_body.get(0).scrollHeight, -1).niceScroll({
-                            cursorcolor: 'rgba(66, 66, 66, 0.20)',
-                            cursorwidth: "4px",
-                            cursorborder: '0px'
-                        }).resize();
-                    }, 200);
-                }
-            }
-        }
-    };
+    
 
     setTimeout(function () {
         // $('#disconnected').modal('show');
