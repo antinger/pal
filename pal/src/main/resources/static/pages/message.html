@@ -58,7 +58,6 @@
 										<template v-else>
 											<img :src="item.view.user.headLink" class="rounded-circle" alt="">
 										</template>
-										
 									</figure>
 									<div class="users-list-body" style="color: #EFEFEF;">
 										<div>
@@ -87,34 +86,42 @@
 					<div class="chat">
 						<div class="chat-body"> <!-- .no-message -->
 							<div class="messages">
-								<div class="message-item outgoing-message">
-									<div class="message-avatar">
-										<figure class="avatar" title="Mirabelle Tow">
-											<img src="./dist/media/img/avatar3.png" class="rounded-circle" alt="image">
-										</figure>
-									</div>
-									<div>
-										<div class="message-content">
-											Hello how are you?
+								<template v-for="(item, index) in message">
+									<div class="message-item outgoing-message" v-if="item.view.flag == true">
+										<div class="message-avatar">
+											<template v-if="item.view.user.headStatus==1">
+												<img :src="headLink" alt="" class="rounded-circle">
+											</template>
+											<template v-else>
+												<img :src="item.view.user.headLink" class="rounded-circle">
+											</template>
 										</div>
-										<div class="time">01:20 PM <i class="ti-double-check text-info"></i></div>
-									</div>
-								</div>
-								<div class="message-item">
-									<div class="message-avatar">
-										<figure class="avatar" title="Byrom Guittet">
-											<img src="./dist/media/img/avatar4.png" class="rounded-circle" alt="image">
-										</figure>
-									</div>
-									<div>
-										<div class="message-content">
-											I'm fine, how are you 馃槂
+										<div>
+											<div class="message-content">
+												{{item.view.message.content}}
+											</div>
+											<div class="time">{{item.view.createDate}}<i class="ti-double-check text-info"></i></div>
 										</div>
-										<div class="time">01:35 PM</div>
 									</div>
-								</div>
-								
-								
+									<div class="message-item" v-else>
+										<div class="message-avatar">
+											<figure class="avatar" title="Byrom Guittet">
+												<template v-if="item.view.user.headStatus==1">
+													<img :src="headLink" alt="" class="rounded-circle">
+												</template>
+												<template v-else>
+													<img :src="item.view.user.headLink" class="rounded-circle">
+												</template>
+											</figure>
+										</div>
+										<div>
+											<div class="message-content">
+												{{item.view.message.content}}
+											</div>
+											<div class="time">{{item.view.createDate}}</div>
+										</div>
+									</div>
+								</template>
 								
 							</div>
 						</div>
