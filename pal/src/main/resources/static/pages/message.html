@@ -98,7 +98,11 @@
 											</template>
 										</div>
 										<div>
-											<div class="message-content" style="margin-right: 10px;">
+											<div class="message-content" style="margin-right: 10px;" 
+												v-if="item.view.message.content.length < 30">
+												{{item.view.message.content}}
+											</div>
+											<div class="message-content" v-else style="margin-right: 10px;width: 200px;">
 												{{item.view.message.content}}
 											</div>
 											<div class="time">{{item.view.createDate}}</div>
@@ -116,7 +120,10 @@
 											</figure>
 										</div>
 										<div>
-											<div class="message-content">
+											<div class="message-content" v-if="item.view.message.content.length < 30">
+												{{item.view.message.content}}
+											</div>
+											<div class="message-content" v-else style="width: 200px;">
 												{{item.view.message.content}}
 											</div>
 											<div class="time">{{item.view.createDate}}</div>
