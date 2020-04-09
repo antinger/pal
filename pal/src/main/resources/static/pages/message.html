@@ -333,10 +333,10 @@
 					clearInterval(this.timer)
 				},
 				createLinkTimer(){
-					linkTimer = setInterval(this.getLinkman, 2000)
+					this.linkTimer = setInterval(this.getLinkman, 2000)
 				},
 				createTimer() {
-					timer = setInterval(this.getTakeMessage, 4000)
+					this.timer = setInterval(this.getTakeMessage, 4000)
 				},
 				logout(){
 					this.$http.get('/user/logout/',
