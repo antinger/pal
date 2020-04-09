@@ -90,7 +90,7 @@
 									<div class="message-item outgoing-message" v-if="item.view.flag == true">
 										<div class="message-avatar">
 											<template v-if="item.view.user.headStatus==1">
-												<img :src="headLink" alt="" class="rounded-circle">
+												<img :src="headLink" alt="" class="rounded-circle" width="37px" height="37px">
 											</template>
 											<template v-else>
 												<img :src="item.view.user.headLink" class="rounded-circle">
@@ -107,7 +107,7 @@
 										<div class="message-avatar">
 											<figure class="avatar" title="Byrom Guittet">
 												<template v-if="item.view.user.headStatus==1">
-													<img :src="headLink" alt="" class="rounded-circle">
+													<img :src="headLink" alt="" class="rounded-circle" width="37px" height="37px">
 												</template>
 												<template v-else>
 													<img :src="item.view.user.headLink" class="rounded-circle">
