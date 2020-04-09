@@ -72,7 +72,7 @@
 											</h5>
 										</div>
 										<div class="users-list-action">
-											<div class="new-message-count">{{item.view.count}}</div>
+											<div class="new-message-count" v-if="item.view.count > 0">{{item.view.count}}</div>
 											
 										</div>
 									</div>
@@ -127,7 +127,7 @@
 							</div>
 						</div>
 						<div class="chat-footer">
-							<form v-on:submit.prevent="onSubmit">
+							<form v-on:submit.prevent.stop>
 								<div>
 								   
 									<button class="btn btn-danger mr-3 d-inline d-sm-none btn-close-chat" data-toggle="tooltip" title="Emoji" type="button">
