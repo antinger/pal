@@ -34,5 +34,15 @@
         userID = #{userID}
         AND toUserID = #{toUserID}
     </select>
+    <select id="getTakeMessage" resultType="com.pal.entity.Message">
+        SELECT
+        <include refid="selectFields"/>
+        FROM
+        <include refid="table"/>
+        WHERE
+        userID = #{userID}
+        AND toUserID = #{toUserID}
+        ADN status=#{status}
+    </select>
     
 </mapper>

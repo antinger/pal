@@ -43,5 +43,7 @@ public interface MessageDao {
 	
 	@Update({"update ", TABLE_NAME, " set status=#{status} where id=#{id}"})
     void updateStatus(@Param("id") Integer id, @Param("status") Integer status);
+
+	List<Message> getTakeMessage(int userID, Integer toUserID, int status);
     
 }

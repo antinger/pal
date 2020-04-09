@@ -125,7 +125,7 @@ public class MessageService {
 	public Map<String, Object> getTakeMessage(int userID) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		User threadUser = getThreadUser();
-		List<Message> takeMessages = messageDao.getMessageByToUserID(userID, threadUser.getId());
+		List<Message> takeMessages = messageDao.getTakeMessage(userID, threadUser.getId(), 0);
 		Collections.sort(takeMessages, new DateSort());
 		List<ViewObject> data = new ArrayList<>();
 		dealData(takeMessages, data, threadUser);
