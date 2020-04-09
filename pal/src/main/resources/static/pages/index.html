@@ -489,6 +489,21 @@
 												
 											</div><!--user-pro-img end-->
 											<div class="user_pro_status">
+												<ul class="flw-status">
+													<li>
+														<div id="gallery">
+															<h3>{{user.username}}</h3>
+														</div>
+													</li>
+													<li>
+														<div class="form-group col-md-12">
+														  <select id="inputState" class="form-control" style="border: none;" v-model="onLineStatus" @click="line">
+															<option selected value="0">在线</option>
+															<option value="1">下线</option>
+														  </select>
+														</div>
+													</li>
+												</ul>
 												<ul class="flw-hr">
 													<li>
 														<div id="gallery">
@@ -520,21 +535,6 @@
 																	style="color: #1e6f35;font-size: 30px;" v-if="member == 2"></span>
 															</template>
 														</span>
-													</li>
-												</ul>
-												<ul class="flw-hr">
-													<li>
-														<div id="gallery">
-															<h3>{{user.username}}</h3>
-														</div>
-													</li>
-													<li>
-														<div class="form-group col-md-12">
-														  <select id="inputState" class="form-control" style="border: none;" v-model="onLineStatus" @click="line">
-															<option selected value="0">在线</option>
-															<option value="1">下线</option>
-														  </select>
-														</div>
 													</li>
 												</ul>
 											</div>
