@@ -98,6 +98,12 @@ public class MessageService {
 		Collections.sort(messages, new DateSort());
 		
 		List<ViewObject> data = new ArrayList<>();
+		dealData(messages, data, threadUser);
+		map.put("data", data);
+		return map;
+	}
+	
+	private void dealData(List<Message> messages, List<ViewObject> data, User threadUser) {
 		for (Message message : messages) {
 			ViewObject view = new ViewObject();
 			if(message.getUserID() == threadUser.getId()) {
@@ -114,6 +120,15 @@ public class MessageService {
 			view.setView("createDate", PalUtils.formatDate(message.getCreateDate()));
 			data.add(view);
 		}
+	}
+	
+	public Map<String, Object> getTakeMessage(int userID) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		User threadUser = getThreadUser();
+		List<Message> takeMessages = messageDao.getMessageByToUserID(userID, threadUser.getId());
+		Collections.sort(takeMessages, new DateSort());
+		List<ViewObject> data = new ArrayList<>();
+		dealData(takeMessages, data, threadUser);
 		map.put("data", data);
 		return map;
 	}
