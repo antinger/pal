@@ -44,8 +44,8 @@
 						<div class="sidebar-body">
 							<ul class="list-group list-group-flush">
 								<li class="list-group-item" v-for="(item, index) in linkMan" @click="toDetailView(index)" :id="index" 
-								v-bind:class="{ active: (index == indexTemp) }" style="padding: 16px 5px !important;">
-									<figure class="avatar ">
+								v-bind:class="{ active: (index == indexTemp) }" style="padding: 18px 5px !important;">
+									<figure class="avatar " >
 										<template v-if="item.view.user.headStatus == 1">
 											<img :src="headLink" class="rounded-circle" alt="">
 										</template>
