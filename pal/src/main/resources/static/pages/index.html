@@ -489,7 +489,7 @@
 												
 											</div><!--user-pro-img end-->
 											<div class="user_pro_status">
-												<div class="row">
+												<div class="row" style="justify-content: center;">
 													<div>
 														<button class="btn" style="background-color:#53d690;color:#ffffff;">
 															{{user.username}}
@@ -501,6 +501,18 @@
 														<option selected value="0">在线</option>
 														<option value="1">下线</option>
 													  </select>
+													</div>
+												</div>
+												<div class="row" style="justify-content: center;">
+													<div>
+														<button class="btn" style="background-color:#53d690;color:#ffffff;" @click="toView(1)">
+															<i class="la la-plus"></i> {{leftLabel[0]}}
+														</button>
+													</div>
+													<div>
+														<button class="btn" style="background-color:#53d690;color:#ffffff;" @click="toView(2)">
+															{{leftLabel[1]}}
+														</button>
 													</div>
 												</div>
 												<ul class="flw-hr">
