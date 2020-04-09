@@ -1,8 +1,6 @@
 $(window).on("load", function() {
     "use strict";
 
-    console.log("你好");
-
     //������ȫ��õ�Bootstrapģ�壺http://www.bootstrapmb.com
     //============= POST PROJECT POPUP FUNCTION =========
 
@@ -118,7 +116,7 @@ $(window).on("load", function() {
         $(".wrapper").removeClass("overlay");
         return false;
     });
-
+    console.log("你好");
     //  ============= SKILLS EDIT FUNCTION =========
 
     $(".skills-open").on("click", function(){
