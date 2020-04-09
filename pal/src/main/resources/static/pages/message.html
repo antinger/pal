@@ -284,7 +284,6 @@
 					this.createTimer()
 				},
 				getMessageDetail() {
-					this.message=""
 					this.$http.get('/user/getMessageDetail/',
 					{params : {time:new Date().getTime(), userID:this.userID}})
 					.then(function(res){
@@ -294,6 +293,19 @@
 						console.log('请求失败处理');
 					});
 				},
+				getTakeMessage(){
+					this.$http.get('/user/getTakeMessage/',
+					{params : {time:new Date().getTime(), userID:this.userID}})
+					.then(function(res){
+						this.toLoginView(res)
+						var message = res.body.data
+						for (let i = 0; i < message.length; i++) {
+							this.message.push(message[i])
+						}
+					},function() {
+						console.log('请求失败处理');
+					});
+				}
 				//添加消息
 				sendMessage(){
 					if(this.content == "" || this.userID == 0) {
@@ -324,7 +336,7 @@
 					linkTimer = setInterval(this.getLinkman, 2000)
 				},
 				createTimer() {
-					timer = setInterval(this.getMessageDetail, 6000)
+					timer = setInterval(this.getTakeMessage, 4000)
 				},
 				logout(){
 					this.$http.get('/user/logout/',
