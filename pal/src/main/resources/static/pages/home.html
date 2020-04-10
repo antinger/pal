@@ -367,16 +367,16 @@
 			},
 			methods:{
 				toMessageView(username, toUserID) {
-					console.log("用户名" + username)
 					this.messageToUserID = toUserID
 					this.messageUsername = username
 					$('.bgPop,.message').show();
+					console.log("用户名" + this.messageUsername)
 				},
 				closeMessageView() {
 					$('.bgPop,.message').hide();
 					this.messageToUserID = 0
 					this.messageUsername = ""
-						this.messageContent = ""
+					this.messageContent = ""
 				},
 				sendMessage() {
 					if(this.messageContent == "") {
