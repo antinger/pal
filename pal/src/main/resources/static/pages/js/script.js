@@ -207,6 +207,7 @@ $(window).on("load", function() {
 
     $(".menu-btn > a").on("click", function(){
         $("nav").toggleClass("active");
+        console.log("执行")
         return false;
     });
 
