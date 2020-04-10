@@ -132,134 +132,134 @@
 									<div class="main-ws-sec">
 										
 										<div class="tab-feed st2">
-												<ul>
-													<!-- 动态----------start -->
-													<li data-tab="feed-dd" v-bind:class="{ active: (1 == tempIndex) }">
-														<a @click="getLaterDynamic(1)" title="">
-															<img src="images/ic1.png" alt="">
-															<span>{{rightLabel[0]}}</span>
-														</a>
-													</li>
-													<!-- 动态----------end -->
-													<!-- 发送的礼物---------start -->
-													<li data-tab="send-dd" v-bind:class="{ active: (2 == tempIndex) }"  v-if="threadUser.id == user.id">
-														<a @click="getSendGiftOrder(2)" title="">
-															<img src="images/ic6.png" alt="">
-															<span>{{rightLabel[1]}}</span>
-														</a>
-													</li>
-													<!-- 发送的礼物----------end -->
-													
-													<!-- 接受的礼物---------start -->
-													<li data-tab="take-dd" v-bind:class="{ active: (3 == tempIndex) }" v-if="threadUser.id == user.id">
-														<a @click="getTakeGiftOrder(3)" title="">
-															<img src="images/ic6.png" alt="">
-															<span>{{rightLabel[2]}}</span>
-														</a>
-													</li>
-													<!-- 接受的礼物----------end -->
-												</ul>
-											</div><!-- tab-feed end-->
-										</div>
-										
-										<!-- 动态--------------------start -->
-										<div class="product-feed-tab" id="feed-dd" v-bind:class="{ current: (1 == tempIndex) }">
-											<div class="posts-section" v-if="dynamics.data.length>0">
+											<ul>
+												<!-- 动态----------start -->
+												<li data-tab="feed-dd" v-bind:class="{ active: (1 == tempIndex) }">
+													<a @click="getLaterDynamic(1)" title="">
+														<img src="images/ic1.png" alt="">
+														<span>{{rightLabel[0]}}</span>
+													</a>
+												</li>
+												<!-- 动态----------end -->
+												<!-- 发送的礼物---------start -->
+												<li data-tab="send-dd" v-bind:class="{ active: (2 == tempIndex) }"  v-if="threadUser.id == user.id">
+													<a @click="getSendGiftOrder(2)" title="">
+														<img src="images/ic6.png" alt="">
+														<span>{{rightLabel[1]}}</span>
+													</a>
+												</li>
+												<!-- 发送的礼物----------end -->
 												
-												<div class="post-bar" v-for="(item, index) in dynamics.data">
-													<div class="post_topbar">
-														<div class="usy-dt">
-															<template v-if="item.view.user.headStatus == 1">
-																<img :src="headLink" alt="" width="50px" height="50px" >
-															</template>
-															<template v-else>
-																<img :src="item.view.user.headLink" alt="" width="50px" height="50px">
-															</template>
-															<div class="usy-name">
-																<h3>{{item.view.user.username}}</h3>
-																<span><img src="images/clock.png" alt="">{{item.view.createDate}}</span>
-															</div>
-														</div>
-													</div>
-													
-													<div class="job_descp">
-														<p>
-															{{item.view.dynamic.content}} 
-														</p>
-													</div>
-													<template v-if="item.view.dynamic.image != ''">
-														<img :src="item.view.dynamic.image" width="300px" style="margin:10px 0 10px 10px"/>
-													</template>
-												</div><!--post-bar end-->
-												<div class="process-comm">
-													<a href="#" title=""><img src="images/process-icon.png" alt=""></a>
-												</div><!--process-comm end-->
-											</div><!--posts-section end-->
-										</div><!--product-feed-tab end-->
-										<!-- 动态---------------------end -->
-										<!-- 发送的礼物---------start -->
-										<div class="product-feed-tab" id="send-dd" v-bind:class="{ current: (2 == tempIndex) }">
-											<div class="list-group" v-if="sendGiftOrder.length > 0">
-												<a class="list-group-item list-group-item-action" v-for="(item, index) in sendGiftOrder">
-													<div class="row" style="align-items: center;">
-														<span>{{item.view.createDate}}</span>
-													</div>
-													<div class="row" style="align-items: center;margin-top: 5px;">
-														<div class="col-6" style="padding-left: 0px;">
-															<img :src="item.view.gift.path" height="50px" width="50px" />
-														</div>
-														<div class="col-6">
-															<span style="color: #51a5fb;">{{item.view.toUser.username}}</span>
-														</div>
-													</div>
-													<div class="row" style="align-items: center;margin-top: 5px;">
-														<div class="col-6">
-															<span style="color: #51a5fb;">{{item.view.giftOrder.price}}</span>
-														</div>
-														<div class="col-6">
-															<span style="color: #51a5fb;">{{item.view.giftOrder.num}}</span>
-														</div>
-													</div>
-													<div class="row" style="align-items: center;margin-top: 5px;">
-														<span>{{item.view.giftOrder.content}}</span>
-													</div>
-												</a>
-											</div>
-										</div>
-										<!-- 发送的礼物----------end -->
+												<!-- 接受的礼物---------start -->
+												<li data-tab="take-dd" v-bind:class="{ active: (3 == tempIndex) }" v-if="threadUser.id == user.id">
+													<a @click="getTakeGiftOrder(3)" title="">
+														<img src="images/ic6.png" alt="">
+														<span>{{rightLabel[2]}}</span>
+													</a>
+												</li>
+												<!-- 接受的礼物----------end -->
+											</ul>
+										</div><!-- tab-feed end-->
+									</div>
 										
-										<!-- 接受的礼物---------start -->
-										<div class="product-feed-tab" id="take-dd" v-bind:class="{ current: (3 == tempIndex) }">
-											<div class="list-group" v-if="takeGiftOrder.length > 0">
-												<a class="list-group-item list-group-item-action" v-for="(item, index) in takeGiftOrder">
-													<div class="row" style="align-items: center;">
-														<span>{{item.view.createDate}}</span>
-													</div>
-													<div class="row" style="align-items: center;margin-top: 5px;">
-														<div class="col-6" style="padding-left: 0px;">
-															<img :src="item.view.gift.path" height="50px" width="50px" />
-														</div>
-														<div class="col-6">
-															<span style="color: #51a5fb;">{{item.view.giftOrder.username}}</span>
-														</div>
-													</div>
-													<div class="row" style="align-items: center;margin-top: 5px;">
-														<div class="col-6" >
-															<span style="color: #51a5fb;">{{item.view.giftOrder.price}}</span>
-														</div>
-														<div class="col-6">
-															<span style="color: #51a5fb;">{{item.view.giftOrder.num}}</span>
+									<!-- 动态--------------------start -->
+									<div class="product-feed-tab" id="feed-dd" v-bind:class="{ current: (1 == tempIndex) }">
+										<div class="posts-section" v-if="dynamics.data.length>0">
+											
+											<div class="post-bar" v-for="(item, index) in dynamics.data">
+												<div class="post_topbar">
+													<div class="usy-dt">
+														<template v-if="item.view.user.headStatus == 1">
+															<img :src="headLink" alt="" width="50px" height="50px" >
+														</template>
+														<template v-else>
+															<img :src="item.view.user.headLink" alt="" width="50px" height="50px">
+														</template>
+														<div class="usy-name">
+															<h3>{{item.view.user.username}}</h3>
+															<span><img src="images/clock.png" alt="">{{item.view.createDate}}</span>
 														</div>
 													</div>
-													<div class="row" style="align-items: center;margin-top: 5px;">
-														<span>{{item.view.giftOrder.content}}</span>
+												</div>
+												
+												<div class="job_descp">
+													<p>
+														{{item.view.dynamic.content}} 
+													</p>
+												</div>
+												<template v-if="item.view.dynamic.image != ''">
+													<img :src="item.view.dynamic.image" width="300px" style="margin:10px 0 10px 10px"/>
+												</template>
+											</div><!--post-bar end-->
+											<div class="process-comm">
+												<a href="#" title=""><img src="images/process-icon.png" alt=""></a>
+											</div><!--process-comm end-->
+										</div><!--posts-section end-->
+									</div><!--product-feed-tab end-->
+									<!-- 动态---------------------end -->
+									<!-- 发送的礼物---------start -->
+									<div class="product-feed-tab" id="send-dd" v-bind:class="{ current: (2 == tempIndex) }">
+										<div class="list-group" v-if="sendGiftOrder.length > 0">
+											<a class="list-group-item list-group-item-action" v-for="(item, index) in sendGiftOrder">
+												<div class="row" style="align-items: center;">
+													<span>{{item.view.createDate}}</span>
+												</div>
+												<div class="row" style="align-items: center;margin-top: 5px;">
+													<div class="col-6" style="padding-left: 0px;">
+														<img :src="item.view.gift.path" height="50px" width="50px" />
 													</div>
-												</a>
-											</div>
+													<div class="col-6">
+														<span style="color: #51a5fb;">{{item.view.toUser.username}}</span>
+													</div>
+												</div>
+												<div class="row" style="align-items: center;margin-top: 5px;">
+													<div class="col-6">
+														<span style="color: #51a5fb;">{{item.view.giftOrder.price}}</span>
+													</div>
+													<div class="col-6">
+														<span style="color: #51a5fb;">{{item.view.giftOrder.num}}</span>
+													</div>
+												</div>
+												<div class="row" style="align-items: center;margin-top: 5px;">
+													<span>{{item.view.giftOrder.content}}</span>
+												</div>
+											</a>
 										</div>
-										<!-- 接受的礼物----------end -->
-									</div><!--main-ws-sec end-->
-								</div>
+									</div>
+									<!-- 发送的礼物----------end -->
+									
+									<!-- 接受的礼物---------start -->
+									<div class="product-feed-tab" id="take-dd" v-bind:class="{ current: (3 == tempIndex) }">
+										<div class="list-group" v-if="takeGiftOrder.length > 0">
+											<a class="list-group-item list-group-item-action" v-for="(item, index) in takeGiftOrder">
+												<div class="row" style="align-items: center;">
+													<span>{{item.view.createDate}}</span>
+												</div>
+												<div class="row" style="align-items: center;margin-top: 5px;">
+													<div class="col-6" style="padding-left: 0px;">
+														<img :src="item.view.gift.path" height="50px" width="50px" />
+													</div>
+													<div class="col-6">
+														<span style="color: #51a5fb;">{{item.view.giftOrder.username}}</span>
+													</div>
+												</div>
+												<div class="row" style="align-items: center;margin-top: 5px;">
+													<div class="col-6" >
+														<span style="color: #51a5fb;">{{item.view.giftOrder.price}}</span>
+													</div>
+													<div class="col-6">
+														<span style="color: #51a5fb;">{{item.view.giftOrder.num}}</span>
+													</div>
+												</div>
+												<div class="row" style="align-items: center;margin-top: 5px;">
+													<span>{{item.view.giftOrder.content}}</span>
+												</div>
+											</a>
+										</div>
+									</div>
+									<!-- 接受的礼物----------end -->
+								</div><!--main-ws-sec end-->
+							
 								<!-- 右侧栏------------------end -->
 								
 							</div>
