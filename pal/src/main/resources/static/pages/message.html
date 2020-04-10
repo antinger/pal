@@ -825,6 +825,10 @@
 						if(res.body.eor){
 							alert(res.body.eor)
 						}
+						if(res.body.member) {
+							this.toView(1)
+							return ;
+						}
 						this.toLoginView(res)
 						this.content = ""
 						this.message.push(res.body.message)
