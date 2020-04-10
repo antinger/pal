@@ -191,25 +191,26 @@
 											<div class="list-group" v-if="sendGiftOrder.length > 0">
 												<a class="list-group-item list-group-item-action" v-for="(item, index) in sendGiftOrder">
 													<div class="row" style="align-items: center;">
-														<div class="col-2">
+														<div class="col-4">
 															<img :src="item.view.gift.path" height="50px" width="50px" />
 														</div>
-														<div class="col-2">
+														<div class="col-4">
 															<span style="color: #51a5fb;">{{item.view.toUser.username}}</span>
 														</div>
-														<div class="col-2" style="text-align: center;">
+														<div class="col-4" style="text-align: center;">
 															<span style="color: #51a5fb;">{{item.view.giftOrder.price}}</span>
 														</div>
-														<div class="col-1">
+													</div>
+													<div class="row" style="align-items: center;">
+														<div class="col-4">
 															<span style="color: #51a5fb;">{{item.view.giftOrder.num}}</span>
 														</div>
-														<div class="col-2">
+														<div class="col-4">
 															<span>{{item.view.giftOrder.content}}</span>
 														</div>
-														<div class="col-3">
+														<div class="col-4">
 															<span>{{item.view.createDate}}</span>
 														</div>
-														
 													</div>
 												</a>
 											</div>
@@ -221,22 +222,24 @@
 											<div class="list-group" v-if="takeGiftOrder.length > 0">
 												<a class="list-group-item list-group-item-action" v-for="(item, index) in takeGiftOrder">
 													<div class="row" style="align-items: center;">
-														<div class="col-2">
+														<div class="col-4">
 															<img :src="item.view.gift.path" height="50px" width="50px" />
 														</div>
-														<div class="col-2">
+														<div class="col-4">
 															<span style="color: #51a5fb;">{{item.view.giftOrder.username}}</span>
 														</div>
-														<div class="col-2" style="text-align: center;">
+														<div class="col-4" style="text-align: center;">
 															<span style="color: #51a5fb;">{{item.view.giftOrder.price}}</span>
 														</div>
-														<div class="col-1">
+													</div>
+													<div class="row" style="align-items: center;">
+														<div class="col-4">
 															<span style="color: #51a5fb;">{{item.view.giftOrder.num}}</span>
 														</div>
-														<div class="col-2">
+														<div class="col-4">
 															<span>{{item.view.giftOrder.content}}</span>
 														</div>
-														<div class="col-3">
+														<div class="col-4">
 															<span>{{item.view.createDate}}</span>
 														</div>
 													</div>
