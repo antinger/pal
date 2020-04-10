@@ -666,7 +666,14 @@
 				/* 支付----------------end */
 				
 				languageID:1,
-				topLabel:["个人资料", "消息", "退出", "升级", "充值"]
+				topLabel:["个人资料", "消息", "退出", "升级", "充值"],
+				payTop:["升级", "账户充值"],
+				upgradeLabel:["为自己升级", "为别人升级"],
+				rechargeLabel:["为自己充值", "为别人充值"],
+				searchLabel:"搜索",
+				typeLabel:["皇冠会员", "钻石会员"],
+				upgrade1:["尽情聊天", "查看谁喜欢你", "认识更多单身异性", "让你倍受瞩目", "每日3000字内翻译", "更多展示机会"],
+				btnLabel:["用户名", "立即支付", "自由输入"]
 			},
 			methods:{
 				toView(payType) {
@@ -849,16 +856,58 @@
 				change() {
 					if(this.languageID == 1) {
 						this.topLabel = ["个人资料", "消息", "退出", "升级", "充值"]
+						this.payTop = ["升级", "账户充值"],
+						this.upgradeLabel = ["为自己升级", "为别人升级"],
+						this.rechargeLabel = ["为自己充值", "为别人充值"],
+						this.searchLabel = "搜索",
+						this.typeLabel = ["皇冠会员", "钻石会员"],
+						this.upgrade1 = ["尽情聊天", "查看谁喜欢你", "认识更多单身异性", "让你倍受瞩目", "每日3000字内翻译", "更多展示机会"]
+						this.btnLabel = ["用户名", "立即支付", "自由输入"]
 					} else if(this.languageID == 2) {
 						this.topLabel = ["個人資料", "消息", "退出", "升级", "充值"]
+						this.payTop = ["升级", "賬戶充值"],
+						this.upgradeLabel = ["為自己升級", "為別人升級"],
+						this.rechargeLabel = ["為自己充值", "為別人充值"],
+						this.searchLabel = "搜索",
+						this.typeLabel = ["皇冠會員", "鉆石會員"],
+						this.upgrade1 = ["盡情聊天", "查看誰喜歡妳", "認識更多單身異性", "讓妳倍受矚目", "每日3000字內翻譯", "更多展示機會"]
+						this.btnLabel = ["用戶名", "立即支付", "自由輸入"]
 					} else if(this.languageID == 3) {
 						this.topLabel = ["personal data", "message", "log out", "upgrade", "top up"]
+						this.payTop = ["upgrade", "account recharge"],
+						this.upgradeLabel = ["Upgrade yourself", "Upgrade for someone else"],
+						this.rechargeLabel = ["Top up for yourself", "Top up for someone else"],
+						this.searchLabel = "search",
+						this.typeLabel = ["Crown members", "Diamond membership"],
+						this.upgrade1 = ["Enjoy chatting", "Find out who likes you", "Meet more single people", "high-profile", "Daily translation within 3000 words", "More presentation opportunities"]
+						this.btnLabel = ["username", "Pay now", "Free to enter"]
 					} else if(this.languageID == 4) {
 						this.topLabel = ["인적 사항", "소식.정보.", "퇴출", "승급하다", "충전시키다"]
+						this.payTop = ["승급하다", "계정 충전"],
+						this.upgradeLabel = ["한 단계 업그레이드", "다른 사람을 업그레이드시키다"],
+						this.rechargeLabel = ["자신을 위해 충당하다.", "다른 사람을 위해 충당하다"],
+						this.searchLabel = "검색하다",
+						this.typeLabel = ["크라운 회원", "다이아몬드 회원"],
+						this.upgrade1 = ["맘껏 한담하다", "누가 당신을 좋아하는지 확인해보세요.", "솔로 이성을 더 많이 알게 됩니다.", "많은 주목을 받고 있습니다.", "매일 3000자로 번역하다", "더 많은 전시 기회"]
+						this.btnLabel = ["아이디", "지금 지불하다", "자유입력"]
 					} else if(this.languageID == 5) {
 						this.topLabel = ["个人资料", "しょうそく", "たいしゅつ", "進級する", "リチャージ"]
+						this.payTop = ["進級する", "アカウントチャージ"],
+						this.upgradeLabel = ["自分をアップグレードする", "人のためになる"],
+						this.rechargeLabel = ["自分にチャージする", "他人にチャージする"],
+						this.searchLabel = "名·他サ",
+						this.typeLabel = ["クラウン会員", "ダイヤモンド会員"],
+						this.upgrade1 = ["思う存分話す", "誰があなたを好きか調べて", "独身異性をより多く知る", "注目されている", "1日3000字以内に翻訳する", "より多くの展示機会"]
+						this.btnLabel = ["ゆーざめい", "即時支払い", "ふりーふぉーむにゅうりょく"]
 					} else if(this.languageID == 6) {
 						this.topLabel = ["ข้อมูลส่วนบุคคล", "ข่าว", "ออก", "อัพ เกรด", "ชาร์จ"]
+						this.payTop = ["อัพ เกรด", "บัญชีเติมเงิน"],
+						this.upgradeLabel = ["อัพเกรดด้วยตัวคุณเอง", "อัพเกรดสําหรับผู้อื่น"],
+						this.rechargeLabel = ["เติมเงินด้วยตัวคุณเอง", "เติมเงินให้คนอื่น"],
+						this.searchLabel = "ค้น หา",
+						this.typeLabel = ["สมาชิกคราวน์", "สมาชิกเพชร"],
+						this.upgrade1 = ["สนทนา", "ดูว่าใครถูกใจคุณ", "พบกับซิงเกิ้ลมากขึ้นและเพศตรงข้าม", "มันดูน่าสนใจมาก", "3000 คําต่อวัน", "ผลงานเพิ่มเติม"]
+						this.btnLabel = ["ชื่อผู้ใช้", "จ่ายทันที", "ป้อนข้อมูลฟรี"]
 					}
 				}
 			},
