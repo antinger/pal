@@ -141,7 +141,7 @@
 													</li>
 													<!-- 动态----------end -->
 													<!-- 发送的礼物---------start -->
-													<li data-tab="send-dd" v-bind:class="{ active: (2 == tempIndex) }">
+													<li data-tab="send-dd" v-bind:class="{ active: (2 == tempIndex) }"  v-if="threadUser.id == user.id">
 														<a @click="getSendGiftOrder(2)" title="">
 															<img src="images/ic6.png" alt="">
 															<span>{{rightLabel[1]}}</span>
@@ -150,7 +150,7 @@
 													<!-- 发送的礼物----------end -->
 													
 													<!-- 接受的礼物---------start -->
-													<li data-tab="take-dd" v-bind:class="{ active: (3 == tempIndex) }">
+													<li data-tab="take-dd" v-bind:class="{ active: (3 == tempIndex) }" v-if="threadUser.id == user.id">
 														<a @click="getTakeGiftOrder(3)" title="">
 															<img src="images/ic6.png" alt="">
 															<span>{{rightLabel[2]}}</span>
