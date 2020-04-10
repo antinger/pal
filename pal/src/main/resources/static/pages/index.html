@@ -145,7 +145,30 @@
 										<div class="user-tab-sec">
 											
 											<!-- 上照片墙---start -->
-											
+											<div class="top-profiles">
+												<div class="profiles-slider">
+													<div class="user-profy" v-for="(item,index) in pushUser">
+														<template v-if="item.headStatus == 1">
+															<img :src="headLink" alt="" width="30px" height="30px" @click="toUserView(item.id)">
+														</template>
+														<template v-else>
+															<img :src="item.headLink" alt="" width="30px" height="30px" @click="toUserView(item.id)">
+														</template>
+														<div class="row" style="justify-content: center;align-items: center;">
+															<h3>
+															{{item.username}}
+															</h3>
+															<h3 style="border-radius: 6px;text-align: center;background: #00B540;width: 12px;height: 12px;display: block;" v-if="item.onLineStatus == 0"></h3>
+														</div>
+														<ul>
+															<li><a title="" class="envlp" @click="toMessageView(item.username, item.id)"><img src="images/envelop.png" alt=""></a></li>
+															<li>
+																<a class="btn btn-danger" style="padding: 0px 10px !important;" @click="toVideo"><img src="images/video.png" width="40px" style="height: 25px !important;"/></a>
+															</li>
+														</ul>
+													</div>
+												</div>
+											</div>
 											
 											<!-- 上照片墙---end -->
 											
@@ -1008,7 +1031,6 @@
 		var vm = new Vue({
 			el : '#app',
 			data:{
-				
 				/* 令牌-------------start  */
 				ticket:"",
 				/* 令牌-------------end  */
@@ -1533,7 +1555,7 @@
 						this.btnLabel = ["用戶名", "立即支付", "自由輸入"]
 					} else if(this.languageID == 3) {
 						this.topLabel = ["personal data", "message", "log out"]
-						this.leftLabel = ["upgrade", "top up", "gold", "birthday", "education", "height", "weight", "job", "country", "city"]
+						this.leftLabel = ["upgrade", "top up", "gold", "birth", "education", "height", "weight", "job", "country", "city"]
 						this.rightLabel = ["recommend", "dynamic state", "attention", "fans", "visitor", "gift"]
 						this.formLabel = ["select image", "publish"]
 						this.payTop = ["upgrade", "account recharge"],
