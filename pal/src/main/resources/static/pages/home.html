@@ -89,9 +89,11 @@
 												<template v-else>
 													<img :src="user.headLink" alt="" width="170px" height="170px">
 												</template>
-												
 											</div><!--user-pro-img end-->
-											<div class="row">
+											<div class="user-tab-sec">
+												<h3>{{user.username}}</h3>
+											</div>
+											<div class="user_pro_status">
 												<div class="col-6" style="justify-content: center;">
 													<div><button class="btn">消息</button></div>
 												</div>
@@ -119,13 +121,6 @@
 								<!-- 右侧栏------------------start -->
 								<div class="col-lg-9">
 									<div class="main-ws-sec">
-										
-										<div class="user-tab-sec">
-											<h3>{{user.username}}</h3>
-											<div class="star-descp">
-												
-											</div><!--star-descp end-->
-										</div><!--user-tab-sec end-->
 										
 										<div class="tab-feed st2">
 												<ul>
