@@ -18,6 +18,8 @@
 		<link rel="stylesheet" type="text/css" href="css/style.css">
 		<link rel="stylesheet" type="text/css" href="css/responsive.css">
 		<link rel="stylesheet" type="text/css" href="css/headLink.css">
+		<link rel="stylesheet" type="text/css" href="css/radio.css" />
+		<link rel="stylesheet" type="text/css" href="css/pay.css" />
 	</head>
 
 	
@@ -38,20 +40,32 @@
 						<nav>
 							<ul>
 								<li>
-									<a href="profile.html" title="">
+									<a @click="toView(1)" title="" >
+										<span><img src="images/icon2.png" alt=""></span>
+										{{topLabel[3]}}
+									</a>
+								</li>
+								<li>
+									<a @click="toView(2)"  title="" >
+										<span><img src="images/icon3.png" alt=""></span>
+										{{topLabel[4]}}
+									</a>
+								</li>
+								<li>
+									<a href="profile.html" title="" >
 										<span><img src="images/icon4.png" alt=""></span>
 										{{topLabel[0]}}
 									</a>
 								</li>
 								
 								<li>
-									<a href="message.html" title="" class="not-box-open">
+									<a title="" class="not-box-open" >
 										<span><img src="images/icon6.png" alt=""></span>
 										{{topLabel[1]}}
 									</a>
 								</li>
 								<li>
-									<a @click="logout" title="" class="not-box-open">
+									<a @click="logout" title="" class="not-box-open" >
 										<span><img src="images/icon7.png" alt=""></span>
 										{{topLabel[2]}}
 									</a>
@@ -257,6 +271,381 @@
 				</div>
 			</footer>
 
+			<!--遮罩层-->
+			<div class="bgPop"></div>
+			<!--弹出框-->
+			<div class="pop">
+				<div class="row" style="background: #2D56A1;">
+					<div class="col-11" >
+						<ul class="nav nav-tabs" >
+							<li role="presentation"  v-bind:class="{ active: (1 == payType) }">
+								<a href="#menu1" data-toggle="tab" class="btn btn-warning" @click="changeType(1)">{{payTop[0]}}</a>
+							</li>
+							<li role="presentation"  v-bind:class="{ active: (2 == payType) }">
+								<a href="#menu2" data-toggle="tab" class="btn btn-warning" @click="changeType(2)">{{payTop[1]}}</a>
+							</li>
+						</ul>
+					</div>
+					<div class="col-1" style="font-size: 35px;padding-top:10px;color:white;">
+						<span class="pop-close" @click="closeView">Ｘ</span>
+					</div>
+				</div>
+				
+				<div class="tab-content">
+					<div id="menu1" class="container-fluid tab-pane" v-bind:class="{ active: (1 == payType) }">
+						<!-- 升级-----------start -->
+						<div class="row" style="margin: 10px 0;">
+							<div style="margin-right: 25px;">
+								<div class="RadioStyle">
+								    <div class="Block PaddingL">
+								        <input type="radio" name="upgradeType" id="model1-1" v-model="upgradeType" value="1"/>
+								        <label for="model1-1">{{upgradeLabel[0]}}</label>
+								    </div>
+								</div>
+							</div>
+							<div style="margin-right: 25px;">
+								<div class="RadioStyle">
+								    <div class="Block PaddingL">
+								        <input type="radio" name="upgradeType" id="model1-2" v-model="upgradeType" value="2"/>
+								        <label for="model1-2">{{upgradeLabel[1]}}</label>
+								    </div>
+								</div>
+							</div>
+							<template v-if="upgradeType == 2">
+								<div>
+									<input type="text" class="form-control" v-model="otherUsername" id="" :placeholder="btnLabel[0]">
+								</div>
+								<div>
+									<a class="btn btn-primary" @click="getOtherUser">{{searchLabel}}</a>
+								</div>
+							</template>
+						</div>
+						<!-- 为别人升级---------start -->
+						<template v-if="otherUser!='' && upgradeType == 2">
+							<div class="row">
+								<div class="RadioStyle">
+								    <div class="Block PaddingL">
+								        <input type="radio" name="gift" id="otherUser" />
+								        <label for="otherUser" style="text-align:center;">
+											<template v-if="otherUser.headStatus == 1">
+												<img :src="headLink" alt="" width="100px" height="100px">
+											</template>
+											<template v-else>
+												<img :src="otherUser.headLink" alt="" width="100px" height="100px">
+											</template>
+											<br>
+											<span>{{otherUser.username}}</span>
+										</label>
+								    </div>
+								</div>
+							</div>
+						</template>
+						<!-- 为别人升级----------end -->
+						<div class="row">
+							<div class="col-5" style="border: 1px solid #B9B9B9;margin-right: 15px;padding: 10px 20px 20px 20px;">
+								<div>
+									<label style="margin-right: 10px;">
+										<img src="images/pay/huangguan.png" width="40px"/>
+									</label>
+									<label>
+										<h5>{{typeLabel[0]}}</h5>
+									</label>
+								</div>
+								<div class="row">
+									<div style="width: 50%;">
+										<label>
+											<img src="images/pay/duigou.png" width="25px"/>
+										</label>
+										<label>{{upgrade1[0]}}</label>
+									</div>
+									<div style="width: 50%;">
+										<label>
+											<img src="images/pay/duigou.png" width="25px"/>
+										</label>
+										<label>{{upgrade1[1]}}</label>
+									</div>
+								</div>
+								<div class="row">
+									<div style="width: 50%;">
+										<label>
+											<img src="images/pay/duigou.png" width="25px"/>
+										</label>
+										<label>{{upgrade1[2]}}</label>
+									</div>
+									<div style="width: 50%;">
+										<label>
+											<img src="images/pay/duigou.png" width="25px"/>
+										</label>
+										<label>{{upgrade1[3]}}</label>
+									</div>
+								</div>
+								<div class="row">
+									<div style="width: 50%;">
+										<label>
+											<img src="images/pay/duigou.png" width="25px"/>
+										</label>
+										<label>{{upgrade1[4]}}</label>
+									</div>
+									<div style="width: 50%;">
+										<label>
+											<img src="images/pay/duigou.png" width="25px"/>
+										</label>
+										<label>{{upgrade1[5]}}</label>
+									</div>
+								</div>
+								<div class="RadioStyle">
+								    <div class="Block PaddingL">
+								        <div class="row">
+											<input type="radio" name="crown" id="model1-3" v-model="crown" value="102"/>
+											<label for="model1-3">
+												<span>102USD / 1月</span>
+												<span>102USD /月</span>
+												<span>节省0.00％</span>
+											</label>
+										</div>
+										<div class="row">
+											<input type="radio" name="crown" id="model1-4" v-model="crown" value="262"/>
+											<label for="model1-4">
+												<span>262USD / 3月</span>
+												<span>87.33USD /月</span>
+												<span>节省14.38％</span>
+											</label>
+										</div>
+										<div class="row">
+											<input type="radio" name="crown" id="model1-5"  v-model="crown" value="468"/>
+											<label for="model1-5">
+												<span>468USD / 6月</span>
+												<span>78USD /月</span>
+												<span>节省23.52％</span>
+											</label>
+										</div>
+										<div class="row">
+											<input type="radio" name="crown" id="model1-6"  v-model="crown" value="786"/>
+											<label for="model1-6">
+												<span>786USD / 12月</span>
+												<span>65.50USD /月</span>
+												<span>节省35.78％</span>
+											</label>
+										</div>
+								    </div>
+								</div>
+							</div>
+							<div class="col-5" style="border: 1px solid #B9B9B9;margin-right: 15px;padding: 10px 20px 20px 20px;">
+								<div>
+									<label style="margin-right: 10px;">
+										<img src="images/pay/zuanshi.png" width="40px"/>
+									</label>
+									<label>
+										<h5>{{typeLabel[1]}}</h5>
+									</label>
+								</div>
+								<div class="row">
+									<div style="width: 50%;">
+										<label>
+											<img src="images/pay/duigou.png" width="25px"/>
+										</label>
+										<label>{{upgrade1[0]}}</label>
+									</div>
+									<div style="width: 50%;">
+										<label>
+											<img src="images/pay/duigou.png" width="25px"/>
+										</label>
+										<label>{{upgrade1[1]}}</label>
+									</div>
+								</div>
+								<div class="row">
+									<div style="width: 50%;">
+										<label>
+											<img src="images/pay/duigou.png" width="25px"/>
+										</label>
+										<label>{{upgrade1[2]}}</label>
+									</div>
+									<div style="width: 50%;">
+										<label>
+											<img src="images/pay/duigou.png" width="25px"/>
+										</label>
+										<label>{{upgrade1[3]}}</label>
+									</div>
+								</div>
+								
+								<div class="RadioStyle">
+								    <div class="Block PaddingL">
+								        <div class="row">
+											<input type="radio" name="crown" id="model1-7"  v-model="crown" value="16"/>
+											<label for="model1-7">
+												<span>16USD / 1月</span>
+												<span>16USD /月</span>
+												<span>节省0.00％</span>
+											</label>
+										</div>
+										<div class="row">
+											<input type="radio" name="crown" id="model1-8"  v-model="crown" value="46"/>
+											<label for="model1-8">
+												<span>46USD / 3月</span>
+												<span>15.33USD /月</span>
+												<span>节省15.33％</span>
+											</label>
+										</div>
+								    </div>
+								</div>
+							</div>
+						</div>
+						<div class="row" style="margin-top: 10px;">
+							<div class="RadioStyle">
+							    <div class="Block PaddingL">
+							        <input type="radio" name="payment" id="model1-9" v-model="shoptype" value="1"/>
+							        <label for="model1-9">
+										<img src="images/pay/paypal.png" height="80px"/>
+									</label>
+							    </div>
+							</div>
+							<div class="RadioStyle" style="margin-left: 30px;">
+							    <div class="Block PaddingL">
+							        <input type="radio" name="payment" id="model1-10" v-model="shoptype" value="2"/>
+							        <label for="model1-10">
+										<img src="images/pay/yue.png" height="80px" width="200px"/>
+									</label>
+							    </div>
+							</div>
+						</div>
+						<form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" target="_blank" id="sform-1">
+							<input type="hidden" name="cmd" value="_xclick">	<!-- 立即支付 -->
+							<input type="hidden" name="business" value="sb-cmysd740119@business.example.com">  <!-- 商家账号-->
+							<input id='item_number' type="hidden" name="item_number" value="产品编号"> <!-- 产品编号-->
+							<input id='amount' type="hidden" name="amount" >  <!-- 付款/充值金额  -->
+							<input type="hidden" name="currency_code" value="USD">	<!-- 货币 -->
+							<!-- 支付成功后paypal后台发送回调地址-->
+							<input type='hidden' name='notify_url' value='http://47.115.142.159:8080/paysuccess/'>  
+							<!-- 支付成功后网页跳转地址-->
+							<input type='hidden' name='return' value='http://47.115.142.159:8080/pages/success.html'> 
+							<input type='hidden' name='charset' value='utf-8'>	<!-- 字符集 -->
+							<input type="hidden" name="no_shipping" value="1"> <!-- 不要求客户提供收货地址 -->
+							<input type="hidden" name="bn" value="IC_Sample">
+							<input type='hidden' name='rm' value='2'>
+							<!-- 自定义变量 -->
+							<input type='hidden' name='custom' value='' id="custom">
+							<button @click="checkUpgrade"><img src="images/paypal.png"></button>
+						</form>
+						<!-- 升级-----------end -->
+					</div>
+					<div id="menu2" class="container-fluid tab-pane" v-bind:class="{ active: (2 == payType) }">
+						<!-- 充值---------------------start -->
+						<div class="row" style="margin: 10px 0;">
+							<div style="margin-right: 25px;">
+								<div class="RadioStyle">
+								    <div class="Block PaddingL">
+								        <input type="radio" name="rechargeType" id="model2-1" v-model="rechargeType" value="1" />
+								        <label for="model2-1">{{rechargeLabel[0]}}</label>
+								    </div>
+								</div>
+							</div>
+							<div style="margin-right: 25px;">
+								<div class="RadioStyle">
+								    <div class="Block PaddingL">
+								        <input type="radio" name="rechargeType" id="model2-2" v-model="rechargeType" value="2"/>
+								        <label for="model2-2">{{rechargeLabel[1]}}</label>
+								    </div>
+								</div>
+							</div>
+							<template v-if="rechargeType == 2">
+								<div>
+									<input type="text" class="form-control" v-model="rechargeUsername" id="" :placeholder="btnLabel[0]">
+								</div>
+								<div>
+									<a class="btn btn-primary" @click="getRechargeUser">{{searchLabel}}</a>
+								</div>
+							</template>
+						</div>
+						<!-- 为别人升级---------start -->
+						<template v-if="rechargeUser!='' && rechargeType == 2">
+							<div class="row">
+								<div class="RadioStyle">
+								    <div class="Block PaddingL">
+								        <input type="radio" name="gift" id="rechargeUser" />
+								        <label for="rechargeUser" style="text-align:center;">
+											<template v-if="rechargeUser.headStatus == 1">
+												<img :src="headLink" alt="" width="100px" height="100px">
+											</template>
+											<template v-else>
+												<img :src="rechargeUser.headLink" alt="" width="100px" height="100px">
+											</template>
+											<br>
+											<span>{{rechargeUser.username}}</span>
+										</label>
+								    </div>
+								</div>
+							</div>
+						</template>
+						<!-- 为别人升级----------end -->
+						<div class="row">
+							<div class="RadioStyle row">
+							    <div class="Block PaddingL">
+							        <input type="radio" name="money" id="model2-3" v-model="money" value="500"/>
+							        <label for="model2-3">
+										<img src="images/pay/yue.png" height="80px" width="200px" />
+										500USB
+									</label>
+							    </div>
+								<div class="Block PaddingL">
+								    <input type="radio" name="money" id="model2-4" v-model="money" value="200"/>
+								    <label for="model2-4">
+										<img src="images/pay/yue.png" height="80px" width="200px"/>
+										200USB
+									</label>
+								</div>
+								<div class="Block PaddingL">
+								    <input type="radio" name="money" id="model2-5" v-model="money" value="100" />
+								    <label for="model2-5">
+										<img src="images/pay/yue.png" height="80px" width="200px"/>
+										100USB
+									</label>
+								</div>
+							</div>
+						</div>
+						<div class="row" style="margin-top: 10px;">
+							<div class="form-group row" style="align-items: center;">
+							    <label for="inputEmail3" class="col-sm-5 col-form-label">{{btnLabel[2]}} : </label>
+							    <div class="col-sm-7">
+							      <input type="number" class="form-control" id="inputEmail3" v-model="money">
+							    </div>
+							</div>
+						</div>
+						<div class="row" style="margin-top: 10px;">
+							<div class="RadioStyle">
+							    <div class="Block PaddingL">
+							        <input type="radio" name="recharge" id="model2-6" v-model="recharge" value="1"/>
+							        <label for="model2-6">
+										<img src="images/pay/paypal.png" height="80px"/>
+									</label>
+							    </div>
+							</div>
+						</div>
+						<div class="row" style="margin-top: 10px;">
+							<form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" target="_blank" id="sform-2">
+								<input type="hidden" name="cmd" value="_xclick">	<!-- 立即支付 -->
+								<input type="hidden" name="business" value="sb-cmysd740119@business.example.com">  <!-- 商家账号-->
+								<input id='item_number' type="hidden" name="item_number" value="产品编号"> <!-- 产品编号-->
+								<input id='amount2' type="hidden" name="amount">  <!-- 付款/充值金额  -->
+								<!-- 支付成功后paypal后台发送回调地址-->
+								<input type='hidden' name='notify_url' value='http://47.115.142.159:8080/paysuccess/'>  
+								<!-- 支付成功后网页跳转地址-->
+								<input type='hidden' name='return' value='http://47.115.142.159:8080/pages/success.html'> 
+								<input type="hidden" name="currency_code" value="USD">	<!-- 货币 -->
+								<input type='hidden' name='charset' value='utf-8'>	<!-- 字符集 -->
+								<input type="hidden" name="no_shipping" value="1"> <!-- 不要求客户提供收货地址 -->
+								<input type="hidden" name="bn" value="IC_Sample">
+								<input type='hidden' name='rm' value='2'>
+								<!-- 自定义变量 -->
+								<input type='hidden' name='custom' id="custom2">
+								<a class="btn btn-success" @click="checkRecharge">{{btnLabel[1]}}</a>
+							</form>
+						</div>
+						<!-- 充值-----------------------end -->
+					</div>
+				</div>
+			</div>
+			
+			<!-- 支付界面-------end -->
 		</div><!--theme-layout end-->
 
 
@@ -303,7 +692,7 @@
 				
 				/* 标签------------------start */
 				languageID:1,
-				topLabel:["个人资料", "消息", "退出"],
+				topLabel:["个人资料", "消息", "退出", "升级", "充值"],
 				btnLabel:["个人信息", "更新账号", "更新头像", "密保", "保存"],
 				infoLabel:["个人信息", "教育", "身高", "体重", "工作", "国家", "地区"],
 				acountLabel:["更新账号", "旧密码", "新密码", "确认密码"], 
@@ -314,8 +703,133 @@
 				/* 令牌-------------start  */
 				ticket:""
 				/* 令牌-------------end  */
+				
+				payTop:["升级", "账户充值"],
+				upgradeLabel:["为自己升级", "为别人升级"],
+				rechargeLabel:["为自己充值", "为别人充值"],
+				searchLabel:"搜索",
+				typeLabel:["皇冠会员", "钻石会员"],
+				upgrade1:["尽情聊天", "查看谁喜欢你", "认识更多单身异性", "让你倍受瞩目", "每日3000字内翻译", "更多展示机会"],
+				payLabel:["用户名", "立即支付", "自由输入"],
+				
+				/* 支付----------------start */
+				//升级还是充值
+				payType:0,
+				//升级---为自己支付,还是为别人支付
+				upgradeType:0,
+				//为别人升级-显示得用户
+				otherUser:"",
+				//别人得用户名
+				otherUsername:"",
+				//选择升级
+				crown:0,
+				//自定义变量
+				upgradeCustom:"",
+				//升级支付方式
+				shoptype:"",
+				//充值-------为自己支付,还是为别人支付
+				rechargeType:0,
+				//为别人充值得用户
+				rechargeUser:"",
+				//别人得名字
+				rechargeUsername:"",
+				//充值金额
+				money:0,
+				//选择充值方式
+				recharge:0,
+				//自定义变量
+				rechargeCustom:"",
+				/* 支付----------------end */
 			},
 			methods:{
+				toView(payType) {
+					this.payType = payType
+					$('.bgPop,.pop').show();
+				},
+				closeView(){
+					$('.bgPop,.pop').hide();
+				},
+				changeType(payType){
+					this.payType = payType;
+				},
+				getOtherUser(){
+					this.$http.get('/user/getUserByUsername/',
+						{params : {time:new Date().getTime(), username:this.otherUsername}},{header : {cookie:this.ticket}})
+					.then(function(res) {
+						this.otherUser = res.body.user
+					},function() {
+						console.log('请求失败处理');
+					});
+				},
+				getRechargeUser(){
+					this.$http.get('/user/getUserByUsername/',
+						{params : {time:new Date().getTime(), username:this.rechargeUsername}},{header : {cookie:this.ticket}})
+					.then(function(res) {
+						this.rechargeUser = res.body.user
+					},function() {
+						console.log('请求失败处理');
+					});
+				},
+				checkUpgrade(){
+					if(this.upgradeType == 0 || this.crown == 0 || this.shoptype == 0) {
+						return
+					}
+					if(this.upgradeType == 2 && this.otherUsername == "") {
+						return
+					}
+					if(this.upgradeType == 1) {
+						this.upgradeCustom = this.payType + "&" + this.upgradeType + "&" + this.ticket + "&" + this.crown
+					} else {
+						this.upgradeCustom = this.payType + "&" + this.upgradeType + "&" + this.ticket + "&" + this.crown + "&" + this.otherUsername
+					}
+					if(this.shoptype == 1) {
+						//第三方
+						console.log("输出" + this.upgradeCustom)
+						document.getElementById("custom").value=this.upgradeCustom
+						document.getElementById("amount").value=this.crown
+						document.getElementById("sform-1").submit()
+					} else if(this.shoptype == 2){
+						//余额
+						var formData = new FormData();
+						formData.append('upgradeType', this.upgradeType);
+						formData.append('money', this.crown);
+						formData.append('toUsername', this.otherUsername);
+						this.$http.post('/user/updateUserWallet/', formData).
+						then(function (res) {
+							if(res.body.flag) {
+								this.toView(2)
+								alert("fail")
+							}
+						}, function (res) {
+						  console.log(res.body);
+						});
+					}
+				},
+				checkRecharge(){
+					if(this.rechargeType == 0 || this.money == 0 || this.recharge == 0) {
+						return
+					}
+					if(this.rechargeType == 2 && this.rechargeUsername == "" && this.rechargeUser == null) {
+						return
+					}
+					if(this.rechargeType == 1) {
+						this.rechargeCustom = this.payType + "&" + this.recharge + "&" + this.ticket + "&" + this.money
+					} else {
+						this.rechargeCustom = this.payType + "&" + this.recharge + "&" + this.ticket + "&" + this.money + "&" + this.rechargeUsername
+					}
+					document.getElementById("custom2").value=this.rechargeCustom
+					document.getElementById("amount2").value=this.money
+					document.getElementById("sform-2").submit()
+				},
+				checkTicket() {
+					this.ticket = localStorage.getItem("ticket");
+					if(this.ticket == "") {
+						window.location.href = "login.html"
+						return 
+					}
+					this.clearLinkTimer()
+					this.clearTimer()
+				},
 				//更新用户信息
 				updateUserInfo(){
 					var formData = new FormData();
@@ -418,42 +932,84 @@
 				},
 				change() {
 					if(this.languageID == 1) {
-						this.topLabel = ["个人资料", "消息", "退出"],
+						this.topLabel = ["个人资料", "消息", "退出", "升级", "充值"]
+						this.payTop = ["升级", "账户充值"],
+						this.upgradeLabel = ["为自己升级", "为别人升级"],
+						this.rechargeLabel = ["为自己充值", "为别人充值"],
+						this.searchLabel = "搜索",
+						this.typeLabel = ["皇冠会员", "钻石会员"],
+						this.upgrade1 = ["尽情聊天", "查看谁喜欢你", "认识更多单身异性", "让你倍受瞩目", "每日3000字内翻译", "更多展示机会"]
+						this.payLabel = ["用户名", "立即支付", "自由输入"]
 						this.btnLabel = ["个人信息", "更新账号", "更新头像", "密保", "保存"],
 						this.infoLabel = ["个人信息", "教育", "身高", "体重", "工作", "国家", "地区"],
 						this.acountLabel = ["更新账号", "旧密码", "新密码", "确认密码"], 
 						this.headLabel = ["头像设置", "选择图片", "完成"],
 						this.securityLabel = ["密保问题--防止忘记密码", "你的真实姓名", "你的邮箱地址", "你最喜欢的人"]
 					} else if(this.languageID == 2) {
-						this.topLabel = ["個人資料", "消息", "退出"],
+						this.topLabel = ["個人資料", "消息", "退出", "升级", "充值"]
+						this.payTop = ["升级", "賬戶充值"],
+						this.upgradeLabel = ["為自己升級", "為別人升級"],
+						this.rechargeLabel = ["為自己充值", "為別人充值"],
+						this.searchLabel = "搜索",
+						this.typeLabel = ["皇冠會員", "鉆石會員"],
+						this.upgrade1 = ["盡情聊天", "查看誰喜歡妳", "認識更多單身異性", "讓妳倍受矚目", "每日3000字內翻譯", "更多展示機會"]
+						this.payLabel = ["用戶名", "立即支付", "自由輸入"]
 						this.btnLabel = ["個人信息", "更新賬號", "更新頭像", "密保", "保存"],
 						this.infoLabel = ["個人信息", "教育", "身高", "体重", "工作", "国家", "地区"],
 						this.acountLabel = ["更新賬號", "舊密碼", "新密碼", "確認密碼"], 
 						this.headLabel = ["更新頭像", "選擇圖片", "完成"],
 						this.securityLabel = ["密保問題--防止忘記密碼", "妳的真實姓名", "妳的郵箱地址", "妳最喜歡的人"]
 					} else if(this.languageID == 3) {
-						this.topLabel = ["personal data", "message", "log out"]
+						this.topLabel = ["personal data", "message", "log out", "upgrade", "top up"]
+						this.payTop = ["upgrade", "account recharge"],
+						this.upgradeLabel = ["Upgrade yourself", "Upgrade for someone else"],
+						this.rechargeLabel = ["Top up for yourself", "Top up for someone else"],
+						this.searchLabel = "search",
+						this.typeLabel = ["Crown members", "Diamond membership"],
+						this.upgrade1 = ["Enjoy chatting", "Find out who likes you", "Meet more single people", "high-profile", "Daily translation within 3000 words", "More presentation opportunities"]
+						this.payLabel = ["username", "Pay now", "Free to enter"]
 						this.btnLabel = ["personal information ", "Update account", "Update the avatar", "security question", "save"],
 						this.infoLabel = ["personal information ", "education", "height", "weight", "job", "country", "city"],
 						this.acountLabel = ["Update account", "old password", "new password", "confirm password "], 
 						this.headLabel = ["Update the avatar", "select image", "finish"],
 						this.securityLabel = ["security question--Don't forget your password", "Your real name", "Your email address", "Your favorite person"]
 					} else if(this.languageID == 4) {
-						this.topLabel = ["인적 사항", "소식.정보.", "퇴출"]
+						this.topLabel = ["인적 사항", "소식.정보.", "퇴출", "승급하다", "충전시키다"]
+						this.payTop = ["승급하다", "계정 충전"],
+						this.upgradeLabel = ["한 단계 업그레이드", "다른 사람을 업그레이드시키다"],
+						this.rechargeLabel = ["자신을 위해 충당하다.", "다른 사람을 위해 충당하다"],
+						this.searchLabel = "검색하다",
+						this.typeLabel = ["크라운 회원", "다이아몬드 회원"],
+						this.upgrade1 = ["맘껏 한담하다", "누가 당신을 좋아하는지 확인해보세요.", "솔로 이성을 더 많이 알게 됩니다.", "많은 주목을 받고 있습니다.", "매일 3000자로 번역하다", "더 많은 전시 기회"]
+						this.payLabel = ["아이디", "지금 지불하다", "자유입력"]
 						this.btnLabel = ["개인 정보 ", "계좌 번호 업데이트", "아바타 업데이트", "은밀히 하는 추천.", "ほぞん"],
 						this.infoLabel = ["개인 정보 ", "교육", "신장", "체중", "직업", "국가", "지역"],
 						this.acountLabel = ["계좌 번호 업데이트", "이전 비밀번호", "새 비밀번호", "비밀번호 확인"], 
 						this.headLabel = ["아바타 업데이트", "그림 선택", "완성하다"],
 						this.securityLabel = ["은밀히 하는 추천--암호 잊지 않기", "여러분의 진짜 이름은", "여러분의 이메일 주소가", "여러분이 가장 좋아하는 사람은"]
 					} else if(this.languageID == 5) {
-						this.topLabel = ["个人资料", "しょうそく", "たいしゅつ"]
+						this.topLabel = ["个人资料", "しょうそく", "たいしゅつ", "進級する", "リチャージ"]
+						this.payTop = ["進級する", "アカウントチャージ"],
+						this.upgradeLabel = ["自分をアップグレードする", "人のためになる"],
+						this.rechargeLabel = ["自分にチャージする", "他人にチャージする"],
+						this.searchLabel = "名·他サ",
+						this.typeLabel = ["クラウン会員", "ダイヤモンド会員"],
+						this.upgrade1 = ["思う存分話す", "誰があなたを好きか調べて", "独身異性をより多く知る", "注目されている", "1日3000字以内に翻訳する", "より多くの展示機会"]
+						this.payLabel = ["ゆーざめい", "即時支払い", "ふりーふぉーむにゅうりょく"]
 						this.btnLabel = ["个人信息", "アカウントを更新する", "アイコンを更新する", "密保", "ほぞん"],
 						this.infoLabel = ["个人信息", "きょういく", "身長", "たいじゅう", "こうさく", "こっか", "ちく"],
 						this.acountLabel = ["アカウントを更新する", "古い暗号", "新しい暗号", "パスワードを確認する"], 
 						this.headLabel = ["アイコンを更新する", "画像を選択する", "かんせい"],
 						this.securityLabel = ["密保--パスワード忘れを防ぐ", "あなたの本当の名前", "あなたのメールアドレス", "あなたの大好きな人"]
 					} else if(this.languageID == 6) {
-						this.topLabel = ["ข้อมูลส่วนบุคคล", "ข่าว", "ออก"]
+						this.topLabel = ["ข้อมูลส่วนบุคคล", "ข่าว", "ออก", "อัพ เกรด", "ชาร์จ"]
+						this.payTop = ["อัพ เกรด", "บัญชีเติมเงิน"],
+						this.upgradeLabel = ["อัพเกรดด้วยตัวคุณเอง", "อัพเกรดสําหรับผู้อื่น"],
+						this.rechargeLabel = ["เติมเงินด้วยตัวคุณเอง", "เติมเงินให้คนอื่น"],
+						this.searchLabel = "ค้น หา",
+						this.typeLabel = ["สมาชิกคราวน์", "สมาชิกเพชร"],
+						this.upgrade1 = ["สนทนา", "ดูว่าใครถูกใจคุณ", "พบกับซิงเกิ้ลมากขึ้นและเพศตรงข้าม", "มันดูน่าสนใจมาก", "3000 คําต่อวัน", "ผลงานเพิ่มเติม"]
+						this.payLabel = ["ชื่อผู้ใช้", "จ่ายทันที", "ป้อนข้อมูลฟรี"]
 						this.btnLabel = ["ข้อมูลส่วนบุคคล", "อัพเดตบัญชีของคุณ", "อัพเด avatar ของคุณ", "Mi-เบ้า", "บันทึก"],
 						this.infoLabel = ["ข้อมูลส่วนบุคคล", "ศึกษา", "สูง", "น้ำหนัก", "งาน", "ประเทศ", "ตั้ง"],
 						this.acountLabel = ["อัพเดตบัญชีของคุณ", "รหัสผ่านเก่า", "รหัสผ่านใหม่", "ยืนยันรหัสผ่านของคุณ"], 
