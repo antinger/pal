@@ -493,58 +493,61 @@
 												</template>
 												
 											</div><!--user-pro-img end-->
-											<div class="user_pro_status">
-												<div class="row" style="justify-content: center;margin-bottom: 10px;">
-													<div class="col-6">
-														<button class="btn" style="background-color:#53d690;color:#ffffff;">
-															{{user.username}}
-														</button>
+											<div class="user_pro_status row">
+												<div class="row" style="align-items: center;margin-bottom: 10px;">
+													<div class="col-6" style="justify-content: center;">
+														<div>
+															<button class="btn" style="background-color:#53d690;color:#ffffff;">
+																{{user.username}}
+															</button>
+														</div>
 													</div>
-													<div class="col-5" >
-													  <select id="inputState" class="form-control"  v-model="onLineStatus" @click="line"
-													  style="background-color: rgb(83, 214, 144); color: rgb(255, 255, 255);">
-														<option selected value="0">在线</option>
-														<option value="1">隐身</option>
-													  </select>
-													</div>
-												</div>
-												<div class="row" style="justify-content: center;margin-bottom: 10px;">
-													<div class="col-6">
-														<button class="btn" style="background-color:#53d690;color:#ffffff;" @click="toView(1)">
-															<i class="la la-plus"></i> {{leftLabel[0]}}
-														</button>
-													</div>
-													<div class="col-5">
-														<button class="btn" style="background-color:#53d690;color:#ffffff;" @click="toView(2)">
-															{{leftLabel[1]}}
-														</button>
+													<div class="col-6" style="justify-content: center;">
+													  <div>
+														  <select id="inputState" class="form-control"  v-model="onLineStatus" @click="line"
+														  style="background-color: rgb(83, 214, 144); color: rgb(255, 255, 255);">
+																<option selected value="0">在线</option>
+																<option value="1">隐身</option>
+														  </select>
+													  </div>
 													</div>
 												</div>
-												<div class="row" style="justify-content: center;">
-													<div class="col-6">
-														<button class="btn" style="background-color:#53d690;color:#ffffff;">
-															{{leftLabel[2]}} : {{wallet.balance}}
-														</button>
+												<div class="row" style="align-items: center;margin-bottom: 10px;">
+													<div class="col-6" style="justify-content: center;">
+														<div>
+															<button class="btn" style="background-color:#53d690;color:#ffffff;" @click="toView(1)">
+																<i class="la la-plus"></i> {{leftLabel[0]}}
+															</button>
+														</div>
 													</div>
-													<div class="col-5">
-														<button class="btn" style="background-color:#53d690;color:#ffffff;">
-															<template v-if="member">
-																<span class="icon iconfont icon-huangguan" 
-																	style="color: #F7D501;" v-if="member == 1">
-																</span>
-																<span class="icon iconfont icon-zuanshi" 
-																	style="color: #1e6f35;" v-if="member == 2"></span>
-															</template>
-														</button>
-														<!-- <span style="text-align: center;">
-															<template v-if="member">
-																<span class="icon iconfont icon-huangguan" 
-																	style="color: #F7D501;font-size: 30px;" v-if="member == 1">
-																</span>
-																<span class="icon iconfont icon-zuanshi" 
-																	style="color: #1e6f35;font-size: 30px;" v-if="member == 2"></span>
-															</template>
-														</span> -->
+													<div class="col-6" style="justify-content: center;">
+														<div>
+															<button class="btn" style="background-color:#53d690;color:#ffffff;" @click="toView(2)">
+																{{leftLabel[1]}}
+															</button>
+														</div>
+													</div>
+												</div>
+												<div class="row" style="align-items: center;">
+													<div class="col-6" style="justify-content: center;">
+														<div>
+															<button class="btn" style="background-color:#53d690;color:#ffffff;">
+																{{leftLabel[2]}} : {{wallet.balance}}
+															</button>
+														</div>
+													</div>
+													<div class="col-6" style="justify-content: center;">
+														<div>
+															<button class="btn" style="background-color:#53d690;color:#ffffff;">
+																<template v-if="member">
+																	<span class="icon iconfont icon-huangguan" 
+																		style="color: #F7D501;" v-if="member == 1">
+																	</span>
+																	<span class="icon iconfont icon-zuanshi" 
+																		style="color: #1e6f35;" v-if="member == 2"></span>
+																</template>
+															</button>
+														</div>
 													</div>
 												</div>
 											</div>
