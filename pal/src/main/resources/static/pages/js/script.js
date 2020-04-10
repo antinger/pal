@@ -207,17 +207,16 @@ $(window).on("load", function() {
 
     $(".menu-btn > a").on("click", function(){
         $("nav").toggleClass("active");
-        console.log("执行")
         return false;
     });
     
     $(document).click(function(event){
+    	console.log("执行")
         var _con = $('nav');  // 设置目标区域
         if(!_con.is(event.target) && _con.has(event.target).length === 0){ // Mark 1
-           //$('#divTop').slideUp('slow');  //滑动消失
-           $('nav').hide(1000);     //淡出消失
+        	$("nav").toggleClass("active");
         }
-   });
+    });
 
 
     //  ============ Notifications Open =============
