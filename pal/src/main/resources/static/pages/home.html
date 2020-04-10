@@ -191,6 +191,9 @@
 											<div class="list-group" v-if="sendGiftOrder.length > 0">
 												<a class="list-group-item list-group-item-action" v-for="(item, index) in sendGiftOrder">
 													<div class="row" style="align-items: center;">
+														<span>{{item.view.createDate}}</span>
+													</div>
+													<div class="row" style="align-items: center;margin-top: 5px;">
 														<div class="col-3">
 															<img :src="item.view.gift.path" height="50px" width="50px" />
 														</div>
@@ -205,9 +208,6 @@
 														</div>
 													</div>
 													<div class="row" style="align-items: center;margin-top: 5px;">
-														<span>{{item.view.createDate}}</span>
-													</div>
-													<div class="row" style="align-items: center;margin-top: 5px;">
 														<span>{{item.view.giftOrder.content}}</span>
 													</div>
 												</a>
@@ -220,6 +220,9 @@
 											<div class="list-group" v-if="takeGiftOrder.length > 0">
 												<a class="list-group-item list-group-item-action" v-for="(item, index) in takeGiftOrder">
 													<div class="row" style="align-items: center;">
+														<span>{{item.view.createDate}}</span>
+													</div>
+													<div class="row" style="align-items: center;margin-top: 5px;">
 														<div class="col-3">
 															<img :src="item.view.gift.path" height="50px" width="50px" />
 														</div>
@@ -232,9 +235,6 @@
 														<div class="col-3">
 															<span style="color: #51a5fb;">{{item.view.giftOrder.num}}</span>
 														</div>
-													</div>
-													<div class="row" style="align-items: center;margin-top: 5px;">
-														<span>{{item.view.createDate}}</span>
 													</div>
 													<div class="row" style="align-items: center;margin-top: 5px;">
 														<span>{{item.view.giftOrder.content}}</span>
