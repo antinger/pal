@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 	<head>
@@ -130,7 +129,7 @@
 												</div>
 												<div class="col-6" style="justify-content: center;">
 													<div>
-														<button class="btn" style="background-color:#53d690;">
+														<button class="btn" style="background-color:#53d690;" @click="toVideo">
 															<img src="images/video.png" alt="" height="20px">
 														</button>
 													</div>
@@ -801,6 +800,10 @@
 				/* 标签---------------------end */
 			},
 			methods:{
+				toVideo(){
+					alert("金币不足")
+					this.toView(2)
+				},
 				toMessageView(username, toUserID) {
 					this.messageToUserID = toUserID
 					this.messageUsername = username
