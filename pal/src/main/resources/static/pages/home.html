@@ -93,7 +93,7 @@
 											<div class="user-tab-sec">
 												<h3>{{user.username}}</h3>
 											</div>
-											<div class="user_pro_status row">
+											<div class="user_pro_status row" v-if="threadUser.id != user.id">
 												<div class="col-6" style="justify-content: center;">
 													<div>
 														<button class="btn" style="background-color:#53d690;">
@@ -310,6 +310,7 @@
 				/* 令牌-------------start  */
 				ticket:"",
 				/* 令牌-------------end  */
+				threadUser:"",
 				/* 个人信息----------------start */
 				userID:"",
 				user:"",
@@ -348,6 +349,16 @@
 						window.location.href = "login.html"
 						return 
 					}
+				},
+				getThreadUser() {
+					this.$http.get('/user/getUserInfo/',{header:{cookie:this.ticket}},
+					{params : {time:new Date().getTime()}})
+					.then(function(res) {
+						this.toLoginView(res)
+						this.threadUser = res.body.user
+					},function() {
+						console.log('请求失败处理');
+					});
 				},
 				//获取用户信息
 				getUserInfo() {
@@ -459,6 +470,7 @@
 				this.checkTicket()
 				this.getUrlQuery()
 				this.getUserInfo()
+				this.getThreadUser()
 				this.getLaterDynamic(1)
 			}
 		})
