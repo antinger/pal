@@ -93,7 +93,7 @@
 											</div><!--user-pro-img end-->
 											
 											<!-- 信息栏---------------------start -->
-											<ul class="social_links">
+											<ul class="social_links" v-if="userInfo.view">
 												<li><a href="#" title="">{{leftLabel[3]}} ：{{userInfo.view.birthday}}</a></li>
 												<li><a href="#" title="">{{leftLabel[4]}} ：{{userInfo.view.info.education}}</a></li>
 												<li><a href="#" title="">{{leftLabel[5]}} ：{{userInfo.view.info.height}}</a></li>
@@ -191,7 +191,7 @@
 											<div class="list-group" v-if="sendGiftOrder.length > 0">
 												<a class="list-group-item list-group-item-action" v-for="(item, index) in sendGiftOrder">
 													<div class="row" style="align-items: center;">
-														<div class="col-1">
+														<div class="col-2">
 															<img :src="item.view.gift.path" height="50px" width="50px" />
 														</div>
 														<div class="col-2">
@@ -203,7 +203,7 @@
 														<div class="col-1">
 															<span style="color: #51a5fb;">{{item.view.giftOrder.num}}</span>
 														</div>
-														<div class="col-2">
+														<div class="col-3">
 															<span>{{item.view.giftOrder.content}}</span>
 														</div>
 														<div class="col-3">
@@ -221,7 +221,7 @@
 											<div class="list-group" v-if="takeGiftOrder.length > 0">
 												<a class="list-group-item list-group-item-action" v-for="(item, index) in takeGiftOrder">
 													<div class="row" style="align-items: center;">
-														<div class="col-1">
+														<div class="col-2">
 															<img :src="item.view.gift.path" height="50px" width="50px" />
 														</div>
 														<div class="col-2">
@@ -233,7 +233,7 @@
 														<div class="col-1">
 															<span style="color: #51a5fb;">{{item.view.giftOrder.num}}</span>
 														</div>
-														<div class="col-2">
+														<div class="col-3">
 															<span>{{item.view.giftOrder.content}}</span>
 														</div>
 														<div class="col-3">
