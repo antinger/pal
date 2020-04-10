@@ -153,7 +153,7 @@
 										
 										<!-- 动态--------------------start -->
 										<div class="product-feed-tab" id="feed-dd" v-bind:class="{ current: (1 == tempIndex) }">
-											<div class="posts-section">
+											<div class="posts-section" v-if="dynamics.data.length>0">
 												
 												<div class="post-bar" v-for="(item, index) in dynamics.data">
 													<div class="post_topbar">
@@ -188,28 +188,28 @@
 										<!-- 动态---------------------end -->
 										<!-- 发送的礼物---------start -->
 										<div class="product-feed-tab" id="send-dd" v-bind:class="{ current: (2 == tempIndex) }">
-											<div class="list-group">
+											<div class="list-group" v-if="sendGiftOrder.length > 0">
 												<a class="list-group-item list-group-item-action" v-for="(item, index) in sendGiftOrder">
 													<div class="row" style="align-items: center;">
-														<div style="width: 10%;">
+														<div class="col-2">
 															<img :src="item.view.gift.path" height="50px" width="50px" />
 														</div>
-														<div style="width: 10%;">
+														<div class="col-2">
 															<span style="color: #51a5fb;">{{item.view.toUser.username}}</span>
 														</div>
-														<div style="width: 10%;text-align: center;">
+														<div class="col-1" style="text-align: center;">
 															<span style="color: #51a5fb;">{{item.view.giftOrder.price}}</span>
 														</div>
-														<div style="width: 10%;">
+														<div class="col-1">
 															<span style="color: #51a5fb;">{{item.view.giftOrder.num}}</span>
 														</div>
-														<div style="width: 30%;">
+														<div class="col-3">
 															<span>{{item.view.giftOrder.content}}</span>
 														</div>
-														<div style="width: 20%;">
+														<div class="col-2">
 															<span>{{item.view.createDate}}</span>
 														</div>
-														<div style="width: 10%;">
+														<div class="col-1">
 															<template v-if="item.view.giftOrder == 0">
 																<button class="btn btn-success">待付款</button>
 															</template>
@@ -225,7 +225,7 @@
 										
 										<!-- 接受的礼物---------start -->
 										<div class="product-feed-tab" id="take-dd" v-bind:class="{ current: (3 == tempIndex) }">
-											<div class="list-group">
+											<div class="list-group" v-if="takeGiftOrder.length > 0">
 												<a class="list-group-item list-group-item-action" v-for="(item, index) in takeGiftOrder">
 													<div class="row" style="align-items: center;">
 														<div style="width: 10%;">
