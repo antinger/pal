@@ -206,15 +206,18 @@ $(window).on("load", function() {
     // ============== Menu Script =============
 
     $(".menu-btn > a").on("click", function(){
-        $("nav").show();
+        $("nav").toggleClass("active");
         return false;
     });
     
     $(document).click(function(event){
-    	console.log("执行")
         var _con = $('nav');  // 设置目标区域
+    	if(!_con.hasClass("active")){
+    		return
+    	}
+    	console.log("执行")
         if(!_con.is(event.target) && _con.has(event.target).length === 0){ // Mark 1
-        	$("nav").hide();
+        	$("nav").toggleClass("active");
         }
     });
 
