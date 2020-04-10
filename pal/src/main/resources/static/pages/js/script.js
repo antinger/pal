@@ -206,7 +206,7 @@ $(window).on("load", function() {
     // ============== Menu Script =============
 
     $(".menu-btn > a").on("click", function(){
-        $("nav").toggleClass("active");
+        $("nav").show();
         return false;
     });
     
@@ -214,7 +214,7 @@ $(window).on("load", function() {
     	console.log("执行")
         var _con = $('nav');  // 设置目标区域
         if(!_con.is(event.target) && _con.has(event.target).length === 0){ // Mark 1
-        	$("nav").toggleClass("active");
+        	$("nav").hide();
         }
     });
 
