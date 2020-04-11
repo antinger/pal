@@ -127,7 +127,7 @@
 										<h3>Messages</h3>
 									</div><!--msg-title end-->
 
-									<div class="messages-list" ref="messageLink">
+									<div class="messages-list" ref="messageLink" :style="{widht:linkWidth + '17px'}">
 										<ul>
 											<li v-for="(item, index) in linkMan" @click="toDetailView(index)" :id="index" v-bind:class="{ active: (index == indexTemp) }">
 												<div class="usr-msg-details">
@@ -662,6 +662,7 @@
 		var vm = new Vue({
 			el : '#app',
 			data:{
+				linkWidth:0,
 				headLink:"images/user/default.png",
 				linkMan:[],
 				indexTemp:-1,
@@ -978,14 +979,14 @@
 					}
 				},
 				setWidth(){
-					console.log("元素"+ JSON.stringify(this.$refs.messageLink.offsetWidth))
+					this.linkWidth = this.$refs.messageLink.offsetWidth
 				}
 			},
 			mounted() {
 				this.createLinkTimer()
-				this.setWidth()
 			},
 			beforeMount() {
+				this.setWidth()
 				this.getLinkman()
 			},
 			beforeDestroy() {
