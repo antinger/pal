@@ -203,6 +203,14 @@
 												<input type="text" name="message" maxlength="30" v-model="content" placeholder="Type a message here">
 												<a @click="sendMessage" class="btn btn-danger"  style="margin-left: 15px;">Send</a>
 											</div>
+											<ul>
+												<li>
+													<label>
+														<span class="fa fa-camera"></span>
+														<input  type="file" style="display: none;"/>
+													</label>
+												</li>
+											</ul>
 										</form>
 									</div><!--message-send-area end-->
 								</div><!--main-conversation-box end-->
