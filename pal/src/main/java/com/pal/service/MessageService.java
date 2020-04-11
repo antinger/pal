@@ -1,5 +1,6 @@
 package com.pal.service;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -11,6 +12,7 @@ import java.util.Map.Entry;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.pal.dao.MemberTicketDao;
 import com.pal.dao.MessageDao;
@@ -116,6 +118,9 @@ public class MessageService {
 					messageDao.updateStatus(message.getId(), 1);
 				}
 			}
+			if(!"".equals(message.getImage())) {
+				message.setImage(qiniuService.dealOnlyImage(message.getImage()));
+			}
 			view.setView("message", message);
 			view.setView("createDate", PalUtils.formatDate(message.getCreateDate()));
 			data.add(view);
@@ -149,7 +154,7 @@ public class MessageService {
 	}
 	
 	//添加消息
-	public Map<String, Object> addMessage(String content, int toUserID) {
+	public Map<String, Object> addMessage(String content, int toUserID, MultipartFile image) throws IOException {
 		Map<String, Object> map = new HashMap<String, Object>();
 		User threadUser = getThreadUser();
 		if(threadUser.getBannedStatus() == 1) {
@@ -170,11 +175,19 @@ public class MessageService {
 			}
 		}
 		Message message = new Message();
+		if(image != null) {
+			Map<String, Object> saveImage = qiniuService.saveImage(image);
+			String path = saveImage.get("fileList").toString();
+			message.setImage(path);
+		}
 		message.setContent(content);
 		message.setToUserID(toUserID);
 		message.setUserID(threadUser.getId());
 		messageDao.addMessage(message);
 		ViewObject view = new ViewObject();
+		if(!"".equals(message.getImage())) {
+			message.setImage(qiniuService.dealOnlyImage(message.getImage()));
+		}
 		view.setView("message", message);
 		view.setView("createDate", PalUtils.formatDate(message.getCreateDate()));
 		view.setView("flag", true);

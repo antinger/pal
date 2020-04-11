@@ -18,11 +18,11 @@ import com.pal.entity.Message;
 public interface MessageDao {
 	
 	String TABLE_NAME = "message";
-    String INSERT_FIELDS = " content, createDate, userID, toUserID, status ";
+    String INSERT_FIELDS = " content, image, createDate, userID, toUserID, status ";
     String SELECT_FIELDS = " id, " + INSERT_FIELDS;
     
     //添加消息
-    @Insert({"insert into ", TABLE_NAME, "(", INSERT_FIELDS, ") values (#{content},#{createDate},#{userID},#{toUserID},#{status})"})
+    @Insert({"insert into ", TABLE_NAME, "(", INSERT_FIELDS, ") values (#{content},#{image},#{createDate},#{userID},#{toUserID},#{status})"})
     void addMessage(Message message);
     
     //获取未读的消息量

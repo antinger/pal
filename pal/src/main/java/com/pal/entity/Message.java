@@ -8,6 +8,8 @@ public class Message {
 	
 	private String content;
 	
+	private String image;
+	
 	private Date createDate;
 	
 	private Integer userID;
@@ -19,6 +21,7 @@ public class Message {
 	public Message() {
 		this.id = 0;
 		this.content = "";
+		this.image = "";
 		this.createDate = new Date();
 		this.userID = 0;
 		this.toUserID = 0;
@@ -71,6 +74,14 @@ public class Message {
 	
 	public void setStatus(Integer status) {
 		this.status = status;
+	}
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
 	}
 	
 }

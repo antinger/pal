@@ -4,7 +4,7 @@
 <mapper namespace="com.pal.dao.MessageDao">
     <sql id="table">message</sql>
     <sql id="selectFields">
-    	id, content, createDate, userID, toUserID, status 
+    	id, content, image, createDate, userID, toUserID, status 
     </sql>
     <!-- 根据状态分页获取所有的商品 -->
     <select id="getSendMessages" resultType="com.pal.entity.Message">
