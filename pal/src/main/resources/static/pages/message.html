@@ -827,8 +827,11 @@
 				},
 				//添加消息
 				sendMessage(){
-					if(this.content == "" || this.userID == 0) {
+					if(this.userID == 0) {
 						return ;
+					}
+					if(this.content == "" && this.image == ""){
+						return
 					}
 					var formData = new FormData();
 					formData.append('content', this.content);
