@@ -156,7 +156,7 @@
 																<p>{{item.view.message.content}}</p>
 															</div>
 															<div class="message-inner-dt img-bx" v-if="item.view.message.image">
-																<p>{{item.view.message.content}}</p>
+																<p v-if="item.view.message.content">{{item.view.message.content}}</p>
 																<img :src="item.view.message.image" alt="" style="width: 150px;height: 150px;">
 															</div>
 															<span>{{item.view.createDate}}</span>
@@ -177,7 +177,7 @@
 																<p>{{item.view.message.content}}</p>
 															</div>
 															<div class="message-inner-dt img-bx" v-if="item.view.message.image">
-																<p>{{item.view.message.content}}</p>
+																<p v-if="item.view.message.content">{{item.view.message.content}}</p>
 																<img :src="item.view.message.image" alt="" style="width: 150px;height: 150px;">
 															</div>
 															<span>{{item.view.createDate}}</span>
