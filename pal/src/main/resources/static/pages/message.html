@@ -980,13 +980,15 @@
 				},
 				setWidth(){
 					console.log(this.$refs.messageLink.offsetWidth)
-					this.linkWidth = this.$refs.messageLink.offsetWidth + 17
+					this.linkWidth = this.$refs.messageLink.offsetWidth
 				}
 			},
 			mounted() {
-				this.setWidth()
 				this.createLinkTimer()
 			},
+			created() {
+				this.setWidth()
+			}
 			beforeMount() {
 				this.getLinkman()
 			},
