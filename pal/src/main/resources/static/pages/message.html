@@ -976,6 +976,10 @@
 						this.upgrade1 = ["สนทนา", "ดูว่าใครถูกใจคุณ", "พบกับซิงเกิ้ลมากขึ้นและเพศตรงข้าม", "มันดูน่าสนใจมาก", "3000 คําต่อวัน", "ผลงานเพิ่มเติม"]
 						this.btnLabel = ["ชื่อผู้ใช้", "จ่ายทันที", "ป้อนข้อมูลฟรี"]
 					}
+				},
+				setWidth(){
+					var a = $(".messages-list")
+					console.log(JSON.stringify(a))
 				}
 			},
 			mounted() {
@@ -986,6 +990,7 @@
 			},
 			beforeDestroy() {
 				this.checkTicket()
+				this.setWidth()
 			}
 		})
 	</script>
