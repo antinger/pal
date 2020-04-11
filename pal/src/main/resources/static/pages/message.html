@@ -122,12 +122,12 @@
 					<div class="messages-sec">
 						<div class="row">
 							<div class="col-lg-4 col-md-12 no-pdd">
-								<div class="msgs-list">
-									<div class="msg-title" style="border-bottom: 1px solid #eeeeee;">
+								<div class="msgs-list" >
+									<div class="msg-title" style="border-bottom: 1px solid #eeeeee;" ref="messageLink">
 										<h3>Messages</h3>
 									</div><!--msg-title end-->
 
-									<div class="messages-list" ref="messageLink" :style="{width:linkWidth + 'px'}">
+									<div class="messages-list" :style="{width:linkWidth + 'px'}">
 										<ul>
 											<li v-for="(item, index) in linkMan" @click="toDetailView(index)" :id="index" v-bind:class="{ active: (index == indexTemp) }">
 												<div class="usr-msg-details">
