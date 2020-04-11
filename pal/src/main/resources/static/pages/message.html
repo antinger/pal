@@ -207,7 +207,7 @@
 												<li>
 													<label>
 														<span class="fa fa-camera"></span>
-														<input  type="file" style="display: none;"/>
+														<input  type="file" style="display: none;" v-on:change="onChange($event)"/>
 													</label>
 												</li>
 											</ul>
@@ -643,6 +643,7 @@
 				linkTimer:"",
 				//发送消息
 				content:"",
+				image:"",
 				
 				/* 支付----------------start */
 				//升级还是充值
@@ -684,6 +685,10 @@
 				btnLabel:["用户名", "立即支付", "自由输入"]
 			},
 			methods:{
+				onChange(event) {
+				      this.image= event.target.files[0]
+				      console.log(this.image);
+				},
 				toView(payType) {
 					this.payType = payType
 					$('.bgPop,.pop').show();
@@ -828,6 +833,7 @@
 					var formData = new FormData();
 					formData.append('content', this.content);
 					formData.append('toUserID', this.userID);
+					formData.append('image', this.image);
 					this.$http.post('/user/addMessage/', formData).
 					then(function (res) {
 						if(res.body.eor){
