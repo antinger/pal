@@ -171,15 +171,15 @@
 												<div class="profiles-slider" v-if="pushUser.length > 0">
 													<div class="user-profy" v-for="(item,index) in pushUser">
 														<template v-if="item.headStatus == 1">
-															<img :src="headLink" alt="" width="30px" height="30px" @click="toUserView(item.id)">
+															<img :src="headLink" alt="" width="90px" height="90px" @click="toUserView(item.id)">
 														</template>
 														<template v-else>
-															<img :src="item.headLink" alt="" width="30px" height="30px" @click="toUserView(item.id)">
+															<img :src="item.headLink" alt="" width="90px" height="90px" @click="toUserView(item.id)">
 														</template>
 														<div class="row" style="justify-content: center;align-items: center;">
-															<h3>
+															<h5>
 															{{item.username}}
-															</h3>
+															</h5>
 															<h3 style="border-radius: 6px;text-align: center;background: #00B540;width: 12px;height: 12px;display: block;" v-if="item.onLineStatus == 0"></h3>
 														</div>
 														<ul>
@@ -558,7 +558,7 @@
 														</div>
 													</div>
 													<div class="col-6" style="justify-content: center;">
-														<div>
+														<div v-if="member">
 															<button class="btn" style="background-color:#53d690;color:#ffffff;">
 																<template v-if="member">
 																	<span class="icon iconfont icon-huangguan" 
