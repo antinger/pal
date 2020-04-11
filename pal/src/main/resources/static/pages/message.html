@@ -23,7 +23,14 @@
 		<style>
 			body{
 				background: url(images/bg.jpg) no-repeat center;
-				background-size: 1000%;
+			}
+			.msgs-list{
+				height: 722px;overflow: hidden;
+			}
+			.msgs-list>.messages-list{
+				height: 722px;
+				width: 100%;
+				overflow-y: scroll !important;
 			}
 		</style>
 	</head>
@@ -114,7 +121,7 @@
 					<div class="messages-sec">
 						<div class="row">
 							<div class="col-lg-4 col-md-12 no-pdd">
-								<div class="msgs-list" style="height: 722px;">
+								<div class="msgs-list">
 									<div class="msg-title" style="border-bottom: 1px solid #FFFFFF;">
 										<h3>Messages</h3>
 									</div><!--msg-title end-->
