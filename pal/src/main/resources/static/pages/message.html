@@ -169,16 +169,29 @@
 									<div class="message-bar-head">
 										<div class="usr-msg-details">
 											<div class="usr-ms-img">
-												<img src="images/resources/m-img1.png" alt="">
+												<template v-if="linkMan[indexTemp].view.user.headStatus == 1">
+													<img :src="headLink" alt="">
+												</template>
+												<template v-else>
+													<img :src="linkMan[indexTemp].view.user.headLink" alt="">
+												</template>
 											</div>
 											<div class="usr-mg-info">
-												<h3>John Doe</h3>
-												<p>Online</p>
+												<h3>{{linkMan[indexTemp].view.user.username}}</h3>
+												<h3 style="border-radius: 6px;text-align: center;background: #00B540;width: 12px;height: 12px;display: block;margin-left: 3px;" v-if="item.view.user.onLineStatus == 0"></h3>
+												<p>
+													<span class="icon iconfont icon-huangguan" style="color: #F7D501;font-size: 24px;"
+														v-if="item.view.member == 1">
+													</span>
+													<span class="icon iconfont icon-zuanshi" style="color: #1e6f35;font-size: 24px;" 
+														v-if="item.view.member == 2">
+													</span>
+												</p>
 											</div><!--usr-mg-info end-->
 										</div>
 										<a href="#" title=""><i class="fa fa-ellipsis-v"></i></a>
 									</div>
-									<div class="messages-line mCustomScrollbar _mCS_1" style="margin-top: 20px;">
+									<div class="messages-line mCustomScrollbar _mCS_1" style="margin-top: 80px;">
 										<div id="mCSB_1" class="mCustomScrollBox mCS-light mCSB_vertical mCSB_inside" style="max-height: none;" tabindex="0">
 											<div id="mCSB_1_container" class="mCSB_container" style="position:relative; top:0; left:0;padding-top:20px;" dir="ltr">
 												<template v-for="(item, index) in message">
@@ -877,7 +890,7 @@
 					var formData = new FormData();
 					formData.append('content', this.content);
 					formData.append('toUserID', this.userID);
-					if(this.image == ""){
+					if(this.image == "") {
 						this.$http.post('/user/addMessage/', formData).
 						then(function (res) {
 							if(res.body.eor){
