@@ -836,6 +836,9 @@
 					var formData = new FormData();
 					formData.append('content', this.content);
 					formData.append('toUserID', this.userID);
+					if(this.image == ""){
+						this.image = null
+					}
 					formData.append('image', this.image);
 					this.$http.post('/user/addMessage/', formData).
 					then(function (res) {
