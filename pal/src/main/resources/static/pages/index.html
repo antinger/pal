@@ -259,10 +259,10 @@
 													<div class="company_profile_info">
 														<div class="company-up-info" style="justify-content: center;">
 															<template v-if="item.view.user.headStatus == 1 || item.view.user.headLink == ''">
-																<img :src="headLink" alt="" @click="toUserView(item.view.user.id)" >
+																<img :src="headLink"  width="90px" height="90px" alt="" @click="toUserView(item.view.user.id)" >
 															</template>
 															<template v-else>
-																<img :src="item.view.user.headLink" alt="" @click="toUserView(item.view.user.id)">
+																<img :src="item.view.user.headLink"  width="90px" height="90px" alt="" @click="toUserView(item.view.user.id)">
 															</template>
 															
 															<div class="row" style="justify-content: center;align-items: center;">
@@ -370,10 +370,10 @@
 													<div class="company_profile_info">
 														<div class="company-up-info">
 															<template v-if="item.view.user.headStatus == 1">
-																<img :src="headLink" alt="" @click="toUserView(item.view.user.id)">
+																<img :src="headLink" alt=""  width="90px" height="90px" @click="toUserView(item.view.user.id)">
 															</template>
 															<template v-else>
-																<img :src="item.view.user.headLink" alt="" @click="toUserView(item.view.user.id)">
+																<img :src="item.view.user.headLink" width="90px" height="90px" alt="" @click="toUserView(item.view.user.id)">
 															</template>
 															<h3>{{item.view.user.username}}</h3>
 															<h4>{{item.view.sex}}</h4>
@@ -395,10 +395,10 @@
 													<div class="company_profile_info">
 														<div class="company-up-info">
 															<template v-if="item.view.user.headStatus == 1">
-																<img :src="headLink" alt="" @click="toUserView(item.view.user.id)">
+																<img :src="headLink" width="90px" height="90px" alt="" @click="toUserView(item.view.user.id)">
 															</template>
 															<template v-else>
-																<img :src="item.view.user.headLink" alt="" @click="toUserView(item.view.user.id)">
+																<img :src="item.view.user.headLink" width="90px" height="90px" alt="" @click="toUserView(item.view.user.id)">
 															</template>
 															<h3>{{item.view.user.username}}</h3>
 															<h4>{{item.view.sex}}</h4>
@@ -423,10 +423,10 @@
 													<div class="company_profile_info">
 														<div class="company-up-info">
 															<template v-if="item.view.user.headStatus == 1" @click="toUserView(item.view.user.id)">
-																<img :src="headLink" alt="" >
+																<img :src="headLink" alt=""  width="90px" height="90px">
 															</template>
 															<template v-else>
-																<img :src="item.view.user.headLink" alt="" @click="toUserView(item.view.user.id)">
+																<img :src="item.view.user.headLink" width="90px" height="90px" alt="" @click="toUserView(item.view.user.id)">
 															</template>
 															<h3>{{item.view.user.username}}</h3>
 															<h4>{{item.view.sex}}</h4>
