@@ -837,10 +837,25 @@
 					formData.append('content', this.content);
 					formData.append('toUserID', this.userID);
 					if(this.image == ""){
-						this.image = null
+						this.$http.post('/user/addMessage/', formData).
+						then(function (res) {
+							if(res.body.eor){
+								alert(res.body.eor)
+							}
+							if(res.body.member) {
+								this.toView(1)
+								return ;
+							}
+							this.toLoginView(res)
+							this.content = ""
+							this.message.push(res.body.message)
+						}, function (res) {
+						  console.log(res.body);
+						});
+						return 
 					}
 					formData.append('image', this.image);
-					this.$http.post('/user/addMessage/', formData).
+					this.$http.post('/user/addMessageImage/', formData).
 					then(function (res) {
 						if(res.body.eor){
 							alert(res.body.eor)
