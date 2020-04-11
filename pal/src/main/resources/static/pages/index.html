@@ -60,12 +60,15 @@
 			.service:hover .help{
 				display: block;
 			}
+			[v-clock]{
+				display: none;
+			}
 		</style>
 	</head>
 	
 	<body>
 
-		<div class="wrapper" id="app">
+		<div class="wrapper" id="app" v-cloak>
 			<!-- 头部--------------------start -->
 			<header>
 				<div class="container">
@@ -176,7 +179,7 @@
 														<template v-else>
 															<img :src="item.headLink" alt="" width="90px" height="90px" @click="toUserView(item.id)">
 														</template>
-														<div class="row" style="justify-content: center;align-items: center;">
+														<div class="row" style="justify-content: center;align-items: center;margin-bottom: 5px;">
 															<h5>
 															{{item.username}}
 															</h5>
