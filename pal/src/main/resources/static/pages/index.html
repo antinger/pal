@@ -46,6 +46,16 @@
 			.help{
 				position: absolute; right: 90px; top: 50px; width: 200px; background: rgb(83, 214, 144); padding: 5px 10px; display: none;
 			}
+			.help:after{
+				content: '';
+				width: 0;
+				height: 0;
+				border-style: solid;
+				border-width: 0 20px 15px 0;
+				border-color: transparent #ffffff transparent transparent;
+				position: absolute;
+				left: 59px;
+			}
 			.service:hover .help{
 				display: block;
 			}
@@ -1000,7 +1010,7 @@
 				<img src="images/service.png" @click="toMessageView('kefu',19)" style="position: relative;"/>
 				<div  class="help">
 					{{helpText}}
-				</div>
+				</div>::after
 			</div>
 			
 		</div>
