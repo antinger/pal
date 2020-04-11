@@ -984,10 +984,10 @@
 				}
 			},
 			mounted() {
+				this.setWidth()
 				this.createLinkTimer()
 			},
 			beforeMount() {
-				this.setWidth()
 				this.getLinkman()
 			},
 			beforeDestroy() {
