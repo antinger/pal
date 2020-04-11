@@ -171,7 +171,7 @@
 											
 											<!-- 上照片墙---start -->
 											<div class="top-profiles" >
-												<div class="profiles-slider" v-if="pushUser.length > 0">
+												<div class="profiles-slider" v-if="pushUser">
 													<div class="user-profy" v-for="(item,index) in pushUser">
 														<template v-if="item.headStatus == 1">
 															<img :src="headLink" alt="" width="90px" height="90px" @click="toUserView(item.id)">
@@ -365,7 +365,7 @@
 										
 										<!-- 关注-------------start -->
 										<div class="product-feed-tab" v-bind:class="{ current: (2 == indexTemp) }" id="saved-jobs">
-											<div class="row" v-if="followUser.length > 0">
+											<div class="row" v-if="followUser">
 												<div class="col-lg-4 col-md-4 col-sm-6 col-12" v-for="(item, index) in followUser">
 													<div class="company_profile_info">
 														<div class="company-up-info">
@@ -390,7 +390,7 @@
 										
 										<!-- 粉丝----------start -->
 										<div class="product-feed-tab" v-bind:class="{ current: (3 == indexTemp) }" id="my-bids">
-											<div class="row" v-if="fansUser.length > 0">
+											<div class="row" v-if="fansUser">
 												<div class="col-lg-4 col-md-4 col-sm-6 col-12" v-for="(item, index) in fansUser">
 													<div class="company_profile_info">
 														<div class="company-up-info">
@@ -418,7 +418,7 @@
 										
 										<!-- 游客-------------start -->
 										<div class="product-feed-tab" v-bind:class="{ current: (4 == indexTemp) }" id="visitor-dd">
-											<div class="row" v-if="visitor.length > 0">
+											<div class="row" v-if="visitor">
 												<div class="col-lg-4 col-md-4 col-sm-6 col-12" v-for="(item, index) in visitor">
 													<div class="company_profile_info">
 														<div class="company-up-info">
@@ -445,7 +445,7 @@
 										<!-- 游客-------------end -->
 										<!-- 礼物-------------start -->
 										<div class="product-feed-tab" v-bind:class="{ current: (5 == indexTemp) }" id="gift-dd">
-											<div class="row" v-if="gifts.length > 0">
+											<div class="row" v-if="gifts">
 												<div class="RadioStyle">
 												    <div class="Block PaddingL">
 													    <template v-for="(item, index) in gifts">
