@@ -58,10 +58,12 @@ public class MessageController {
 	@RequestMapping(path="/user/addMessage/", method=RequestMethod.POST)
 	@ResponseBody
 	public String addMessage(@RequestParam("toUserID") Integer toUserID, @RequestParam("content") String content, @RequestParam("image") MultipartFile image) {
-		
+		try {
 			Map<String, Object> map = messageService.addMessage(content, toUserID, image);
 			return PalUtils.toJSONString(200, map);
-		
+		} catch (Exception e) {
+			return PalUtils.toJSONString(500, "获取推送用户失败");
+		}
 	}
 	
 	//获取未读的消息量
