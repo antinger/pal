@@ -983,13 +983,13 @@
 			},
 			mounted() {
 				this.createLinkTimer()
+				this.setWidth()
 			},
 			beforeMount() {
 				this.getLinkman()
 			},
 			beforeDestroy() {
 				this.checkTicket()
-				this.setWidth()
 			}
 		})
 	</script>
