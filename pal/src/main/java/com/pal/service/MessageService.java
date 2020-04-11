@@ -196,8 +196,9 @@ public class MessageService {
 		public int compare(Message o1, Message o2) {
 			if(o1.getCreateDate().getTime() < o2.getCreateDate().getTime()) {
 				return -1;
+			} else {
+				return 1;
 			}
-			return 0;
 		}
 	}
 	
