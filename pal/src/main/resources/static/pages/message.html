@@ -152,11 +152,11 @@
 												<template v-for="(item, index) in message">
 													<div class="main-message-box ta-right" v-if="item.view.flag == true">
 														<div class="message-dt" style="float: right !important;">
-															<div class="message-inner-dt">
+															<div class="message-inner-dt" v-if="item.view.message.content">
 																<p>{{item.view.message.content}}</p>
 															</div>
 															<div class="message-inner-dt img-bx" v-if="item.view.message.image">
-																<img :src="item.view.message.image" alt="">
+																<img :src="item.view.message.image" alt="" style="width: 150px;height: 150px;">
 															</div>
 															<span>{{item.view.createDate}}</span>
 														</div>
@@ -165,14 +165,14 @@
 																<img :src="headLink" alt="" class="mCS_img_loaded">
 															</template>
 															<template v-else>
-																<img :src="item.view.user.headLink" class="mCS_img_loaded">
+																<img :src="item.view.user.headLink" class="mCS_img_loaded" style="width: 150px;height: 150px;">
 															</template>
 														</div>
 													</div>
 													
 													<div class="main-message-box st3" v-else>
 														<div class="message-dt st3">
-															<div class="message-inner-dt">
+															<div class="message-inner-dt" v-if="item.view.message.content">
 																<p>{{item.view.message.content}}</p>
 															</div>
 															<div class="message-inner-dt img-bx" v-if="item.view.message.image">
