@@ -124,7 +124,7 @@
 													</div>
 													<div class="row usr-mg-info" style="align-items: center;">
 														<h3>{{item.view.user.username}}</h3>
-														<h3 style="border-radius: 6px;text-align: center;background: #00B540;width: 12px;height: 12px;display: block;" v-if="item.view.user.onLineStatus == 0"></h3>
+														<h3 style="border-radius: 6px;text-align: center;background: #00B540;width: 12px;height: 12px;display: block;margin-left: 3px;" v-if="item.view.user.onLineStatus == 0"></h3>
 													</div><!--usr-mg-info end-->
 													<div style="align-items: center;">
 														<span class="icon iconfont icon-huangguan" style="color: #F7D501;font-size: 24px;"
@@ -200,7 +200,7 @@
 									<div class="message-send-area">
 										<form>
 											<div class="mf-field">
-												<input type="text" name="message" maxlength="35" v-model="content" placeholder="Type a message here">
+												<input type="text" name="message" maxlength="30" v-model="content" placeholder="Type a message here">
 												<a @click="sendMessage" class="btn btn-danger"  style="margin-left: 15px;">Send</a>
 											</div>
 										</form>
