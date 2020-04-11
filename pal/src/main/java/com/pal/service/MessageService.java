@@ -105,6 +105,7 @@ public class MessageService {
 	
 	private void dealData(List<Message> messages, List<ViewObject> data, User threadUser) {
 		for (Message message : messages) {
+			System.out.println("消息时间" + message.getCreateDate().getTime());
 			ViewObject view = new ViewObject();
 			if(message.getUserID() == threadUser.getId()) {
 				view.setView("flag", true);
