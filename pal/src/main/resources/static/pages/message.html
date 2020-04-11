@@ -178,13 +178,13 @@
 											</div>
 											<div class="usr-mg-info">
 												<h3>{{linkMan[indexTemp].view.user.username}}</h3>
-												<h3 style="border-radius: 6px;text-align: center;background: #00B540;width: 12px;height: 12px;display: block;margin-left: 3px;" v-if="item.view.user.onLineStatus == 0"></h3>
+												<h3 style="border-radius: 6px;text-align: center;background: #00B540;width: 12px;height: 12px;display: block;margin-left: 3px;" v-if="linkMan[indexTemp].view.user.onLineStatus == 0"></h3>
 												<p>
 													<span class="icon iconfont icon-huangguan" style="color: #F7D501;font-size: 24px;"
-														v-if="item.view.member == 1">
+														v-if="linkMan[indexTemp].view.member == 1">
 													</span>
 													<span class="icon iconfont icon-zuanshi" style="color: #1e6f35;font-size: 24px;" 
-														v-if="item.view.member == 2">
+														v-if="linkMan[indexTemp].view.member == 2">
 													</span>
 												</p>
 											</div><!--usr-mg-info end-->
