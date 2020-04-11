@@ -44,7 +44,7 @@
 				z-index: 1;
 			}
 			.help{
-				position: absolute; right: 90px; top: 50px; width: 150px; background: rgb(83, 214, 144); padding: 5px 10px; display: none;
+				position: absolute; right: 90px; top: 50px; width: 200px; background: rgb(83, 214, 144); padding: 5px 10px; display: none;
 			}
 			.service:hover .help{
 				display: block;
@@ -999,7 +999,7 @@
 			<div class="service" style="position: fixed;right: 50px;bottom: 100px;">
 				<img src="images/service.png" @click="toMessageView('kefu',19)" style="position: relative;"/>
 				<div  class="help">
-					Can I HELP YOU ?
+					{{helpText}}
 				</div>
 			</div>
 			
@@ -1141,6 +1141,7 @@
 				leftLabel:["升级", "充值", "金币", "生日", "教育", "身高", "体重", "工作", "国家", "地区"],
 				rightLabel:["推荐", "动态", "关注", "粉丝", "游客", "礼品"],
 				formLabel:["选择图片", "发布"],
+				helpText:"嗨，我可以为你提供帮助吗？",
 				payTop:["升级", "账户充值"],
 				upgradeLabel:["为自己升级", "为别人升级"],
 				rechargeLabel:["为自己充值", "为别人充值"],
@@ -1538,6 +1539,7 @@
 						this.rightLabel = ["推荐", "动态", "关注", "粉丝", "游客", "礼品"]
 						this.formLabel = ["选择图片", "发布"]
 						this.payTop = ["升级", "账户充值"],
+						this.helpText = "嗨，我可以为你提供帮助吗？"
 						this.upgradeLabel = ["为自己升级", "为别人升级"],
 						this.rechargeLabel = ["为自己充值", "为别人充值"],
 						this.searchLabel = "搜索",
@@ -1549,6 +1551,7 @@
 						this.leftLabel = ["升级", "充值", "金幣", "生日", "教育", "身高", "體重", "工作", "國家", "地區"]
 						this.rightLabel = ["推薦", "動態", "關註", "粉絲", "遊客", "禮品"]
 						this.formLabel = ["選擇圖片", "發布"]
+						this.helpText = "嗨，我可以為妳提供幫助嗎？"
 						this.payTop = ["升级", "賬戶充值"],
 						this.upgradeLabel = ["為自己升級", "為別人升級"],
 						this.rechargeLabel = ["為自己充值", "為別人充值"],
@@ -1561,6 +1564,7 @@
 						this.leftLabel = ["upgrade", "top up", "gold", "birth", "education", "height", "weight", "job", "country", "city"]
 						this.rightLabel = ["recommend", "dynamic state", "attention", "fans", "visitor", "gift"]
 						this.formLabel = ["select image", "publish"]
+						this.helpText = "Hi, can I help you"
 						this.payTop = ["upgrade", "account recharge"],
 						this.upgradeLabel = ["Upgrade yourself", "Upgrade for someone else"],
 						this.rechargeLabel = ["Top up for yourself", "Top up for someone else"],
@@ -1573,6 +1577,7 @@
 						this.leftLabel = ["승급하다", "충전시키다", "잔액", "생일", "교육", "신장", "체중", "직업", "국가", "지역"]
 						this.rightLabel = ["천거하다", "동태", "관심", "당면", "여행객", "선물."]
 						this.formLabel = ["그림 선택", "발포하다"]
+						this.helpText = "이봐요, 내가 당신에게 도움을 줄 수 있나요?"
 						this.payTop = ["승급하다", "계정 충전"],
 						this.upgradeLabel = ["한 단계 업그레이드", "다른 사람을 업그레이드시키다"],
 						this.rechargeLabel = ["자신을 위해 충당하다.", "다른 사람을 위해 충당하다"],
@@ -1585,6 +1590,7 @@
 						this.leftLabel = ["進級する", "[リチャージ", "やまぶき", "生まれた日", "きょういく", "身長", "たいじゅう", "こうさく", "こっか", "ちく"]
 						this.rightLabel = ["せわ", "うごき", "配慮する", "材料はリョクトウ", "遊覧客", "贈り物"]
 						this.formLabel = ["画像を選択する", "敷いた"]
+						this.helpText = "こんにちは、私はあなたのために助けを提供することができますか"
 						this.payTop = ["進級する", "アカウントチャージ"],
 						this.upgradeLabel = ["自分をアップグレードする", "人のためになる"],
 						this.rechargeLabel = ["自分にチャージする", "他人にチャージする"],
@@ -1597,6 +1603,7 @@
 						this.leftLabel = ["อัพ เกรด", "ชาร์จ", "ทอง", "วัน", "ศึกษา", "สูง", "น้ำหนัก", "งาน", "ประเทศ", "ตั้ง"]
 						this.rightLabel = ["แนะ นำ", "แบบ ไดนามิก", "กังวล", "แฟนๆ", "นัก ท่อง เที่ยว", "ขวัญ"]
 						this.formLabel = ["เลือกรูปภาพ", "วาง จำหน่าย"]
+						this.helpText = "เฮ้, ให้ช่วยอะไรมั้ย"
 						this.payTop = ["อัพ เกรด", "บัญชีเติมเงิน"],
 						this.upgradeLabel = ["อัพเกรดด้วยตัวคุณเอง", "อัพเกรดสําหรับผู้อื่น"],
 						this.rechargeLabel = ["เติมเงินด้วยตัวคุณเอง", "เติมเงินให้คนอื่น"],
