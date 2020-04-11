@@ -564,19 +564,7 @@
 											
 											<!-- 信息栏---------------------end -->
 										</div><!--user_profile end-->
-										<div class="company_profile_info">
-											<div class="company-up-info">
-												<img :src="headLink" alt="" >
-												<h3>客服</h3>
-												<ul>
-													<li>
-														<a title="" class="message-us" 
-														@click="toMessageView('kefu',19)">
-														<i class="fa fa-envelope"></i></a>
-													</li>
-												</ul>
-											</div>
-										</div>
+										
 									</div><!--main-left-sidebar end-->
 								</div>
 								<!-- 左侧栏------------------------end -->
@@ -1004,7 +992,7 @@
 			<!-- 发送消息--end -->
 			
 			<div class="service" style="position: fixed;right: 50px;bottom: 100px;">
-				<img src="images/service.png" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?"/>
+				<img src="images/service.png" data-toggle="popover" title="Can I HELP YOU" @click="toMessageView('kefu',19)"/>
 			</div>
 			
 		</div>
