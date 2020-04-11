@@ -166,7 +166,7 @@
 							</div>
 							<div class="col-lg-8 col-md-12 pd-right-none pd-left-none">
 								<div class="main-conversation-box">
-									<div class="message-bar-head">
+									<div class="message-bar-head" v-if="indexTemp != -1">
 										<div class="usr-msg-details">
 											<div class="usr-ms-img">
 												<template v-if="linkMan[indexTemp].view.user.headStatus == 1">
