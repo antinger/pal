@@ -311,11 +311,10 @@
 															<div class="file-container" 
 																style="display:inline-block;position:relative;
 																overflow: hidden;vertical-align:middle">
-															        <button class="btn btn-success fileinput-button" type="button">
-																		{{formLabel[0]}}
-																	</button>
-															        <input type="file" id="jobData" v-on:change="onChange($event)"
-																		style="position:absolute;top:0;left:0;font-size:34px; opacity:0">
+																<label>
+																	<span class="fa fa-camera"></span>
+																	<input  type="file" style="display: none;" v-on:change="onChange($event)"/>
+																</label>
 															</div>
 															<div class="col-2">
 																<a class="btn btn-primary" @click="addDynamic">{{formLabel[1]}}</a>
