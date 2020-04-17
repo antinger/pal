@@ -146,9 +146,9 @@
 														<h3>{{item.view.user.username}}</h3>
 														<h3 style="border-radius: 6px;text-align: center;background: #00B540;width: 12px;height: 12px;display: block;margin-left: 3px;" v-if="item.view.user.onLineStatus == 0"></h3>
 													</div><!--usr-mg-info end-->
-													<div style="align-items: center;margin-left: 5px;">
-														<img src="images/huangguan.png" style="width: 16px;height: 16px;"  v-if="item.view.member == 1"/>
-														<img src="images/zuanshi.png" style="width: 16px;height: 16px;"  v-if="item.view.member == 2"/>
+													<div style="align-items: center;">
+														<img src="images/huangguan.png" style="width: 16px;height: 16px;margin-left: 5px;"  v-if="item.view.member == 1"/>
+														<img src="images/zuanshi.png" style="width: 16px;height: 16px;margin-left: 5px;"  v-if="item.view.member == 2"/>
 													</div>
 													<template v-if="item.view.count > 0">
 														<span class="msg-notifc">{{item.view.count}}</span>
@@ -178,11 +178,10 @@
 														{{linkMan[indexTemp].view.user.username}}
 													</h3>
 													<h3 style="border-radius: 6px;text-align: center;background: #00B540;width: 12px;height: 12px;display: block;margin-left: 3px;" v-if="linkMan[indexTemp].view.user.onLineStatus == 0"></h3>
-												</div>
-												<p>
 													<img src="images/huangguan.png" style="width: 16px;height: 16px;"  v-if="linkMan[indexTemp].view.member == 1"/>
 													<img src="images/zuanshi.png" style="width: 16px;height: 16px;"  v-if="linkMan[indexTemp].view.member == 2"/>
-												</p>
+												</div>
+												
 											</div><!--usr-mg-info end-->
 										</div>
 										<a href="#" title=""><i class="fa fa-ellipsis-v"></i></a>
