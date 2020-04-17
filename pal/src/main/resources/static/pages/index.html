@@ -275,8 +275,10 @@
 																<h4 style="color: #E44D3A;align-items: center;font-size: 24px;">
 																	{{item.view.sex}}
 																</h4>
-																<img src="images/huangguan.png" style="width: 16px;height: 16px;"  v-if="item.view.member == 1"/>
-																<img src="images/zuanshi.png" style="width: 16px;height: 16px;"  v-if="item.view.member == 2"/>
+																<div>
+																	<img src="images/huangguan.png" style="width: 25px; height: 25px;"  v-if="item.view.member == 1"/>
+																	<img src="images/zuanshi.png" style="width: 25px; height: 25px;"  v-if="item.view.member == 2"/>
+																</div>
 															</div>
 															
 															<h4>{{item.view.birthday}}</h4>
