@@ -430,8 +430,7 @@
 															</template>
 															<h3>{{item.view.user.username}}</h3>
 															<h4>{{item.view.sex}}
-															<img src="images/huangguan.png" style="width: 16px;height: 16px;"  v-if="item.view.member == 1"/>
-															<img src="images/zuanshi.png" style="width: 16px;height: 16px;"  v-if="item.view.member == 2"/>
+															
 															</h4>
 															<h4>{{item.view.birthday}}</h4>
 															<ul>
@@ -567,8 +566,8 @@
 														<div v-if="member">
 															<button class="btn" style="background-color:#53d690;color:#ffffff;">
 																<template v-if="member">
-																	<img src="images/huangguan.png" style="width: 16px;height: 16px;"  v-if="item.view.member == 1"/>
-																	<img src="images/zuanshi.png" style="width: 16px;height: 16px;"  v-if="item.view.member == 2"/>
+																	<img src="images/huangguan.png" style="width: 16px;height: 16px;"  v-if="member == 1"/>
+																	<img src="images/zuanshi.png" style="width: 16px;height: 16px;"  v-if="member == 2"/>
 																</template>
 															</button>
 														</div>
