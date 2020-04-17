@@ -273,12 +273,8 @@
 															</div>
 															<h4 style="color: #E44D3A;align-items: center;font-size: 24px;">
 																{{item.view.sex}}
-																<span class="icon iconfont icon-huangguan" style="color: #F7D501;font-size: 24px;" 
-																	v-if="item.view.member == 1">
-																</span>
-																<span class="icon iconfont icon-zuanshi" style="color: #1e6f35;font-size: 24px;" 
-																	v-if="item.view.member == 2">
-																</span>
+																<img src="images/huangguan.png" style="width: 16px;height: 16px;"  v-if="item.view.member == 1"/>
+																<img src="images/zuanshi.png" style="width: 16px;height: 16px;"  v-if="item.view.member == 2"/>
 															</h4>
 															
 															<h4>{{item.view.birthday}}</h4>
@@ -376,7 +372,10 @@
 																<img :src="item.view.user.headLink" width="90px" height="90px" alt="" @click="toUserView(item.view.user.id)">
 															</template>
 															<h3>{{item.view.user.username}}</h3>
-															<h4>{{item.view.sex}}</h4>
+															<h4>{{item.view.sex}}
+															<img src="images/huangguan.png" style="width: 16px;height: 16px;"  v-if="item.view.member == 1"/>
+															<img src="images/zuanshi.png" style="width: 16px;height: 16px;"  v-if="item.view.member == 2"/>
+															</h4>
 															<h4>{{item.view.birthday}}</h4>
 															<ul>
 																<li><a title="" class="message-us"  @click="toMessageView(item.view.user.username, item.view.user.id)"><i class="fa fa-envelope"></i></a></li>
@@ -401,7 +400,10 @@
 																<img :src="item.view.user.headLink" width="90px" height="90px" alt="" @click="toUserView(item.view.user.id)">
 															</template>
 															<h3>{{item.view.user.username}}</h3>
-															<h4>{{item.view.sex}}</h4>
+															<h4>{{item.view.sex}}
+															<img src="images/huangguan.png" style="width: 16px;height: 16px;"  v-if="item.view.member == 1"/>
+															<img src="images/zuanshi.png" style="width: 16px;height: 16px;"  v-if="item.view.member == 2"/>
+															</h4>
 															<h4>{{item.view.birthday}}</h4>
 															<ul>
 																<template v-if="item.view.follow == false">
@@ -429,7 +431,10 @@
 																<img :src="item.view.user.headLink" width="90px" height="90px" alt="" @click="toUserView(item.view.user.id)">
 															</template>
 															<h3>{{item.view.user.username}}</h3>
-															<h4>{{item.view.sex}}</h4>
+															<h4>{{item.view.sex}}
+															<img src="images/huangguan.png" style="width: 16px;height: 16px;"  v-if="item.view.member == 1"/>
+															<img src="images/zuanshi.png" style="width: 16px;height: 16px;"  v-if="item.view.member == 2"/>
+															</h4>
 															<h4>{{item.view.birthday}}</h4>
 															<ul>
 																<template v-if="item.view.follow == false">
@@ -564,11 +569,8 @@
 														<div v-if="member">
 															<button class="btn" style="background-color:#53d690;color:#ffffff;">
 																<template v-if="member">
-																	<span class="icon iconfont icon-huangguan" 
-																		style="color: #F7D501;" v-if="member == 1">
-																	</span>
-																	<span class="icon iconfont icon-zuanshi" 
-																		style="color: #1e6f35;" v-if="member == 2"></span>
+																	<img src="images/huangguan.png" style="width: 16px;height: 16px;"  v-if="item.view.member == 1"/>
+																	<img src="images/zuanshi.png" style="width: 16px;height: 16px;"  v-if="item.view.member == 2"/>
 																</template>
 															</button>
 														</div>
