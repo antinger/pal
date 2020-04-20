@@ -516,7 +516,7 @@
 						</div>
 						<form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" target="_blank" id="sform-1">
 							<input type="hidden" name="cmd" value="_xclick">	<!-- 立即支付 -->
-							<input type="hidden" name="business" value="sb-cmysd740119@business.example.com">  <!-- 商家账号-->
+							<input type="hidden" name="business" id="business">  <!-- 商家账号-->
 							<input id='item_number' type="hidden" name="item_number" value="产品编号"> <!-- 产品编号-->
 							<input id='amount' type="hidden" name="amount" >  <!-- 付款/充值金额  -->
 							<input type="hidden" name="currency_code" value="USD">	<!-- 货币 -->
@@ -629,7 +629,7 @@
 						<div class="row" style="margin-top: 10px;">
 							<form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" target="_blank" id="sform-2">
 								<input type="hidden" name="cmd" value="_xclick">	<!-- 立即支付 -->
-								<input type="hidden" name="business" value="sb-cmysd740119@business.example.com">  <!-- 商家账号-->
+								<input type="hidden" name="business" id="business2">  <!-- 商家账号-->
 								<input id='item_number' type="hidden" name="item_number" value="产品编号"> <!-- 产品编号-->
 								<input id='amount2' type="hidden" name="amount">  <!-- 付款/充值金额  -->
 								<!-- 支付成功后paypal后台发送回调地址-->
@@ -708,6 +708,7 @@
 				
 				/* 令牌-------------start  */
 				ticket:"",
+				account:"",
 				/* 令牌-------------end  */
 				
 				payTop:["升级", "账户充值"],
@@ -748,6 +749,15 @@
 				/* 支付----------------end */
 			},
 			methods:{
+				getAccount() {
+					this.$http.get('/user/getAccount/',
+					{params : {time:new Date().getTime()}}, {header:{cookie:this.ticket}})
+					.then(function(res) {
+						this.account = res.body.account
+					},function() {
+						console.log('请求失败处理');
+					});
+				},
 				toView(payType) {
 					this.payType = payType
 					$('.bgPop,.pop').show();
@@ -793,6 +803,7 @@
 						console.log("输出" + this.upgradeCustom)
 						document.getElementById("custom").value=this.upgradeCustom
 						document.getElementById("amount").value=this.crown
+						document.getElementById("business").value = this.account
 						document.getElementById("sform-1").submit()
 					} else if(this.shoptype == 2){
 						//余额
@@ -825,6 +836,7 @@
 					}
 					document.getElementById("custom2").value=this.rechargeCustom
 					document.getElementById("amount2").value=this.money
+					document.getElementById("business2").value = this.account
 					document.getElementById("sform-2").submit()
 				},
 				checkTicket() {
@@ -1026,6 +1038,7 @@
 			},
 			beforeMount() {
 				this.checkTicket()
+				this.getAccount()
 			}
 		})
 	</script>
