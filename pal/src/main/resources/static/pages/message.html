@@ -33,6 +33,17 @@
 				width: 100%;
 				overflow-y: scroll !important;
 			}
+			.face{
+				width: 560px;padding: 10px;background: #51a5fb;display: none;
+				position:absolute;
+				bottom:40px;
+				z-index: 9999;
+			}
+			.face>img {
+				border: 1px solid #EEEEEE;
+				padding: 3px;
+				background: #FFFFFF;
+			}
 		</style>
 	</head>
 
@@ -252,6 +263,7 @@
 												<a @click="sendMessage" class="btn btn-danger"  style="margin-left: 15px;">Send</a>
 											</div>
 											<ul>
+												<li><a class="emjoi" @click="showEmoji" title=""><i class="fa fa-smile-o"></i></a></li>
 												<li>
 													<label>
 														<span class="fa fa-camera"></span>
@@ -259,6 +271,80 @@
 													</label>
 												</li>
 											</ul>
+											<div class="face">
+												<img v-on:click="getContent($event)" src="face/weixiao.gif">
+												<img v-on:click="getContent($event)" src="face/xixi.gif">
+												<img v-on:click="getContent($event)" src="face/haha.gif">
+												<img v-on:click="getContent($event)" src="face/keai.gif">
+												<img v-on:click="getContent($event)" src="face/kelian.gif">
+												<img v-on:click="getContent($event)" src="face/wabi.gif">
+												<img v-on:click="getContent($event)" src="face/chijing.gif">
+												<img v-on:click="getContent($event)" src="face/haixiu.gif">
+												<img v-on:click="getContent($event)" src="face/jiyan.gif">
+												<img v-on:click="getContent($event)" src="face/bizui.gif">
+												<img v-on:click="getContent($event)" src="face/bishi.gif">
+												<img v-on:click="getContent($event)" src="face/aini.gif">
+												<img v-on:click="getContent($event)" src="face/lei.gif">
+												<img v-on:click="getContent($event)" src="face/touxiao.gif">
+												<img v-on:click="getContent($event)" src="face/qinqin.gif">
+												<img v-on:click="getContent($event)" src="face/shengbing.gif">
+												<img v-on:click="getContent($event)" src="face/taikaixin.gif">
+												<img v-on:click="getContent($event)" src="face/baiyan.gif">
+												<img v-on:click="getContent($event)" src="face/youhengheng.gif">
+												<img v-on:click="getContent($event)" src="face/zuohengheng.gif">
+												<img v-on:click="getContent($event)" src="face/xu.gif">
+												<img v-on:click="getContent($event)" src="face/shuai.gif">
+												<img v-on:click="getContent($event)" src="face/tu.gif">
+												<img v-on:click="getContent($event)" src="face/haqian.gif">
+												<img v-on:click="getContent($event)" src="face/baobao.gif">
+												<img v-on:click="getContent($event)" src="face/nu.gif">
+												<img v-on:click="getContent($event)" src="face/yiwen.gif">
+												<img v-on:click="getContent($event)" src="face/chanzui.gif">
+												<img v-on:click="getContent($event)" src="face/baibai.gif">
+												<img v-on:click="getContent($event)" src="face/sikao.gif">
+												<img v-on:click="getContent($event)" src="face/han.gif">
+												<img v-on:click="getContent($event)" src="face/kun.gif">
+												<img v-on:click="getContent($event)" src="face/shui.gif">
+												<img v-on:click="getContent($event)" src="face/qian.gif">
+												<img v-on:click="getContent($event)" src="face/shiwang.gif">
+												<img v-on:click="getContent($event)" src="face/ku.gif">
+												<img v-on:click="getContent($event)" src="face/se.gif">
+												<img v-on:click="getContent($event)" src="face/heng.gif">
+												<img v-on:click="getContent($event)" src="face/guzhang.gif">
+												<img v-on:click="getContent($event)" src="face/yun.gif">
+												<img v-on:click="getContent($event)" src="face/beishang.gif">
+												<img v-on:click="getContent($event)" src="face/zhuakuang.gif">
+												<img v-on:click="getContent($event)" src="face/heixian.gif">
+												<img v-on:click="getContent($event)" src="face/yinxian.gif">
+												<img v-on:click="getContent($event)" src="face/numa.gif">
+												<img v-on:click="getContent($event)" src="face/hufen.gif">
+												<img v-on:click="getContent($event)" src="face/shudaizi.gif">
+												<img v-on:click="getContent($event)" src="face/fennu.gif">
+												<img v-on:click="getContent($event)" src="face/ganmao.gif">
+												<img v-on:click="getContent($event)" src="face/xin.gif">
+												<img v-on:click="getContent($event)" src="face/shangxin.gif">
+												<img v-on:click="getContent($event)" src="face/zhu.gif">
+												<img v-on:click="getContent($event)" src="face/xiongmao.gif">
+												<img v-on:click="getContent($event)" src="face/tuzi.gif">
+												<img v-on:click="getContent($event)" src="face/ok.gif">
+												<img v-on:click="getContent($event)" src="face/ye.gif">
+												<img v-on:click="getContent($event)" src="face/good.gif">
+												<img v-on:click="getContent($event)" src="face/no.gif">
+												<img v-on:click="getContent($event)" src="face/zan.gif">
+												<img v-on:click="getContent($event)" src="face/lai.gif">
+												<img v-on:click="getContent($event)" src="face/ruo.gif">
+												<img v-on:click="getContent($event)" src="face/caonima.gif">
+												<img v-on:click="getContent($event)" src="face/shenma.gif">
+												<img v-on:click="getContent($event)" src="face/jiong.gif">
+												<img v-on:click="getContent($event)" src="face/fuyun.gif">
+												<img v-on:click="getContent($event)" src="face/geili.gif">
+												<img v-on:click="getContent($event)" src="face/weiguan.gif">
+												<img v-on:click="getContent($event)" src="face/weiwu.gif">
+												<img v-on:click="getContent($event)" src="face/huatong.gif">
+												<img v-on:click="getContent($event)" src="face/lazhu.gif">
+												<img v-on:click="getContent($event)" src="face/dangao.gif">
+												<img v-on:click="getContent($event)" src="face/fahongbao.gif">
+											</div>
 										</form>
 									</div><!--message-send-area end-->
 								</div><!--main-conversation-box end-->
@@ -678,6 +764,15 @@
 	<script src="js/vue-resource-1.3.4.js"></script>
 	<script src="js/browser.min.js"></script>
 	<script src="js/polyfill.min.js" type="text/javascript" charset="utf-8"></script>
+	<script>
+		$(document).click(function(event){
+			var _con = $('.emjoi');   // 设置目标区域
+			var _face = $(".face")
+			if(!_con.is(event.target) && _con.has(event.target).length === 0 && !_face.is(event.target) && _face.has(event.target).length === 0){ // Mark 1
+				$('.face').hide();          //淡出消失
+			}
+		});
+	</script>
 	<script type="text/babel">
 		var vm = new Vue({
 			el : '#app',
@@ -693,6 +788,7 @@
 				//发送消息
 				content:"",
 				image:"",
+				takeUrl:"",
 				
 				/* 支付----------------start */
 				//升级还是充值
@@ -734,6 +830,22 @@
 				btnLabel:["用户名", "立即支付", "自由输入"]
 			},
 			methods:{
+				getContent:function(e) {
+					
+					var selectedBedDom = e.srcElement
+					var url = selectedBedDom.src;
+					var start = url.lastIndexOf('/') + 1
+					var end = url.lastIndexOf('.')
+					var title = '['+ url.substring(start, end) + ']'
+					this.content = this.content + title
+					
+					var face = "<img src='" + url + "'>,"
+					this.takeUrl = this.takeUrl + face
+					
+				},
+				showEmoji(){
+					$(".face").show()
+				},
 				onChange(event) {
 				      this.image= event.target.files[0]
 				      console.log(this.image);
@@ -876,6 +988,22 @@
 				},
 				//添加消息
 				sendMessage(){
+					
+					if(this.content.indexOf("[") != -1 && this.content.indexOf("]") != -1){
+						var temp = this.content
+						var urls = this.takeUrl.split(",")
+						for (let i = 0; i < urls.length - 1; i++) {
+							var start = temp.indexOf("[")
+							var end = temp.indexOf("]")
+							if(start == 0){
+								temp = urls[i] + temp.substring(end + 1)
+							} else {
+								temp = temp.substring(0, start) + urls[i] + temp.substring(end + 1)
+							}
+						}
+					}
+					console.log(temp)
+					
 					if(this.userID == 0) {
 						return ;
 					}
@@ -883,7 +1011,7 @@
 						return
 					}
 					var formData = new FormData();
-					formData.append('content', this.content);
+					formData.append('content', this.temp);
 					formData.append('toUserID', this.userID);
 					if(this.image == "") {
 						this.$http.post('/user/addMessage/', formData).
