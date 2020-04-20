@@ -204,7 +204,7 @@
 													<div class="main-message-box ta-right" v-if="item.view.flag == true">
 														<div class="message-dt" style="float: right !important;">
 															<div class="message-inner-dt" v-if="item.view.message.image == ''">
-																<p>{{item.view.message.content}}</p>
+																<p v-html="item.view.message.content"></p>
 															</div>
 															<div class="message-inner-dt img-bx" v-if="item.view.message.image">
 																<p v-if="item.view.message.content">{{item.view.message.content}}</p>
@@ -225,7 +225,7 @@
 													<div class="main-message-box st3" v-else>
 														<div class="message-dt st3">
 															<div class="message-inner-dt" v-if="item.view.message.image == ''">
-																<p>{{item.view.message.content}}</p>
+																<p v-html="item.view.message.content"></p>
 															</div>
 															<div class="message-inner-dt img-bx" v-if="item.view.message.image">
 																<p v-if="item.view.message.content">{{item.view.message.content}}</p>
