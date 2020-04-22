@@ -257,7 +257,6 @@ public class UserService {
 		if(followUser != null) {
 			view.setView("follow", true);
 		}
-		data.add(view);
 	}
 	
 	//处理用户头像
