@@ -1014,8 +1014,8 @@
 			</div>
 			<!-- 发送消息--end -->
 			
-			<div class="service" style="position: fixed;right: 50px;bottom: 100px;">
-				<img src="images/service.png" @click="toMessageView('kefu',19)" style="position: relative;"/>
+			<div class="service" style="position: fixed;right: 50px;bottom: 100px;" v-if="services">
+				<img src="images/service.png" @click="toMessageView(services.view.user.username,services.view.user.id)" style="position: relative;"/>
 				<div  class="help">
 					{{helpText}}
 				</div>
@@ -1052,6 +1052,9 @@
 		var vm = new Vue({
 			el : '#app',
 			data:{
+				//客服
+				services:"",
+				
 				/* 令牌-------------start  */
 				ticket:"",
 				account:"",
@@ -1237,6 +1240,9 @@
 						if(res.body.member) {
 							this.toView(1)
 							return ;
+						}
+						if(this.laterUser.page == 1){
+							this.services = res.body.data[0]
 						}
 						this.laterUser.pageCount = res.body.pageCount
 						this.laterUser.data = res.body.data
