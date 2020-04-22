@@ -220,32 +220,44 @@ public class UserService {
 		User threadUser = getThreadUser();
 		Integer sex = threadUser.getSex();
 		Integer target = sex == 0 ? 1 : 0;
-		List<User> users = userDao.getLaterUser(0, target, start, limit);
+		List<User> users = new ArrayList<>();
+		if(page == 1) {
+			User user = userDao.selectUserByUsername("service");
+			if(user != null) {
+				users.add(user);
+			}
+		}
+		users.addAll(userDao.getLaterUser(0, target, start, limit));
 		List<ViewObject> data = new ArrayList<ViewObject>();
 		Integer count = userDao.getLaterUserCount(0, sex);
 		int pageCount = (count - 1) / limit + 1;
 		for (User user : users) {
-			if(user.getUsername().equals(threadUser.getUsername())) {
-				continue ;
-			}
-			dealUserHeadLink(user);
 			ViewObject view = new ViewObject();
-			view.setView("user", user);
-			UserInfo userInfo = userInfoDao.selectByUsername(user.getUsername());
-			view.setView("info", userInfo);
-			view.setView("sex", user.getSex() == 0 ? "男" : "女");
-			view.setView("birthday", PalUtils.formatBirth(userInfo.getBirthday()));
-			view.setView("follow", false);
-			dealMember(view, user.getUsername());
-			FollowUser followUser = followUserDao.getFollowUserByUserID(threadUser.getId(), user.getId());
-			if(followUser != null) {
-				view.setView("follow", true);
-			}
+			dealUser(user, threadUser, view);
 			data.add(view);
 		}
 		map.put("data", data);
 		map.put("pageCount", pageCount);
 		return map;
+	}
+	
+	private void dealUser(User user, User threadUser, ViewObject view) {
+		if(user.getUsername().equals(threadUser.getUsername())) {
+			return ;
+		}
+		dealUserHeadLink(user);
+		view.setView("user", user);
+		UserInfo userInfo = userInfoDao.selectByUsername(user.getUsername());
+		view.setView("info", userInfo);
+		view.setView("sex", user.getSex() == 0 ? "男" : "女");
+		view.setView("birthday", PalUtils.formatBirth(userInfo.getBirthday()));
+		view.setView("follow", false);
+		dealMember(view, user.getUsername());
+		FollowUser followUser = followUserDao.getFollowUserByUserID(threadUser.getId(), user.getId());
+		if(followUser != null) {
+			view.setView("follow", true);
+		}
+		data.add(view);
 	}
 	
 	//处理用户头像
