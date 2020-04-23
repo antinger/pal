@@ -121,6 +121,7 @@
 									<a href="message.html" title="" class="not-box-open" >
 										<span style="margin-bottom: 3px;"><img src="images/icon6.png" alt=""></span>
 										{{topLabel[1]}}
+										<i class="badge badge-success" v-if="messageCount > 0">{{messageCount}}</i>
 									</a>
 								</li>
 								<li>
@@ -1052,6 +1053,8 @@
 		var vm = new Vue({
 			el : '#app',
 			data:{
+				messageCount:0,
+				messageCountTimer:"",
 				//客服
 				services:"",
 				
@@ -1561,12 +1564,24 @@
 				},
 				line(){
 					this.$http.get('/user/updateOnLineStatus/',
-						{params : {time:new Date().getTime(), onLineStatus:this.onLineStatus}})
+						{params : {time:new Date().getTime(), onLineStatus:this.onLineStatus}},{header : {cookie:this.ticket}})
 					.then(function(res) {
 						
 					},function() {
 						console.log('请求失败处理');
 					});
+				},
+				getMessageNumByStatus(){
+					this.$http.get('/user/getMessageNumByStatus/',
+						{params : {time:new Date().getTime()}},{header : {cookie:this.ticket}})
+					.then(function(res) {
+						this.messageCount = res.body.count
+					},function() {
+						console.log('请求失败处理');
+					});
+				},
+				createMessageTimer(){
+					this.messageCountTimer = setInterval(this.getMessageNumByStatus, 2000)
 				},
 				change() {
 					if(this.languageID == 1) {
@@ -1657,6 +1672,7 @@
 			beforeMount() {
 				this.checkTicket()
 				this.getAccount()
+				this.createMessageTimer()
 			}
 		})
 	</script>
