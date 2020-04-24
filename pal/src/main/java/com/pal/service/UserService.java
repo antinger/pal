@@ -222,7 +222,7 @@ public class UserService {
 		Integer target = sex == 0 ? 1 : 0;
 		List<User> users = new ArrayList<>();
 		if(page == 1) {
-			User user = userDao.selectUserByUsername("service");
+			User user = userDao.selectUserByUsername("Service");
 			if(user != null) {
 				users.add(user);
 			}
