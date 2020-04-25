@@ -26,8 +26,8 @@ public interface MessageDao {
     void addMessage(Message message);
     
     //获取未读的消息量
-    @Select({"select count(*) from ", TABLE_NAME, " where userID=#{userID} and status=#{status}"})
-    int getNumByStatus(Integer userID, int status);
+    @Select({"select count(*) from ", TABLE_NAME, " where toUserID=#{toUserID} and status=#{status}"})
+    int getNumByStatus(Integer toUserID, int status);
     
     @Select({"select count(*) from ", TABLE_NAME, " where userID=#{userID}"})
     int getNumByUserID(Integer userID);
