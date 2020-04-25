@@ -982,6 +982,8 @@
 					.then(function(res){
 						this.toLoginView(res)
 						this.message = res.body.data
+						var div = document.getElementById('mCSB_1_scrollbar_vertical');
+						div.scrollTop = div.scrollHeight;
 					},function() {
 						console.log('请求失败处理');
 					});
@@ -995,7 +997,7 @@
 						for (let i = 0; i < message.length; i++) {
 							this.message.push(message[i])
 						}
-						var div = document.getElementById('mCSB_1_container');
+						var div = document.getElementById('mCSB_1_scrollbar_vertical');
 						div.scrollTop = div.scrollHeight;
 					},function() {
 						console.log('请求失败处理');
@@ -1042,7 +1044,7 @@
 							this.toLoginView(res)
 							this.content = ""
 							this.message.push(res.body.message)
-							var div = document.getElementById('mCSB_1_container');
+							var div = document.getElementById('mCSB_1_scrollbar_vertical');
 							div.scrollTop = div.scrollHeight;
 						}, function (res) {
 						  console.log(res.body);
@@ -1062,7 +1064,7 @@
 						this.toLoginView(res)
 						this.content = ""
 						this.message.push(res.body.message)
-						var div = document.getElementById('mCSB_1_container');
+						var div = document.getElementById('mCSB_1_scrollbar_vertical');
 						div.scrollTop = div.scrollHeight;
 					}, function (res) {
 					  console.log(res.body);
