@@ -1001,9 +1001,9 @@
 				},
 				//添加消息
 				sendMessage(){
-					
+					var temp = this.content
 					if(this.content.indexOf("[") != -1 && this.content.indexOf("]") != -1){
-						var temp = this.content
+						
 						var urls = this.takeUrl.split(",")
 						for (let i = 0; i < urls.length - 1; i++) {
 							var start = temp.indexOf("[")
