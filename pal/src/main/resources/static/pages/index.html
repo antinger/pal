@@ -172,7 +172,7 @@
 											
 											<!-- 上照片墙---start -->
 											<div class="top-profiles" >
-												<div class="profiles-slider" v-if="pushUser">
+												<!-- <div class="profiles-slider" v-if="pushUser">
 													<div class="user-profy" v-for="(item,index) in pushUser">
 														<template v-if="item.headStatus == 1">
 															<img :src="headLink" alt="" width="90px" height="90px" @click="toUserView(item.id)">
@@ -193,6 +193,15 @@
 															</li>
 														</ul>
 													</div>
+												</div> -->
+												<div style="display: flex;flex-flow: nowrap;overflow-x: scroll;">
+													<div  v-for="(item,index) in pushUser">
+														<template v-if="item.headStatus == 1">															<img :src="headLink" alt="" width="90px" height="90px" @click="toUserView(item.id)">														</template>
+														<template v-else>
+															<img :src="item.headLink" alt="" width="90px" height="90px" @click="toUserView(item.id)">
+														</template>
+													</div>
+													
 												</div>
 											</div>
 											
