@@ -195,7 +195,7 @@
 													</div>
 												</div> -->
 												<div style="display: flex;flex-flow: nowrap;overflow-x: scroll;">
-													<div  v-for="(item,index) in pushUser">
+													<div  v-for="(item,index) in pushUser" style="margin: 0 5px;">
 														<template v-if="item.headStatus == 1">															<img :src="headLink" alt="" width="90px" height="90px" @click="toUserView(item.id)">														</template>
 														<template v-else>
 															<img :src="item.headLink" alt="" width="90px" height="90px" @click="toUserView(item.id)">
