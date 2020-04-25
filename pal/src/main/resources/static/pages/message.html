@@ -982,8 +982,8 @@
 					.then(function(res){
 						this.toLoginView(res)
 						this.message = res.body.data
-						var div = document.getElementById('mCSB_1_scrollbar_vertical');
-						div.scrollTop = div.scrollHeight;
+						var div = document.getElementsByClassName("mCSB_draggerRail")
+						div[0].scrollTop = div[0].scrollHeight;
 					},function() {
 						console.log('请求失败处理');
 					});
