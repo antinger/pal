@@ -138,7 +138,7 @@
 										<h3>Messages</h3>
 									</div><!--msg-title end-->
 
-									<div class="messages-list" :style="{width:linkWidth + 'px'}">
+									<div :style="{width:linkWidth + 'px'}" class="messages-list">
 										<ul>
 											<li v-for="(item, index) in linkMan" @click="toDetailView(index)" :id="index" v-bind:class="{ active: (index == indexTemp) }">
 												<div class="usr-msg-details">
