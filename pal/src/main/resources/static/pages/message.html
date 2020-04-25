@@ -995,6 +995,8 @@
 						for (let i = 0; i < message.length; i++) {
 							this.message.push(message[i])
 						}
+						var div = document.getElementById('mCSB_1_container');
+						div.scrollTop = div.scrollHeight;
 					},function() {
 						console.log('请求失败处理');
 					});
@@ -1040,6 +1042,8 @@
 							this.toLoginView(res)
 							this.content = ""
 							this.message.push(res.body.message)
+							var div = document.getElementById('mCSB_1_container');
+							div.scrollTop = div.scrollHeight;
 						}, function (res) {
 						  console.log(res.body);
 						});
@@ -1058,6 +1062,8 @@
 						this.toLoginView(res)
 						this.content = ""
 						this.message.push(res.body.message)
+						var div = document.getElementById('mCSB_1_container');
+						div.scrollTop = div.scrollHeight;
 					}, function (res) {
 					  console.log(res.body);
 					});
