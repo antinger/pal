@@ -167,6 +167,7 @@ public class MessageService {
 			int count = messageDao.getNumByUserID(threadUser.getId());
 			if(count == 4) {
 				if(member == null) {
+					System.out.println("获取失败");
 					map.put("member", true);
 					return map;
 				} else {
