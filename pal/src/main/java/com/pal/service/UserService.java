@@ -232,6 +232,9 @@ public class UserService {
 		Integer count = userDao.getLaterUserCount(0, sex);
 		int pageCount = (count - 1) / limit + 1;
 		for (User user : users) {
+			if(user.getUsername().equals("Service")) {
+				continue ;
+			}
 			ViewObject view = new ViewObject();
 			dealUser(user, threadUser, view);
 			data.add(view);
