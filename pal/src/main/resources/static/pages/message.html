@@ -204,10 +204,10 @@
 													<div class="main-message-box ta-right" v-if="item.view.flag == true">
 														<div class="message-dt" style="float: right !important;">
 															<div class="message-inner-dt" v-if="item.view.message.image == ''">
-																<p v-html="item.view.message.content"></p>
+																<p v-html="item.view.message.content" style="word-break:break-all;"></p>
 															</div>
 															<div class="message-inner-dt img-bx" v-if="item.view.message.image">
-																<p v-if="item.view.message.content">{{item.view.message.content}}</p>
+																<p v-if="item.view.message.content" v-html="item.view.message.content" style="word-break:break-all;"></p>
 																<img :src="item.view.message.image" alt="" style="width: 150px;height: 150px;">
 															</div>
 															<span>{{item.view.createDate}}</span>
@@ -225,10 +225,10 @@
 													<div class="main-message-box st3" v-else>
 														<div class="message-dt st3">
 															<div class="message-inner-dt" v-if="item.view.message.image == ''">
-																<p v-html="item.view.message.content"></p>
+																<p v-html="item.view.message.content" style="word-break:break-all;"></p>
 															</div>
 															<div class="message-inner-dt img-bx" v-if="item.view.message.image">
-																<p v-if="item.view.message.content">{{item.view.message.content}}</p>
+																<p v-if="item.view.message.content" v-html="item.view.message.content" style="word-break:break-all;"></p>
 																<img :src="item.view.message.image" alt="" style="width: 150px;height: 150px;">
 															</div>
 															<span>{{item.view.createDate}}</span>
@@ -259,7 +259,7 @@
 									<div class="message-send-area">
 										<form>
 											<div class="mf-field">
-												<input type="text" name="message" maxlength="30" v-model="content" placeholder="Type a message here" autocomplete="off">
+												<input type="text" name="message"  v-model="content" placeholder="Type a message here" autocomplete="off">
 												<a @click="sendMessage" class="btn btn-danger"  style="margin-left: 15px;">Send</a>
 											</div>
 											<ul>
@@ -326,24 +326,6 @@
 												<img v-on:click="getContent($event)" src="face/zhu.gif">
 												<img v-on:click="getContent($event)" src="face/xiongmao.gif">
 												<img v-on:click="getContent($event)" src="face/tuzi.gif">
-												<img v-on:click="getContent($event)" src="face/ok.gif">
-												<img v-on:click="getContent($event)" src="face/ye.gif">
-												<img v-on:click="getContent($event)" src="face/good.gif">
-												<img v-on:click="getContent($event)" src="face/no.gif">
-												<img v-on:click="getContent($event)" src="face/zan.gif">
-												<img v-on:click="getContent($event)" src="face/lai.gif">
-												<img v-on:click="getContent($event)" src="face/ruo.gif">
-												<img v-on:click="getContent($event)" src="face/caonima.gif">
-												<img v-on:click="getContent($event)" src="face/shenma.gif">
-												<img v-on:click="getContent($event)" src="face/jiong.gif">
-												<img v-on:click="getContent($event)" src="face/fuyun.gif">
-												<img v-on:click="getContent($event)" src="face/geili.gif">
-												<img v-on:click="getContent($event)" src="face/weiguan.gif">
-												<img v-on:click="getContent($event)" src="face/weiwu.gif">
-												<img v-on:click="getContent($event)" src="face/huatong.gif">
-												<img v-on:click="getContent($event)" src="face/lazhu.gif">
-												<img v-on:click="getContent($event)" src="face/dangao.gif">
-												<img v-on:click="getContent($event)" src="face/fahongbao.gif">
 											</div>
 										</form>
 									</div><!--message-send-area end-->
@@ -982,8 +964,6 @@
 					.then(function(res){
 						this.toLoginView(res)
 						this.message = res.body.data
-						var div = document.getElementsByClassName("mCSB_draggerRail")
-						div[0].scrollTop = div[0].scrollHeight;
 					},function() {
 						console.log('请求失败处理');
 					});
@@ -997,8 +977,6 @@
 						for (let i = 0; i < message.length; i++) {
 							this.message.push(message[i])
 						}
-						var div = document.getElementById('mCSB_1_scrollbar_vertical');
-						div.scrollTop = div.scrollHeight;
 					},function() {
 						console.log('请求失败处理');
 					});
@@ -1044,8 +1022,6 @@
 							this.toLoginView(res)
 							this.content = ""
 							this.message.push(res.body.message)
-							var div = document.getElementById('mCSB_1_scrollbar_vertical');
-							div.scrollTop = div.scrollHeight;
 						}, function (res) {
 						  console.log(res.body);
 						});
@@ -1064,8 +1040,6 @@
 						this.toLoginView(res)
 						this.content = ""
 						this.message.push(res.body.message)
-						var div = document.getElementById('mCSB_1_scrollbar_vertical');
-						div.scrollTop = div.scrollHeight;
 					}, function (res) {
 					  console.log(res.body);
 					});
