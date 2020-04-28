@@ -208,7 +208,7 @@
 											<h3>{{headLabel[0]}}</h3>
 											<div class="con4">
 												<div style="display: flex;justify-content: center;padding: 20px 0;">
-													<img :src="link" style="width: 200px;height: 200px;"/>
+													<img :src="user.headLink" style="width: 200px;height: 200px;"/>
 												</div>
 												<span class="btn upload">{{headLabel[1]}}<input type="file" class="upload_pic" id="upload" v-on:change="onChange($event)" /></span>
 												<br>
@@ -672,6 +672,7 @@
 		var vm = new Vue({
 			el : '#app',
 			data:{
+				user:"",
 				/* 更新个人信息-----start */
 				education:"",
 				height:"",
@@ -688,7 +689,6 @@
 				/* 更新账号------------end */
 				
 				/* 更新头像--------------start */
-				link:"",
 				headLink:"",
 				/* 更新头像--------------end */
 				
@@ -900,7 +900,7 @@
 					var reader = new FileReader()
 					reader.onload = (data) => {
 						let res = data.target || data.srcElement
-						this.link = res.result
+						this.user.headLink = res.result
 					}
 					reader.readAsDataURL(file)
 				},
@@ -1044,51 +1044,26 @@
 						this.headLabel = ["อัพเด avatar ของคุณ", "เลือกรูปภาพ", "เสร็จ สมบูรณ์"],
 						this.securityLabel = ["Mi-เบ้า--การป้องกันการลืมรหัสผ่าน", "ชื่อคนแรกและนามสกุล", "ที่อยู่อีเมลของคุณ", "คนโปรดของคุณ"]
 					}
+				},
+				getUserInfo() {
+					this.$http.get('/user/getUserInfo/',{header:{cookie:this.ticket}},
+					{params : {time:new Date().getTime()}})
+					.then(function(res) {
+						this.toLoginView(res)
+						this.user = res.body.user
+					},function() {
+						console.log('请求失败处理');
+					});
 				}
 			},
 			beforeMount() {
 				this.checkTicket()
 				this.getAccount()
+				this.getUserInfo()
 			}
 		})
 	</script>
 	<script>
-		//获取上传按钮
-		var input1 = document.getElementById("upload"); 
-		 
-		if(typeof FileReader==='undefined'){ 
-			 input1.setAttribute('disabled','disabled'); 
-		}else{ 
-			 input1.addEventListener('change',readFile,false); 
-		}
-		function readFile(){ 
-			var file = this.files[0];//获取上传文件列表中第一个文件
-			if(!/image\/\w+/.test(file.type)){
-			//图片文件的type值为image/png或image/jpg
-				alert("文件必须为图片！");
-				return false; 
-			} 
-			// console.log(file);
-			var reader = new FileReader();//实例一个文件对象
-			reader.readAsDataURL(file);//把上传的文件转换成url
-			//当文件读取成功便可以调取上传的接口
-			reader.onload = function(e){ 
-				var image = new Image();
-				// 设置src属性 
-				image.src = e.target.result;
-				var max=200;
-				
-				image.onload = function(){ 
-					
-					var canvas = document.getElementById("cvs"); 
-					
-					var ctx = canvas.getContext("2d"); 
-					
-					ctx.clearRect(0, 0, canvas.width, canvas.height); 
-					ctx.drawImage(image, 0, 0, 200, 200);
-				
-				};  
-			}
-		};
+		
 	</script>
 </html>
