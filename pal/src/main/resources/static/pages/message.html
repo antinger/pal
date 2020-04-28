@@ -44,6 +44,14 @@
 				padding: 3px;
 				background: #FFFFFF;
 			}
+			#image-show{
+				position: absolute;
+				bottom: 90px;
+				z-index: 999;
+			}
+			#image-show>img{
+				width: 150px;
+			}
 		</style>
 	</head>
 
@@ -326,6 +334,9 @@
 												<img v-on:click="getContent($event)" src="face/zhu.gif">
 												<img v-on:click="getContent($event)" src="face/xiongmao.gif">
 												<img v-on:click="getContent($event)" src="face/tuzi.gif">
+											</div>
+											<div id="image-show">
+												<img :src="showImage" v-if="showImage" />
 											</div>
 										</form>
 									</div><!--message-send-area end-->
@@ -767,6 +778,8 @@
 				message:[],
 				timer:"",
 				linkTimer:"",
+				
+				showImage:"",
 				//发送消息
 				content:"",
 				image:"",
@@ -839,9 +852,16 @@
 				showEmoji(){
 					$(".face").show()
 				},
-				onChange(event) {
-				      this.image= event.target.files[0]
-				      console.log(this.image);
+				onChange(e) {
+				    this.image= e.target.files[0]
+				    let $target = e.target || e.srcElement
+				    let file = $target.files[0]
+				    var reader = new FileReader()
+				    reader.onload = (data) => {
+				    	let res = data.target || data.srcElement
+				    	this.showImage = res.result
+				    }
+				    reader.readAsDataURL(file)  
 				},
 				toView(payType) {
 					this.payType = payType
@@ -1039,6 +1059,8 @@
 						}
 						this.toLoginView(res)
 						this.content = ""
+						this.image = ""
+						this.showImage = ""
 						this.message.push(res.body.message)
 					}, function (res) {
 					  console.log(res.body);
