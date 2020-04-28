@@ -207,7 +207,9 @@
 										<div class="acc-setting">
 											<h3>{{headLabel[0]}}</h3>
 											<div class="con4">
-												<canvas id="cvs" width="200" height="200"></canvas>
+												<div style="display: flex;justify-content: center;padding: 20px 0;">
+													<img :src="link" style="width: 200px;height: 200px;"/>
+												</div>
 												<span class="btn upload">{{headLabel[1]}}<input type="file" class="upload_pic" id="upload" v-on:change="onChange($event)" /></span>
 												<br>
 												<span class="btn upload" style="margin-top: 5px;" @click="updateHeadLink">{{headLabel[2]}}</span>
@@ -271,8 +273,7 @@
 							<li><a href="#" title="">Language</a></li>
 							<li><a href="#" title="">Copyright Policy</a></li>
 						</ul>
-						<p><img src="images/copy-icon2.png" alt="">Copyright 2017</p>
-						<img class="fl-rgt" src="images/logo2.png" alt="">
+						
 					</div>
 				</div>
 			</footer>
@@ -687,6 +688,7 @@
 				/* 更新账号------------end */
 				
 				/* 更新头像--------------start */
+				link:"",
 				headLink:"",
 				/* 更新头像--------------end */
 				
@@ -891,8 +893,16 @@
 					});
 				},
 				//更新头像
-				onChange(event) {
-				    this.headLink = event.target.files[0]
+				onChange(e) {
+				    this.headLink = e.target.files[0]
+					let $target = e.target || e.srcElement
+					let file = $target.files[0]
+					var reader = new FileReader()
+					reader.onload = (data) => {
+						let res = data.target || data.srcElement
+						this.link = res.result
+					}
+					reader.readAsDataURL(file)
 				},
 				updateHeadLink(){
 					var formData = new FormData();
