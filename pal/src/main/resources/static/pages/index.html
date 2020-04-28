@@ -81,7 +81,7 @@
 								<input type="text" v-model="searchUserName" placeholder="Search...">
 								<button><i class="la la-search" @click="getSearchaUser"></i></button>
 							</form>
-							<div id="user-search" v-if="searchUser">
+							<div class="user-search" v-if="searchUser">
 								<template v-if="searchUser.headStatus == 1">
 									<img :src="headLink" alt="" width="50px" height="50px" @click="toUserView(searchUser.id)">
 								</template>
@@ -1197,7 +1197,7 @@
 				},
 				//前往用户主页
 				toUserView(id){
-					$('#user-search').hide()
+					$('.user-search').hide()
 					var url = "home.html?userID=" + id
 					window.location.href = url
 				},
@@ -1222,7 +1222,7 @@
 					.then(function(res) {
 						this.toLoginView(res)
 						alter(res.body.message)
-						$('#user-search').show();
+						$('.user-search').show();
 						this.searchUser = res.body.user
 					},function() {
 						console.log('请求失败处理');
