@@ -81,7 +81,7 @@
 								<input type="text" v-model="searchUserName" placeholder="Search...">
 								<button><i class="la la-search" @click="getSearchaUser"></i></button>
 							</form>
-							<div class="user-search" v-if="searchUser">
+							<div id="user-search" v-if="searchUser">
 								<template v-if="searchUser.headStatus == 1">
 									<img :src="headLink" alt="" width="50px" height="50px" @click="toUserView(searchUser.id)">
 								</template>
@@ -1221,7 +1221,7 @@
 						{params : {time:new Date().getTime(), username:this.searchUserName}},{header : {cookie:this.ticket}})
 					.then(function(res) {
 						this.toLoginView(res)
-						$('.user-search').show();
+						$('#user-search').show();
 						this.searchUser = res.body.user
 					},function() {
 						console.log('请求失败处理');
