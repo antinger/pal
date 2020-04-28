@@ -157,20 +157,23 @@ public class MessageService {
 	public Map<String, Object> addMessage(String content, int toUserID, MultipartFile image) throws IOException {
 		Map<String, Object> map = new HashMap<String, Object>();
 		User threadUser = getThreadUser();
-		if(threadUser.getBannedStatus() == 1) {
-			map.put("eor", "禁言中");
-			return map;
-		}
-		MemberTicket member = memberTicketDao.selectByMemberTicket(threadUser.getUsername());
-		int count = messageDao.getNumByUserID(threadUser.getId());
-		if(count == 4) {
-			if(member == null) {
-				map.put("member", true);
+		User toUser = userDao.selectUserByID(toUserID);
+		if(!toUser.getUsername().equals("Service")) {
+			if(threadUser.getBannedStatus() == 1) {
+				map.put("eor", "禁言中");
 				return map;
-			} else {
-				if(member.getExpired().getTime() < new Date().getTime() || member.getStatus() == 1) {
+			}
+			MemberTicket member = memberTicketDao.selectByMemberTicket(threadUser.getUsername());
+			int count = messageDao.getNumByUserID(threadUser.getId());
+			if(count == 4) {
+				if(member == null) {
 					map.put("member", true);
 					return map;
+				} else {
+					if(member.getExpired().getTime() < new Date().getTime() || member.getStatus() == 1) {
+						map.put("member", true);
+						return map;
+					}
 				}
 			}
 		}
