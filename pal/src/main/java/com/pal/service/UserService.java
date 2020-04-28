@@ -238,7 +238,7 @@ public class UserService {
 			if(user != null) {
 				ViewObject view = new ViewObject();
 				dealUser(user, threadUser, view);
-				data.add(view);
+				data.add(0, view);
 			}
 		}
 		map.put("data", data);
