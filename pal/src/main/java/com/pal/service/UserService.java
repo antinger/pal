@@ -313,9 +313,13 @@ public class UserService {
 			return map;
 		}
 		User user = userDao.selectUserByUsername(username);
-		visitorService.addVisitor(user.getId());
-		dealUserHeadLink(user);
-		map.put("user", user);
+		if(user != null) {
+			visitorService.addVisitor(user.getId());
+			dealUserHeadLink(user);
+			map.put("user", user);
+		} else {
+			map.put("message", "fail");
+		}
 		return map;
 	}
 	
