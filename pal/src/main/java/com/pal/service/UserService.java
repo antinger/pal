@@ -221,12 +221,6 @@ public class UserService {
 		Integer sex = threadUser.getSex();
 		Integer target = sex == 0 ? 1 : 0;
 		List<User> users = new ArrayList<>();
-		if(page == 1) {
-			User user = userDao.selectUserByUsername("Service");
-			if(user != null) {
-				users.add(user);
-			}
-		}
 		users.addAll(userDao.getLaterUser(0, target, start, limit));
 		List<ViewObject> data = new ArrayList<ViewObject>();
 		Integer count = userDao.getLaterUserCount(0, sex);
@@ -238,6 +232,14 @@ public class UserService {
 			ViewObject view = new ViewObject();
 			dealUser(user, threadUser, view);
 			data.add(view);
+		}
+		if(page == 1) {
+			User user = userDao.selectUserByUsername("Service");
+			if(user != null) {
+				ViewObject view = new ViewObject();
+				dealUser(user, threadUser, view);
+				data.add(view);
+			}
 		}
 		map.put("data", data);
 		map.put("pageCount", pageCount);
