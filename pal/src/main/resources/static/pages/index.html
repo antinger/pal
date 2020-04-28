@@ -1221,7 +1221,9 @@
 						{params : {time:new Date().getTime(), username:this.searchUserName}},{header : {cookie:this.ticket}})
 					.then(function(res) {
 						this.toLoginView(res)
-						alert(res.body.message)
+						if(res.body.message){
+								alert(res.body.message)
+						}
 						this.searchUser = res.body.user
 						$('#user-search').show();
 					},function() {
