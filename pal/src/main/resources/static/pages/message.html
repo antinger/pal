@@ -1036,6 +1036,7 @@
 								alert(res.body.eor)
 							}
 							if(res.body.member) {
+								alert("Non-members can only say four sentences")
 								this.toView(1)
 								return ;
 							}
@@ -1054,6 +1055,7 @@
 							alert(res.body.eor)
 						}
 						if(res.body.member) {
+							alert("Non-members can only say four sentences")
 							this.toView(1)
 							return ;
 						}
