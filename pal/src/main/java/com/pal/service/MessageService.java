@@ -164,7 +164,7 @@ public class MessageService {
 				return map;
 			}
 			MemberTicket member = memberTicketDao.selectByMemberTicket(threadUser.getUsername());
-			int count = messageDao.getNumByUserID(threadUser.getId());
+			int count = messageDao.getNumByUserID(threadUser.getId(), toUserID);
 			if(count == 4) {
 				if(member == null) {
 					System.out.println("获取失败");
@@ -196,7 +196,6 @@ public class MessageService {
 		view.setView("createDate", PalUtils.formatDate(message.getCreateDate()));
 		view.setView("flag", true);
 		dealMessage(message.getUserID(), view);
-		map.put("message", "添加成功");
 		map.put("message", view);
 		return map;
 	}
