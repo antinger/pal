@@ -1228,6 +1228,7 @@
 						console.log('请求失败处理');
 					});
 				},
+				onSubmit(){return false;},
 				//获取推送的用户
 				getPushUser() {
 					this.$http.get('/user/getPushUser/',
