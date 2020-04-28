@@ -165,9 +165,8 @@ public class MessageService {
 			}
 			MemberTicket member = memberTicketDao.selectByMemberTicket(threadUser.getUsername());
 			int count = messageDao.getNumByUserID(threadUser.getId(), toUserID);
-			if(count == 4) {
+			if(count > 3) {
 				if(member == null) {
-					System.out.println("获取失败");
 					map.put("member", true);
 					return map;
 				} else {
