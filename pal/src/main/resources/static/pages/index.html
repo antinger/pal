@@ -81,7 +81,7 @@
 								<input type="text" v-model="searchUserName" placeholder="Search...">
 								<button><i class="la la-search" @click="getSearchaUser"></i></button>
 							</form>
-							<div id="user-search" v-if="searchUser">
+							<div id="user-search">
 								<template v-if="searchUser.headStatus == 1">
 									<img :src="headLink" alt="" width="50px" height="50px" @click="toUserView(searchUser.id)">
 								</template>
