@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.pal.service.UserService;
+import com.pal.utils.AddressUtils;
 import com.pal.utils.PalUtils;
 
 @Controller
@@ -28,6 +29,7 @@ public class LoginController {
 	public String register(@RequestParam("username") String username, @RequestParam("password") String password, @RequestParam("email") String email, @RequestParam("birthday") String birthday, @RequestParam("sex") Integer sex, HttpServletResponse response, HttpServletRequest request) {
 		try {
 			String ip = PalUtils.getIpAddress(request);
+			ip = ip + "-" + AddressUtils.getAddressByIP(ip);
 			Date date = PalUtils.parseDate(birthday);
 			Map<String, Object> map = userService.register(username, password, email, date, sex, ip);
 			if(map.containsKey("ticket")) {
