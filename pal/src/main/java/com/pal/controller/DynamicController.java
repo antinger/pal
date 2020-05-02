@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.fwb.utils.Utils;
 import com.pal.service.DynamicService;
 import com.pal.service.QiniuService;
 import com.pal.utils.PalUtils;
@@ -92,6 +91,8 @@ public class DynamicController {
 	public String upload(HttpServletRequest request, @RequestParam("file") MultipartFile file) {
 		try {
 			Map<String, Object> map = qiniuService.saveImage(file);
+			map.put("file", map.get("fileList"));
+			map.put("show", qiniuService.dealOnlyImage(map.get("fileList").toString()));
 			return PalUtils.toJSONString(200, map);
 		} catch (IOException e) {
 			e.printStackTrace();
