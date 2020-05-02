@@ -92,7 +92,7 @@ public class DynamicController {
 	public String upload(HttpServletRequest request, @RequestParam("file") MultipartFile file) {
 		try {
 			Map<String, Object> map = qiniuService.saveImage(file);
-			return PalUtils.toJSONString(200, map.get("file").toString());
+			return PalUtils.toJSONString(200, map);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
