@@ -305,7 +305,7 @@ public class UserService {
 	public Map<String, Object> updateHeadLink(MultipartFile image) throws IOException {
 		Map<String, Object> map = qiniuService.saveImage(image);
 		User user = getThreadUser();
-		userDao.updateHeadLink(user.getId(), map.get("fileList").toString());
+		userDao.updateHeadLink(user.getId(), map.get("fileList").toString(), 1);
 		map.clear();
 		map.put("message", "更新成功");
 		return map;
@@ -350,7 +350,7 @@ public class UserService {
 	public Map<String, Object> updateHeadLinkH5(String image) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		User user = getThreadUser();
-		userDao.updateHeadLink(user.getId(), image);
+		userDao.updateHeadLink(user.getId(), image, 1);
 		map.clear();
 		map.put("message", "更新成功");
 		return map;

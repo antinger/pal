@@ -49,8 +49,8 @@ public interface UserDao {
     void updateHeadStatus(@Param("id") Integer id, @Param("headStatus") int headStatus);
     
     //更新头像地址
-    @Update({"update ", TABLE_NAME, " set headLink=#{headLink} where id=#{id}"})
-    void updateHeadLink(@Param("id") Integer id, @Param("headLink") String headLink);
+    @Update({"update ", TABLE_NAME, " set headLink=#{headLink},headStatus=#{headStatus} where id=#{id}"})
+    void updateHeadLink(@Param("id") Integer id, @Param("headLink") String headLink, Integer headStatus);
     
     //获取推送的用户
     List<User> getPushUsers(int pushStatus, int sex, int status);
