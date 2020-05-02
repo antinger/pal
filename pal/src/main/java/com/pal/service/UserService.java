@@ -346,5 +346,14 @@ public class UserService {
 		userDao.updateOnLineStatus(threadUser.getId(), onLineStatus);
 		return map;
 	}
+
+	public Map<String, Object> updateHeadLinkH5(String image) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		User user = getThreadUser();
+		userDao.updateHeadLink(user.getId(), image);
+		map.clear();
+		map.put("message", "更新成功");
+		return map;
+	}
 	
 }

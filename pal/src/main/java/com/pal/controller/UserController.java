@@ -89,4 +89,15 @@ public class UserController {
 			return PalUtils.toJSONString(500, "更新头像失败");
 		}
 	}
+	
+	@RequestMapping(path="/user/updateHeadLinkH5/", method=RequestMethod.POST)
+	@ResponseBody
+	public String updateHeadLinkH5(@RequestParam("image") String image) {
+		try {
+			Map<String, Object> map = userService.updateHeadLinkH5(image);
+			return PalUtils.toJSONString(200, map);
+		} catch (Exception e) {
+			return PalUtils.toJSONString(500, "更新头像失败");
+		}
+	}
 }
