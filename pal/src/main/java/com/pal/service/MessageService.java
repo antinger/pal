@@ -240,6 +240,7 @@ public class MessageService {
 			}
 		}
 		Message message = new Message();
+		message.setImage("");
 		if(image != null && !"".equals(image)) {
 			message.setImage(image);
 		}
