@@ -319,6 +319,9 @@ public class UserService {
 		}
 		User user = userDao.selectUserByUsername(username);
 		if(user != null) {
+			if(threadUser.getUsername() == username) {
+				return map;
+			}
 			visitorService.addVisitor(user.getId());
 			dealUserHeadLink(user);
 			map.put("user", user);
