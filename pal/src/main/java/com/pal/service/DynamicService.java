@@ -2,6 +2,7 @@ package com.pal.service;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -47,7 +48,7 @@ public class DynamicService {
 				map.put("member", true);
 				return map;
 			}
-			if(memberTicket.getCreateDate().getTime() > memberTicket.getExpired().getTime() || memberTicket.getStatus() == 1) {
+			if(memberTicket.getCreateDate().getTime() < new Date().getTime() || memberTicket.getStatus() == 1) {
 				map.put("member", true);
 				return map;
 			}

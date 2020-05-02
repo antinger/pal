@@ -211,7 +211,7 @@ public class UserService {
 				map.put("member", true);
 				return map;
 			}
-			if(memberTicket.getCreateDate().getTime() > memberTicket.getExpired().getTime() || memberTicket.getStatus() == 1) {
+			if(memberTicket.getExpired().getTime() < new Date().getTime() || memberTicket.getStatus() == 1) {
 				map.put("member", true);
 				return map;
 			}
@@ -334,7 +334,7 @@ public class UserService {
 	private void dealMember(ViewObject view, String username) {
 		MemberTicket memberTicket = memberTicketDao.selectByMemberTicket(username);
 		if(memberTicket != null) {
-			if(memberTicket.getCreateDate().getTime() < memberTicket.getExpired().getTime() && memberTicket.getStatus() == 0) {
+			if(memberTicket.getExpired().getTime() > new Date().getTime() && memberTicket.getStatus() == 0) {
 				view.setView("member", memberTicket.getGrade());
 			}
 		}
