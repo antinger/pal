@@ -1,6 +1,10 @@
 package com.pal.controller;
 
+import java.io.IOException;
+import java.util.HashMap;
 import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,11 +15,15 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.pal.service.DynamicService;
+import com.pal.service.QiniuService;
 import com.pal.utils.PalUtils;
 
 @Controller
 public class DynamicController {
 
+	@Autowired
+	QiniuService qiniuService;
+	
 	@Autowired
 	DynamicService dynamicService;
 	
@@ -78,4 +86,17 @@ public class DynamicController {
 		}
 	}
 	
+	@RequestMapping(path = "/uploadImgs/", method = {RequestMethod.POST})
+	@ResponseBody
+	public String upload(HttpServletRequest request, @RequestParam("file") MultipartFile[] imgs) {
+		try {
+			Map<String, Object> file = qiniuService.saveImage(imgs);
+			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("fileList", file.get("fileList"));
+			return PalUtils.toJSONString(200, map);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return PalUtils.toJSONString(1, "添加失败");
+	}
 }
