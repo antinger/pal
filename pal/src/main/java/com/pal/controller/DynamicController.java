@@ -62,6 +62,16 @@ public class DynamicController {
 			return PalUtils.toJSONString(500, "添加动态失败");
 		}
 	}
+	@RequestMapping(path="/user/addDynamicH5/", method=RequestMethod.POST)
+	@ResponseBody
+	public String addDynamicH5(@RequestParam("content") String content, @RequestParam("image") String image) {
+		try {
+			Map<String, Object> map = dynamicService.addDynamicH5(content, image);
+			return PalUtils.toJSONString(200, map);
+		} catch (Exception e) {
+			return PalUtils.toJSONString(500, "添加动态失败");
+		}
+	}
 	
 	@RequestMapping(path="/user/addDynamicContent/", method=RequestMethod.POST)
 	@ResponseBody

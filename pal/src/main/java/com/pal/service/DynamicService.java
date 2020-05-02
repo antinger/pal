@@ -126,4 +126,20 @@ public class DynamicService {
 		return map;
 	}
 
+	public Map<String, Object> addDynamicH5(String content, String image) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		User threadUser = getThreadUser();
+		Dynamic dynamic = new Dynamic();
+		if(image != null) {
+			dynamic.setImage(image);
+		}
+		dynamic.setUserID(threadUser.getId());
+		dynamic.setSex(threadUser.getSex());
+		dynamic.setStatus(1);
+		dynamic.setContent(content);
+		dynamicDao.addDynamic(dynamic);
+		map.put("message", "发布成功，等待审核");
+		return map;
+	}
+
 }
