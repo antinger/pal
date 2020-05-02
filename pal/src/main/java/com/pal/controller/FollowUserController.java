@@ -46,8 +46,12 @@ public class FollowUserController {
 	@RequestMapping(path="/user/getFans/", method=RequestMethod.GET)
 	@ResponseBody
 	public String getFans() {
+		try {
 			Map<String, Object> map = followUserService.getFans();
 			return PalUtils.toJSONString(200, map);
+		} catch (Exception e) {
+			return PalUtils.toJSONString(500, "获取失败");
+		}
 	}
 	
 	
