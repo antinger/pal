@@ -92,7 +92,6 @@ public class DynamicController {
 		try {
 			Map<String, Object> map = qiniuService.saveImage(file);
 			map.put("file", map.get("fileList"));
-			map.put("show", qiniuService.dealOnlyImage(map.get("fileList").toString()));
 			return PalUtils.toJSONString(200, map);
 		} catch (IOException e) {
 			e.printStackTrace();

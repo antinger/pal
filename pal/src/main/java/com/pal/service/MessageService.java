@@ -215,5 +215,48 @@ public class MessageService {
 			}
 		}
 	}
+
+	public Map<String, Object> addMessageH5(String content, Integer toUserID, String image) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		User threadUser = getThreadUser();
+		User toUser = userDao.selectUserByID(toUserID);
+		if(!toUser.getUsername().equals("Service")) {
+			if(threadUser.getBannedStatus() == 1) {
+				map.put("eor", "禁言中");
+				return map;
+			}
+			MemberTicket member = memberTicketDao.selectByMemberTicket(threadUser.getUsername());
+			int count = messageDao.getNumByUserID(threadUser.getId(), toUserID);
+			if(count > 3) {
+				if(member == null) {
+					map.put("member", true);
+					return map;
+				} else {
+					if(member.getExpired().getTime() < new Date().getTime() || member.getStatus() == 1) {
+						map.put("member", true);
+						return map;
+					}
+				}
+			}
+		}
+		Message message = new Message();
+		if(image != null) {
+			message.setImage(image);
+		}
+		message.setContent(content);
+		message.setToUserID(toUserID);
+		message.setUserID(threadUser.getId());
+		messageDao.addMessage(message);
+		ViewObject view = new ViewObject();
+		if(!"".equals(message.getImage())) {
+			message.setImage(qiniuService.dealOnlyImage(message.getImage()));
+		}
+		view.setView("message", message);
+		view.setView("createDate", PalUtils.formatDate(message.getCreateDate()));
+		view.setView("flag", true);
+		dealMessage(message.getUserID(), view);
+		map.put("message", view);
+		return map;
+	}
 	
 }

@@ -66,6 +66,18 @@ public class MessageController {
 		}
 	}
 	
+	@RequestMapping(path="/user/addMessageH5/", method=RequestMethod.POST)
+	@ResponseBody
+	public String addMessageH5(@RequestParam("toUserID") Integer toUserID, @RequestParam("content") String content, @RequestParam("image") String image) {
+		try {
+			Map<String, Object> map = messageService.addMessageH5(content, toUserID, image);
+			return PalUtils.toJSONString(200, map);
+		} catch (Exception e) {
+			return PalUtils.toJSONString(500, "获取推送用户失败");
+		}
+	}
+	
+	
 	@RequestMapping(path="/user/addMessageImage/", method=RequestMethod.POST)
 	@ResponseBody
 	public String addMessage(@RequestParam("toUserID") Integer toUserID, @RequestParam("content") String content, @RequestParam("image") MultipartFile image) {
