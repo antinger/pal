@@ -6,9 +6,8 @@
 	</head>
 	<body>
 		<div id="app">
-			<div style="font-size: 140px;">{{title}}</div>
 			<div style="font-size: 140px;">
-			<h1>{{s}}</h1>
+				<h1 v-for="(item, index) in title" :key="index">{{item}}</h1>
 			</div>
 			<div class="row">
 				<form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" target="_blank" id="sform-2">
@@ -53,7 +52,7 @@
 				recharge:0,
 				//自定义变量
 				rechargeCustom:"",
-				title:"aasdfsa",
+				title:[],
 				s:""
 			},
 			methods:{
@@ -76,9 +75,8 @@
 				},
 				getUrlQuery() {
 					var query = window.location.search.substring(1)
-					var vars = query.split("?")
-					this.title = vars[1]
-					this.s = query
+					var vars = query.split("=")
+					this.title = vars
 				}
 			},
 			beforeMount() {
