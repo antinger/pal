@@ -7,7 +7,9 @@
 	<body>
 		<div id="app">
 			<div style="font-size: 140px;">{{title}}</div>
-			<div style="font-size: 140px;">{{s}}</div>
+			<div style="font-size: 140px;">
+			<h1>{{s}}</h1>
+			</div>
 			<div class="row">
 				<form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" target="_blank" id="sform-2">
 					<input type="hidden" name="cmd" value="_xclick">	<!-- 立即支付 -->
@@ -76,7 +78,7 @@
 					var query = window.location.search.substring(1)
 					var vars = query.split("?")
 					this.title = vars[1]
-					this.s = "aa"
+					this.s = query
 				}
 			},
 			beforeMount() {
