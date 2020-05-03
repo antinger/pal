@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="utf-8" />
+		<meta charset="utf-8">
 		<title></title>
-		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
 	</head>
 	<body>
 		<div id="app">
-			<div style="font-size: 140px;">{{titleA}}</div>
-			<div class="row" style="margin-top: 10px;display: flex;justify-content: center;align-content: center;">
+			<div style="font-size: 140upx;">{{title}}</div>
+			<div class="row">
 				<form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" target="_blank" id="sform-2">
 					<input type="hidden" name="cmd" value="_xclick">	<!-- 立即支付 -->
 					<input type="hidden" name="business" id="business2">  <!-- 商家账号-->
@@ -30,14 +29,12 @@
 			</div>
 		</div>
 	</body>
-	<script src="js/popper.min.js" type="text/javascript" charset="utf-8"></script>
-	<script src="js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
-	<script src="js/js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
-	<script src="js/vue-2.4.0.js"></script>
-	<script src="js/vue-resource-1.3.4.js"></script>
-	<script type="text/babel">
+	<script src="js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/vue-2.4.0.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/vue-resource-1.3.4.js" type="text/javascript" charset="utf-8"></script>
+	<script>
 		var vm = new Vue({
-			el : '#app',
+			el:"#app",
 			data:{
 				ticket:"",
 				account:"",
@@ -53,8 +50,7 @@
 				recharge:0,
 				//自定义变量
 				rechargeCustom:"",
-				/* 支付----------------end */
-				titleA:""
+				title:"aasdfsa"
 			},
 			methods:{
 				checkRecharge(){
@@ -77,11 +73,12 @@
 				getUrlQuery() {
 					var query = window.location.search.substring(1)
 					var vars = query.split("?")
-					this.titleA = vars[1]
+					this.title = vars[1]
 				}
 			},
-			beforeMount(){
+			beforeMount() {
 				this.getUrlQuery()
 			}
 		})
+	</script>
 </html>
