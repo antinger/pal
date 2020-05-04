@@ -44,7 +44,6 @@
 				money:0,
 				//自定义变量
 				rechargeCustom:"",
-				title:[]
 			},
 			methods:{
 				checkRecharge(){
@@ -66,7 +65,7 @@
 					} else if(length == 4) {
 						this.rechargeCustom = "2&1&" + vars[0].split("=")[1] + "&" + this.money + "&" + vars[3].split("=")[1]
 					}
-					console.log(this.rechargeCustom)
+					this.checkRecharge()
 				}
 			},
 			beforeMount() {
