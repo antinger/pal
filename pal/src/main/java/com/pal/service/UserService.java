@@ -130,6 +130,10 @@ public class UserService {
 			map.put("eor", "密码不正确");
 			return map;
 		}
+		if(user.getStatus() == 1) {
+			map.put("eor", "fail");
+			return map;
+		}
 		//更新用户登录时间
 		userDao.updateDate(user.getId(), new Date());
 		userDao.updateOnLineStatus(user.getId(), 0);
