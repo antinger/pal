@@ -26,7 +26,6 @@
 					<input type='hidden' name='rm' value='2'>
 					<!-- 自定义变量 -->
 					<input type='hidden' name='custom' id="custom2">
-					<a class="btn btn-success" @click="checkRecharge">paypal</a>
 				</form>
 			</div>
 		</div>
@@ -48,8 +47,6 @@
 			},
 			methods:{
 				checkRecharge(){
-					this.s = document.getElementById("sform-2")
-					alert("提交")
 					document.getElementById("custom2").value = this.rechargeCustom
 					document.getElementById("amount2").value = this.money
 					document.getElementById("business2").value = this.account
@@ -74,7 +71,7 @@
 				this.getUrlQuery()
 			},
 			mounted() {
-				
+				this.checkRecharge()
 			}
 		})
 	</script>
