@@ -67,11 +67,13 @@
 					} else if(length == 4) {
 						this.rechargeCustom = "2&1&" + vars[0].split("=")[1] + "&" + this.money + "&" + vars[3].split("=")[1]
 					}
-					this.checkRecharge()
 				}
 			},
 			beforeMount() {
 				this.getUrlQuery()
+			},
+			created() {
+				this.checkRecharge()
 			}
 		})
 	</script>
