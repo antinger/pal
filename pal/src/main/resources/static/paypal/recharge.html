@@ -7,7 +7,7 @@
 	<body>
 		<div id="app">
 			<div style="font-size: 140px;">
-				<h1 v-for="(item, index) in title" :key="index">{{item}}</h1>
+				<h1>{{s}}</h1>
 			</div>
 			<div class="row">
 				<form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" target="_blank" id="sform-2">
@@ -44,6 +44,7 @@
 				money:0,
 				//自定义变量
 				rechargeCustom:"",
+				s:""
 			},
 			methods:{
 				checkRecharge(){
@@ -51,6 +52,7 @@
 					document.getElementById("amount2").value = this.money
 					document.getElementById("business2").value = this.account
 					document.getElementById("sform-2").submit()
+					this.s = this.rechargeCustom
 				},
 				getUrlQuery() {
 					this.rechargeCustom = "2&1&"
