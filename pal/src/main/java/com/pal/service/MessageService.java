@@ -164,7 +164,7 @@ public class MessageService {
 				return map;
 			}
 			MemberTicket member = memberTicketDao.selectByMemberTicket(threadUser.getUsername());
-			int count = messageDao.getNumByUserID(threadUser.getId(), toUserID);
+			int count = messageDao.getNumByUserID(threadUser.getId());
 			if(count > 3) {
 				if(member == null) {
 					map.put("member", true);
@@ -226,7 +226,7 @@ public class MessageService {
 				return map;
 			}
 			MemberTicket member = memberTicketDao.selectByMemberTicket(threadUser.getUsername());
-			int count = messageDao.getNumByUserID(threadUser.getId(), toUserID);
+			int count = messageDao.getNumByUserID(threadUser.getId());
 			if(count > 3) {
 				if(member == null) {
 					map.put("member", true);

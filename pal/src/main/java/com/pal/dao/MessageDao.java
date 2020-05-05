@@ -29,8 +29,8 @@ public interface MessageDao {
     @Select({"select count(*) from ", TABLE_NAME, " where toUserID=#{toUserID} and status=#{status}"})
     int getNumByStatus(Integer toUserID, int status);
     
-    @Select({"select count(*) from ", TABLE_NAME, " where userID=#{userID} and toUserID=#{toUserID}"})
-    int getNumByUserID(Integer userID, Integer toUserID);
+    @Select({"select count(*) from ", TABLE_NAME, " where userID=#{userID}"})
+    int getNumByUserID(Integer userID);
     
     //获取发送的消息
     List<Message> getSendMessages(Integer userID);
