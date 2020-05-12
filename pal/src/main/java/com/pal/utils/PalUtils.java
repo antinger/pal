@@ -143,6 +143,4 @@ public class PalUtils {
 	    return ip;  
 	}
 	
-
-
 }
