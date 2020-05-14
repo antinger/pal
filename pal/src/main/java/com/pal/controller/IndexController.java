@@ -17,7 +17,7 @@ public class IndexController {
 		}
 		// 手机
 		if (userAgent.contains("iPhone") || userAgent.contains("Android") || userAgent.contains("iPad")){
-			return "/h5/#/index/index";
+			return "redirect:/h5/index.html";
 		}
         return "";
     }
