@@ -77,12 +77,16 @@ public class UserService {
 			return map;
 		}
 		if(password.length() <6) {
-			map.put("eor", "密码至少需要六位数");
+			map.put("password", "密码至少需要六位数");
 			return map;
 		}
 		User user = userDao.selectUserByUsername(username);
 		if(user != null) {
-			map.put("eor", "用户名已经注册");
+			map.put("name", "用户名已经注册");
+			return map;
+		}
+		if(user.getEmail().equals(email)) {
+			map.put("email", "邮箱已经注册");
 			return map;
 		}
 		user = new User();
