@@ -325,12 +325,9 @@
 												<img v-on:click="getContent($event)" src="face/heixian.gif">
 												<img v-on:click="getContent($event)" src="face/yinxian.gif">
 												<img v-on:click="getContent($event)" src="face/numa.gif">
-												<img v-on:click="getContent($event)" src="face/hufen.gif">
 												<img v-on:click="getContent($event)" src="face/shudaizi.gif">
 												<img v-on:click="getContent($event)" src="face/fennu.gif">
 												<img v-on:click="getContent($event)" src="face/ganmao.gif">
-												<img v-on:click="getContent($event)" src="face/xin.gif">
-												<img v-on:click="getContent($event)" src="face/shangxin.gif">
 												<img v-on:click="getContent($event)" src="face/zhu.gif">
 												<img v-on:click="getContent($event)" src="face/xiongmao.gif">
 												<img v-on:click="getContent($event)" src="face/tuzi.gif">
@@ -1090,6 +1087,7 @@
 					});
 				},
 				change() {
+					localStorage.setItem('languageID', this.languageID)
 					if(this.languageID == 1) {
 						this.topLabel = ["个人资料", "消息", "退出", "升级", "充值", "主页"]
 						this.payTop = ["升级", "账户充值"],
@@ -1156,6 +1154,12 @@
 				this.setWidth()
 			},
 			beforeMount() {
+				if(localStorage.getItem("languageID")){
+					this.languageID = localStorage.getItem("languageID")
+				} else{
+					this.languageID = 3
+				}
+				this.change()
 				this.getLinkman()
 			},
 			beforeDestroy() {

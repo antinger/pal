@@ -123,22 +123,34 @@
 												<div class="cp-field">
 													<h5>{{infoLabel[1]}}</h5>
 													<div class="cpp-fiel">
-														<input type="text" name="" v-model="education" :placeholder="infoLabel[1]">
-														<i class="fa fa-lock"></i>
+														<select class="form-control" id="exampleFormControlSelect1" v-model="education">
+														      <option>{{educations[0]}}</option>
+														      <option>{{educations[1]}}</option>
+															  <option>{{educations[2]}}</option>
+															  <option>{{educations[3]}}</option>
+														</select>
 													</div>
 												</div>
 												<div class="cp-field">
 													<h5>{{infoLabel[2]}}</h5>
 													<div class="cpp-fiel">
-														<input type="text" name="" v-model="height" :placeholder="infoLabel[2]">
-														<i class="fa fa-lock"></i>
+														<select class="form-control" id="exampleFormControlSelect1" v-model="height">
+														      <option>{{heights[0]}}</option>
+														      <option>{{heights[1]}}</option>
+															  <option>{{heights[2]}}</option>
+															  <option>{{heights[3]}}</option>
+														</select>
 													</div>
 												</div>
 												<div class="cp-field">
 													<h5>{{infoLabel[3]}}</h5>
 													<div class="cpp-fiel">
-														<input type="text" name="" v-model="weight" :placeholder="infoLabel[3]">
-														<i class="fa fa-lock"></i>
+														<select class="form-control" id="exampleFormControlSelect1" v-model="weight">
+														      <option>{{weights[0]}}</option>
+														      <option>{{weights[1]}}</option>
+															  <option>{{weights[2]}}</option>
+															  <option>{{weights[3]}}</option>
+														</select>
 													</div>
 												</div>
 												<div class="cp-field">
@@ -674,6 +686,9 @@
 			data:{
 				user:"",
 				/* 更新个人信息-----start */
+				educations:["高中", "本科", "研究生", "博士"],
+				heights:["155cm-165cm", "165-cm170cm", "170cm-180cm", "180cm-190cm"],
+				weights:["40kg-50kg", "50kg-60kg", "70kg-80kg", "80kg-90kg"],
 				education:"",
 				height:"",
 				weight:"",
@@ -959,7 +974,9 @@
 					});
 				},
 				change() {
+					localStorage.setItem('languageID', this.languageID)
 					if(this.languageID == 1) {
+						this.educations = ["高中", "本科", "研究生", "博士"]
 						this.topLabel = ["个人资料", "消息", "退出", "升级", "充值", "主页"]
 						this.payTop = ["升级", "账户充值"],
 						this.upgradeLabel = ["为自己升级", "为别人升级"],
@@ -974,6 +991,7 @@
 						this.headLabel = ["头像设置", "选择图片", "完成"],
 						this.securityLabel = ["密保问题--防止忘记密码", "你的真实姓名", "你的邮箱地址", "你最喜欢的人"]
 					} else if(this.languageID == 2) {
+						this.educations = ["高中", "本科", "研究生", "博士"]
 						this.topLabel = ["個人資料", "消息", "退出", "升级", "充值", "主頁"]
 						this.payTop = ["升级", "賬戶充值"],
 						this.upgradeLabel = ["為自己升級", "為別人升級"],
@@ -988,6 +1006,7 @@
 						this.headLabel = ["更新頭像", "選擇圖片", "完成"],
 						this.securityLabel = ["密保問題--防止忘記密碼", "妳的真實姓名", "妳的郵箱地址", "妳最喜歡的人"]
 					} else if(this.languageID == 3) {
+						this.educations = ["High school" ,"undergraduate" ,"graduate" ,"PhD"]
 						this.topLabel = ["personal data", "message", "log out", "upgrade", "top up", "home"]
 						this.payTop = ["upgrade", "account recharge"],
 						this.upgradeLabel = ["Upgrade yourself", "Upgrade for someone else"],
@@ -1002,6 +1021,7 @@
 						this.headLabel = ["Update the avatar", "select image", "finish"],
 						this.securityLabel = ["security question--Don't forget your password", "Your real name", "Your email address", "Your favorite person"]
 					} else if(this.languageID == 4) {
+						this.educations = ["고중","본과","연구생","박사"]
 						this.topLabel = ["인적 사항", "소식.정보.", "퇴출", "승급하다", "충전시키다", "홈페이지."]
 						this.payTop = ["승급하다", "계정 충전"],
 						this.upgradeLabel = ["한 단계 업그레이드", "다른 사람을 업그레이드시키다"],
@@ -1016,6 +1036,7 @@
 						this.headLabel = ["아바타 업데이트", "그림 선택", "완성하다"],
 						this.securityLabel = ["은밀히 하는 추천--암호 잊지 않기", "여러분의 진짜 이름은", "여러분의 이메일 주소가", "여러분이 가장 좋아하는 사람은"]
 					} else if(this.languageID == 5) {
+						this.educations = ["高校", "学部", "大学院生", "博士"]
 						this.topLabel = ["个人资料", "しょうそく", "たいしゅつ", "進級する", "リチャージ", "ホームページ"]
 						this.payTop = ["進級する", "アカウントチャージ"],
 						this.upgradeLabel = ["自分をアップグレードする", "人のためになる"],
@@ -1030,6 +1051,7 @@
 						this.headLabel = ["アイコンを更新する", "画像を選択する", "かんせい"],
 						this.securityLabel = ["密保--パスワード忘れを防ぐ", "あなたの本当の名前", "あなたのメールアドレス", "あなたの大好きな人"]
 					} else if(this.languageID == 6) {
+						this.educations = ["โรงเรียนมัธยม", "ปริญญาตรี", "บัณฑิต", "หมอ"]
 						this.topLabel = ["ข้อมูลส่วนบุคคล", "ข่าว", "ออก", "อัพ เกรด", "ชาร์จ", "บ้าน"]
 						this.payTop = ["อัพ เกรด", "บัญชีเติมเงิน"],
 						this.upgradeLabel = ["อัพเกรดด้วยตัวคุณเอง", "อัพเกรดสําหรับผู้อื่น"],
@@ -1057,6 +1079,12 @@
 				}
 			},
 			beforeMount() {
+				if(localStorage.getItem("languageID")){
+					this.languageID = localStorage.getItem("languageID")
+				} else{
+					this.languageID = 3
+				}
+				this.change()
 				this.checkTicket()
 				this.getAccount()
 				this.getUserInfo()

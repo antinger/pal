@@ -265,7 +265,7 @@
 				
 				/* 语言转换定义 -----------start*/
 				languageID : 3,
-				label:["登录", "注册", "忘记密码", "重置密码", "重置后，新的密码是"],
+				label:["登录", "注册", "忘记密码", "重置密码", "重置后，新的密码是", "账号需要审核"],
 				loginPlaceholder:["请输入用户名", "请输入密码"],
 				registerPlaceholder:["请输入用户名", "请输入邮箱", "请输入密码", "请选择生日"],
 				sexLabel:["男", "女"],
@@ -291,6 +291,9 @@
 						if(res.body.eor) {
 							alert(res.body.eor)
 							return 
+						}
+						if(this.sex == 1){
+							alert(this.label[5])
 						}
 						this.username = ""
 						this.password = ""
@@ -351,38 +354,39 @@
 					});
 				},
 				change(){
+					localStorage.setItem('languageID', this.languageID)
 					if(this.languageID == 1) {
-						this.label = ["登录", "注册", "忘记密码", "重置密码", "重置后，新的密码是"]
+						this.label = ["登录", "注册", "忘记密码", "重置密码", "重置后，新的密码是", "账号需要审核"]
 						this.loginPlaceholder = ["请输入用户名", "请输入密码"]
 						this.registerPlaceholder = ["请输入用户名", "请输入邮箱", "请输入密码", "请选择生日"]
 						this.sexLabel = ["男", "女"]
 						this.forgetPlaceholder = ["你的真实姓名？", "你的邮箱地址？", "你最喜欢的人？"]
 					} else if(this.languageID == 2) {
-						this.label = ["登錄", "註冊", "忘記密碼", "重置密碼", "重置後，新的密碼是"]
+						this.label = ["登錄", "註冊", "忘記密碼", "重置密碼", "重置後，新的密碼是", "賬號需要審核"]
 						this.loginPlaceholder = ["請輸入用戶名", "請輸入密碼"]
 						this.registerPlaceholder = ["請輸入用戶名", "請輸入郵箱", "請輸入密碼", "請選擇生日"]
 						this.sexLabel = ["男", "女"]
 						this.forgetPlaceholder = ["妳的真實姓名？", "妳的郵箱地址？", "妳最喜歡的人？"]
 					} else if(this.languageID == 3) {
-						this.label = ["login", "register", "forget password", "reset passwords ", "After the reset, the new password is"]
+						this.label = ["login", "register", "forget password", "reset passwords ", "After the reset, the new password is", "The account needs to be reviewed."]
 						this.loginPlaceholder = ["username", "password"]
 						this.registerPlaceholder = ["usrname", "email", "password", "birthday"]
 						this.sexLabel = ["man", "woman"]
 						this.forgetPlaceholder = ["Your real name？", "Your email address？", "Your favorite person？"]
 					} else if(this.languageID == 4) {
-						this.label = ["로그인", "등기", "비밀번호를 잊어버리다", "비밀번호 초기화", "다시 시작하면 새로운 비밀번호는"]
+						this.label = ["로그인", "등기", "비밀번호를 잊어버리다", "비밀번호 초기화", "다시 시작하면 새로운 비밀번호는", "계좌 번호를 심사해야 한다."]
 						this.loginPlaceholder = ["사용자 이름.", " 비밀 번호"]
 						this.registerPlaceholder = ["사용자 이름.", "우편함", " 비밀 번호", "출생일"]
 						this.sexLabel = ["남성.", "여자."]
 						this.forgetPlaceholder = ["여러분의 진짜 이름은？", "여러분의 이메일 주소가？", "여러분이 가장 좋아하는 사람은？"]
 					} else if(this.languageID == 5) {
-						this.label = ["登録する", "登録", "パスワードを忘れる", "パスワードをリセットする", "リセット後、新しいパスワードは"]
+						this.label = ["登録する", "登録", "パスワードを忘れる", "パスワードをリセットする", "リセット後、新しいパスワードは", "アカウントは査定する必要がある"]
 						this.loginPlaceholder = ["ユーザー名「めい」", "あんごうふごう"]
 						this.registerPlaceholder = ["ユーザー名「めい」", "ポスト", "あんごうふごう", "たんじょうび"]
 						this.sexLabel = ["おとこ", "おんな"]
 						this.forgetPlaceholder = ["あなたの本当の名前？", "あなたのメールアドレス？", "あなたの大好きな人？"]
 					} else if(this.languageID == 6) {
-						this.label = ["เข้า สู่ ระบบ", "ลง ทะเบียน", "ลืมรหัสผ่าน", "รีเซ็ตรหัสผ่านของคุณ", "หลังจากรีเซ็ตรหัสผ่านใหม่จะ"]
+						this.label = ["เข้า สู่ ระบบ", "ลง ทะเบียน", "ลืมรหัสผ่าน", "รีเซ็ตรหัสผ่านของคุณ", "หลังจากรีเซ็ตรหัสผ่านใหม่จะ", "บัญชีต้องได้รับการตรวจทาน"]
 						this.loginPlaceholder = ["ชื่อผู้ใช้", "รหัส ผ่าน"]
 						this.registerPlaceholder = ["ชื่อผู้ใช้", "กล่อง จดหมาย", "รหัส ผ่าน", "วัน"]
 						this.sexLabel = ["คน", "ผู้หญิง"]
@@ -391,8 +395,14 @@
 				}
 			},
 			beforeMount() {
-				
-			}
+				if(localStorage.getItem("languageID")){
+					this.languageID = localStorage.getItem("languageID")
+				} else{
+					this.languageID = 3
+				}
+				this.change()
+			},
+			
 		})
 	</script>
 </html>

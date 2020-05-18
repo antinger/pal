@@ -1405,7 +1405,6 @@
 				},
 				//发送礼物
 				addGiftOrder(){
-					console.log("发送请求")
 					if(this.giftID == 0 || this.toUsername == "" || this.takeUser == "") {
 						return ;
 					}
@@ -1421,6 +1420,7 @@
 							alert(res.body.message)
 						}
 						if(res.body.flag) {
+							alert("not sufficient funds")
 							this.toView(2)
 							return
 						}
@@ -1432,7 +1432,7 @@
 				    });
 				},
 				toVideo(){
-					alert("金币不足")
+					alert("not sufficient funds")
 					this.toView(2)
 				},
 				//跳转到登录页面
@@ -1598,6 +1598,7 @@
 					this.messageCountTimer = setInterval(this.getMessageNumByStatus, 2000)
 				},
 				change() {
+					localStorage.setItem('languageID', this.languageID)
 					if(this.languageID == 1) {
 						this.topLabel = ["个人资料", "消息", "退出", "升级", "充值", "主页"]
 						this.leftLabel = ["升级", "充值", "金币", "生日", "教育", "身高", "体重", "工作", "国家", "地区"]
@@ -1684,6 +1685,12 @@
 				}
 			},
 			beforeMount() {
+				if(localStorage.getItem("languageID")){
+					this.languageID = localStorage.getItem("languageID")
+				} else{
+					this.languageID = 3
+				}
+				this.change()
 				this.checkTicket()
 				this.getAccount()
 				this.createMessageTimer()
