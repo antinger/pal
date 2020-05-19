@@ -9,7 +9,7 @@
 			<div class="row">
 				<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" id="sform-1">
 					<input type="hidden" name="cmd" value="_xclick">	<!-- 立即支付 -->
-					<input type="hidden" name="business" id="business">  <!-- 商家账号-->
+					<input type="hidden" name="business" id="business">  <!-- 商家账号 -->
 					<input id='item_number' type="hidden" name="item_number" value="产品编号"> <!-- 产品编号-->
 					<input id='amount' type="hidden" name="amount">  <!-- 付款/充值金额  -->
 					<!-- 支付成功后paypal后台发送回调地址-->
@@ -41,12 +41,6 @@
 				upgradeCustom:""
 			},
 			methods:{
-				checkRecharge(){
-					document.getElementById("custom").value=this.upgradeCustom
-					document.getElementById("amount").value=this.crown
-					document.getElementById("business").value = this.account
-					document.getElementById("sform-1").submit()
-				},
 				getUrlQuery() {
 					this.upgradeCustom = "1&1&"
 					var query = window.location.search.substring(1)
@@ -54,19 +48,29 @@
 					var length = vars.length
 					this.ticket = vars[0].split("=")[1]
 					this.crown = vars[1].split("=")[1]
-					this.account = vars[2].split("=")[1]
-					if(length == 3) {
+					if(length == 2) {
 						this.upgradeCustom = "1&1&" + this.ticket + "&" + this.crown
-					} else if(length == 4) {
-						this.upgradeCustom = "1&1&" + this.ticket + "&" + this.crown + "&" + vars[3].split("=")[1]
+					} else if(length == 3) {
+						this.upgradeCustom = "1&1&" + this.ticket + "&" + this.crown + "&" + vars[2].split("=")[1]
 					}
+				},
+				getAccount() {
+					this.$http.get('/user/getAccount/',
+					{params : {time:new Date().getTime()}}, {header:{cookie:this.ticket}})
+					.then(function(res) {
+						this.account = res.body.account
+						document.getElementById("custom").value=this.upgradeCustom
+						document.getElementById("amount").value=this.crown
+						document.getElementById("business").value = this.account
+						document.getElementById("sform-1").submit()
+					},function() {
+						console.log('请求失败处理');
+					});
 				}
 			},
 			beforeMount() {
 				this.getUrlQuery()
-			},
-			mounted() {
-				this.checkRecharge()
+				this.getAccount()
 			}
 		})
 	</script>

@@ -60,6 +60,10 @@ public class UserService {
 	//注册
 	public Map<String, Object> register(String username, String password, String email, Date birthday, Integer sex, String ip) {
 		Map<String, Object> map = new HashMap<String, Object>();
+		if(!PalUtils.emailFormat(email)) {
+			map.put("emailErr", "邮箱已经注册");
+			return map;
+		}
 		if(username == null || "".equals(username)) {
 			map.put("eor", "用户名不能为空");
 			return map;
@@ -114,11 +118,11 @@ public class UserService {
 	public Map<String, Object> login(String username, String password) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		if(username == null || "".equals(username)) {
-			map.put("eor", "用户名不能为空");
+			map.put("name", "用户名不能为空");
 			return map;
 		}
 		if(password == null || "".equals(password)) {
-			map.put("eor", "密码不能为空");
+			map.put("password", "密码不能为空");
 			return map;
 		}
 		if(password.length() <6) {
@@ -127,11 +131,11 @@ public class UserService {
 		}
 		User user = userDao.selectUserByUsername(username);
 		if(user == null) {
-			map.put("eor", "用户名未注册");
+			map.put("name", "用户名未注册");
 			return map;
 		}
 		if(!user.getPassword().equals(PalUtils.MD5(password + user.getSalt()))) {
-			map.put("eor", "密码不正确");
+			map.put("password", "密码不正确");
 			return map;
 		}
 		if(user.getStatus() == 1) {

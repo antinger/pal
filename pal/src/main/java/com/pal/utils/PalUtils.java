@@ -7,6 +7,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Map;
 import java.util.UUID;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -70,6 +72,17 @@ public class PalUtils {
         }
         return json.toJSONString();
     }
+    
+    public static boolean emailFormat(String email) {  
+        boolean tag = true;  
+        final String pattern1 = "^([a-z0-9A-Z]+[-|\\.]?)+[a-z0-9A-Z]@([a-z0-9A-Z]+(-[a-z0-9A-Z]+)?\\.)+[a-zA-Z]{2,}$";  
+        final Pattern pattern = Pattern.compile(pattern1);  
+        final Matcher mat = pattern.matcher(email);  
+        if (!mat.find()) {  
+            tag = false;  
+        }
+        return tag;  
+    } 
     
     public static String MD5(String key) {
         char hexDigits[] = {

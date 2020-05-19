@@ -3,10 +3,11 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
+		<link rel="shortcut icon" type="image/x-icon" href="./images/favicon.icon">
 		<title>profile</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta name="description" content="" />
-		<meta name="keywords" content="" />
+		<meta name="keywords" content="wanttolove" />
 		<link rel="stylesheet" type="text/css" href="css/animate.css">
 		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 		<link rel="stylesheet" type="text/css" href="css/line-awesome.css">
@@ -124,10 +125,10 @@
 													<h5>{{infoLabel[1]}}</h5>
 													<div class="cpp-fiel">
 														<select class="form-control" id="exampleFormControlSelect1" v-model="education">
-														      <option>{{educations[0]}}</option>
-														      <option>{{educations[1]}}</option>
-															  <option>{{educations[2]}}</option>
-															  <option>{{educations[3]}}</option>
+														      <option :value="educations[0]">{{educations[0]}}</option>
+														      <option :value="educations[1]">{{educations[1]}}</option>
+															  <option :value="educations[2]">{{educations[2]}}</option>
+															  <option :value="educations[3]">{{educations[3]}}</option>
 														</select>
 													</div>
 												</div>
@@ -135,10 +136,10 @@
 													<h5>{{infoLabel[2]}}</h5>
 													<div class="cpp-fiel">
 														<select class="form-control" id="exampleFormControlSelect1" v-model="height">
-														      <option>{{heights[0]}}</option>
-														      <option>{{heights[1]}}</option>
-															  <option>{{heights[2]}}</option>
-															  <option>{{heights[3]}}</option>
+														      <option :value="heights[0]">{{heights[0]}}</option>
+														      <option :value="heights[1]">{{heights[1]}}</option>
+															  <option :value="heights[2]">{{heights[2]}}</option>
+															  <option :value="heights[3]">{{heights[3]}}</option>
 														</select>
 													</div>
 												</div>
@@ -146,10 +147,10 @@
 													<h5>{{infoLabel[3]}}</h5>
 													<div class="cpp-fiel">
 														<select class="form-control" id="exampleFormControlSelect1" v-model="weight">
-														      <option>{{weights[0]}}</option>
-														      <option>{{weights[1]}}</option>
-															  <option>{{weights[2]}}</option>
-															  <option>{{weights[3]}}</option>
+														      <option :value="weight[0]">{{weights[0]}}</option>
+														      <option :value="weight[1]">{{weights[1]}}</option>
+															  <option :value="weight[2]">{{weights[2]}}</option>
+															  <option :value="weight[3]>{{weights[3]}}</option>
 														</select>
 													</div>
 												</div>
@@ -222,6 +223,9 @@
 												<div style="display: flex;justify-content: center;padding: 20px 0;">
 													<img :src="user.headLink" style="width: 200px;height: 200px;"/>
 												</div>
+												<span class="btn upload" style="margin-top: 5px;" v-if="user.headStatus == 2">{{errTitle[2]}}</span>
+												<span class="btn upload" style="margin-top: 5px;" v-if="user.headStatus == 1">{{errTitle[0]}}</span>
+												<span class="btn upload" style="margin-top: 5px;" v-if="user.headStatus == 0">{{errTitle[1]}}</span>
 												<span class="btn upload">{{headLabel[1]}}<input type="file" class="upload_pic" id="upload" v-on:change="onChange($event)" /></span>
 												<br>
 												<span class="btn upload" style="margin-top: 5px;" @click="updateHeadLink">{{headLabel[2]}}</span>
@@ -735,6 +739,7 @@
 				typeLabel:["皇冠会员", "钻石会员"],
 				upgrade1:["尽情聊天", "查看谁喜欢你", "认识更多单身异性", "让你倍受瞩目", "每日3000字内翻译", "更多展示机会"],
 				payLabel:["用户名", "立即支付", "自由输入"],
+				errTitle:["审核中", "审核通过", "审核失败"]
 				
 				/* 支付----------------start */
 				//升级还是充值
@@ -926,7 +931,7 @@
 					{header:{"cookie":this.ticket, 'Content-Type':'multipart/form-data'}})
 					.then(function (res) {
 						this.toLoginView(res)
-						alert("更新成功")
+						this.user.headStatus = 1
 					}, function (res) {
 					    console.log(res.body);
 					});
@@ -976,6 +981,7 @@
 				change() {
 					localStorage.setItem('languageID', this.languageID)
 					if(this.languageID == 1) {
+						this.errTitle = ["审核中", "审核通过", "审核失败"]
 						this.educations = ["高中", "本科", "研究生", "博士"]
 						this.topLabel = ["个人资料", "消息", "退出", "升级", "充值", "主页"]
 						this.payTop = ["升级", "账户充值"],
@@ -991,6 +997,7 @@
 						this.headLabel = ["头像设置", "选择图片", "完成"],
 						this.securityLabel = ["密保问题--防止忘记密码", "你的真实姓名", "你的邮箱地址", "你最喜欢的人"]
 					} else if(this.languageID == 2) {
+						this.errTitle = ["審核中", "審核通過", "審核失敗"]
 						this.educations = ["高中", "本科", "研究生", "博士"]
 						this.topLabel = ["個人資料", "消息", "退出", "升级", "充值", "主頁"]
 						this.payTop = ["升级", "賬戶充值"],
@@ -1006,6 +1013,7 @@
 						this.headLabel = ["更新頭像", "選擇圖片", "完成"],
 						this.securityLabel = ["密保問題--防止忘記密碼", "妳的真實姓名", "妳的郵箱地址", "妳最喜歡的人"]
 					} else if(this.languageID == 3) {
+						this.errTitle = ["Under review "," approved ", "failed"]
 						this.educations = ["High school" ,"undergraduate" ,"graduate" ,"PhD"]
 						this.topLabel = ["personal data", "message", "log out", "upgrade", "top up", "home"]
 						this.payTop = ["upgrade", "account recharge"],
@@ -1021,6 +1029,7 @@
 						this.headLabel = ["Update the avatar", "select image", "finish"],
 						this.securityLabel = ["security question--Don't forget your password", "Your real name", "Your email address", "Your favorite person"]
 					} else if(this.languageID == 4) {
+						this.errTitle = ["심사중","심사통과","심사실패"]
 						this.educations = ["고중","본과","연구생","박사"]
 						this.topLabel = ["인적 사항", "소식.정보.", "퇴출", "승급하다", "충전시키다", "홈페이지."]
 						this.payTop = ["승급하다", "계정 충전"],
@@ -1036,6 +1045,7 @@
 						this.headLabel = ["아바타 업데이트", "그림 선택", "완성하다"],
 						this.securityLabel = ["은밀히 하는 추천--암호 잊지 않기", "여러분의 진짜 이름은", "여러분의 이메일 주소가", "여러분이 가장 좋아하는 사람은"]
 					} else if(this.languageID == 5) {
+						this.errTitle = ["審査中", "審査通過", "審査失敗"]
 						this.educations = ["高校", "学部", "大学院生", "博士"]
 						this.topLabel = ["个人资料", "しょうそく", "たいしゅつ", "進級する", "リチャージ", "ホームページ"]
 						this.payTop = ["進級する", "アカウントチャージ"],
@@ -1051,6 +1061,7 @@
 						this.headLabel = ["アイコンを更新する", "画像を選択する", "かんせい"],
 						this.securityLabel = ["密保--パスワード忘れを防ぐ", "あなたの本当の名前", "あなたのメールアドレス", "あなたの大好きな人"]
 					} else if(this.languageID == 6) {
+						this.errTitle = ["ในการตรวจสอบ", "ตรวจสอบผ่าน", "การตรวจสอบล้มเหลว"]
 						this.educations = ["โรงเรียนมัธยม", "ปริญญาตรี", "บัณฑิต", "หมอ"]
 						this.topLabel = ["ข้อมูลส่วนบุคคล", "ข่าว", "ออก", "อัพ เกรด", "ชาร์จ", "บ้าน"]
 						this.payTop = ["อัพ เกรด", "บัญชีเติมเงิน"],

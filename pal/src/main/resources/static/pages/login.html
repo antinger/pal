@@ -3,6 +3,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
+		<link rel="shortcut icon" type="image/x-icon" href="./images/favicon.icon">
 		<title>登录</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta name="description" content="" />
@@ -269,7 +270,8 @@
 				loginPlaceholder:["请输入用户名", "请输入密码"],
 				registerPlaceholder:["请输入用户名", "请输入邮箱", "请输入密码", "请选择生日"],
 				sexLabel:["男", "女"],
-				forgetPlaceholder:["你的真实姓名？", "你的邮箱地址？", "你最喜欢的人？"]
+				forgetPlaceholder:["你的真实姓名？", "你的邮箱地址？", "你最喜欢的人？"],
+				errTitle:["账号已注册", "邮箱已注册", "邮箱格式不正确","密码长度少于六位数", "用户名不正确", "密码不正确", "重置成功"]
 				/* 语言转换定义 -----------end*/
 			},
 			methods:{
@@ -285,8 +287,17 @@
 					formData.append('sex', this.sex);
 					this.$http.post('/register/', formData)
 					.then(function (res) {
-						if(res.body.message){
-							alert(res.body.message)
+						if(res.body.name){
+							alert(this.errTitle[0])
+							return
+						}
+						if(res.body.email){
+							alert(this.errTitle[1])
+							return
+						}
+						if(res.body.emailErr){
+							alert(this.errTitle[2])
+							return
 						}
 						if(res.body.eor) {
 							alert(res.body.eor)
@@ -315,8 +326,12 @@
 					formData.append('password', this.password);
 					this.$http.post('/login/', formData)
 					.then(function (res) {
-						if(res.body.eor) {
-							alert(res.body.eor)
+						if(res.body.name) {
+							alert(this.errTitle[4])
+							return 
+						}
+						if(res.body.password) {
+							alert(this.errTitle[5])
 							return 
 						}
 						if(res.body.ticket) {
@@ -339,7 +354,7 @@
 					this.$http.post('/reset/', formData)
 					.then(function (res) {
 						if(res.body.message){
-							alert(res.body.message)
+							alert(this.errTitle[6])
 						}
 						if(res.body.eor){
 							alert(res.body.eor)
@@ -356,36 +371,42 @@
 				change(){
 					localStorage.setItem('languageID', this.languageID)
 					if(this.languageID == 1) {
+						this.errTitle = ["账号已注册", "邮箱已注册", "邮箱格式不正确","密码长度少于六位数", "用户名不正确", "密码不正确", "重置成功"]
 						this.label = ["登录", "注册", "忘记密码", "重置密码", "重置后，新的密码是", "账号需要审核"]
 						this.loginPlaceholder = ["请输入用户名", "请输入密码"]
 						this.registerPlaceholder = ["请输入用户名", "请输入邮箱", "请输入密码", "请选择生日"]
 						this.sexLabel = ["男", "女"]
 						this.forgetPlaceholder = ["你的真实姓名？", "你的邮箱地址？", "你最喜欢的人？"]
 					} else if(this.languageID == 2) {
+						this.errTitle = ["账号已注册", "邮箱已注册", "邮箱格式不正确","密码长度少于六位数", "用户名不正确", "密码不正确", "重置成功"]
 						this.label = ["登錄", "註冊", "忘記密碼", "重置密碼", "重置後，新的密碼是", "賬號需要審核"]
 						this.loginPlaceholder = ["請輸入用戶名", "請輸入密碼"]
 						this.registerPlaceholder = ["請輸入用戶名", "請輸入郵箱", "請輸入密碼", "請選擇生日"]
 						this.sexLabel = ["男", "女"]
 						this.forgetPlaceholder = ["妳的真實姓名？", "妳的郵箱地址？", "妳最喜歡的人？"]
 					} else if(this.languageID == 3) {
+						this.errTitle = ["Account registered", "email registered", "email format is not correct", "password length less than six figures", "incorrect username", "password incorrect", "reset success"]
 						this.label = ["login", "register", "forget password", "reset passwords ", "After the reset, the new password is", "The account needs to be reviewed."]
 						this.loginPlaceholder = ["username", "password"]
 						this.registerPlaceholder = ["usrname", "email", "password", "birthday"]
 						this.sexLabel = ["man", "woman"]
 						this.forgetPlaceholder = ["Your real name？", "Your email address？", "Your favorite person？"]
 					} else if(this.languageID == 4) {
+						this.errTitle = ["계정 등록 되였다.","e-메일 보관함 등록 되였다.","e-메일 보관함 격식이 정확 하지 않다","비밀번호 길이보다 여섯 자리","사용자 이름이 정확 하지 않다","비밀번호 가 정확 하지 않다","성공초기화"]
 						this.label = ["로그인", "등기", "비밀번호를 잊어버리다", "비밀번호 초기화", "다시 시작하면 새로운 비밀번호는", "계좌 번호를 심사해야 한다."]
 						this.loginPlaceholder = ["사용자 이름.", " 비밀 번호"]
 						this.registerPlaceholder = ["사용자 이름.", "우편함", " 비밀 번호", "출생일"]
 						this.sexLabel = ["남성.", "여자."]
 						this.forgetPlaceholder = ["여러분의 진짜 이름은？", "여러분의 이메일 주소가？", "여러분이 가장 좋아하는 사람은？"]
 					} else if(this.languageID == 5) {
+						this.errTitle = ["アカウントが登録", "メールが登録し","メールのフォーマット正しくない", "パスワード丈より六桁の数字は、", "ユーザー名正しくない", "パスワードを正しくない", "リセット成功]
 						this.label = ["登録する", "登録", "パスワードを忘れる", "パスワードをリセットする", "リセット後、新しいパスワードは", "アカウントは査定する必要がある"]
 						this.loginPlaceholder = ["ユーザー名「めい」", "あんごうふごう"]
 						this.registerPlaceholder = ["ユーザー名「めい」", "ポスト", "あんごうふごう", "たんじょうび"]
 						this.sexLabel = ["おとこ", "おんな"]
 						this.forgetPlaceholder = ["あなたの本当の名前？", "あなたのメールアドレス？", "あなたの大好きな人？"]
 					} else if(this.languageID == 6) {
+						this.errTitle = ["บัญชีลงทะเบียน", "อีเมล์ลงทะเบียน", "รูปแบบอีเมลไม่ถูกต้อง", "รหัสผ่านน้อยกว่าหกหลักในความยาว", "ชื่อผู้ใช้ไม่ถูกต้อง", "รหัสผ่านไม่ถูกต้อง", "รีเซ็ตสําเร็จ"]
 						this.label = ["เข้า สู่ ระบบ", "ลง ทะเบียน", "ลืมรหัสผ่าน", "รีเซ็ตรหัสผ่านของคุณ", "หลังจากรีเซ็ตรหัสผ่านใหม่จะ", "บัญชีต้องได้รับการตรวจทาน"]
 						this.loginPlaceholder = ["ชื่อผู้ใช้", "รหัส ผ่าน"]
 						this.registerPlaceholder = ["ชื่อผู้ใช้", "กล่อง จดหมาย", "รหัส ผ่าน", "วัน"]

@@ -3,10 +3,11 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
+		<link rel="shortcut icon" type="image/x-icon" href="./images/favicon.icon">
 		<title>home page</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta name="description" content="" />
-		<meta name="keywords" content="" />
+		<meta name="keywords" content="wanttolove" />
 		<link rel="stylesheet" type="text/css" href="css/animate.css">
 		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 		<link rel="stylesheet" type="text/css" href="css/flatpickr.min.css">
@@ -1182,7 +1183,8 @@
 				searchLabel:"搜索",
 				typeLabel:["皇冠会员", "钻石会员"],
 				upgrade1:["尽情聊天", "查看谁喜欢你", "认识更多单身异性", "让你倍受瞩目", "每日3000字内翻译", "更多展示机会"],
-				btnLabel:["用户名", "立即支付", "自由输入"]
+				btnLabel:["用户名", "立即支付", "自由输入"],
+				errTitle:["等待审核", "发送成功", "余额不足", "升级会员查看更多内容"]
 				/* 标签---------------------end */
 			},
 			methods:{
@@ -1309,7 +1311,7 @@
 				    {headers: { 'Content-Type': 'multipart/form-data', cookie:this.ticket}}).
 				    then(function (res) {
 						if(res.body.message){
-							alert(res.body.message)
+							alert(this.errTitle[0])
 						}
 				    	this.toLoginView(res)
 						this.content = ""
@@ -1417,10 +1419,10 @@
 				    {headers: { 'Content-Type': 'multipart/form-data', cookie:this.ticket}}).
 				    then(function (res) {
 						if(res.body.message){
-							alert(res.body.message)
+							alert("ok")
 						}
 						if(res.body.flag) {
-							alert("not sufficient funds")
+							alert(this.errTitle[2])
 							this.toView(2)
 							return
 						}
@@ -1600,6 +1602,7 @@
 				change() {
 					localStorage.setItem('languageID', this.languageID)
 					if(this.languageID == 1) {
+						this.errTitle = ["等待审核", "发送成功", "余额不足", "升级会员查看更多内容"]
 						this.topLabel = ["个人资料", "消息", "退出", "升级", "充值", "主页"]
 						this.leftLabel = ["升级", "充值", "金币", "生日", "教育", "身高", "体重", "工作", "国家", "地区"]
 						this.rightLabel = ["推荐", "动态", "关注", "粉丝", "游客", "礼品"]
@@ -1613,6 +1616,7 @@
 						this.upgrade1 = ["尽情聊天", "查看谁喜欢你", "认识更多单身异性", "让你倍受瞩目", "每日3000字内翻译", "更多展示机会"]
 						this.btnLabel = ["用户名", "立即支付", "自由输入"]
 					} else if(this.languageID == 2) {
+						this.errTitle = ["等待審核", "發送成功", "余額不足", "升級會員查看更多內容"]
 						this.topLabel = ["個人資料", "消息", "退出", "升级", "充值", "主頁"]
 						this.leftLabel = ["升级", "充值", "金幣", "生日", "教育", "身高", "體重", "工作", "國家", "地區"]
 						this.rightLabel = ["推薦", "動態", "關註", "粉絲", "遊客", "禮品"]
@@ -1626,6 +1630,7 @@
 						this.upgrade1 = ["盡情聊天", "查看誰喜歡妳", "認識更多單身異性", "讓妳倍受矚目", "每日3000字內翻譯", "更多展示機會"]
 						this.btnLabel = ["用戶名", "立即支付", "自由輸入"]
 					} else if(this.languageID == 3) {
+						this.errTitle = ["Waiting for review "," send successfully ", "insufficient balance "," upgrade member to view more content"]
 						this.topLabel = ["personal data", "message", "log out", "upgrade", "top up", "home"]
 						this.leftLabel = ["upgrade", "top up", "gold", "birth", "education", "height", "weight", "job", "country", "city"]
 						this.rightLabel = ["recommend", "dynamic state", "attention", "fans", "visitor", "gift"]
@@ -1639,6 +1644,7 @@
 						this.upgrade1 = ["Enjoy chatting", "Find out who likes you", "Meet more single people", "high-profile", "Daily translation within 3000 words", "More presentation opportunities"]
 						this.btnLabel = ["username", "Pay now", "Free to enter"]
 					} else if(this.languageID == 4) {
+						this.errTitle = ["인증 대기","발송 성공","잔액 부족","회원 업그레이드 내용 보기"]
 						this.topLabel = ["인적 사항", "소식.정보.", "퇴출", "승급하다", "충전시키다", "홈페이지."]
 						this.leftLabel = ["승급하다", "충전시키다", "잔액", "생일", "교육", "신장", "체중", "직업", "국가", "지역"]
 						this.rightLabel = ["천거하다", "동태", "관심", "당면", "여행객", "선물."]
@@ -1652,6 +1658,7 @@
 						this.upgrade1 = ["맘껏 한담하다", "누가 당신을 좋아하는지 확인해보세요.", "솔로 이성을 더 많이 알게 됩니다.", "많은 주목을 받고 있습니다.", "매일 3000자로 번역하다", "더 많은 전시 기회"]
 						this.btnLabel = ["아이디", "지금 지불하다", "자유입력"]
 					} else if(this.languageID == 5) {
+						this.errTitle = ["審査待ち", "送信成功", "残高不足", "会員をアップグレードしてより多くの内容をチェック"]
 						this.topLabel = ["个人资料", "しょうそく", "たいしゅつ", "進級する", "リチャージ", "ホームページ"]
 						this.leftLabel = ["進級する", "[リチャージ", "やまぶき", "生まれた日", "きょういく", "身長", "たいじゅう", "こうさく", "こっか", "ちく"]
 						this.rightLabel = ["せわ", "うごき", "配慮する", "材料はリョクトウ", "遊覧客", "贈り物"]
@@ -1665,6 +1672,7 @@
 						this.upgrade1 = ["思う存分話す", "誰があなたを好きか調べて", "独身異性をより多く知る", "注目されている", "1日3000字以内に翻訳する", "より多くの展示機会"]
 						this.btnLabel = ["ゆーざめい", "即時支払い", "ふりーふぉーむにゅうりょく"]
 					} else if(this.languageID == 6) {
+						this.errTitle = ["กําลังรอการตรวจสอบ", "ส่งสําเร็จ", "ยอดคงเหลือไม่เพียงพอ", "อัพเกรดสมาชิกเพื่อดูเพิ่มเติม"]
 						this.topLabel = ["ข้อมูลส่วนบุคคล", "ข่าว", "ออก", "อัพ เกรด", "ชาร์จ", "บ้าน"]
 						this.leftLabel = ["อัพ เกรด", "ชาร์จ", "ทอง", "วัน", "ศึกษา", "สูง", "น้ำหนัก", "งาน", "ประเทศ", "ตั้ง"]
 						this.rightLabel = ["แนะ นำ", "แบบ ไดนามิก", "กังวล", "แฟนๆ", "นัก ท่อง เที่ยว", "ขวัญ"]

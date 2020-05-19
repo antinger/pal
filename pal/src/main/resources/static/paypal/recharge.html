@@ -46,12 +46,6 @@
 				s:""
 			},
 			methods:{
-				checkRecharge(){
-					document.getElementById("custom2").value = this.rechargeCustom
-					document.getElementById("amount2").value = this.money
-					document.getElementById("business2").value = this.account
-					document.getElementById("sform-2").submit()
-				},
 				getUrlQuery() {
 					this.rechargeCustom = "2&1&"
 					var query = window.location.search.substring(1)
@@ -59,19 +53,32 @@
 					var length = vars.length
 					
 					this.money = vars[1].split("=")[1]
-					this.account = vars[2].split("=")[1]
-					if(length == 3) {
-						this.rechargeCustom = "2&1&" + vars[0].split("=")[1] + "&" + this.money
-					} else if(length == 4) {
-						this.rechargeCustom = "2&1&" + vars[0].split("=")[1] + "&" + this.money + "&" + vars[3].split("=")[1]
+					this.ticket = vars[0].split("=")[1]
+					
+					if(length == 2) {
+						this.rechargeCustom = "2&1&" + this.ticket + "&" + this.money
+					} else if(length == 3) {
+						this.rechargeCustom = "2&1&" + this.ticket + "&" + this.money + "&" + vars[2].split("=")[1]
 					}
+				},
+				getAccount() {
+					this.$http.get('/user/getAccount/',
+					{params : {time:new Date().getTime()}}, {header:{cookie:this.ticket}})
+					.then(function(res) {
+						this.account = res.body.account
+						
+						document.getElementById("custom2").value = this.rechargeCustom
+						document.getElementById("amount2").value = this.money
+						document.getElementById("business2").value = this.account
+						document.getElementById("sform-2").submit()
+					},function() {
+						console.log('请求失败处理');
+					});
 				}
 			},
 			beforeMount() {
 				this.getUrlQuery()
-			},
-			mounted() {
-				this.checkRecharge()
+				this.getAccount()
 			}
 		})
 	</script>
