@@ -538,9 +538,9 @@
 							<input id='amount' type="hidden" name="amount" >  <!-- 付款/充值金额  -->
 							<input type="hidden" name="currency_code" value="USD">	<!-- 货币 -->
 							<!-- 支付成功后paypal后台发送回调地址-->
-							<input type='hidden' name='notify_url' value='http://www.asecretdates.com/paysuccess/'>  
+							<input type='hidden' name='notify_url' value='http://47.115.142.159/paysuccess/'>  
 							<!-- 支付成功后网页跳转地址-->
-							<input type='hidden' name='return' value='http://www.asecretdates.com/pages/success.html'> 
+							<input type='hidden' name='return' value='http://47.115.142.159/pages/success.html'> 
 							<input type='hidden' name='charset' value='utf-8'>	<!-- 字符集 -->
 							<input type="hidden" name="no_shipping" value="1"> <!-- 不要求客户提供收货地址 -->
 							<input type="hidden" name="bn" value="IC_Sample">
@@ -650,9 +650,9 @@
 								<input id='item_number' type="hidden" name="item_number" value="产品编号"> <!-- 产品编号-->
 								<input id='amount2' type="hidden" name="amount">  <!-- 付款/充值金额  -->
 								<!-- 支付成功后paypal后台发送回调地址-->
-								<input type='hidden' name='notify_url' value='http://www.asecretdates.com/paysuccess/'>  
+								<input type='hidden' name='notify_url' value='http://47.115.142.159/paysuccess/'>  
 								<!-- 支付成功后网页跳转地址-->
-								<input type='hidden' name='return' value='http://www.asecretdates.com/pages/success.html'> 
+								<input type='hidden' name='return' value='http://47.115.142.159/pages/success.html'> 
 								<input type="hidden" name="currency_code" value="USD">	<!-- 货币 -->
 								<input type='hidden' name='charset' value='utf-8'>	<!-- 字符集 -->
 								<input type="hidden" name="no_shipping" value="1"> <!-- 不要求客户提供收货地址 -->
@@ -691,7 +691,7 @@
 				user:"",
 				/* 更新个人信息-----start */
 				educations:["高中", "本科", "研究生", "博士"],
-				heights:["155cm-165cm", "165-cm170cm", "170cm-180cm", "180cm-190cm"],
+				heights:["155cm-165cm", "165cm-170cm", "170cm-180cm", "180cm-190cm"],
 				weights:["40kg-50kg", "50kg-60kg", "70kg-80kg", "80kg-90kg"],
 				education:"",
 				height:"",
@@ -739,7 +739,7 @@
 				typeLabel:["皇冠会员", "钻石会员"],
 				upgrade1:["尽情聊天", "查看谁喜欢你", "认识更多单身异性", "让你倍受瞩目", "每日3000字内翻译", "更多展示机会"],
 				payLabel:["用户名", "立即支付", "自由输入"],
-				errTitle:["审核中", "审核通过", "审核失败"]
+				errTitle:["审核中", "审核通过", "审核失败"],
 				
 				/* 支付----------------start */
 				//升级还是充值
@@ -1024,8 +1024,8 @@
 						this.upgrade1 = ["Enjoy chatting", "Find out who likes you", "Meet more single people", "high-profile", "Daily translation within 3000 words", "More presentation opportunities"]
 						this.payLabel = ["username", "Pay now", "Free to enter"]
 						this.btnLabel = ["personal information ", "Update account", "Update the avatar", "security question", "save"],
-						this.infoLabel = ["personal information ", "education", "height", "weight", "job", "country", "city"],
-						this.acountLabel = ["Update account", "old password", "new password", "confirm password "], 
+						this.infoLabel = ["personal information", "education", "height", "weight", "job", "country", "city"],
+						this.acountLabel = ["Update account", "old password", "new password", "confirm password"], 
 						this.headLabel = ["Update the avatar", "select image", "finish"],
 						this.securityLabel = ["security question--Don't forget your password", "Your real name", "Your email address", "Your favorite person"]
 					} else if(this.languageID == 4) {
