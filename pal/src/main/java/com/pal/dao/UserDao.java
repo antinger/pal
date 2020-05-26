@@ -25,6 +25,9 @@ public interface UserDao {
     void addUser(User user);
     
     //获取用户
+    @Select({"select ", SELECT_FIELDS, " from ", TABLE_NAME, " where email=#{email}"})
+    User selectUserByEmail(String email);
+    
     @Select({"select ", SELECT_FIELDS, " from ", TABLE_NAME, " where username=#{username}"})
     User selectUserByUsername(String username);
     

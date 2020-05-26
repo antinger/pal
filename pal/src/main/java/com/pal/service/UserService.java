@@ -60,16 +60,16 @@ public class UserService {
 	//注册
 	public Map<String, Object> register(String username, String password, String email, Date birthday, Integer sex, String ip) {
 		Map<String, Object> map = new HashMap<String, Object>();
-		if(!PalUtils.emailFormat(email)) {
-			map.put("emailErr", "邮箱已经注册");
-			return map;
-		}
 		if(username == null || "".equals(username)) {
 			map.put("eor", "用户名不能为空");
 			return map;
 		}
 		if(email == null || "".equals(email)) {
 			map.put("eor", "邮箱不能为空");
+			return map;
+		}
+		if(!PalUtils.emailFormat(email)) {
+			map.put("emailErr", "邮箱格式不正确");
 			return map;
 		}
 		if(birthday == null) {
@@ -89,7 +89,8 @@ public class UserService {
 			map.put("name", "用户名已经注册");
 			return map;
 		}
-		if(user.getEmail().equals(email)) {
+		user = userDao.selectUserByEmail(email);
+		if(user != null) {
 			map.put("email", "邮箱已经注册");
 			return map;
 		}

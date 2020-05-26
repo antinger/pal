@@ -27,62 +27,7 @@
 	<div class="wrapper" id="app">
 		
 
-<!-- 头部--------------------start -->
-			<header>
-				<div class="container">
-					<div class="header-data">
-						<div class="logo">
-							<a href="index.html" title=""><img src="images/logo.png" alt=""></a>
-						</div><!--logo end-->
-						<div class="search-bar">
-						
-						</div><!--search-bar end-->
-						<nav>
-							<ul>
-								
-								<li>
-									<a href="profile.html" title="">
-										<span><img src="images/icon4.png" alt=""></span>
-										Profiles
-									</a>
-								</li>
-								
-								<li>
-									<a href="#" title="" class="not-box-open">
-										<span><img src="images/icon6.png" alt=""></span>
-										Messages
-									</a>
-								</li>
-								
-								<li>
-									<a href="#" title="" class="not-box-open">
-										<span><img src="images/icon6.png" alt=""></span>
-										退出
-									</a>
-								</li>
-							</ul>
-						</nav><!--nav end-->
-						<div class="menu-btn">
-							<a href="#" title=""><i class="fa fa-bars"></i></a>
-						</div><!--menu-btn end-->
-						<div class="user-account">
-							<div class="user-info">
-								<a href="#" title="">ENGLISH</a>
-								<i class="la la-sort-down"></i>
-							</div>
-							<div class="user-account-settingss">
-								<ul class="us-links">
-									<li><a href="profile-account-setting.html" title="">Account Setting</a></li>
-									<li><a href="#" title="">Privacy</a></li>
-									<li><a href="#" title="">Faqs</a></li>
-									<li><a href="#" title="">Terms & Conditions</a></li>
-								</ul>
-							</div><!--user-account-settingss end-->
-						</div>
-					</div><!--header-data end-->
-				</div>
-			</header><!--header end-->	
-			<!-- 头部--------------------end -->
+		
 
 
 
@@ -98,24 +43,7 @@
 
 
 
-		<footer>
-			<div class="footy-sec mn no-margin">
-				<div class="container">
-					<ul>
-						<li><a href="#" title="">Help Center</a></li>
-						<li><a href="#" title="">Privacy Policy</a></li>
-						<li><a href="#" title="">Community Guidelines</a></li>
-						<li><a href="#" title="">Cookies Policy</a></li>
-						<li><a href="#" title="">Career</a></li>
-						<li><a href="#" title="">Forum</a></li>
-						<li><a href="#" title="">Language</a></li>
-						<li><a href="#" title="">Copyright Policy</a></li>
-					</ul>
-					<p><img src="images/copy-icon2.png" alt="">Copyright 2017</p>
-					<img class="fl-rgt" src="images/logo2.png" alt="">
-				</div>
-			</div>
-		</footer>
+		
 
 	</div><!--theme-layout end-->
 
@@ -137,23 +65,12 @@
 				
 			},
 			methods:{
-				//分页获取所有的汉服
-				selectEssayByCloth(page) {
-					this.$http.get('/admin/getEssaysPageByUserId/',
-					{params : {userId:this.tel,page:page,limit:20,time:new Date().getTime()}})
-					.then(function(res){
-							this.essays = res.body.data;
-							this.pageCount = res.body.pageCount;
-							this.commentConut = res.body.commentConut;
-							this.pv = res.body.pv;
-							this.likeCount = res.body.likeCount;
-					},function() {
-						console.log('请求失败处理');
-					});
-				},
+				toView(){
+					window.location.href="index.html"
+				}
 			},
 			beforeMount() {
-				
+				this.toView()
 			}
 		})
 	</script>
