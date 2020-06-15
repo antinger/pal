@@ -26,26 +26,26 @@ public class MemberTicketService {
 	OrderFormService orderFormService;
 	
 	//为自己升级会员
-	public Map<String, Object> addMemberTicketForUsername(String ticket, String money) {
+	public Map<String, Object> addMemberTicketForUsername(String ticket, String money, Integer type) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		//获取当前线程用户名
 		String username = getThreadUserName(ticket);
 		//添加会员
 		System.out.println("添加会员");
 		addMemeberTicket(username, money);
-		orderFormService.addOrderForm(username, username, "升级", Integer.valueOf(money));
+		orderFormService.addOrderForm(username, username, "升级", Integer.valueOf(money), type);
 		map.put("message", "充值成功");
 		return null;
 	}
 	
 	//为别人升级会员
-	public Map<String, Object> addMemberTicketForToUsername(String ticket, String toUsername, String money) {
+	public Map<String, Object> addMemberTicketForToUsername(String ticket, String toUsername, String money, Integer type) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		//添加会员
 		addMemeberTicket(toUsername, money);
 		//当前用户
 		String username = getThreadUserName(ticket);
-		orderFormService.addOrderForm(username, toUsername, "升级", Integer.valueOf(money));
+		orderFormService.addOrderForm(username, toUsername, "升级", Integer.valueOf(money), type);
 		map.put("message", "充值成功");
 		return map;
 	}

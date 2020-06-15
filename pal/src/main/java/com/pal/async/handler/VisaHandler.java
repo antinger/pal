@@ -13,8 +13,7 @@ import com.pal.service.MemberTicketService;
 import com.pal.service.WalletService;
 
 @Component
-public class PayHandler implements EventHandler {
-
+public class VisaHandler implements EventHandler {
 	@Autowired
 	WalletService walletService;
 	
@@ -38,22 +37,22 @@ public class PayHandler implements EventHandler {
             	String upgradeType = customs[1];
             	if("1".equals(upgradeType)) {
             		System.out.println("为自己升级");
-            		memberTicketService.addMemberTicketForUsername(ticket, money, 1);
+            		memberTicketService.addMemberTicketForUsername(ticket, money, 2);
             	} else {
             		System.out.println("为别人升级");
             		String toUsername = customs[4];
-            		memberTicketService.addMemberTicketForToUsername(ticket, toUsername, money, 1);
+            		memberTicketService.addMemberTicketForToUsername(ticket, toUsername, money, 2);
             	}
             } else if("2".equals(payType)) {
             	//充值
             	String recharge = customs[1];
             	if("1".equals(recharge)) {
             		System.out.println("为自己充值");
-            		walletService.rechargeByTicket(ticket, money, 1);
+            		walletService.rechargeByTicket(ticket, money, 2);
             	} else {
             		System.out.println("为别人充值");
             		String toUsername = customs[4];
-            		walletService.recharge(ticket, toUsername, money, 1);
+            		walletService.recharge(ticket, toUsername, money, 2);
             	}
             }
             
@@ -63,7 +62,6 @@ public class PayHandler implements EventHandler {
 	@Override
 	public List<EventType> getSupportEventType() {
 		// TODO Auto-generated method stub
-		return Arrays.asList(EventType.PAY);
+		return Arrays.asList(EventType.VISA);
 	}
-
 }

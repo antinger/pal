@@ -18,13 +18,14 @@ public class OrderFormService {
 	@Autowired
 	UserDao userDao;
 
-	public void addOrderForm(String username, String toUsername, String content, Integer price) {
+	public void addOrderForm(String username, String toUsername, String content, Integer price, Integer type) {
 		OrderForm orderForm = new OrderForm();
 		User user = userDao.selectUserByUsername(username);
 		orderForm.setUserName(username);
 		orderForm.setToUserName(toUsername);
 		orderForm.setContent(content);
 		orderForm.setPrice(price);
+		orderForm.setType(type);
 		if("".equals(user.getLineID()) || user.getLineID() == null) {
 			orderForm.setLineID("admin");
 		} else {

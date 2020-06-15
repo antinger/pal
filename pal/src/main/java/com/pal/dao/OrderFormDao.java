@@ -14,11 +14,11 @@ import com.pal.entity.OrderForm;
 public interface OrderFormDao {
 	
 	String TABLE_NAME = "orderForm";
-    String INSERT_FIELDS = " card, userName, toUserName, lineID, content, price, createDate, doneDate ";
+    String INSERT_FIELDS = " card, userName, toUserName, lineID, content, price, type, createDate, doneDate ";
     String SELECT_FIELDS = " id, " + INSERT_FIELDS;
     
     //添加记录
-    @Insert({"insert into ", TABLE_NAME, "(", INSERT_FIELDS, ") values (#{card},#{userName},#{toUserName},#{lineID},#{content},#{price},#{createDate},#{doneDate})"})
+    @Insert({"insert into ", TABLE_NAME, "(", INSERT_FIELDS, ") values (#{card},#{userName},#{toUserName},#{lineID},#{content},#{price},#{type},#{createDate},#{doneDate})"})
     void addOrderForm(OrderForm orderForm);
     
     //获取未读的消息量

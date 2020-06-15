@@ -19,6 +19,8 @@ public class OrderForm {
 	private String content;
 	
 	private Integer price;
+	//visa:2;paypal:1
+	private Integer type;
 	
 	//提交时间
 	private Date createDate;
@@ -33,6 +35,7 @@ public class OrderForm {
 		this.toUserName = "";
 		this.content = "";
 		this.price = 0;
+		this.setType(0);
 		this.createDate = new Date();
 		this.doneDate = new Date();
 	}
@@ -107,6 +110,14 @@ public class OrderForm {
 
 	public void setLineID(String lineID) {
 		this.lineID = lineID;
+	}
+
+	public Integer getType() {
+		return type;
+	}
+
+	public void setType(Integer type) {
+		this.type = type;
 	}
 	
 }

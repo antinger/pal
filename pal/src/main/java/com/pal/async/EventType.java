@@ -2,7 +2,7 @@ package com.pal.async;
 
 public enum EventType {
 	
-	PAY(1);
+	PAY(1), VISA(2);
 
 	private Integer type;
 	

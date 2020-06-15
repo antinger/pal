@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/animate.css">
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	</head>
+	<body>
+		<div id="app">
+			<!-- 消费金额 -->
+			<div class="row" style="padding: 10px 60px;background: #E4B9C0;">
+				<div class="col-3">
+					<h4>{{label1[0]}}:98</h4>
+				</div>
+				<div class="col-6"></div>
+				<div class="col-3">
+					<select class="form-control form-control-lg language" v-model="languageID" @click="change" 
+						style="padding-bottom: 0px;padding-top: 0;">
+						<option selected="true" value="1">中文简体</option>
+						<option value="2">中文-繁體</option>
+						<option value="3">English</option>
+						<option value="4">한국어</option>
+						<option value="5">にほんご</option>
+						<option value="6">ภาษาไทย</option>
+					</select>
+				</div>
+			</div>
+			<div class="row" style="padding: 10px 60px;margin-top: 10px;background: #20C997;">
+				<h4>{{label1[1]}}</h4>
+			</div>
+			<div class="row" style="padding: 0 40px;margin-top: 10px;">
+				<div class="col-4">
+					<select class="form-control" v-model="cardCountry">
+						<option selected="selected">{{label1[2]}}</option>
+					    <option value="CN">CN</option>
+						<option value="US">US</option>
+						<option value="KR">KR</option>
+						<option value="JP">JP</option>
+						<option value="TH">TH</option>
+					</select>
+				</div>
+				<div class="col-4">
+					<input type="text" class="form-control" v-model="cardState" :placeholder="label1[3]">
+				</div>
+				<div class="col-4">
+					<input type="text" class="form-control" v-model="cardCity" :placeholder="label1[4]">
+				</div>
+			</div>
+			<div class="row" style="padding: 0 40px;margin-top: 30px;">
+				<div class="col-4">
+					<input type="text" class="form-control" v-model="cardAddress" :placeholder="label1[5]">
+				</div>
+				<div class="col-4">
+					<input type="text" class="form-control" v-model="cardZipCode" :placeholder="label1[6]">
+				</div>
+			</div>
+			<div class="row" style="padding: 10px 60px;margin-top: 30px;background: #20C997;">
+				<h4>{{label2[0]}}</h4>
+			</div>
+			<div class="row" style="padding: 0 40px;margin-top: 30px;">
+				<div class="col-4">
+					<select class="form-control"  v-model="grCountry">
+						<option selected="selected">{{label2[1]}}</option>
+					    <option value="CN">CN</option>
+						<option value="US">US</option>
+						<option value="KR">KR</option>
+						<option value="JP">JP</option>
+						<option value="TH">TH</option>
+					</select>
+				</div>
+				<div class="col-4">
+					<input type="text" class="form-control" v-model="grState" :placeholder="label2[2]">
+				</div>
+				<div class="col-4">
+					<input type="text" class="form-control" v-model="grCity" :placeholder="label2[3]">
+				</div>
+			</div>
+			<div class="row" style="padding: 0 40px;margin-top: 30px;">
+				<div class="col-4">
+					<input type="text" class="form-control" v-model="grAddress" :placeholder="label2[4]">
+				</div>
+				<div class="col-4">
+					<input type="text" class="form-control" v-model="grZipCode" :placeholder="label2[5]">
+				</div>
+				<div class="col-4">
+					<input type="text" class="form-control" v-model="grEmail" :placeholder="label2[6]">
+				</div>
+			</div>
+			<div class="row" style="padding: 10px 60px;margin-top: 30px;background: #20C997;">
+				<h4>{{label3[0]}}</h4>
+			</div>
+			<div class="row" style="padding: 0 40px;margin-top: 30px;">
+				<div class="col-4">
+					<input type="text" class="form-control" v-model="grphoneNumber" :placeholder="label3[1]">
+				</div>
+				<div class="col-4">
+					<input type="text" class="form-control" v-model="grPerName" :placeholder="label3[2]">
+				</div>
+				<div class="col-4">
+					<input type="text" class="form-control" v-model="cardNO" :placeholder="label3[3]">
+				</div>
+			</div>
+			<div class="row" style="padding: 0 40px;margin-top: 30px;">
+				<div class="col-4">
+					<input type="text" class="form-control" v-model="expYear" :placeholder="label3[4]">
+				</div>
+				<div class="col-4">
+					<input type="text" class="form-control" v-model="expMonth" :placeholder="label3[5]">
+				</div>
+				<div class="col-4">
+					<input type="text" class="form-control" v-model="cvv" :placeholder="label3[6]">
+				</div>
+			</div>
+			<div class="row" style="padding: 0 40px;margin-top: 30px;">
+				<div class="col-4">
+					<input type="text" class="form-control" v-model="FristName" :placeholder="label4[0]">
+				</div>
+				<div class="col-4">
+					<input type="text" class="form-control" v-model="LastName" :placeholder="label4[1]">
+				</div>
+				<div class="col-4">
+					<input type="text" class="form-control" v-model="cardFullPhone" :placeholder="label4[2]">
+				</div>
+			</div>
+			<div class="row" style="margin-top: 20px;">
+				<button class="btn btn-success btn-lg btn-block">{{btnLabel}}</button>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/popper.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/jquery.mCustomScrollbar.js"></script>
+	<script type="text/javascript" src="lib/slick/slick.min.js"></script>
+	<script type="text/javascript" src="js/script.js"></script>
+	<script src="js/browser.min.js"></script>
+	<script src="js/polyfill.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/vue-2.4.0.js"></script>
+	<script src="js/vue-resource-1.3.4.js"></script>
+	<script type="text/babel">
+		var vm = new Vue({
+			el : '#app',
+			data:{
+				languageID:3,
+				label1:["消费金额", "账单信息", "请选择账单签收国家", "请输入账单签收州", "请输入账单签收城市", "请输入账单签收地址", "请输入账单邮编"],
+				label2:["收货信息", "请选择收货国家", "请输入收货州", "请输入收货城市", "请输入收货地址", "请输入收货邮编", "请输入收货邮箱"],
+				label3:["收货人信息", "请输入收货人电话", "请输入收货人姓名", "请输入消费的信用卡卡号", "请输入信用卡有效期年份（4位）", "请输入信用卡有效期月份（2位）", "请输入信用卡背面的cvv"],
+				label4:["银行卡绑定的持卡人姓氏", "银行卡绑定的持卡人名字", "银行卡绑定的手机号"],
+				btnLabel:"立即支付",
+				cardCountry:"", cardState:"", cardCity:"", cardAddress:"", cardZipCode:"",
+				grCountry:"", grState:"", grCity:"", grAddress:"", grZipCode:"", grEmail:"", 
+				grphoneNumber:"", grPerName:"", cardNO:"", expYear:"", expMonth:"", cvv:"", FristName:"", LastName:"", cardFullPhone:"",
+				custom:""
+			},
+			methods:{
+				pay(){
+					if(this.cardCountry=="" || this.cardState=="" || this.cardCity=="" || this.cardAddress=="" || this.cardZipCode=="" || this.grCountry=="" || this.grState==""|| this.grCity=="" || this.grAddress=="" || this.grZipCode=="" || this.grEmail=="" ||
+				this.grphoneNumber==""== this.grPerName==""== this.cardNO==""== this.expYear==""== this.expMonth==""== this.cvv==""== this.FristName==""== this.LastName==""== this.cardFullPhone=="") {
+						return
+					}
+					var formData = new FormData();
+					formData.append('custom', this.custom);
+					formData.append('cardCountry', this.cardCountry);
+					formData.append('cardState', this.cardState);
+					formData.append('cardCity', this.cardCity);
+					formData.append('cardAddress', this.cardAddress);
+					formData.append('cardZipCode', this.cardZipCode);
+					formData.append('grCountry', this.grCountry);
+					formData.append('grState', this.grState);
+					formData.append('grCity', this.grCity);
+					formData.append('grAddress', this.grAddress);
+					formData.append('grZipCode', this.grZipCode);
+					formData.append('grEmail', this.grEmail);
+					formData.append('grphoneNumber', this.grphoneNumber);
+					formData.append('grPerName', this.grPerName);
+					formData.append('cardNO', this.cardNO);
+					formData.append('expYear', this.expYear);
+					formData.append('expMonth', this.expMonth);
+					formData.append('cvv', this.cvv);
+					formData.append('FristName', this.FristName);
+					formData.append('LastName', this.LastName);
+					formData.append('cardFullPhone', this.cardFullPhone);
+					this.$http.post('/user/payVisa/', formData, {header:{"cookie":this.ticket}})
+					.then(function (res) {
+						 console.log(res.body);
+					}, function (res) {
+					    console.log(res.body);
+					});
+				},
+				change(){
+					localStorage.setItem('languageID', this.languageID)
+					if(this.languageID == 1) {
+						this.label1 = ["消费金额", "账单信息", "请选择账单签收国家", "请输入账单签收州", "请输入账单签收城市", "请输入账单签收地址", "请输入账单邮编"],
+						this.label2 = ["收货信息", "请选择收货国家", "请输入收货州", "请输入收货城市", "请输入收货地址", "请输入收货邮编", "请输入收货邮箱"],
+						this.label3 = ["收货人信息", "请输入收货人电话", "请输入收货人姓名", "请输入消费的信用卡卡号", "请输入信用卡有效期年份（4位）", "请输入信用卡有效期月份（2位）", "请输入信用卡背面的cvv"],
+						this.label4 = ["银行卡绑定的持卡人姓氏", "银行卡绑定的持卡人名字", "银行卡绑定的手机号"],
+						this.btnLabel = "立即支付"
+					} else if(this.languageID == 2) {
+						this.label1 = ["消費金額", "賬單信息", "請選擇賬單簽收國家", "請輸入賬單簽收州", "請輸入賬單簽收城市", "請輸入賬單簽收地址", "請輸入賬單郵編"],
+						this.label2 = ["收貨信息", "請選擇收貨國家", "請輸入收貨州", "請輸入收貨城市", "請輸入收貨地址", "請輸入收貨郵編", "請輸入收貨郵箱"],
+						this.label3 = ["收貨人信息", "請輸入收貨人電話", "請輸入收貨人姓名", "請輸入消費的信用卡卡號", "請輸入信用卡有效期年份（4位）", "請輸入信用卡有效期月份（2位）", "請輸入信用卡背面的cvv"],
+						this.label4 = ["銀行卡綁定的持卡人姓氏", "銀行卡綁定的持卡人名字", "銀行卡綁定的手機號"],
+						this.btnLabel = "立即支付"
+					} else if(this.languageID == 3) {
+						this.label1 = ["Amount spent", "Bill Information", "Please select the country in which the bill was signed", "Please enter the state in which the bill was signed", "Please enter the city in which the bill was signed", "Please enter the address in which the Bill was signed", "Please enter the bill postcode"],
+						this.label2 = ["Please select the receiving country", " Please enter the receiving state", "Please enter the receiving city", "Please enter the receiving address", "Please enter the receiving postcode", "Please enter the receiving email"],
+						this.label3 = ["Consignee information", "Enter the consignee's telephone number", "enter the consignee's name", "Enter the credit card number of consumption", "Enter the credit card expiry year (4 digits) ", "Enter the credit card expiry month (2 digits) ", "Enter the CVV on the back of the credit card"],
+						this.label4 = ["Last name of the cardholder of the bank card binding", " First name of the cardholder of the bank card binding", "Mobile phone number of the bank card binding"],
+						this.btnLabel = "immediate payment"
+					} else if(this.languageID == 4) {
+						this.label1 = ["사용금액", "청구서 정보", "청구서 서명 국립", "청구서 서명 국립", "청구서 서명 국립", "청구서 서명 국립", "청구서 서명 국립", "청구서 서명 국립", "청구서 서명 국립", "청구서 서명 국립", "청구서 서명 전국"],
+						this.label2 = ["배송정보", "배송국가 선택", "배송주 입력", "배송도시 입력", "배송주소 입력", "배송번호 입력", "배송번호 입력", "배송번호 입력"],
+						this.label3 = ["수취인 정보", "수취인 전화", "수취인 성명", "소비되는 신용카드 번호", "신용카드 유효기간 (4위)", "신용카드 유효기간 (2위)", "신용카드 뒷면 cvv"],
+						this.label4 = ["카드 바인딩된 카드 소지자 성", "카드 바인딩된 카드 소지자 이름", "카드 바인딩된 휴대폰번호"],
+						this.btnLabel = "지금 지불하다"
+					} else if(this.languageID == 5) {
+						this.label1 = ["消費金額", "請求書情報", "請求書受領国を選択してください", "請求書受領州を入力してください", "請求書受領都市を入力してください", "請求書受領先を入力してください", "請求書郵便番号を入力してください"],
+						this.label2 = ["受取情報", "受取国を選択してください", "受取州を入力してください", "受取都市を入力してください", "受取住所を入力してください", "受取郵便番号を入力してください", "受取郵便ポストを入力してください"],
+						this.label3 = ["受取人情報", "受取人の電話を入力してください", "受取人の名前を入力してください", "クレジットカードの有効期限の年(4桁)を入力してください", "クレジットカードの有効期限の月(2桁)を入力してください", "クレジットカードの裏面のcvvを入力してください"],
+						this.label4 = ["クレジットカードのクレジットカードのバスティングの持ち主の苗字", "クレジットカードのバスティングの持ち主の名前", "クレジットカードのバスティングの携帯電話番号"],
+						this.btnLabel = "即時支払い"
+					} else if(this.languageID == 6) {
+						this.label1 = ["จํานวนผู้บริโภค", "ข้อมูลบิล", "กรุณาป้อนประเทศที่ลงชื่อเรียกเก็บเงิน", "กรุณาป้อนการเรียกเก็บเงินออกจากเมือง", "กรุณาป้อนที่อยู่สําหรับลงชื่อชําระเงิน", "กรุณาป้อนรหัสไปรษณีย์สําหรับการเรียกเก็บเงิน", "โปรดป้อนรหัสไปรษณีย์สําหรับการเรียกเก็บเงิน"],
+						this.label2 = ["การรับข้อมูล", "กรุณาเลือกประเทศที่ได้รับ", "กรุณาป้อนรัฐที่ได้รับ", "กรุณาป้อนประเทศที่ได้รับ", "โปรดป้อนที่อยู่ที่ได้รับ", "กรุณาใส่ที่อยู่ที่ได้รับ", "กรุณาใส่รหัสไปรษณีย์ที่ได้รับ", "กรุณาป้อนกล่องจดหมายรับ"],
+						this.label3 = ["ข้อมูลใบเสร็จรับเงิน", "กรุณาใส่โทรศัพท์ของผู้รับ", "กรุณาใส่ชื่อของผู้รับฝาก", "กรุณากรอกหมายเลขบัตรเครดิตสําหรับการบริโภค", "กรุณาป้อนปีบัตรเครดิตที่ถูกต้อง (4 หลัก)", "กรุณาใส่บัตรเครดิตเดือนที่ถูกต้อง (2 หลัก)", "กรุณาป้อน cvv บนหลังของบัตรเครดิต"],
+						this.label4 = ["ชื่อสกุลของผู้ถือบัตรสําหรับบัตรธนาคาร", "ชื่อผู้ถือบัตรของบัตร", "บัตรของบัตรจะถูกกําหนดโดยบัตร"],
+						this.btnLabel = "จ่ายทันที"
+					}
+				},
+				getUrlQuery() {
+					var query = window.location.search.substring(1)
+					this.custom = query
+				},
+			},
+			beforeMount() {
+				if(localStorage.getItem("languageID")){
+					this.languageID = localStorage.getItem("languageID")
+				} else{
+					this.languageID = 3
+				}   
+				this.change()
+				this.getUrlQuery()
+			}
+		});
+	</script>
+</html>

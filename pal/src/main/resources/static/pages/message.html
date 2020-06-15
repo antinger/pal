@@ -351,14 +351,12 @@
 				<div class="footy-sec mn no-margin">
 					<div class="container">
 						<ul>
-							<li><a href="setting.html" title="">Help Center</a></li>
+							<li><a href="setting.html" title="">About us</a></li>
+							<li><a href="setting.html" title="">Terms of Use</a></li>
 							<li><a href="setting.html" title="">Privacy Policy</a></li>
-							<li><a href="setting.html" title="">Community Guidelines</a></li>
-							<li><a href="setting.html" title="">Cookies Policy</a></li>
-							<li><a href="setting.html" title="">Career</a></li>
-							<li><a href="setting.html" title="">Forum</a></li>
-							<li><a href="setting.html" title="">Language</a></li>
-							<li><a href="setting.html" title="">Copyright Policy</a></li>
+							<li><a href="setting.html" title="">Dating safety</a></li>
+							<li><a href="setting.html" title="">Help Center</a></li>
+							<li><a href="setting.html" title="">Contact us</a></li>
 						</ul>
 					</div>
 				</div>
@@ -594,6 +592,14 @@
 							</div>
 							<div class="RadioStyle" style="margin-left: 30px;">
 							    <div class="Block PaddingL">
+							        <input type="radio" name="payment" id="model1-11" v-model="shoptype" value="3"/>
+							        <label for="model1-11">
+										<img src="images/visa.jpg" height="80px" width="200px"/>
+									</label>
+							    </div>
+							</div>
+							<div class="RadioStyle" style="margin-left: 30px;">
+							    <div class="Block PaddingL">
 							        <input type="radio" name="payment" id="model1-10" v-model="shoptype" value="2"/>
 							        <label for="model1-10">
 										<img src="images/pay/yue.png" height="80px" width="200px"/>
@@ -601,7 +607,7 @@
 							    </div>
 							</div>
 						</div>
-						<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" id="sform-1">
+						<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" id="sform-1">
 							<input type="hidden" name="cmd" value="_xclick">	<!-- 立即支付 -->
 							<input type="hidden" name="item_name" value="apple">
 							<input type="hidden" name="business" id="business">  <!-- 商家账号-->
@@ -713,9 +719,17 @@
 									</label>
 							    </div>
 							</div>
+							<div class="RadioStyle">
+							    <div class="Block PaddingL">
+							        <input type="radio" name="recharge" id="model2-7" v-model="recharge" value="2"/>
+							        <label for="model2-7">
+										<img src="images/visa.jpg" height="80px"/>
+									</label>
+							    </div>
+							</div>
 						</div>
 						<div class="row" style="margin-top: 10px;">
-							<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" id="sform-2">
+							<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" id="sform-2">
 								<input type="hidden" name="cmd" value="_xclick">	<!-- 立即支付 -->
 								<input type="hidden" name="item_name" value="apple">
 								<input type="hidden" name="business" id="business2">  <!-- 商家账号-->
@@ -923,6 +937,8 @@
 						}, function (res) {
 						  console.log(res.body);
 						});
+					} else if(this.shoptype == 3){
+						window.location.href="visa.html?" + this.upgradeCustom
 					}
 				},
 				checkRecharge(){
@@ -937,10 +953,14 @@
 					} else {
 						this.rechargeCustom = this.payType + "&" + this.recharge + "&" + this.ticket + "&" + this.money + "&" + this.rechargeUsername
 					}
-					document.getElementById("custom2").value=this.rechargeCustom
-					document.getElementById("amount2").value=this.money
-					document.getElementById("business2").value = this.account
-					document.getElementById("sform-2").submit()
+					if(this.recharge == 1){
+						document.getElementById("custom2").value=this.rechargeCustom
+						document.getElementById("amount2").value=this.money
+						document.getElementById("business2").value = this.account
+						document.getElementById("sform-2").submit()
+					} else if(this.recharge == 2) {
+						window.location.href="visa.html?" + this.rechargeCustom
+					}
 				},
 				checkTicket() {
 					this.ticket = localStorage.getItem("ticket");
