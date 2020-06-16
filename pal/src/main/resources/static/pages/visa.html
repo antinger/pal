@@ -124,7 +124,7 @@
 				</div>
 			</div>
 			<div class="row" style="margin-top: 20px;">
-				<button class="btn btn-success btn-lg btn-block">{{btnLabel}}</button>
+				<button class="btn btn-success btn-lg btn-block" @click="pay">{{btnLabel}}</button>
 			</div>
 		</div>
 	</body>
@@ -156,7 +156,7 @@
 			methods:{
 				pay(){
 					if(this.cardCountry=="" || this.cardState=="" || this.cardCity=="" || this.cardAddress=="" || this.cardZipCode=="" || this.grCountry=="" || this.grState==""|| this.grCity=="" || this.grAddress=="" || this.grZipCode=="" || this.grEmail=="" ||
-				this.grphoneNumber==""== this.grPerName==""== this.cardNO==""== this.expYear==""== this.expMonth==""== this.cvv==""== this.FristName==""== this.LastName==""== this.cardFullPhone=="") {
+				this.grphoneNumber==""  ||  this.grPerName=="" ||  this.cardNO=="" ||  this.expYear=="" ||  this.expMonth=="" ||  this.cvv=="" ||  this.FristName=="" || this.LastName=="" ||  this.cardFullPhone=="") {
 						return
 					}
 					var formData = new FormData();

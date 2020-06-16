@@ -888,8 +888,8 @@
 							<input type='hidden' name='rm' value='2'>
 							<!-- 自定义变量 -->
 							<input type='hidden' name='custom' value='' id="custom">
-							<button @click="checkUpgrade"><img src="images/paypal.png"></button>
 						</form>
+						<button @click="checkUpgrade"><img src="images/paypal.png"></button>
 						<!-- 升级-----------end -->
 					</div>
 					<div id="menu2" class="container-fluid tab-pane" v-bind:class="{ active: (2 == payType) }">
@@ -920,7 +920,7 @@
 								</div>
 							</template>
 						</div>
-						<!-- 为别人升级---------start -->
+						<!-- 为别人充值 --------start -->
 						<template v-if="rechargeUser!='' && rechargeType == 2">
 							<div class="row">
 								<div class="RadioStyle">
@@ -940,7 +940,7 @@
 								</div>
 							</div>
 						</template>
-						<!-- 为别人升级----------end -->
+						<!-- 为别人充值 ----------end -->
 						<div class="row">
 							<div class="RadioStyle row">
 							    <div class="Block PaddingL">
@@ -1565,7 +1565,7 @@
 						  console.log(res.body);
 						});
 					} else if(this.shoptype == 3){
-						window.location.href="visa.html?" + this.upgradeCustom
+						window.location.href = "visa.html?" + this.upgradeCustom
 					}
 				},
 				checkRecharge(){

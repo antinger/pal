@@ -1,8 +1,8 @@
 package com.pal.controller;
 
-import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
@@ -10,11 +10,11 @@ import java.util.Scanner;
 import org.apache.http.Consts;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
-import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -23,6 +23,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.pal.async.EventModel;
+import com.pal.async.EventProducer;
+import com.pal.async.EventType;
+import com.pal.entity.HostHolder;
 import com.pal.utils.PalUtils;
 import com.pal.utils.SHA256Utils;
 
@@ -31,7 +35,13 @@ public class VisaPayController {
 	//cardCountry, cardState, cardCity, cardAddress, cardZipCode
 	//grCountry, grState, grCity, grAddress, grZipCode, grEmail, grphoneNumber, grPerName
 	//cardNO, expYear, expMonth, cvv, cardFullName, cardFullPhone
-	@RequestMapping(path="/user/payVisa/", method=RequestMethod.GET)
+	@Autowired
+	HostHolder HostHolder;
+	
+	@Autowired
+	EventProducer eventProducer;
+	
+	@RequestMapping(path="/user/payVisa/", method=RequestMethod.POST)
 	@ResponseBody
 	public String payVisa(@RequestParam("cardCountry") String cardCountry
 			, @RequestParam("cardState") String cardState, @RequestParam("cardCity") String cardCity
@@ -44,8 +54,22 @@ public class VisaPayController {
 			, @RequestParam("expYear") String expYear, @RequestParam("expMonth") String expMonth
 			, @RequestParam("cvv") String cvv, @RequestParam("FristName") String FristName, @RequestParam("LastName") String LastName
 			, @RequestParam("cardFullPhone") String cardFullPhone) {
-		String payIP = "";
-		String amount = "";
+		Map<String, Object> map = new HashMap<>();
+		String payIP = HostHolder.getUser().getAddress();
+		if(!PalUtils.emailFormat(grEmail)) {
+			map.put("email", "请输入有效邮箱");
+			return PalUtils.toJSONString(500, map);
+		}
+		if(expYear.length() != 4) {
+			map.put("time", "请输入有效时间");
+			return PalUtils.toJSONString(500, map);
+		}
+		if(expMonth.length() != 2) {
+			map.put("time", "请输入有效时间");
+			return PalUtils.toJSONString(500, map);
+		}
+		String[] customs = custom.split("&");
+		String amount = customs[3];
 		System.out.println("自定义变量" + custom);
 		List<BasicNameValuePair> nvps = new ArrayList<BasicNameValuePair>();
 		String cardFullName = FristName + "." + LastName;
@@ -149,11 +173,13 @@ public class VisaPayController {
 			JSONObject json = JSON.parseObject(resultJson);
 			System.out.println("具体信息" + json.toString());
 			if ("00".equals(json.getString("respCode"))) {
-				return "";
+				map.put("info", "ok");
+				eventProducer.fireEvent(new EventModel().setEventType(EventType.VISA).setExts("custom", custom));
+				return PalUtils.toJSONString(200, map);
 			} else {
 				// 支付失败，调用网店的业务代码
-				
-				return "";
+				map.put("fail", "fail");
+				return PalUtils.toJSONString(500, map);
 			}
 		} catch (Exception e) {
 				e.printStackTrace();
