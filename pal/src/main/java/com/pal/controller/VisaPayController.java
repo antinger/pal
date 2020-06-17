@@ -26,7 +26,6 @@ import com.alibaba.fastjson.JSONObject;
 import com.pal.async.EventModel;
 import com.pal.async.EventProducer;
 import com.pal.async.EventType;
-import com.pal.entity.HostHolder;
 import com.pal.utils.PalUtils;
 import com.pal.utils.SHA256Utils;
 
@@ -36,7 +35,7 @@ public class VisaPayController {
 	//grCountry, grState, grCity, grAddress, grZipCode, grEmail, grphoneNumber, grPerName
 	//cardNO, expYear, expMonth, cvv, cardFullName, cardFullPhone
 	@Autowired
-	HostHolder HostHolder;
+	com.pal.entity.HostHolder HostHolder;
 	
 	@Autowired
 	EventProducer eventProducer;
@@ -57,15 +56,19 @@ public class VisaPayController {
 		Map<String, Object> map = new HashMap<>();
 		String payIP = HostHolder.getUser().getAddress();
 		if(!PalUtils.emailFormat(grEmail)) {
-			map.put("email", "请输入有效邮箱");
+			map.put("err", "请输入有效邮箱");
 			return PalUtils.toJSONString(500, map);
 		}
 		if(expYear.length() != 4) {
-			map.put("time", "请输入有效时间");
+			map.put("err", "请输入有效时间");
 			return PalUtils.toJSONString(500, map);
 		}
 		if(expMonth.length() != 2) {
-			map.put("time", "请输入有效时间");
+			map.put("err", "请输入有效时间");
+			return PalUtils.toJSONString(500, map);
+		}
+		if(!PalUtils.regexTel(cardFullPhone)) {
+			map.put("err", "请输入有效的手机号");
 			return PalUtils.toJSONString(500, map);
 		}
 		String[] customs = custom.split("&");
@@ -91,7 +94,7 @@ public class VisaPayController {
 		//订单备注参数
 		nvps.add(new BasicNameValuePair("merremark", "US order."));
 		//网店系统接收支付结果地址
-		nvps.add(new BasicNameValuePair("returnURL", "https://www.asecretdates.com/user/visaSuccess/"));
+		nvps.add(new BasicNameValuePair("returnURL", "http://www.asecretdates.com/visaSuccess/"));
 		//网店系统的网址
 		nvps.add(new BasicNameValuePair("merMgrURL", "www.asecretdates.com"));
 		//消费者浏览器信息
@@ -171,18 +174,18 @@ public class VisaPayController {
 				resultJson = inScn.nextLine();
 			}
 			JSONObject json = JSON.parseObject(resultJson);
-			System.out.println("具体信息" + json.toString());
+			System.out.println("返回信息" + json.toJSONString());
 			if ("00".equals(json.getString("respCode"))) {
 				map.put("info", "ok");
 				eventProducer.fireEvent(new EventModel().setEventType(EventType.VISA).setExts("custom", custom));
 				return PalUtils.toJSONString(200, map);
 			} else {
 				// 支付失败，调用网店的业务代码
-				map.put("fail", "fail");
+				map.put("err", "fail");
 				return PalUtils.toJSONString(500, map);
 			}
 		} catch (Exception e) {
-				e.printStackTrace();
+			e.printStackTrace();
 		}
 		return "";
 	}

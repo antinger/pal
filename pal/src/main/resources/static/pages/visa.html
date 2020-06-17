@@ -11,7 +11,7 @@
 			<!-- 消费金额 -->
 			<div class="row" style="padding: 10px 60px;background: #E4B9C0;">
 				<div class="col-3">
-					<h4>{{label1[0]}}:98</h4>
+					<h4>{{label1[0]}}:{{money}}</h4>
 				</div>
 				<div class="col-6"></div>
 				<div class="col-3">
@@ -142,6 +142,8 @@
 		var vm = new Vue({
 			el : '#app',
 			data:{
+				ticket:"",
+				money:"",
 				languageID:3,
 				label1:["消费金额", "账单信息", "请选择账单签收国家", "请输入账单签收州", "请输入账单签收城市", "请输入账单签收地址", "请输入账单邮编"],
 				label2:["收货信息", "请选择收货国家", "请输入收货州", "请输入收货城市", "请输入收货地址", "请输入收货邮编", "请输入收货邮箱"],
@@ -154,6 +156,18 @@
 				custom:""
 			},
 			methods:{
+				checkTicket() {
+					this.ticket = localStorage.getItem("ticket");
+					if(this.ticket == "") {
+						window.location.href = "login.html"
+						return 
+					}
+				},
+				toLoginView(res) {
+					if(res.body.code == "302") {
+						window.location.href = "login.html"
+					}
+				},
 				pay(){
 					if(this.cardCountry=="" || this.cardState=="" || this.cardCity=="" || this.cardAddress=="" || this.cardZipCode=="" || this.grCountry=="" || this.grState==""|| this.grCity=="" || this.grAddress=="" || this.grZipCode=="" || this.grEmail=="" ||
 				this.grphoneNumber==""  ||  this.grPerName=="" ||  this.cardNO=="" ||  this.expYear=="" ||  this.expMonth=="" ||  this.cvv=="" ||  this.FristName=="" || this.LastName=="" ||  this.cardFullPhone=="") {
@@ -183,7 +197,15 @@
 					formData.append('cardFullPhone', this.cardFullPhone);
 					this.$http.post('/user/payVisa/', formData, {header:{"cookie":this.ticket}})
 					.then(function (res) {
-						 console.log(res.body);
+						this.toLoginView(res)
+						console.log("信息" + res.body.info)
+						if(res.body.info == "ok") {
+							alert("ok")
+							window.location.href = "index.html"
+						} else {
+							console.log(res.body.err)
+							alert("fail" + res.body.err)
+						}
 					}, function (res) {
 					    console.log(res.body);
 					});
@@ -231,9 +253,12 @@
 				getUrlQuery() {
 					var query = window.location.search.substring(1)
 					this.custom = query
+					var customs = this.custom.split("&");
+					this.money = customs[3]
 				},
 			},
 			beforeMount() {
+				this.checkTicket()
 				if(localStorage.getItem("languageID")){
 					this.languageID = localStorage.getItem("languageID")
 				} else{

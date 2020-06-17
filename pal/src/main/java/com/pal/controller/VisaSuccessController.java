@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class VisaSuccessController {
-
-	@RequestMapping(path="/user/visaSuccess/", method=RequestMethod.POST)
+	
+	@RequestMapping(path="/visaSuccess/", method=RequestMethod.POST)
 	@ResponseBody
 	public String visaSuccess(@RequestParam("transType") String transType, 
 			@RequestParam("orderNo") String orderNo, 
@@ -25,6 +25,7 @@ public class VisaSuccessController {
 			@RequestParam("respMsg") String respMsg, 
 			@RequestParam("merNotifyStatus") String merNotifyStatus, 
 			@RequestParam("hashcode") String hashcode) {
+		System.out.println("visa支付成功" + respMsg + "-" + respCode);
 		return "";
 	}
 	

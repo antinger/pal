@@ -135,7 +135,22 @@ public class PalUtils {
     	return "";
     }
     
-
+    public static boolean regexTel(String phone) {
+    	String regex = "^((13[0-9])|(14[5|7])|(15([0-3]|[5-9]))|(17[013678])|(18[0,5-9]))\\d{8}$";
+    	if(phone.length() != 11){
+    		return false;
+    	} else {
+    		Pattern p = Pattern.compile(regex);
+    		Matcher m = p.matcher(phone);
+    		boolean isMatch = m.matches();
+    		if(isMatch) {
+    			return true;
+    		} else {
+    			return false;
+    		}
+    	}
+    }
+    
 	public static String getIpAddress(HttpServletRequest request) {  
 	    String ip = request.getHeader("x-forwarded-for");
 		if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {  

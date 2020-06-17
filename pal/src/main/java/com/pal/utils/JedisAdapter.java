@@ -15,6 +15,7 @@ public class JedisAdapter implements InitializingBean {
 	
 	@Override
 	public void afterPropertiesSet() throws Exception {
+		System.out.println("redis线程池生成");
 		jedisPool = new JedisPool("localhost", 6379);
 	}
 	

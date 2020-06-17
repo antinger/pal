@@ -24,8 +24,6 @@ import com.alibaba.fastjson.JSON;
 import com.pal.async.EventModel;
 import com.pal.async.EventProducer;
 import com.pal.async.EventType;
-import com.pal.service.MemberTicketService;
-import com.pal.service.WalletService;
 import com.pal.utils.PalUtils;
 import com.pal.utils.PaypalConfig;
 

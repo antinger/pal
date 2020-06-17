@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.alibaba.fastjson.JSON;
 import com.pal.async.EventHandler;
 import com.pal.async.EventModel;
 import com.pal.async.EventType;
@@ -23,6 +24,7 @@ public class PayHandler implements EventHandler {
 	
 	@Override
 	public void handler(EventModel eventModel) {
+		System.out.println("pay处理器接受到的消息" + JSON.toJSONString(eventModel));
 		if(eventModel != null) {
 			String custom = eventModel.getExts("custom");
 			String[] customs = custom.split("&");

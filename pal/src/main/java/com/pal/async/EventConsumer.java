@@ -42,6 +42,7 @@ public class EventConsumer implements InitializingBean, ApplicationContextAware 
 			
 			@Override
 			public void run() {
+				System.out.println("消费者线程启动");
 				while(true) {
 					String key = JedisKeyUtils.getEventKey();
 					List<String> messages = jedisAdapter.brpop(key);
@@ -53,6 +54,7 @@ public class EventConsumer implements InitializingBean, ApplicationContextAware 
 						if(!config.containsKey(eventModel.getEventType())) {
 							continue;
 						}
+						System.out.println("获取到的数据" + message);
 						for(EventHandler eventHandler : config.get(eventModel.getEventType())) {
 							eventHandler.handler(eventModel);
 						}
