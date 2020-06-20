@@ -35,18 +35,4 @@ public class GiftService {
 		return map;
 	}
 
-	//添加礼物
-	public Map<String, Object> addGift(String name, Integer price, MultipartFile path) throws IOException {
-		Map<String, Object> map = new HashMap<String, Object>();
-		Map<String, Object> saveImage = qiniuService.saveImage(path);
-		Gift gift = new Gift();
-		gift.setName(name);
-		gift.setPath(saveImage.get("fileList").toString());
-		gift.setPrice(price);
-		giftDao.addGift(gift);
-		return map;
-	}
-	
-	
-
 }

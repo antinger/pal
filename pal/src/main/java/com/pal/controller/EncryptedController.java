@@ -2,6 +2,8 @@ package com.pal.controller;
 
 import java.util.Map;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,6 +17,8 @@ import com.pal.utils.PalUtils;
 @Controller
 public class EncryptedController {
 	
+	private static final Logger logger = LoggerFactory.getLogger(EncryptedController.class);
+	
 	@Autowired
 	EncryptedService encryptedService;
 
@@ -26,6 +30,7 @@ public class EncryptedController {
 			Map<String, Object> map = encryptedService.updateEncrypted(name, email, like);
 			return PalUtils.toJSONString(200, map);
 		} catch (Exception e) {
+			logger.error("添加密保失败" + e.getMessage());
 			return PalUtils.toJSONString(500, "添加动态失败");
 		}
 	}
@@ -38,6 +43,7 @@ public class EncryptedController {
 			Map<String, Object> map = encryptedService.reset(username, name, email, like);
 			return PalUtils.toJSONString(200, map);
 		} catch (Exception e) {
+			logger.error("更新密保失败" + e.getMessage());
 			return PalUtils.toJSONString(500, "添加动态失败");
 		}
 	}

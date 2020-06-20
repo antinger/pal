@@ -7,6 +7,8 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,6 +22,8 @@ import com.pal.utils.PalUtils;
 
 @Controller
 public class LoginController {
+	
+	private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
 	
 	@Autowired
 	UserService userService;
@@ -42,6 +46,7 @@ public class LoginController {
 				return PalUtils.toJSONString(500, map);
 			}
 		} catch (Exception e) {
+			logger.error("注册失败" + e.getMessage());
 			return PalUtils.toJSONString(500, "注册失败");
 		}
 	}
@@ -61,6 +66,7 @@ public class LoginController {
 				return PalUtils.toJSONString(500, map);
 			}
 		} catch (Exception e) {
+			logger.error("登录失败" + e.getMessage());
 			return PalUtils.toJSONString(500, "登录失败");
 		}
 	}
@@ -72,6 +78,7 @@ public class LoginController {
 			Map<String, Object> map = userService.logout();
 			return PalUtils.toJSONString(200, map);
 		} catch (Exception e) {
+			logger.error("退出失败" + e.getMessage());
 			return PalUtils.toJSONString(500, "退出失败");
 		}
 	}

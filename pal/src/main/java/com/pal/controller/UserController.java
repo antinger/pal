@@ -2,6 +2,8 @@ package com.pal.controller;
 
 import java.util.Map;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,6 +18,8 @@ import com.pal.utils.PalUtils;
 @Controller
 public class UserController {
 
+	private static final Logger logger = LoggerFactory.getLogger(UserController.class);
+	
 	@Autowired
 	UserService userService;
 	
@@ -27,6 +31,7 @@ public class UserController {
 			Map<String, Object> map = userService.getPushUser();
 			return PalUtils.toJSONString(200, map);
 		} catch (Exception e) {
+			logger.error("获取推送用户失败" + e.getMessage());
 			return PalUtils.toJSONString(500, "获取推送用户失败");
 		}
 	}
@@ -39,6 +44,7 @@ public class UserController {
 			Map<String, Object> map = userService.getUserByUsername(username);
 			return PalUtils.toJSONString(200, map);
 		} catch (Exception e) {
+			logger.error("根据用户名获取用户失败" + e.getMessage());
 			return PalUtils.toJSONString(500, "获取推送用户失败");
 		}
 	}
@@ -50,6 +56,7 @@ public class UserController {
 			Map<String, Object> map = userService.updateOnLineStatus(onLineStatus);
 			return PalUtils.toJSONString(200, map);
 		} catch (Exception e) {
+			logger.error("更新用户在线状态失败" + e.getMessage());
 			return PalUtils.toJSONString(500, "获取推送用户失败");
 		}
 	}
@@ -62,6 +69,7 @@ public class UserController {
 			Map<String, Object> map = userService.getLaterUser(page, limit);
 			return PalUtils.toJSONString(200, map);
 		} catch (Exception e) {
+			logger.error("获取首页推荐用户失败" + e.getMessage());
 			return PalUtils.toJSONString(500, "获取最新用户失败");
 		}
 	}
@@ -74,6 +82,7 @@ public class UserController {
 			Map<String, Object> map = userService.updatePassword(password, oldPassword);
 			return PalUtils.toJSONString(200, map);
 		} catch (Exception e) {
+			logger.error("更新用户密码" + e.getMessage());
 			return PalUtils.toJSONString(500, "获取最新用户失败");
 		}
 	}
@@ -86,6 +95,7 @@ public class UserController {
 			Map<String, Object> map = userService.updateHeadLink(image);
 			return PalUtils.toJSONString(200, map);
 		} catch (Exception e) {
+			logger.error("更新用户头像" + e.getMessage());
 			return PalUtils.toJSONString(500, "更新头像失败");
 		}
 	}
@@ -97,6 +107,7 @@ public class UserController {
 			Map<String, Object> map = userService.updateHeadLinkH5(image);
 			return PalUtils.toJSONString(200, map);
 		} catch (Exception e) {
+			logger.error("更新h5头像失败" + e.getMessage());
 			return PalUtils.toJSONString(500, "更新头像失败");
 		}
 	}

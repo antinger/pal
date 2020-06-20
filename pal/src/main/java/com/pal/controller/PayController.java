@@ -13,6 +13,8 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,6 +32,8 @@ import com.pal.utils.PaypalConfig;
 @Controller
 public class PayController {
 	
+	private static final Logger logger = LoggerFactory.getLogger(PayController.class);
+	
 	@Autowired
 	EventProducer eventProduce;
 	
@@ -39,7 +43,6 @@ public class PayController {
 		request.setCharacterEncoding("UTF-8");
 		try {
 			Map<String, Object> map = null;
-			System.out.println("支付成功---------");
 			Enumeration<String> parameterNames = request.getParameterNames();
 			String str = "cmd=_notify-validate";
 			while (parameterNames.hasMoreElements()) {
@@ -48,7 +51,6 @@ public class PayController {
                 //此处的编码一定要和自己的网站编码一致，不然会出现乱码，paypal回复的通知为‘INVALID’
                 str = str + "&" + paramName + "=" + URLEncoder.encode(paramValue, "UTF-8");
             }
-			System.out.println("paypal传递过来的交易信息:" + str);
 			
 			URL u = new URL(PaypalConfig.getWebscr());
             HttpURLConnection uc = (HttpURLConnection) u.openConnection();
@@ -71,7 +73,6 @@ public class PayController {
              */
             // 交易状态 Completed 代表交易成功
             String paymentStatus = request.getParameter("payment_status");
-            System.out.println("交易状态" + paymentStatus);
             // 交易时间
             String paymentDate = request.getParameter("payment_date");
             // 交易id
@@ -92,11 +93,11 @@ public class PayController {
             String custom = request.getParameter("custom");
             eventProduce.fireEvent(new EventModel().setEventType(EventType.PAY).setExts("custom", custom));
             
-            
-            System.out.println("获取自定义字段" + custom);
+            logger.error("获取自定义字段" + custom);
             
 			return PalUtils.toJSONString(200, map);
 		} catch (Exception e) {
+			logger.error("paypal支付失败" + e.getMessage());
 			return PalUtils.toJSONString(500, "获取推送用户失败");
 		}
 	}

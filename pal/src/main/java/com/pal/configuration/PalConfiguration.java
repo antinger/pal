@@ -11,6 +11,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import com.pal.interceptor.LoginRequiredInterceptor;
 import com.pal.interceptor.PassportInterceptor;
+import com.pal.interceptor.UserOnLineStatusInterceptor;
 
 @Configuration
 public class PalConfiguration implements WebMvcConfigurer {
@@ -21,10 +22,14 @@ public class PalConfiguration implements WebMvcConfigurer {
 	@Autowired
 	PassportInterceptor passportInterceptor;
 	
+	@Autowired
+	UserOnLineStatusInterceptor userOnLineStatusInterceptor;
+	
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
 		registry.addInterceptor(passportInterceptor).addPathPatterns("/user/*/");
 		registry.addInterceptor(loginRequiredInterceptor).addPathPatterns("/user/*/");
+		registry.addInterceptor(userOnLineStatusInterceptor).addPathPatterns("/user/*/");
 		WebMvcConfigurer.super.addInterceptors(registry);
 	}
 	

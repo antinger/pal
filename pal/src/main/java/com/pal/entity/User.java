@@ -64,7 +64,7 @@ public class User {
 		this.headLink = "";
 		this.sex = 0;
 		this.createDate = new Date();
-		this.onLineStatus = 1;
+		this.onLineStatus = 2;
 		this.updateDate = null;
 		this.status = 1;
 		this.headStatus = 1;

@@ -1,11 +1,12 @@
 package com.pal.controller;
 
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,6 +22,8 @@ import com.pal.utils.PalUtils;
 @Controller
 public class DynamicController {
 
+	private static final Logger logger = LoggerFactory.getLogger(DynamicController.class);
+	
 	@Autowired
 	QiniuService qiniuService;
 	
@@ -35,6 +38,7 @@ public class DynamicController {
 			Map<String, Object> map = dynamicService.getLaterDynamic(page, limit);
 			return PalUtils.toJSONString(200, map);
 		} catch (Exception e) {
+			logger.error("获取动态失败" + e.getMessage());
 			return PalUtils.toJSONString(500, "获取动态失败");
 		}
 	}
@@ -47,6 +51,7 @@ public class DynamicController {
 			Map<String, Object> map = dynamicService.getDynamicByUserID(userID);
 			return PalUtils.toJSONString(200, map);
 		} catch (Exception e) {
+			logger.error("获取用户动态失败" + e.getMessage());
 			return PalUtils.toJSONString(500, "获取动态失败");
 		}
 	}
@@ -59,6 +64,7 @@ public class DynamicController {
 			Map<String, Object> map = dynamicService.addDynamic(content, image);
 			return PalUtils.toJSONString(200, map);
 		} catch (Exception e) {
+			logger.error("添加动态图片失败" + e.getMessage());
 			return PalUtils.toJSONString(500, "添加动态失败");
 		}
 	}
@@ -69,6 +75,7 @@ public class DynamicController {
 			Map<String, Object> map = dynamicService.addDynamicH5(content, image);
 			return PalUtils.toJSONString(200, map);
 		} catch (Exception e) {
+			logger.error("h5添加动态失败" + e.getMessage());
 			return PalUtils.toJSONString(500, "添加动态失败");
 		}
 	}
@@ -80,6 +87,7 @@ public class DynamicController {
 			Map<String, Object> map = dynamicService.addDynamic(content, null);
 			return PalUtils.toJSONString(200, map);
 		} catch (Exception e) {
+			logger.error("添加动态失败" + e.getMessage());
 			return PalUtils.toJSONString(500, "添加动态失败");
 		}
 	}

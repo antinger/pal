@@ -1,7 +1,5 @@
 package com.pal.controller;
 
-import java.util.Map;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -25,7 +23,6 @@ public class VisaSuccessController {
 			@RequestParam("respMsg") String respMsg, 
 			@RequestParam("merNotifyStatus") String merNotifyStatus, 
 			@RequestParam("hashcode") String hashcode) {
-		System.out.println("visa支付成功" + respMsg + "-" + respCode);
 		return "";
 	}
 	

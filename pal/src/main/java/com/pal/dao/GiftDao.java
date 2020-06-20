@@ -19,10 +19,6 @@ public interface GiftDao {
     String INSERT_FIELDS = " name, path, price, status, createDate ";
     String SELECT_FIELDS = " id, " + INSERT_FIELDS;
     
-    //添加礼物
-    @Insert({"insert into ", TABLE_NAME, "(", INSERT_FIELDS, ") values (#{name},#{path},#{price},#{status},#{createDate})"})
-    void addGift(Gift gift);
-    
     //通过ID获取礼物
     @Select({"select ", SELECT_FIELDS, " from ", TABLE_NAME, " where id=#{id}"})
     Gift selectGiftById(Integer id);

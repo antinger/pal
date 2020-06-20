@@ -1710,6 +1710,15 @@
 				onChange(event) {
 				      this.image= event.target.files[0]
 				      console.log(this.image);
+				},
+				update(){
+					this.$http.get('/user/updateOnLineStatus/',
+						{params : {time:new Date().getTime(), onLineStatus:2}},{header : {cookie:this.ticket}})
+					.then(function(res) {
+						
+					},function() {
+						console.log('请求失败处理');
+					});
 				}
 			},
 			beforeMount() {
@@ -1722,6 +1731,9 @@
 				this.checkTicket()
 				this.getAccount()
 				this.createMessageTimer()
+			},
+			mounted () {
+				window.addEventListener( 'beforeunload', e => this.update() );
 			}
 		})
 	</script>

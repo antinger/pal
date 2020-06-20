@@ -2,6 +2,8 @@ package com.pal.controller;
 
 import java.util.Map;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,9 +17,12 @@ import com.pal.utils.PalUtils;
 @Controller
 public class WalletController {
 
+	private static final Logger logger = LoggerFactory.getLogger(WalletController.class);
+	
 	@Autowired
 	WalletService walletService;
 	
+	//获取用户钱包
 	@RequestMapping(path="/user/getUserWallet/", method=RequestMethod.GET)
 	@ResponseBody
 	public String getUserWallet() {
@@ -25,6 +30,7 @@ public class WalletController {
 			Map<String, Object> map = walletService.getUserWallet();
 			return PalUtils.toJSONString(200, map);
 		} catch (Exception e) {
+			logger.error("获取钱包失败" + e.getMessage());
 			return PalUtils.toJSONString(500, "获取钱包失败");
 		}
 	}
@@ -37,6 +43,7 @@ public class WalletController {
 			Map<String, Object> map = walletService.upgrade(money, toUsername, upgradeType);
 			return PalUtils.toJSONString(200, map);
 		} catch (Exception e) {
+			logger.error("花费余额失败" + e.getMessage());
 			return PalUtils.toJSONString(500, "获取钱包失败");
 		}
 	}

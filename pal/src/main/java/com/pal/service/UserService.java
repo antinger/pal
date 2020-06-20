@@ -166,7 +166,7 @@ public class UserService {
 	//添加令牌
 	private String addTicket(String username) {
 		String ticket = PalUtils.getRandomUUID();
-		long expired = new Date().getTime() + 1000 * 3600 * 24 * 2;
+		long expired = new Date().getTime() + 1000 * 3600 * 24 * 30;
 		LoginTicket loginTicket = new LoginTicket();
 		loginTicket.setUsername(username);
 		loginTicket.setTicket(ticket);
@@ -182,7 +182,7 @@ public class UserService {
 	
 	//登录成功,更新令牌有效期
 	private void updateLoginTicketExpired(String username) {
-		long expired = new Date().getTime() + 1000 * 3600 * 24 * 2;
+		long expired = new Date().getTime() + 1000 * 3600 * 24 * 30;
 		Date time = new Date(expired);
 		loginTicketDao.updateExpired(username, time);
 	}
@@ -266,10 +266,6 @@ public class UserService {
 		dealUserHeadLink(user);
 		view.setView("user", user);
 		UserInfo userInfo = userInfoDao.selectByUsername(user.getUsername());
-		if(new Date().getTime() - user.getUpdateDate().getTime() > 1000 * 3600 * 24 * 2) {
-			userDao.updateOnLineStatus(user.getId(), 1);
-			user.setOnLineStatus(1);
-		}
 		view.setView("info", userInfo);
 		view.setView("sex", user.getSex() == 0 ? "男" : "女");
 		view.setView("birthday", PalUtils.formatBirth(userInfo.getBirthday()));

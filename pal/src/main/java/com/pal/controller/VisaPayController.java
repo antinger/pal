@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
+import com.pal.entity.HostHolder;
+
 import org.apache.http.Consts;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -14,6 +16,8 @@ import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,11 +35,13 @@ import com.pal.utils.SHA256Utils;
 
 @Controller
 public class VisaPayController {
+	
+	private static final Logger logger = LoggerFactory.getLogger(VisaPayController.class);
 	//cardCountry, cardState, cardCity, cardAddress, cardZipCode
 	//grCountry, grState, grCity, grAddress, grZipCode, grEmail, grphoneNumber, grPerName
 	//cardNO, expYear, expMonth, cvv, cardFullName, cardFullPhone
 	@Autowired
-	com.pal.entity.HostHolder HostHolder;
+	HostHolder HostHolder;
 	
 	@Autowired
 	EventProducer eventProducer;
@@ -71,9 +77,16 @@ public class VisaPayController {
 			map.put("err", "请输入有效的手机号");
 			return PalUtils.toJSONString(500, map);
 		}
+		if(expYear.length() != 4) {
+			map.put("err", "请输入有效的年份");
+			return PalUtils.toJSONString(500, map);
+		}
+		if(expMonth.length() != 2) {
+			map.put("expMonth", "请输入有效的月份");
+			return PalUtils.toJSONString(500, map);
+		}
 		String[] customs = custom.split("&");
 		String amount = customs[3];
-		System.out.println("自定义变量" + custom);
 		List<BasicNameValuePair> nvps = new ArrayList<BasicNameValuePair>();
 		String cardFullName = FristName + "." + LastName;
 		String orderNo = PalUtils.getRandomUUID();
@@ -174,12 +187,13 @@ public class VisaPayController {
 				resultJson = inScn.nextLine();
 			}
 			JSONObject json = JSON.parseObject(resultJson);
-			System.out.println("返回信息" + json.toJSONString());
 			if ("00".equals(json.getString("respCode"))) {
+				logger.error("visa支付成功" + json.toJSONString());
 				map.put("info", "ok");
 				eventProducer.fireEvent(new EventModel().setEventType(EventType.VISA).setExts("custom", custom));
 				return PalUtils.toJSONString(200, map);
 			} else {
+				logger.error("visa支付失败" + json.toJSONString());
 				// 支付失败，调用网店的业务代码
 				map.put("err", "fail");
 				return PalUtils.toJSONString(500, map);

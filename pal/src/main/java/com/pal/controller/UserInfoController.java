@@ -1,8 +1,9 @@
 package com.pal.controller;
 
-import java.util.Date;
 import java.util.Map;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,6 +17,8 @@ import com.pal.utils.PalUtils;
 @Controller
 public class UserInfoController {
 	
+	private static final Logger logger = LoggerFactory.getLogger(UserInfoController.class);
+	
 	@Autowired
 	UserInfoService userInfoService;
 	
@@ -27,6 +30,7 @@ public class UserInfoController {
 			Map<String, Object> map = userInfoService.getUserInfo();
 			return PalUtils.toJSONString(200, map);
 		} catch (Exception e) {
+			logger.error("获取当前用户失败" + e.getMessage());
 			return PalUtils.toJSONString(500, "获取当前用户信息失败");
 		}
 	}
@@ -39,6 +43,7 @@ public class UserInfoController {
 			Map<String, Object> map = userInfoService.getUserInfoByID(id);
 			return PalUtils.toJSONString(200, map);
 		} catch (Exception e) {
+			logger.error("获取他人信息失败" + e.getMessage());
 			return PalUtils.toJSONString(500, "获取用户信息失败");
 		}
 	}
@@ -51,6 +56,7 @@ public class UserInfoController {
 			Map<String, Object> map = userInfoService.updateUserInfo(education, height, weight, job, country, town);
 			return PalUtils.toJSONString(200, map);
 		} catch (Exception e) {
+			logger.error("获取用户信息失败" + e.getMessage());
 			return PalUtils.toJSONString(500, "获取用户信息失败");
 		}
 	}
