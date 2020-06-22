@@ -166,7 +166,7 @@ public class UserService {
 	//添加令牌
 	private String addTicket(String username) {
 		String ticket = PalUtils.getRandomUUID();
-		long expired = new Date().getTime() + 1000 * 3600 * 24 * 30;
+		long expired = new Date().getTime() + 1000L * 3600 * 24 * 30;
 		LoginTicket loginTicket = new LoginTicket();
 		loginTicket.setUsername(username);
 		loginTicket.setTicket(ticket);
@@ -182,7 +182,7 @@ public class UserService {
 	
 	//登录成功,更新令牌有效期
 	private void updateLoginTicketExpired(String username) {
-		long expired = new Date().getTime() + 1000 * 3600 * 24 * 30;
+		long expired = new Date().getTime() + 1000L * 3600 * 24 * 30;
 		Date time = new Date(expired);
 		loginTicketDao.updateExpired(username, time);
 	}

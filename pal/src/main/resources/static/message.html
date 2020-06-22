@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -995,19 +996,12 @@
 					this.getMessageDetail()
 					this.createTimer()
 				},
-				setMessageHeight(){
-					var div = document.getElementById("mCSB_1_container");
-					console.log(div)
-					div.style.position = "relative"
-					div.style.top = "-9999999px"
-				},
 				getMessageDetail() {
 					this.$http.get('/user/getMessageDetail/',
 					{params : {time:new Date().getTime(), userID:this.userID}})
 					.then(function(res){
 						this.toLoginView(res)
 						this.message = res.body.data
-						this.setMessageHeight()
 					},function() {
 						console.log('请求失败处理');
 					});
@@ -1067,9 +1061,6 @@
 							this.toLoginView(res)
 							this.content = ""
 							this.message.push(res.body.message)
-							var div = document.getElementById("mCSB_1_container");
-							console.log(div)
-							div.style.top = "-999999px"
 						}, function (res) {
 						  console.log(res.body);
 						});
@@ -1091,9 +1082,6 @@
 						this.image = ""
 						this.showImage = ""
 						this.message.push(res.body.message)
-						var div = document.getElementById("mCSB_1_container");
-						console.log(div)
-						div.style.top = "-999999px"
 					}, function (res) {
 					  console.log(res.body);
 					});
@@ -1194,7 +1182,6 @@
 			mounted() {
 				this.createLinkTimer()
 				this.setWidth()
-				window.addEventListener( 'beforeunload', e => this.update());
 			},
 			beforeMount() {
 				if(localStorage.getItem("languageID")){
@@ -1208,6 +1195,9 @@
 			beforeDestroy() {
 				this.checkTicket()
 				this.getAccount()
+			},
+			mounted () {
+				window.addEventListener( 'beforeunload', e => this.update() );
 			}
 		})
 	</script>
