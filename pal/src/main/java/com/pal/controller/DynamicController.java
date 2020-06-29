@@ -92,18 +92,6 @@ public class DynamicController {
 		}
 	}
 	
-	//审核动态
-	@RequestMapping(path="/user/updateDynamic/", method=RequestMethod.GET)
-	@ResponseBody
-	public String updateDynamic(@RequestParam("id") Integer id) {
-		try {
-			Map<String, Object> map = dynamicService.updateDynamic(id);
-			return PalUtils.toJSONString(200, map);
-		} catch (Exception e) {
-			return PalUtils.toJSONString(500, "审核失败");
-		}
-	}
-	
 	@RequestMapping(path = "/user/upload/", method = {RequestMethod.POST})
 	@ResponseBody
 	public String upload(HttpServletRequest request, @RequestParam("file") MultipartFile file) {

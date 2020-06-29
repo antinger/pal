@@ -103,10 +103,11 @@ public class WalletService {
 		return map;
 	}
 	
+	//判断金币是否充足-充足时更新余额
 	private Map<String, Object> updateWallet(Integer money) {
+		Map<String, Object> map = new HashMap<String, Object>();
 		User threadUser = getThreadUser();
 		Wallet wallet = walletDao.selectByUsername(threadUser.getUsername());
-		Map<String, Object> map = new HashMap<String, Object>();
 		if(wallet.getBalance() < money) {
 			map.put("flag", true);
 			return map;

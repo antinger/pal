@@ -39,11 +39,14 @@ public class VisitorService {
 	
 	@Autowired
 	FollowUserDao followUserDao;
-
+	
 	//添加游客
 	public Map<String, Object> addVisitor(Integer visitorID) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		User user = getThreadUser();
+		if(visitorID == user.getId()) {
+			return map;
+		}
 		Visitor vistor = new Visitor();
 		vistor.setUserID(user.getId());
 		vistor.setVisitorID(visitorID);
@@ -58,25 +61,32 @@ public class VisitorService {
 		User threadUser = getThreadUser();
 		List<Visitor> visitors = visitorDao.getVistor(threadUser.getId());
 		List<ViewObject> data = new ArrayList<ViewObject>();
-		for (Visitor visitor : visitors) {
-			ViewObject view = new ViewObject();
-			User temp = userDao.selectUserByID(visitor.getUserID());
-			setUserInfo(view, temp);
-			view.setView("user", temp);
-			view.setView("follow", false);
-			if(followUserDao.getFollowUserByUserID(temp.getId(), threadUser.getId()) != null) {
-				view.setView("follow", true);
-			}
-			data.add(view);
-		}
+		packData(visitors, data, threadUser);
 		map.put("data", data);
 		return map;
 	}
 	
-	private User getThreadUser() {
-		return hostHolder.getUser();
+	//包装数据
+	private void packData(List<Visitor> visitors, List<ViewObject> data, User threadUser) {
+		for (Visitor visitor : visitors) {
+			ViewObject view = new ViewObject();
+			User user = userDao.selectUserByID(visitor.getUserID());
+			setUserInfo(view, user);
+			view.setView("user", user);
+			dealFollow(view, user, threadUser);
+			data.add(view);
+		}
 	}
 	
+	//判断是否关注
+	private void dealFollow(ViewObject view, User user, User threadUser) {
+		view.setView("follow", false);
+		if(followUserDao.getFollowUserByUserID(user.getId(), threadUser.getId()) != null) {
+			view.setView("follow", true);
+		}
+	}
+	
+	//处理用户信息
 	private void setUserInfo(ViewObject view, User user) {
 		UserInfo userInfo = userInfoDao.selectByUsername(user.getUsername());
 		view.setView("birthday", PalUtils.formatBirth(userInfo.getBirthday()));
@@ -86,4 +96,8 @@ public class VisitorService {
 		}
 	}
 
+	private User getThreadUser() {
+		return hostHolder.getUser();
+	}
+	
 }

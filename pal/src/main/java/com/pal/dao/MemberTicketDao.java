@@ -1,20 +1,12 @@
 package com.pal.dao;
 
-import java.util.Date;
-import java.util.List;
 
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
-import com.pal.entity.Gift;
-import com.pal.entity.GiftOrder;
-import com.pal.entity.LoginTicket;
 import com.pal.entity.MemberTicket;
-import com.pal.entity.Message;
-
 
 @Mapper
 public interface MemberTicketDao {
@@ -27,25 +19,12 @@ public interface MemberTicketDao {
     @Insert({"insert into ", TABLE_NAME, "(", INSERT_FIELDS, ") values (#{username},#{createDate},#{expired},#{grade},#{status})"})
     void addMemberTicket(MemberTicket memberTicket);
     
+    //查找会员
     @Select({"select ", SELECT_FIELDS, " from ", TABLE_NAME, " where username=#{username}"})
     MemberTicket selectByMemberTicket(String username);
-    
-    //获取未读的消息量
-    @Select({"select count(*) from ", TABLE_NAME, " where userID=#{userID} and status=#{status}"})
-    int getNumByStatus(Integer userID, int status);
     
     //更新会员
     @Update({"update ", TABLE_NAME, " set createDate=#{createDate},status=#{status},grade=#{grade},expired=#{expired} where username=#{username}"})
 	void updateMemberTicket(MemberTicket memberTicket);
-    
-    
-    //获取发送的消息
-    List<Message> getSendMessages(Integer userID);
-    
-    //获取接收的消息
-    List<Message> getTakeMessages(Integer toUserID);
-    
-    //获取消息
-	List<Message> getMessageByToUserID(int userID, Integer toUserID);
     
 }

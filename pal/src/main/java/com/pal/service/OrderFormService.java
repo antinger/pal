@@ -18,6 +18,7 @@ public class OrderFormService {
 	@Autowired
 	UserDao userDao;
 
+	//添加订单
 	public void addOrderForm(String username, String toUsername, String content, Integer price, Integer type) {
 		OrderForm orderForm = new OrderForm();
 		User user = userDao.selectUserByUsername(username);

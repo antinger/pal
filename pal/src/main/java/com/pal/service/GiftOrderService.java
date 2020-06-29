@@ -85,6 +85,7 @@ public class GiftOrderService {
 		view.setView("gift", gift);
 	}
 	
+	//处理用户
 	private void dealUser(String username, ViewObject view, String key) {
 		User user = userDao.selectUserByUsername(username);
 		if(user.getHeadStatus() == 0) {

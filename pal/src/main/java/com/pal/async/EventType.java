@@ -14,8 +14,4 @@ public enum EventType {
 		return type;
 	}
 
-	public void setType(Integer type) {
-		this.type = type;
-	}
-	
 }

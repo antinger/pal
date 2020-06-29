@@ -7,7 +7,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
-import com.pal.entity.HostHolder;
 
 import org.apache.http.Consts;
 import org.apache.http.HttpEntity;
@@ -30,8 +29,10 @@ import com.alibaba.fastjson.JSONObject;
 import com.pal.async.EventModel;
 import com.pal.async.EventProducer;
 import com.pal.async.EventType;
+import com.pal.entity.HostHolder;
 import com.pal.utils.PalUtils;
 import com.pal.utils.SHA256Utils;
+
 
 @Controller
 public class VisaPayController {
@@ -41,7 +42,7 @@ public class VisaPayController {
 	//grCountry, grState, grCity, grAddress, grZipCode, grEmail, grphoneNumber, grPerName
 	//cardNO, expYear, expMonth, cvv, cardFullName, cardFullPhone
 	@Autowired
-	HostHolder HostHolder;
+	HostHolder hostHolder;
 	
 	@Autowired
 	EventProducer eventProducer;
@@ -60,7 +61,7 @@ public class VisaPayController {
 			, @RequestParam("cvv") String cvv, @RequestParam("FristName") String FristName, @RequestParam("LastName") String LastName
 			, @RequestParam("cardFullPhone") String cardFullPhone) {
 		Map<String, Object> map = new HashMap<>();
-		String payIP = HostHolder.getUser().getAddress();
+		String payIP = hostHolder.getUser().getAddress();
 		if(!PalUtils.emailFormat(grEmail)) {
 			map.put("err", "请输入有效邮箱");
 			return PalUtils.toJSONString(500, map);

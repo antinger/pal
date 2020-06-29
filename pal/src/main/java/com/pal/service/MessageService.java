@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,7 +13,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.pal.dao.MemberTicketDao;
 import com.pal.dao.MessageDao;
 import com.pal.dao.UserDao;
 import com.pal.entity.HostHolder;
@@ -40,7 +38,7 @@ public class MessageService {
 	QiniuService qiniuService;
 	
 	@Autowired
-	MemberTicketDao memberTicketDao;
+	MemberTicketService memberTicketService;
 
 	//获取未读的消息
 	public Map<String, Object> getMessageNumByStatus() {
@@ -144,11 +142,9 @@ public class MessageService {
 		if(user.getHeadStatus() == 0) {
 			user.setHeadLink(qiniuService.dealOnlyImage(user.getHeadLink()));
 		}
-		MemberTicket memberTicket = memberTicketDao.selectByMemberTicket(user.getUsername());
+		MemberTicket memberTicket = memberTicketService.getMemberTicket(user.getUsername());
 		if(memberTicket != null) {
-			if(memberTicket.getCreateDate().getTime() < memberTicket.getExpired().getTime() && memberTicket.getStatus() == 0) {
-				view.setView("member", memberTicket.getGrade());
-			}
+			view.setView("member", memberTicket.getGrade());
 		}
 		view.setView("user", user);
 	}
@@ -163,17 +159,12 @@ public class MessageService {
 				map.put("eor", "禁言中");
 				return map;
 			}
-			MemberTicket member = memberTicketDao.selectByMemberTicket(threadUser.getUsername());
+			MemberTicket memberTicket = memberTicketService.getMemberTicket(threadUser.getUsername());
 			int count = messageDao.getNumByUserID(threadUser.getId());
 			if(count > 3) {
-				if(member == null) {
+				if(memberTicket == null) {
 					map.put("member", true);
 					return map;
-				} else {
-					if(member.getExpired().getTime() < new Date().getTime() || member.getStatus() == 1) {
-						map.put("member", true);
-						return map;
-					}
 				}
 			}
 		}
@@ -225,17 +216,12 @@ public class MessageService {
 				map.put("eor", "禁言中");
 				return map;
 			}
-			MemberTicket member = memberTicketDao.selectByMemberTicket(threadUser.getUsername());
+			MemberTicket memberTicket = memberTicketService.getMemberTicket(threadUser.getUsername());
 			int count = messageDao.getNumByUserID(threadUser.getId());
 			if(count > 3) {
-				if(member == null) {
+				if(memberTicket == null) {
 					map.put("member", true);
 					return map;
-				} else {
-					if(member.getExpired().getTime() < new Date().getTime() || member.getStatus() == 1) {
-						map.put("member", true);
-						return map;
-					}
 				}
 			}
 		}

@@ -9,8 +9,10 @@ import org.springframework.stereotype.Service;
 
 import com.pal.dao.LoginTicketDao;
 import com.pal.dao.MemberTicketDao;
+import com.pal.entity.HostHolder;
 import com.pal.entity.LoginTicket;
 import com.pal.entity.MemberTicket;
+import com.pal.entity.User;
 import com.pal.utils.PalUtils;
 
 @Service
@@ -24,6 +26,9 @@ public class MemberTicketService {
 	
 	@Autowired
 	OrderFormService orderFormService;
+	
+	@Autowired
+	HostHolder hostHolder;
 	
 	//为自己升级会员
 	public Map<String, Object> addMemberTicketForUsername(String ticket, String money, Integer type) {
@@ -50,6 +55,7 @@ public class MemberTicketService {
 		return map;
 	}
 	
+	//升级会员
 	public void addMemeberTicket(String username, String money) {
 		//获取会员
 		MemberTicket memberTicket = memberTicketDao.selectByMemberTicket(username);
@@ -66,13 +72,14 @@ public class MemberTicketService {
 			memberTicket.setCreateDate(new Date());
 			expired = new Date().getTime() + expired;
 		} else {
-			long time = memberTicket.getExpired().getTime();
-			long createDate = memberTicket.getCreateDate().getTime();
-			if(time < createDate) {
+			long currentExpired = memberTicket.getExpired().getTime();
+			long currentTime = new Date().getTime();
+			//判断是否过期，如果过期
+			if(currentExpired < currentTime) {
 				memberTicket.setCreateDate(new Date());
 				expired = new Date().getTime() + expired;
 			} else {
-				expired = time + expired;
+				expired = currentExpired + expired;
 			}
 		}
 		memberTicket.setGrade(grade);
@@ -90,5 +97,44 @@ public class MemberTicketService {
 	private String getThreadUserName(String ticket) {
 		LoginTicket loginTicket = loginTicketDao.selectByTicket(ticket);
 		return loginTicket.getUsername();
+	}
+	
+	private User getThreadUser() {
+		return hostHolder.getUser();
+	}
+	
+	//判断当前用户是否是会员
+	public boolean isMemberTicket() {
+		boolean flag = true;
+		MemberTicket memberTicket = memberTicketDao.selectByMemberTicket(getThreadUser().getUsername());
+		if(memberTicket == null) {
+			flag = false;
+		}
+		if(memberTicket.getStatus() == 1) {
+			flag = false;
+		}
+		if(memberTicket.getExpired().getTime() < new Date().getTime()) {
+			memberTicket.setStatus(1);
+			memberTicketDao.updateMemberTicket(memberTicket);
+			flag = false;
+		}
+		return flag;
+	}
+	
+	//根据用户名获取会员
+	public MemberTicket getMemberTicket(String username) {
+		MemberTicket memberTicket = memberTicketDao.selectByMemberTicket(username);
+		if(memberTicket == null) {
+			return null;
+		}
+		if(memberTicket.getStatus() == 1) {
+			return null;
+		}
+		if(memberTicket.getExpired().getTime() < new Date().getTime()) {
+			memberTicket.setStatus(1);
+			memberTicketDao.updateMemberTicket(memberTicket);
+			return null;
+		}
+		return memberTicket;
 	}
 }

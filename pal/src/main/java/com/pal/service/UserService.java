@@ -13,7 +13,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.pal.dao.FollowUserDao;
 import com.pal.dao.LoginTicketDao;
-import com.pal.dao.MemberTicketDao;
 import com.pal.dao.UserDao;
 import com.pal.dao.UserInfoDao;
 import com.pal.dao.WalletDao;
@@ -52,7 +51,7 @@ public class UserService {
 	FollowUserDao followUserDao;
 	
 	@Autowired
-	MemberTicketDao memberTicketDao;
+	MemberTicketService memberTicketService;
 	
 	@Autowired
 	VisitorService visitorService;
@@ -156,9 +155,9 @@ public class UserService {
 	
 	//退出令牌
 	public Map<String, Object> logout() {
+		Map<String, Object> map = new HashMap<String, Object>();
 		String username = getThreadUser().getUsername();
 		updateLoginTicketStatus(1, username);
-		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("message", "退出成功");
 		return map;
 	}
@@ -219,12 +218,8 @@ public class UserService {
 	public Map<String, Object> getLaterUser(int page, int limit) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		if(page > 2) {
-			MemberTicket memberTicket = memberTicketDao.selectByMemberTicket(getThreadUser().getUsername());
-			if(memberTicket == null) {
-				map.put("member", true);
-				return map;
-			}
-			if(memberTicket.getExpired().getTime() < new Date().getTime() || memberTicket.getStatus() == 1) {
+			boolean flag = memberTicketService.isMemberTicket();
+			if(!flag) {
 				map.put("member", true);
 				return map;
 			}
@@ -345,11 +340,9 @@ public class UserService {
 	}
 	
 	private void dealMember(ViewObject view, String username) {
-		MemberTicket memberTicket = memberTicketDao.selectByMemberTicket(username);
+		MemberTicket memberTicket = memberTicketService.getMemberTicket(username);
 		if(memberTicket != null) {
-			if(memberTicket.getExpired().getTime() > new Date().getTime() && memberTicket.getStatus() == 0) {
-				view.setView("member", memberTicket.getGrade());
-			}
+			view.setView("member", memberTicket.getGrade());
 		}
 	}
 
@@ -367,6 +360,14 @@ public class UserService {
 		map.clear();
 		map.put("message", "更新成功");
 		return map;
+	}
+	
+	public void dealUser(Integer userID, ViewObject view) {
+		User user = userDao.selectUserByID(userID);
+		if(!"".equals(user.getHeadLink())) {
+			user.setHeadLink(qiniuService.dealOnlyImage(user.getHeadLink()));
+		}
+		view.setView("user", user);
 	}
 	
 }
